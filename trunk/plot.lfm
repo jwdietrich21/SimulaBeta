@@ -1,0 +1,89 @@
+object PlotForm: TPlotForm
+  Left = 673
+  Height = 344
+  Top = 360
+  Width = 556
+  Caption = 'Plot'
+  ClientHeight = 344
+  ClientWidth = 556
+  LCLVersion = '2.0.10.0'
+  Visible = True
+  object Chart1: TChart
+    Left = 24
+    Height = 306
+    Top = 16
+    Width = 450
+    AntialiasingMode = amOn
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Marks.OverlapPolicy = opHideNeighbour
+        Minors = <>
+        Range.Max = 10
+        Range.UseMax = True
+        Range.UseMin = True
+        Title.Visible = True
+        Title.Caption = 'Iteration'
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = clWhite
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clNone
+    object PSeries: TLineSeries
+      Title = 'P'
+      LinePen.Width = 2
+    end
+    object RSeries: TLineSeries
+      Title = 'R'
+      LinePen.Color = clNavy
+      LinePen.Width = 2
+    end
+    object GSeries: TLineSeries
+      Title = 'G'
+      LinePen.Color = clBlue
+      LinePen.Width = 2
+    end
+    object SSeries: TLineSeries
+      Title = 'S'
+      LinePen.Color = clPurple
+      LinePen.Width = 2
+    end
+    object ISeries: TLineSeries
+      Title = 'I'
+      LinePen.Color = clRed
+      LinePen.Width = 2
+    end
+    object MSeries: TLineSeries
+      Title = 'M'
+      LinePen.Color = 33023
+      LinePen.Width = 2
+    end
+    object NSeries: TLineSeries
+      Title = 'N'
+      LinePen.Color = clLime
+      LinePen.Width = 2
+    end
+  end
+  object ChartLegendPanel1: TChartLegendPanel
+    Left = 482
+    Height = 256
+    Top = 24
+    Width = 56
+    Chart = Chart1
+    Anchors = [akTop, akRight]
+  end
+end
