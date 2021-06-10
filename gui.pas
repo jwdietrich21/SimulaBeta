@@ -199,7 +199,8 @@ end;
 
 procedure TValuesForm.ShowAboutWindow(Sender: TObject);
 begin
-  ShowMessage('SimulaBeta, a simulator of insulin-glucose homeostasis');
+  ShowMessage('SimulaBeta, a simulator of insulin-glucose homeostasis' +
+               LineEnding + LineEnding + 'Prerelease version 2.0.x');
 end;
 
 procedure TValuesForm.MacAboutItemClick(Sender: TObject);

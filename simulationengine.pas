@@ -130,7 +130,7 @@ var
 begin
   if gValues.size > 0 then
   begin
-    if Prediction[0].G < 0 then
+    if Prediction[0].G < 0 then  // use positive solution for initial values
       i := 1
     else
       i := 0;
