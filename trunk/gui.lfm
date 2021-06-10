@@ -1,7 +1,7 @@
 object ValuesForm: TValuesForm
-  Left = 269
+  Left = 81
   Height = 503
-  Top = 128
+  Top = 134
   Width = 807
   Caption = 'SimulaBeta'
   ClientHeight = 503
