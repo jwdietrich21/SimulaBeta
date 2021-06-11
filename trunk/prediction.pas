@@ -56,6 +56,7 @@ implementation
 
 procedure TPredictionForm.FormPaint(Sender: TObject);
 begin
+  Left := Screen.Width - Width - 26;
   PredictionList.Cells[0, 1] := 'P';
   PredictionList.Cells[0, 2] := 'R';
   PredictionList.Cells[0, 3] := 'G';
