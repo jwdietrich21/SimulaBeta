@@ -1,10 +1,10 @@
 object ValuesForm: TValuesForm
-  Left = 81
+  Left = 23
   Height = 503
-  Top = 134
+  Top = 117
   Width = 807
   Caption = 'SimulaBeta'
-  ClientHeight = 503
+  ClientHeight = 483
   ClientWidth = 807
   Constraints.MinHeight = 400
   Constraints.MinWidth = 640
@@ -13,7 +13,7 @@ object ValuesForm: TValuesForm
   LCLVersion = '2.0.10.0'
   object ValuesGrid: TStringGrid
     Left = 0
-    Height = 328
+    Height = 308
     Top = 40
     Width = 807
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -22,27 +22,27 @@ object ValuesForm: TValuesForm
     Columns = <    
       item
         Title.Caption = 'P(t)'
-        Width = 104
+        Width = 103
       end    
       item
         Title.Caption = 'R(t) (µmol/s)'
-        Width = 104
+        Width = 103
       end    
       item
         Title.Caption = 'G(t) (mmol/L)'
-        Width = 104
+        Width = 103
       end    
       item
         Title.Caption = 'S(t) (pmol/s)'
-        Width = 104
+        Width = 103
       end    
       item
         Title.Caption = 'I(t) (pmol/L)'
-        Width = 104
+        Width = 103
       end    
       item
         Title.Caption = 'M(t)'
-        Width = 104
+        Width = 103
       end    
       item
         Title.Caption = 'N(t)'
@@ -53,12 +53,12 @@ object ValuesForm: TValuesForm
     TabOrder = 0
     ColWidths = (
       64
-      104
-      104
-      104
-      104
-      104
-      104
+      103
+      103
+      103
+      103
+      103
+      103
       104
     )
   end
@@ -109,7 +109,7 @@ object ValuesForm: TValuesForm
   object StartButton: TButton
     Left = 704
     Height = 25
-    Top = 456
+    Top = 436
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Run'
@@ -119,29 +119,28 @@ object ValuesForm: TValuesForm
   end
   object PSpinEdit: TFloatSpinEdit
     Left = 56
-    Height = 16
-    Top = 403
+    Height = 23
+    Top = 376
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.2
-    MinValue = 0
     TabOrder = 3
     Value = 5
   end
   object PLabel: TLabel
     Left = 26
-    Height = 16
-    Top = 400
-    Width = 15
+    Height = 15
+    Top = 381
+    Width = 13
     Anchors = [akLeft, akBottom]
     Caption = 'P0'
     ParentColor = False
   end
   object IterationsLabel: TLabel
-    Left = 8
-    Height = 16
-    Top = 462
-    Width = 37
+    Left = 16
+    Height = 15
+    Top = 446
+    Width = 30
     Anchors = [akLeft, akBottom]
     Caption = 'Iterat.'
     ParentColor = False
@@ -149,9 +148,9 @@ object ValuesForm: TValuesForm
   object IterationsSpinEdit: TSpinEdit
     AnchorSideLeft.Control = IterationsLabel
     AnchorSideLeft.Side = asrBottom
-    Left = 56
-    Height = 16
-    Top = 465
+    Left = 57
+    Height = 23
+    Top = 441
     Width = 98
     Anchors = [akLeft, akBottom]
     BorderSpacing.Left = 11
@@ -161,171 +160,173 @@ object ValuesForm: TValuesForm
   end
   object GBetaLabel: TLabel
     Left = 216
-    Height = 16
-    Top = 432
-    Width = 36
+    Height = 15
+    Top = 413
+    Width = 31
     Anchors = [akLeft, akBottom]
     Caption = 'GBeta'
     ParentColor = False
   end
   object GBetaEdit: TFloatSpinEdit
     Left = 262
-    Height = 16
-    Top = 435
+    Height = 23
+    Top = 408
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    MinValue = 0
     TabOrder = 5
     Value = 2.6
   end
   object GRLabel: TLabel
     Left = 456
-    Height = 16
-    Top = 432
-    Width = 18
+    Height = 15
+    Top = 413
+    Width = 15
     Anchors = [akLeft, akBottom]
     Caption = 'GR'
     ParentColor = False
   end
   object GREdit: TFloatSpinEdit
     Left = 486
-    Height = 16
-    Top = 435
+    Height = 23
+    Top = 408
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    MinValue = 0
     TabOrder = 6
     Value = 5
   end
   object GEEdit: TFloatSpinEdit
     Left = 56
-    Height = 16
-    Top = 435
+    Height = 23
+    Top = 408
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    MinValue = 0
     TabOrder = 7
     Value = 0.3
   end
   object GELabel: TLabel
     Left = 26
-    Height = 16
-    Top = 432
-    Width = 16
+    Height = 15
+    Top = 413
+    Width = 14
     Anchors = [akLeft, akBottom]
     Caption = 'GE'
     ParentColor = False
   end
   object DBetaLabel: TLabel
     Left = 216
-    Height = 16
-    Top = 465
-    Width = 36
+    Height = 15
+    Top = 446
+    Width = 31
     Anchors = [akLeft, akBottom]
     Caption = 'DBeta'
     ParentColor = False
   end
   object DBetaEdit: TFloatSpinEdit
     Left = 262
-    Height = 16
-    Top = 468
+    Height = 23
+    Top = 441
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    MinValue = 0
     TabOrder = 8
     Value = 0.5
   end
   object ILabel: TLabel
     Left = 232
-    Height = 16
-    Top = 400
-    Width = 12
+    Height = 15
+    Top = 381
+    Width = 9
     Anchors = [akLeft, akBottom]
     Caption = 'I0'
     ParentColor = False
   end
   object ISpinEdit: TFloatSpinEdit
     Left = 262
-    Height = 16
-    Top = 403
+    Height = 23
+    Top = 376
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.2
-    MinValue = 0
     TabOrder = 9
     Value = 5
   end
   object IUnitLabel: TLabel
-    Left = 374
-    Height = 16
-    Top = 403
-    Width = 43
+    AnchorSideLeft.Control = ISpinEdit
+    AnchorSideLeft.Side = asrBottom
+    Left = 373
+    Height = 15
+    Top = 381
+    Width = 36
+    BorderSpacing.Left = 13
     Caption = 'pmol/l'
     ParentColor = False
   end
   object GLabel: TLabel
     Left = 456
-    Height = 16
-    Top = 403
-    Width = 18
+    Height = 15
+    Top = 384
+    Width = 14
     Anchors = [akLeft, akBottom]
     Caption = 'G0'
     ParentColor = False
   end
   object GSpinEdit: TFloatSpinEdit
     Left = 486
-    Height = 16
-    Top = 406
+    Height = 23
+    Top = 379
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.2
-    MinValue = 0
     TabOrder = 10
     Value = 5
   end
   object GUnitLabel: TLabel
-    Left = 598
-    Height = 16
-    Top = 406
-    Width = 47
+    AnchorSideLeft.Control = GSpinEdit
+    AnchorSideLeft.Side = asrBottom
+    Left = 597
+    Height = 15
+    Top = 384
+    Width = 40
+    BorderSpacing.Left = 13
     Caption = 'mmol/l'
     ParentColor = False
   end
   object DRLabel: TLabel
     Left = 456
-    Height = 16
-    Top = 465
-    Width = 18
+    Height = 15
+    Top = 446
+    Width = 15
     Anchors = [akLeft, akBottom]
     Caption = 'DR'
     ParentColor = False
   end
   object DBetaEdit1: TFloatSpinEdit
     Left = 486
-    Height = 16
-    Top = 464
+    Height = 23
+    Top = 437
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    MinValue = 0
     TabOrder = 11
     Value = 0.5
   end
   object InitialConditionsLabel: TLabel
+    AnchorSideTop.Control = ValuesGrid
+    AnchorSideTop.Side = asrBottom
     Left = 8
-    Height = 16
-    Top = 376
-    Width = 275
-    Caption = 'initial Conditions and Structure Parameters:'
+    Height = 15
+    Top = 354
+    Width = 229
+    BorderSpacing.Top = 6
+    Caption = 'Initial Conditions and Structure Parameters:'
     ParentColor = False
   end
   object ImageList1: TImageList
-    left = 632
-    top = 8
+    Left = 632
+    Top = 8
     Bitmap = {
       4C690400000010000000100000009E9E9EA3818181FF818181FF818181FF8181
       81FF818181FF818181FF818181FF818181FF7C8C8CFF729F9FFF6AAEAFFF36E4
@@ -459,8 +460,8 @@ object ValuesForm: TValuesForm
     }
   end
   object MainMenu1: TMainMenu
-    left = 728
-    top = 8
+    Left = 728
+    Top = 8
     object AppleMenu: TMenuItem
       Caption = ''
       object MacAboutItem: TMenuItem

@@ -47,6 +47,7 @@ type
     SSeries: TLineSeries;
     MSeries: TLineSeries;
     RSeries: TLineSeries;
+    procedure FormCreate(Sender: TObject);
   private
     { private declarations }
   public
@@ -62,6 +63,12 @@ implementation
 {$R *.lfm}
 
 { TPlotForm }
+
+procedure TPlotForm.FormCreate(Sender: TObject);
+begin
+  Left := Screen.Width - Width - 26;
+  Top := Screen.Height - Height - 78;
+end;
 
 procedure TPlotForm.ShowPlot;
 var
