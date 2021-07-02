@@ -30,14 +30,15 @@ unit GUI;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Grids,
-  ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, SimulationEngine, Prediction, Plot;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
+  ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, SimulationEngine,
+  Prediction, Plot, LogGrid;
 
 type
 
-  { TValuesForm }
+  { TControlWindow }
 
-  TValuesForm = class(TForm)
+  TControlWindow = class(TForm)
     AppleMenu: TMenuItem;
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
@@ -83,7 +84,6 @@ type
     PLabel: TLabel;
     PSpinEdit: TFloatSpinEdit;
     StartButton: TButton;
-    ValuesGrid: TStringGrid;
     ToolBar1: TToolBar;
     IterationsLabel: TLabel;
     GRLabel: TLabel;
@@ -102,18 +102,18 @@ type
   end;
 
 var
-  ValuesForm: TValuesForm;
+  ControlWindow: TControlWindow;
 
 implementation
 
 {$R *.lfm}
 
-{ TValuesForm }
+{ TControlWindow }
 
-procedure TValuesForm.StartButtonClick(Sender: TObject);
+procedure TControlWindow.StartButtonClick(Sender: TObject);
 var
   P, Glc, Ins: extended;
-  i, j, iterations: integer;
+  iterations: integer;
   Prediction: TPrediction;
 begin
   Screen.Cursor := crHourGlass;
@@ -122,10 +122,7 @@ begin
   Ins := ISpinEdit.Value * IFactor;
   iterations := IterationsSpinEdit.Value;
   gValues := TValues.Create;
-  ValuesGrid.RowCount := 26;
-  for i := 0 to ValuesGrid.ColCount - 1 do
-    for j := 1 to ValuesGrid.RowCount - 1 do
-      ValuesGrid.Cells[i, j] := '';
+  LogWindow.EmptyGrid;
   PlotForm.PSeries.Clear;
   PlotForm.RSeries.Clear;
   PlotForm.GSeries.Clear;
@@ -138,21 +135,7 @@ begin
   PredictionForm.DisplayPrediction(Prediction);
   application.ProcessMessages;
   RunSimulation(P, Glc, Ins, iterations);
-  ValuesGrid.BeginUpdate;
-  if iterations > ValuesGrid.RowCount then
-    ValuesGrid.RowCount := iterations + 1;
-  for i := 0 to iterations - 1 do
-  begin
-    ValuesGrid.Cells[0, i + 1] := IntToStr(i + 1);
-    ValuesGrid.Cells[1, i + 1] := FloatToStrF(gValues.P[i] / PFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[2, i + 1] := FloatToStrF(gValues.R[i] / MicroFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[3, i + 1] := FloatToStrF(gValues.G[i] / GFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[4, i + 1] := FloatToStrF(gValues.S[i] / PicoFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[5, i + 1] := FloatToStrF(gValues.I[i] / IFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[6, i + 1] := FloatToStrF(gValues.M[i], ffFixed, 0, 4);
-    ValuesGrid.Cells[7, i + 1] := FloatToStrF(gValues.N[i], ffFixed, 0, 4);
-  end;
-  ValuesGrid.EndUpdate(true);
+  LogWindow.FillGrid(iterations);
   application.ProcessMessages;
   PlotForm.ShowPlot;
   gValues.Destroy;
@@ -167,53 +150,53 @@ var
 begin
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];
-  ValuesForm.WinAboutItem.Visible := False;
-  ValuesForm.AppleMenu.Visible := True;
+  ControlWindow.WinAboutItem.Visible := False;
+  ControlWindow.AppleMenu.Visible := True;
   {$ELSE}
   {$IFDEF LCLCocoa}
   modifierKey := [ssMeta];
-  ValuesForm.WinAboutItem.Visible := False;
-  ValuesForm.AppleMenu.Visible := True;
+  ControlWindow.WinAboutItem.Visible := False;
+  ControlWindow.AppleMenu.Visible := True;
   {$ELSE}
   modifierKey := [ssCtrl];
-  ValuesForm.WinAboutItem.Visible := True;
-  ValuesForm.AppleMenu.Visible := False;
+  ControlWindow.WinAboutItem.Visible := True;
+  ControlWindow.AppleMenu.Visible := False;
   {$ENDIF}
   {$ENDIF}
-  ValuesForm.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
-  ValuesForm.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
-  ValuesForm.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
-  ValuesForm.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
-  ValuesForm.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
-  ValuesForm.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
-  ValuesForm.RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey + [ssShift]);
-  ValuesForm.CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
-  ValuesForm.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
-  ValuesForm.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
+  ControlWindow.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
+  ControlWindow.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
+  ControlWindow.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
+  ControlWindow.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
+  ControlWindow.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
+  ControlWindow.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
+  ControlWindow.RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey + [ssShift]);
+  ControlWindow.CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
+  ControlWindow.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
+  ControlWindow.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
 end;
 
-procedure TValuesForm.WinAboutItemClick(Sender: TObject);
+procedure TControlWindow.WinAboutItemClick(Sender: TObject);
 begin
   ShowAboutWindow(Sender);
 end;
 
-procedure TValuesForm.ShowAboutWindow(Sender: TObject);
+procedure TControlWindow.ShowAboutWindow(Sender: TObject);
 begin
   ShowMessage('SimulaBeta, a simulator of insulin-glucose homeostasis' +
                LineEnding + LineEnding + 'Prerelease version 2.0.x');
 end;
 
-procedure TValuesForm.MacAboutItemClick(Sender: TObject);
+procedure TControlWindow.MacAboutItemClick(Sender: TObject);
 begin
   ShowAboutWindow(Sender);
 end;
 
-procedure TValuesForm.QuitMenuItemClick(Sender: TObject);
+procedure TControlWindow.QuitMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
 end;
 
-procedure TValuesForm.FormCreate(Sender: TObject);
+procedure TControlWindow.FormCreate(Sender: TObject);
 begin
   AdaptMenus;
   PSpinEdit.Value := P0 / PFactor;
@@ -221,7 +204,7 @@ begin
   ISpinEdit.Value := I0 / IFactor;
 end;
 
-procedure TValuesForm.CloseMenuItemClick(Sender: TObject);
+procedure TControlWindow.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
 end;
