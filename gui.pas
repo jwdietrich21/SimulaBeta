@@ -32,47 +32,31 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, SimulationEngine,
-  Prediction, Plot, LogGrid;
+  Prediction, Plot, LogGrid, SimulationControl;
 
 type
 
-  { TControlWindow }
+  { TToolbarWindow }
 
-  TControlWindow = class(TForm)
+  TToolbarWindow = class(TForm)
     AppleMenu: TMenuItem;
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     CutMenuItem: TMenuItem;
-    DREdit: TFloatSpinEdit;
-    DRLabel: TLabel;
     Divider11: TMenuItem;
     Divider12: TMenuItem;
     Divider21: TMenuItem;
     EditMenu: TMenuItem;
     FileMenu: TMenuItem;
-    DBetaEdit: TFloatSpinEdit;
-    DBetaLabel: TLabel;
-    GEEdit: TFloatSpinEdit;
-    GELabel: TLabel;
-    ControlGroup: TGroupBox;
-    StrucParsGroup: TGroupBox;
-    InitialConditionsGroups: TGroupBox;
     HelpMenu: TMenuItem;
-    GLabel: TLabel;
     ImageList1: TImageList;
-    IterationsSpinEdit: TSpinEdit;
-    GBetaLabel: TLabel;
-    GBetaEdit: TFloatSpinEdit;
-    IUnitLabel: TLabel;
-    GUnitLabel: TLabel;
     MacAboutItem: TMenuItem;
     MainMenu1: TMainMenu;
+    RunItem: TMenuItem;
+    SimulationMenu: TMenuItem;
     NewMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
     PasteMenuItem: TMenuItem;
-    ILabel: TLabel;
-    ISpinEdit: TFloatSpinEdit;
-    GSpinEdit: TFloatSpinEdit;
     QuitMenuItem: TMenuItem;
     RedoMenuItem: TMenuItem;
     SaveMenuItem: TMenuItem;
@@ -83,66 +67,29 @@ type
     ToolButton5: TToolButton;
     UndoMenuItem: TMenuItem;
     WinAboutItem: TMenuItem;
-    PLabel: TLabel;
-    PSpinEdit: TFloatSpinEdit;
-    StartButton: TButton;
     ToolBar1: TToolBar;
-    IterationsLabel: TLabel;
-    GRLabel: TLabel;
-    GREdit: TFloatSpinEdit;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
-    procedure StartButtonClick(Sender: TObject);
+    procedure RunItemClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
     procedure ShowAboutWindow(Sender: TObject);
+    procedure SetPosition;
   end;
 
 var
-  ControlWindow: TControlWindow;
+  ToolbarWindow: TToolbarWindow;
 
 implementation
 
 {$R *.lfm}
 
-{ TControlWindow }
-
-procedure TControlWindow.StartButtonClick(Sender: TObject);
-var
-  P, Glc, Ins: extended;
-  iterations: integer;
-  Prediction: TPrediction;
-begin
-  Screen.Cursor := crHourGlass;
-  P := PSpinEdit.Value * PFactor;
-  Glc := GSpinEdit.Value * GFactor;
-  Ins := ISpinEdit.Value * IFactor;
-  iterations := IterationsSpinEdit.Value;
-  gValues := TValues.Create;
-  LogWindow.EmptyGrid;
-  PlotForm.PSeries.Clear;
-  PlotForm.RSeries.Clear;
-  PlotForm.GSeries.Clear;
-  PlotForm.SSeries.Clear;
-  PlotForm.ISeries.Clear;
-  PlotForm.MSeries.Clear;
-  PlotForm.NSeries.Clear;
-  InitSimulation(P);
-  Prediction := PredictedEquilibrium(P, gStrucPars);
-  PredictionForm.DisplayPrediction(Prediction);
-  application.ProcessMessages;
-  RunSimulation(P, Glc, Ins, iterations);
-  LogWindow.FillGrid(iterations);
-  application.ProcessMessages;
-  PlotForm.ShowPlot;
-  gValues.Destroy;
-  Screen.Cursor := crDefault;
-end;
+{ TToolbarWindow }
 
 procedure AdaptMenus;
 { Adapts Menus and Shortcuts to the interface style guidelines
@@ -152,61 +99,90 @@ var
 begin
   {$IFDEF LCLcarbon}
   modifierKey := [ssMeta];
-  ControlWindow.WinAboutItem.Visible := False;
-  ControlWindow.AppleMenu.Visible := True;
+  ToolbarWindow.WinAboutItem.Visible := False;
+  ToolbarWindow.AppleMenu.Visible := True;
   {$ELSE}
   {$IFDEF LCLCocoa}
   modifierKey := [ssMeta];
-  ControlWindow.WinAboutItem.Visible := False;
-  ControlWindow.AppleMenu.Visible := True;
+  ToolbarWindow.WinAboutItem.Visible := False;
+  ToolbarWindow.AppleMenu.Visible := True;
   {$ELSE}
   modifierKey := [ssCtrl];
-  ControlWindow.WinAboutItem.Visible := True;
-  ControlWindow.AppleMenu.Visible := False;
+  ToolbarWindow.WinAboutItem.Visible := True;
+  ToolbarWindow.AppleMenu.Visible := False;
   {$ENDIF}
   {$ENDIF}
-  ControlWindow.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
-  ControlWindow.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
-  ControlWindow.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
-  ControlWindow.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
-  ControlWindow.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
-  ControlWindow.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
-  ControlWindow.RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey + [ssShift]);
-  ControlWindow.CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
-  ControlWindow.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
-  ControlWindow.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
+  ToolbarWindow.NewMenuItem.ShortCut := ShortCut(VK_N, modifierKey);
+  ToolbarWindow.OpenMenuItem.ShortCut := ShortCut(VK_O, modifierKey);
+  ToolbarWindow.CloseMenuItem.ShortCut := ShortCut(VK_W, modifierKey);
+  ToolbarWindow.SaveMenuItem.ShortCut := ShortCut(VK_S, modifierKey);
+  ToolbarWindow.QuitMenuItem.ShortCut := ShortCut(VK_Q, modifierKey);
+  ToolbarWindow.UndoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey);
+  ToolbarWindow.RedoMenuItem.ShortCut := ShortCut(VK_Z, modifierKey + [ssShift]);
+  ToolbarWindow.CutMenuItem.ShortCut := ShortCut(VK_X, modifierKey);
+  ToolbarWindow.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
+  ToolbarWindow.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
+  ToolbarWindow.RunItem.ShortCut  := ShortCut(VK_R, modifierKey);
 end;
 
-procedure TControlWindow.WinAboutItemClick(Sender: TObject);
+procedure TToolbarWindow.WinAboutItemClick(Sender: TObject);
 begin
   ShowAboutWindow(Sender);
 end;
 
-procedure TControlWindow.ShowAboutWindow(Sender: TObject);
+procedure TToolbarWindow.ShowAboutWindow(Sender: TObject);
 begin
   ShowMessage('SimulaBeta, a simulator of insulin-glucose homeostasis' +
-               LineEnding + LineEnding + 'Prerelease version 2.0.x');
+    LineEnding + LineEnding + 'Prerelease version 2.0.x');
 end;
 
-procedure TControlWindow.MacAboutItemClick(Sender: TObject);
+procedure TToolbarWindow.SetPosition;
+{sets the toolbar to the screen's top margin}
+begin
+  hide;
+  {$IFDEF DARWIN}
+  WindowState := wsMaximized;
+  left := 0;
+  top := 20;
+  Width := Screen.Width;
+  WindowState := wsNormal;
+  {$ELSE}
+  WindowState := wsNormal;
+  left := 1;
+  top := 0;
+  Width := Screen.Width - 6;
+  {$ENDIF}
+  {$IFDEF LINUX}
+  AutoSize := False;
+  Height := 2 * Toolbar1.Height + 3;
+  {$ELSE}
+  Height := Toolbar1.Height + 3;
+  {$ENDIF}
+  AlphaBlend := False;
+end;
+
+procedure TToolbarWindow.MacAboutItemClick(Sender: TObject);
 begin
   ShowAboutWindow(Sender);
 end;
 
-procedure TControlWindow.QuitMenuItemClick(Sender: TObject);
+procedure TToolbarWindow.QuitMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
 end;
 
-procedure TControlWindow.FormCreate(Sender: TObject);
+procedure TToolbarWindow.RunItemClick(Sender: TObject);
 begin
-  AdaptMenus;
-  PSpinEdit.Value := P0 / PFactor;
-  GSpinEdit.Value := G0 / GFactor;
-  ISpinEdit.Value := I0 / IFactor;
+  ControlWindow.Show;
 end;
 
-procedure TControlWindow.CloseMenuItemClick(Sender: TObject);
+procedure TToolbarWindow.FormCreate(Sender: TObject);
+begin
+  SetPosition;
+  AdaptMenus;
+end;
+
+procedure TToolbarWindow.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
 end;

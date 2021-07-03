@@ -39,6 +39,7 @@ type
 
   TLogWindow = class(TForm)
     ValuesGrid: TStringGrid;
+    procedure FormPaint(Sender: TObject);
   private
 
   public
@@ -54,6 +55,11 @@ implementation
 {$R *.lfm}
 
 { TLogWindow }
+
+procedure TLogWindow.FormPaint(Sender: TObject);
+begin
+  Left := 13;
+end;
 
 procedure TLogWindow.EmptyGrid;
 var

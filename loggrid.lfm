@@ -1,11 +1,12 @@
 object LogWindow: TLogWindow
-  Left = 3
+  Left = 263
   Height = 388
-  Top = 181
+  Top = 143
   Width = 874
   Caption = 'Log'
   ClientHeight = 388
   ClientWidth = 874
+  OnPaint = FormPaint
   LCLVersion = '2.0.12.0'
   Visible = True
   object ValuesGrid: TStringGrid
