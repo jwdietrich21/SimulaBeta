@@ -9,10 +9,9 @@
         <Filename Value="SimulaBeta.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Simulator"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="130" Y="23"/>
+        <CursorPos X="76" Y="12"/>
         <UsageCount Value="54"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -23,6 +22,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
@@ -123,41 +123,55 @@
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
+        <Filename Value="loggrid.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="LogWindow"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="LogGrid"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="1"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="..\..\bricks.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <UsageCount Value="28"/>
-      </Unit8>
-      <Unit9>
+      </Unit9>
+      <Unit10>
         <Filename Value="..\..\lifeblocks.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
         <UsageCount Value="23"/>
-      </Unit9>
-      <Unit10>
+      </Unit10>
+      <Unit11>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="9124"/>
         <CursorPos Y="9142"/>
         <UsageCount Value="9"/>
-      </Unit10>
-      <Unit11>
+      </Unit11>
+      <Unit12>
         <Filename Value="C:\Developer\lazarus 1.4\components\tachart\tacustomseries.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="792"/>
         <CursorPos Y="809"/>
         <UsageCount Value="9"/>
-      </Unit11>
-      <Unit12>
+      </Unit12>
+      <Unit13>
         <Filename Value="C:\Developer\lazarus 1.4\lcl\lcltype.pp"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="443"/>
         <CursorPos X="3" Y="460"/>
         <UsageCount Value="9"/>
-      </Unit12>
-      <Unit13>
+      </Unit13>
+      <Unit14>
         <Filename Value="..\..\systemsdiagram.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
@@ -170,16 +184,16 @@
           <CursorPos Y="2"/>
         </ExtraEditor1>
         <UsageCount Value="10"/>
-      </Unit13>
-      <Unit14>
+      </Unit14>
+      <Unit15>
         <Filename Value="systemsdiagram.pas"/>
         <UnitName Value="SystemsDiagram"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
-      </Unit14>
-      <Unit15>
+      </Unit15>
+      <Unit16>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
@@ -187,8 +201,8 @@
         <TopLine Value="1075"/>
         <CursorPos X="29" Y="1092"/>
         <UsageCount Value="10"/>
-      </Unit15>
-      <Unit16>
+      </Unit16>
+      <Unit17>
         <Filename Value="C:\lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
@@ -196,8 +210,8 @@
         <TopLine Value="152"/>
         <CursorPos X="3" Y="170"/>
         <UsageCount Value="9"/>
-      </Unit16>
-      <Unit17>
+      </Unit17>
+      <Unit18>
         <Filename Value="C:\lazarus\lcl\interfaces\win32\win32wscontrols.pp"/>
         <UnitName Value="Win32WSControls"/>
         <EditorIndex Value="-1"/>
@@ -205,19 +219,6 @@
         <TopLine Value="236"/>
         <CursorPos Y="253"/>
         <UsageCount Value="9"/>
-      </Unit17>
-      <Unit18>
-        <Filename Value="loggrid.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="LogWindow"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="LogGrid"/>
-        <EditorIndex Value="5"/>
-        <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit18>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
@@ -333,12 +334,12 @@
         <Caret Line="116" Column="27" TopLine="79"/>
       </Position28>
       <Position29>
-        <Filename Value="ips.pas"/>
-        <Caret Line="2" Column="21" TopLine="103"/>
-      </Position29>
-      <Position30>
         <Filename Value="SimulaBeta.lpr"/>
         <Caret Line="29" Column="71"/>
+      </Position29>
+      <Position30>
+        <Filename Value="gui.pas"/>
+        <Caret Line="2" TopLine="25"/>
       </Position30>
     </JumpHistory>
     <RunParams>
