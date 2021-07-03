@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
-      <BuildNr Value="66"/>
+      <BuildNr Value="68"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Simulator for Insulin-Glucose homeostasis" CompanyName="Ruhr University of Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 2.0 (Sleeping Briar Rose)" LegalCopyright="© 1994-2021 J. W. Dietrich and Ruhr University of Bochum" ProductName="SimulaBeta" ProductVersion="2.0.0"/>
     </VersionInfo>
@@ -45,7 +45,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="9">
+    <Units Count="10">
       <Unit0>
         <Filename Value="SimulaBeta.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -54,7 +54,7 @@
       <Unit1>
         <Filename Value="gui.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="ControlWindow"/>
+        <ComponentName Value="ToolbarWindow"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
@@ -105,6 +105,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="LogGrid"/>
       </Unit8>
+      <Unit9>
+        <Filename Value="simulationcontrol.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ControlWindow"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SimulationControl"/>
+      </Unit9>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

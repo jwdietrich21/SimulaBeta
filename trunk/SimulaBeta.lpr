@@ -33,7 +33,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, tachartlazaruspkg, GUI, SimulationEngine, IPS,
-  Plot, prediction, LogGrid
+  Plot, prediction, LogGrid, SimulationControl
   { you can add units after this };
 
 {$R *.res}
@@ -42,12 +42,15 @@ begin
   Application.Title:='SimulaBeta';
   RequireDerivedFormResource := True;
   Application.Initialize;
-  Application.CreateForm(TControlWindow, ControlWindow);
+  Application.CreateForm(TToolbarWindow, ToolbarWindow);
   Application.CreateForm(TIPSForm, IPSForm);
   Application.CreateForm(TPlotForm, PlotForm);
   Application.CreateForm(TPredictionForm, PredictionForm);
   Application.CreateForm(TLogWindow, LogWindow);
+  Application.CreateForm(TControlWindow, ControlWindow);
   Application.BringToFront;
+  ControlWindow.BringToFront;
+  ControlWindow.SetFocus;
   Application.Run;
 end.
 
