@@ -43,7 +43,7 @@ type
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     CutMenuItem: TMenuItem;
-    DBetaEdit1: TFloatSpinEdit;
+    DREdit: TFloatSpinEdit;
     DRLabel: TLabel;
     Divider11: TMenuItem;
     Divider12: TMenuItem;
@@ -54,6 +54,9 @@ type
     DBetaLabel: TLabel;
     GEEdit: TFloatSpinEdit;
     GELabel: TLabel;
+    ControlGroup: TGroupBox;
+    StrucParsGroup: TGroupBox;
+    InitialConditionsGroups: TGroupBox;
     HelpMenu: TMenuItem;
     GLabel: TLabel;
     ImageList1: TImageList;
@@ -62,7 +65,6 @@ type
     GBetaEdit: TFloatSpinEdit;
     IUnitLabel: TLabel;
     GUnitLabel: TLabel;
-    InitialConditionsLabel: TLabel;
     MacAboutItem: TMenuItem;
     MainMenu1: TMainMenu;
     NewMenuItem: TMenuItem;
