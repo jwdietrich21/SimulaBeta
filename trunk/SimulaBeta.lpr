@@ -33,7 +33,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, tachartlazaruspkg, GUI, SimulationEngine, IPS,
-  Plot, prediction, LogGrid, SimulationControl
+  Plot, prediction, LogGrid, SimulationControl, SimulaBetaServices
   { you can add units after this };
 
 {$R *.res}
@@ -52,6 +52,6 @@ begin
   ToolbarWindow.Show;
   ControlWindow.BringToFront;
   ControlWindow.SetFocus;
-  Application.Run;
+  Application.Run;         r
 end.
 

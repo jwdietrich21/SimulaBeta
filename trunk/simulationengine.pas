@@ -67,7 +67,7 @@ const
   GR: 2;                 // to be validated from pilot study
   DR: 1.5e-9;            // EC50 of insulin (mol/l)
                          // [Natali et al. 2000, PMID 10780934]
-  GE: 100;                // Calibration factor
+  GE: 100;               // Calibration factor
   );
 
   PFactor = MicroFactor;
@@ -92,7 +92,7 @@ type
     function GetSize: integer;
     procedure SetSize(aValue: integer);
   public
-    P, R, G, S, I, M, N: array of extended;
+    t, P, R, G, S, I, M, N: array of extended;
     constructor Create;
     destructor Destroy;
     property size: integer read GetSize write SetSize;
@@ -114,6 +114,8 @@ type
 var
   gStrucPars: tParameterSpace;
   gValues: TValues;
+  t: extended;
+  delta: real;
 
 procedure InitSimulation;
 function PredictedEquilibrium(P: extended; StrucPars: tParameterSpace): TPrediction;
@@ -131,6 +133,8 @@ end;
 procedure InitSimulation;
 begin
   gStrucPars := InitialStrucPars;
+  delta := 1;
+  t := 0;
 end;
 
 procedure SetInitialConditions(Prediction: TPrediction);
@@ -144,6 +148,7 @@ begin
       i := 1
     else
       i := 0;
+    gValues.t[0] := 0;
     gValues.P[0] := Prediction[i].P;
     gValues.R[0] := Prediction[i].R;
     gValues.G[0] := Prediction[i].G;
@@ -212,12 +217,12 @@ begin
     begin
       blocks.G1.alpha := alphaG;
       blocks.G1.beta := betaG;
-      blocks.G1.delta := 1;
+      blocks.G1.delta := delta;
       blocks.MiMeBeta.G := GBeta;
       blocks.MiMeBeta.D := DBeta;
       blocks.G3.alpha := alphaI;
       blocks.G3.beta := betaI;
-      blocks.G3.delta := 1;
+      blocks.G3.delta := delta;
       blocks.MiMeR.G := GR;
       blocks.MiMeR.D := DR;
       blocks.GE.G := GE;
@@ -242,6 +247,7 @@ begin
       M := blocks.MiMeR.simOutput;
       blocks.GE.input := M;
       N := blocks.GE.simOutput;
+      t := t + delta;
       gValues.P[i] := P;
       gValues.R[i] := R;
       gValues.G[i] := Glc;
@@ -249,6 +255,7 @@ begin
       gValues.I[i] := Ins;
       gValues.M[i] := M;
       gValues.N[i] := N;
+      gValues.t[i] := t;
       application.ProcessMessages;
     end;
     blocks.G1.Destroy;
@@ -269,6 +276,7 @@ end;
 
 procedure TValues.SetSize(aValue: integer);
 begin
+  SetLength(t, aValue);
   SetLength(P, aValue);
   SetLength(R, aValue);
   SetLength(G, aValue);
