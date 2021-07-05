@@ -3,12 +3,13 @@ object ToolbarWindow: TToolbarWindow
   Height = 64
   Top = 104
   Width = 807
+  BorderStyle = bsToolWindow
   Caption = 'SimulaBeta'
-  ClientHeight = 64
+  ClientHeight = 44
   ClientWidth = 807
   Menu = MainMenu1
   OnCreate = FormCreate
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '2.0.10.0'
   object ToolBar1: TToolBar
     Left = 0
     Height = 26
@@ -189,6 +190,7 @@ object ToolbarWindow: TToolbarWindow
     }
   end
   object MainMenu1: TMainMenu
+    Images = ImageList1
     Left = 728
     Top = 8
     object AppleMenu: TMenuItem
@@ -203,6 +205,7 @@ object ToolbarWindow: TToolbarWindow
       object NewMenuItem: TMenuItem
         Caption = 'New'
         Enabled = False
+        ImageIndex = 0
         ShortCut = 16462
       end
       object Divider11: TMenuItem
@@ -211,11 +214,13 @@ object ToolbarWindow: TToolbarWindow
       object OpenMenuItem: TMenuItem
         Caption = 'Open'
         Enabled = False
+        ImageIndex = 1
         ShortCut = 16463
       end
       object SaveMenuItem: TMenuItem
         Caption = 'Save'
         Enabled = False
+        ImageIndex = 2
         ShortCut = 16467
       end
       object CloseMenuItem: TMenuItem

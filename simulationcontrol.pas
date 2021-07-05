@@ -19,7 +19,7 @@ unit SimulationControl;
 { See the file "license.txt", included in this distribution, }
 { for details about the copyright. }
 { Current versions and additional information are available from }
-{ http://cyberunits.sf.net }
+{ http://simulabeta.sf.net }
 
 { This program is distributed in the hope that it will be useful, }
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
@@ -38,9 +38,11 @@ type
   { TControlWindow }
 
   TControlWindow = class(TForm)
+    StandardButton: TButton;
     ControlGroup: TGroupBox;
     DBetaEdit: TFloatSpinEdit;
     DBetaLabel: TLabel;
+    DRUnitLabel: TLabel;
     DREdit: TFloatSpinEdit;
     DRLabel: TLabel;
     GBetaEdit: TFloatSpinEdit;
@@ -58,11 +60,15 @@ type
     IterationsLabel: TLabel;
     IterationsSpinEdit: TSpinEdit;
     IUnitLabel: TLabel;
+    GBetaUnitLabel: TLabel;
+    DBetaUnitLabel: TLabel;
     PLabel: TLabel;
     PSpinEdit: TFloatSpinEdit;
     StartButton: TButton;
     StrucParsGroup: TGroupBox;
     procedure FormCreate(Sender: TObject);
+    procedure StandardButtonClick(Sender: TObject);
+    procedure SetEditControls;
     procedure StartButtonClick(Sender: TObject);
   private
 
@@ -74,6 +80,18 @@ var
   ControlWindow: TControlWindow;
 
 implementation
+
+procedure TControlWindow.SetEditControls;
+begin
+  PSpinEdit.Value := P0 / PFactor;
+  GSpinEdit.Value := G0 / GFactor;
+  ISpinEdit.Value := I0 / IFactor;
+  GEEdit.Value := gStrucPars.GE;
+  GBetaEdit.Value := gStrucPars.GBeta / PicoFactor;
+  DBetaEdit.Value := gStrucPars.DBeta / MilliFactor;
+  GREdit.Value := gStrucPars.GR;
+  DREdit.Value := gStrucPars.DR / NanoFactor;
+end;
 
 {$R *.lfm}
 
@@ -99,7 +117,11 @@ begin
   PlotForm.ISeries.Clear;
   PlotForm.MSeries.Clear;
   PlotForm.NSeries.Clear;
-  InitSimulation(P);
+  gStrucPars.GE := GEEdit.Value;
+  gStrucPars.GBeta := GBetaEdit.Value * PicoFactor;
+  gStrucPars.DBeta := DBetaEdit.Value * MilliFactor;
+  gStrucPars.GR := GREdit.Value;
+  gStrucPars.DR := DREdit.Value * NanoFactor;
   Prediction := PredictedEquilibrium(P, gStrucPars);
   PredictionForm.DisplayPrediction(Prediction);
   application.ProcessMessages;
@@ -114,9 +136,14 @@ end;
 
 procedure TControlWindow.FormCreate(Sender: TObject);
 begin
-  PSpinEdit.Value := P0 / PFactor;
-  GSpinEdit.Value := G0 / GFactor;
-  ISpinEdit.Value := I0 / IFactor;
+  InitSimulation;
+  SetEditControls;
+end;
+
+procedure TControlWindow.StandardButtonClick(Sender: TObject);
+begin
+  InitSimulation;
+  SetEditControls;
 end;
 
 
