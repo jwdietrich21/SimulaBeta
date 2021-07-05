@@ -19,7 +19,7 @@ unit SimulationEngine;
 { See the file "license.txt", included in this distribution, }
 { for details about the copyright. }
 { Current versions and additional information are available from }
-{ http://cyberunits.sf.net }
+{ http://simulabeta.sf.net }
 
 { This program is distributed in the hope that it will be useful, }
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
@@ -67,13 +67,15 @@ const
   GR: 2;                 // to be validated from pilot study
   DR: 1.5e-9;            // EC50 of insulin (mol/l)
                          // [Natali et al. 2000, PMID 10780934]
-  GE: 10;                // Calibration factor
+  GE: 100;                // Calibration factor
   );
 
   PFactor = MicroFactor;
-  P0 = 30 * PFactor;     // Glucose arrival (production + absorption)
-                         // Estimated to deliver fasting R of 18.3 mcmol/s
+  P0 = 150 * PFactor;    // Glucose arrival (production + absorption)
+                         // Estimated to deliver fasting R between 10 and
+                         // 20 mcmol/s
                          // [Sjoestrand and Hahn 2004, PMID 14977794]
+                         // [Giebelstein et al. 2012, PMID 22282162]
   IFactor = PicoFactor;
   I0 = 100 * IFactor;    // Fasting insulin concentration in mol/l
                          // should be 35 to 210 pmol/l (5 to 30 mIU/l)
@@ -107,18 +109,26 @@ type
     P, R, G, S, I, M, N: extended;
   end;
   TPrediction = array[0..1] of TSolution;
+  TQRoots = array[0..1] of extended;
 
 var
   gStrucPars: tParameterSpace;
   gValues: TValues;
 
-procedure InitSimulation(P: extended);
+procedure InitSimulation;
 function PredictedEquilibrium(P: extended; StrucPars: tParameterSpace): TPrediction;
 procedure RunSimulation(P, Glc, Ins: extended; nmax: integer);
 
 implementation
 
-procedure InitSimulation(P: extended);
+function SolveQuadratic(a, b, c: extended): TQRoots;
+{ solves quadratic equation with parameters a, b and c }
+begin
+  Result[0] := -(b + sqrt(sqr(b) - 4 * a * c)) / (2 * a);
+  Result[1] := -(b - sqrt(sqr(b) - 4 * a * c)) / (2 * a);
+end;
+
+procedure InitSimulation;
 begin
   gStrucPars := InitialStrucPars;
 end;
@@ -164,14 +174,14 @@ begin
     b := K2 - G1 * Result[0].P;
     c := -G1 * K2 * Result[1].P;
 
-    Result[0].G := -(b + sqrt(sqr(b) - 4 * a * c)) / (2 * a);
+    Result[0].G := SolveQuadratic(a, b, c)[0];
     Result[0].S := GBeta * Result[0].G / (DBeta + Result[0].G);
     Result[0].I := G3 * Result[0].S;
     Result[0].M := GR * Result[0].I / (DR + Result[0].I);
     Result[0].N := GE * Result[0].M;
     Result[0].R := Result[0].P / (1 + Result[0].N);
 
-    Result[1].G := -(b - sqrt(sqr(b) - 4 * a * c)) / (2 * a);
+    Result[1].G := SolveQuadratic(a, b, c)[1];
     Result[1].S := GBeta * Result[1].G / (DBeta + Result[1].G);
     Result[1].I := G3 * Result[1].S;
     Result[1].M := GR * Result[1].I / (DR + Result[1].I);
@@ -211,8 +221,8 @@ begin
       blocks.MiMeR.G := GR;
       blocks.MiMeR.D := DR;
       blocks.GE.G := GE;
-      Prediction := PredictedEquilibrium(P, gStrucPars);
-      //SetInitialConditions(prediction);
+      //Prediction := PredictedEquilibrium(P, gStrucPars);
+      //SetInitialConditions(prediction);  // for future extension
       N := GE * GR * Ins / (DR + Ins);
     end;
     blocks.G1.x1 := Glc; // "prefill" memory elements
