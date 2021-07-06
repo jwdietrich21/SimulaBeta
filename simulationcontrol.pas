@@ -38,6 +38,7 @@ type
   { TControlWindow }
 
   TControlWindow = class(TForm)
+    IterationsUnitLabel: TLabel;
     StandardButton: TButton;
     ControlGroup: TGroupBox;
     DBetaEdit: TFloatSpinEdit;
@@ -107,7 +108,7 @@ begin
   P := PSpinEdit.Value * PFactor;
   Glc := GSpinEdit.Value * GFactor;
   Ins := ISpinEdit.Value * IFactor;
-  iterations := IterationsSpinEdit.Value;
+  iterations := IterationsSpinEdit.Value * 60;
   gValues := TValues.Create;
   LogWindow.EmptyGrid;
   PlotForm.PSeries.Clear;

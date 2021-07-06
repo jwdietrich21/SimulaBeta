@@ -26,12 +26,13 @@ object PlotForm: TPlotForm
         Alignment = calBottom
         Marks.LabelBrush.Style = bsClear
         Marks.OverlapPolicy = opHideNeighbour
+        Marks.Source = DateTimeIntervalChartSource1
         Minors = <>
         Range.Max = 10
         Range.UseMax = True
         Range.UseMin = True
         Title.Visible = True
-        Title.Caption = 'Iteration'
+        Title.Caption = 'Time (seconds)'
         Title.LabelBrush.Style = bsClear
       end>
     BackColor = clWhite
@@ -86,5 +87,10 @@ object PlotForm: TPlotForm
     Width = 56
     Chart = Chart1
     Anchors = [akTop, akRight]
+  end
+  object DateTimeIntervalChartSource1: TDateTimeIntervalChartSource
+    OnDateTimeStepChange = DateTimeIntervalChartSource1DateTimeStepChange
+    Left = 504
+    Top = 288
   end
 end
