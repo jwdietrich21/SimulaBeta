@@ -30,8 +30,10 @@ unit Plot;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, TAGraph, TASeries, TALegendPanel, Forms,
-  Controls, Graphics, Dialogs, Spin, StdCtrls, SimulationEngine;
+  Classes, SysUtils, FileUtil, TAGraph, TASeries, TALegendPanel,
+  TAIntervalSources, Forms, Controls, Graphics, Dialogs, Spin, StdCtrls,
+  DateUtils,
+  SimulationEngine, SimulaBetaServices;
 
 type
 
@@ -39,6 +41,7 @@ type
 
   TPlotForm = class(TForm)
     Chart1: TChart;
+    DateTimeIntervalChartSource1: TDateTimeIntervalChartSource;
     NSeries: TLineSeries;
     PSeries: TLineSeries;
     ISeries: TLineSeries;
@@ -47,6 +50,8 @@ type
     SSeries: TLineSeries;
     MSeries: TLineSeries;
     RSeries: TLineSeries;
+    procedure DateTimeIntervalChartSource1DateTimeStepChange(Sender: TObject;
+      ASteps: TDateTimeStep);
     procedure FormCreate(Sender: TObject);
   private
     { private declarations }
@@ -70,9 +75,17 @@ begin
   Top := Screen.Height - Height - 78;
 end;
 
+procedure TPlotForm.DateTimeIntervalChartSource1DateTimeStepChange(
+  Sender: TObject; ASteps: TDateTimeStep);
+begin
+
+end;
+
 procedure TPlotForm.ShowPlot;
 var
   i: integer;
+  theTime: tDateTime;
+  theYear, theMonth: Word;
 begin
   Chart1.AxisList.Axes[1].Range.Max := gValues.size - 1;
   PSeries.BeginUpdate;
@@ -84,13 +97,23 @@ begin
   NSeries.BeginUpdate;
   for i := 0 to gValues.size - 1 do
   begin
-    PSeries.AddXY(i, gValues.P[i] / PFactor);
-    RSeries.AddXY(i, gValues.R[i] / MicroFactor);
-    ISeries.AddXY(i, gValues.I[i] / IFactor);
-    GSeries.AddXY(i, gValues.G[i] / GFactor);
-    SSeries.AddXY(i, gValues.S[i] / PicoFactor);
-    MSeries.AddXY(i, gValues.M[i]);
-    NSeries.AddXY(i, gValues.N[i]);
+    theTime := i; // seconds
+    {theTime := AsTime(t);
+    theYear := YearOf(theTime);
+    theMonth := MonthOf(theTime);
+    if theYear > 1900 then
+      DateTimeIntervalChartSource1.DateTimeFormat := '"y"y "m"m "d"D hh:nn:ss'
+    else if theMonth > 1 then
+      DateTimeIntervalChartSource1.DateTimeFormat := '"m"m "d"D hh:nn:ss'
+    else
+      DateTimeIntervalChartSource1.DateTimeFormat := '"d"D hh:nn:ss'; }
+    PSeries.AddXY(theTime, gValues.P[i] / PFactor);
+    RSeries.AddXY(theTime, gValues.R[i] / MicroFactor);
+    ISeries.AddXY(theTime, gValues.I[i] / IFactor);
+    GSeries.AddXY(theTime, gValues.G[i] / GFactor);
+    SSeries.AddXY(theTime, gValues.S[i] / PicoFactor);
+    MSeries.AddXY(theTime, gValues.M[i]);
+    NSeries.AddXY(theTime, gValues.N[i]);
   end;
   PSeries.EndUpdate;
   RSeries.EndUpdate;
