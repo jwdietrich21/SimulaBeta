@@ -38,6 +38,7 @@ object ControlWindow: TControlWindow
       Height = 23
       Top = 13
       Width = 98
+      Color = clMoneyGreen
       Increment = 0.2
       MaxValue = 1000
       TabOrder = 0
@@ -63,6 +64,7 @@ object ControlWindow: TControlWindow
       Height = 23
       Top = 13
       Width = 98
+      Color = 11448063
       Increment = 0.2
       MaxValue = 1000
       TabOrder = 1
@@ -91,6 +93,7 @@ object ControlWindow: TControlWindow
       Height = 23
       Top = 13
       Width = 98
+      Color = 15257808
       Increment = 0.2
       TabOrder = 2
     end

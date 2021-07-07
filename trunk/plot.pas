@@ -31,9 +31,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, TAGraph, TASeries, TALegendPanel,
-  TAIntervalSources, Forms, Controls, Graphics, Dialogs, Spin, StdCtrls,
-  DateUtils,
-  SimulationEngine, SimulaBetaServices;
+  TAIntervalSources, TATransformations, Forms, Controls, Graphics, Dialogs,
+  Spin, StdCtrls, DateUtils, SimulationEngine, SimulaBetaServices;
 
 type
 
@@ -41,6 +40,10 @@ type
 
   TPlotForm = class(TForm)
     Chart1: TChart;
+    ChartAxisTransformations1: TChartAxisTransformations;
+    ChartAxisTransformations1LinearAxisTransform1: TLinearAxisTransform;
+    ChartAxisTransformations1LogarithmAxisTransform1: TLogarithmAxisTransform;
+    LogCheckbox: TCheckBox;
     DateTimeIntervalChartSource1: TDateTimeIntervalChartSource;
     NSeries: TLineSeries;
     PSeries: TLineSeries;
@@ -53,6 +56,7 @@ type
     procedure DateTimeIntervalChartSource1DateTimeStepChange(Sender: TObject;
       ASteps: TDateTimeStep);
     procedure FormCreate(Sender: TObject);
+    procedure LogCheckboxChange(Sender: TObject);
   private
     { private declarations }
   public
@@ -73,6 +77,20 @@ procedure TPlotForm.FormCreate(Sender: TObject);
 begin
   Left := Screen.Width - Width - 26;
   Top := Screen.Height - Height - 78;
+end;
+
+procedure TPlotForm.LogCheckboxChange(Sender: TObject);
+begin
+  if LogCheckbox.Checked then
+    begin
+      ChartAxisTransformations1LinearAxisTransform1.Enabled := false;
+      ChartAxisTransformations1LogarithmAxisTransform1.Enabled := true;
+    end
+  else
+    begin
+      ChartAxisTransformations1LinearAxisTransform1.Enabled := true;
+      ChartAxisTransformations1LogarithmAxisTransform1.Enabled := false;
+    end;
 end;
 
 procedure TPlotForm.DateTimeIntervalChartSource1DateTimeStepChange(
@@ -98,7 +116,7 @@ begin
   for i := 0 to gValues.size - 1 do
   begin
     theTime := i; // seconds
-    {theTime := AsTime(t);
+    {theTime := AsTime(t);    { TODO -oJWD : Make this work }
     theYear := YearOf(theTime);
     theMonth := MonthOf(theTime);
     if theYear > 1900 then

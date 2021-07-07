@@ -114,7 +114,7 @@ begin
     G1 := TPClass.Create;
     G1.blockDiagram := BlockDiagram;
     SetRect(G1.boundsRect, 110, 52, 170, 88);
-    G1.title := 'G1';
+    G1.title := 'G1 (ASIA)';
     G1.font.Style := [fsItalic];
     G1.Draw;
     cP.Next := G1;
@@ -146,7 +146,7 @@ begin
     G3 := TPClass.Create;
     G3.blockDiagram := BlockDiagram;
     SetRect(G3.boundsRect, 520, 180, 580, 216);
-    G3.title := 'G3';
+    G3.title := 'G3 (ASIA)';
     G3.font.Style := [fsItalic];
     G3.Draw;
     MiMeCollector1.Next := G3;
