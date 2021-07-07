@@ -1,7 +1,7 @@
 object PlotForm: TPlotForm
-  Left = 673
+  Left = 672
   Height = 344
-  Top = 360
+  Top = 432
   Width = 556
   Caption = 'Plot'
   ClientHeight = 344
@@ -21,6 +21,7 @@ object PlotForm: TPlotForm
         Minors = <>
         Title.LabelFont.Orientation = 900
         Title.LabelBrush.Style = bsClear
+        Transformations = ChartAxisTransformations1
       end    
       item
         Alignment = calBottom
@@ -47,6 +48,7 @@ object PlotForm: TPlotForm
     Color = clNone
     object PSeries: TLineSeries
       Title = 'P'
+      LinePen.Color = clGreen
       LinePen.Width = 2
     end
     object RSeries: TLineSeries
@@ -88,9 +90,29 @@ object PlotForm: TPlotForm
     Chart = Chart1
     Anchors = [akTop, akRight]
   end
+  object LogCheckbox: TCheckBox
+    Left = 489
+    Height = 19
+    Top = 176
+    Width = 49
+    Caption = 'Log y'
+    OnChange = LogCheckboxChange
+    TabOrder = 2
+    Visible = False
+  end
   object DateTimeIntervalChartSource1: TDateTimeIntervalChartSource
     OnDateTimeStepChange = DateTimeIntervalChartSource1DateTimeStepChange
     Left = 504
     Top = 288
+  end
+  object ChartAxisTransformations1: TChartAxisTransformations
+    Left = 504
+    Top = 248
+    object ChartAxisTransformations1LinearAxisTransform1: TLinearAxisTransform
+    end
+    object ChartAxisTransformations1LogarithmAxisTransform1: TLogarithmAxisTransform
+      Enabled = False
+      Base = 2.71828182845905
+    end
   end
 end

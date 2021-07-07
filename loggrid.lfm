@@ -23,6 +23,7 @@ object LogWindow: TLogWindow
         Width = 98
       end    
       item
+        Title.Font.Color = clGreen
         Title.Caption = 'P(t)'
         Width = 98
       end    

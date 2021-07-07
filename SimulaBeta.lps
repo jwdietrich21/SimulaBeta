@@ -13,7 +13,7 @@
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
         <CursorPos X="22" Y="2"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -26,7 +26,7 @@
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -44,7 +44,7 @@
           <TopLine Value="40"/>
           <CursorPos X="49" Y="70"/>
         </ExtraEditor1>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -56,7 +56,7 @@
         <UnitName Value="IPS"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="10" Y="2"/>
+        <CursorPos Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -64,7 +64,7 @@
           <TopLine Value="45"/>
           <CursorPos X="26" Y="66"/>
         </ExtraEditor1>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -78,7 +78,7 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -92,7 +92,7 @@
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <CursorPos X="10" Y="2"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -110,7 +110,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="52"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -119,7 +119,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -132,7 +132,7 @@
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="29"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit8>
@@ -146,7 +146,7 @@
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <CursorPos X="90"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit9>
@@ -157,7 +157,7 @@
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
         <CursorPos X="6" Y="2"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -214,7 +214,7 @@
         <UnitName Value="SystemsDiagram"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -256,124 +256,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="272" Column="18" TopLine="259"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="2" Column="8"/>
       </Position1>
       <Position2>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="134" Column="37" TopLine="123"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="105" Column="20" TopLine="78"/>
       </Position2>
       <Position3>
         <Filename Value="simulationengine.pas"/>
-        <Caret Line="116" Column="3" TopLine="98"/>
+        <Caret Line="96" Column="5" TopLine="66"/>
       </Position3>
       <Position4>
         <Filename Value="simulationengine.pas"/>
-        <Caret Line="143" Column="6" TopLine="125"/>
+        <Caret Line="95" Column="24" TopLine="82"/>
       </Position4>
       <Position5>
         <Filename Value="simulationengine.pas"/>
-        <Caret Line="149" Column="5" TopLine="125"/>
+        <Caret Line="118" Column="13" TopLine="107"/>
       </Position5>
       <Position6>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="248" Column="7" TopLine="207"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="98" Column="32" TopLine="79"/>
       </Position6>
       <Position7>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="111" Column="3" TopLine="93"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="99" Column="12" TopLine="79"/>
       </Position7>
       <Position8>
-        <Filename Value="loggrid.pas"/>
-        <Caret Line="91" Column="98" TopLine="61"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="116" Column="26" TopLine="92"/>
       </Position8>
       <Position9>
-        <Filename Value="loggrid.pas"/>
-        <Caret Line="84" Column="56" TopLine="32"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="2"/>
       </Position9>
       <Position10>
-        <Filename Value="SimulaBeta.lpr"/>
-        <Caret Line="36" Column="67" TopLine="18"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="111" Column="46" TopLine="101"/>
       </Position10>
       <Position11>
-        <Filename Value="simulabetaservices.pas"/>
-        <Caret Line="39" Column="40" TopLine="10"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="337" Column="35" TopLine="324"/>
       </Position11>
       <Position12>
-        <Filename Value="simulabetaservices.pas"/>
-        <Caret Line="36" Column="2" TopLine="8"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="149" Column="27" TopLine="378"/>
       </Position12>
       <Position13>
-        <Filename Value="simulabetaservices.pas"/>
-        <Caret Line="37" Column="3" TopLine="10"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="65" Column="5" TopLine="46"/>
       </Position13>
       <Position14>
-        <Filename Value="simulabetaservices.pas"/>
-        <Caret Line="38" TopLine="21"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="66" Column="59" TopLine="46"/>
       </Position14>
       <Position15>
-        <Filename Value="loggrid.pas"/>
-        <Caret Line="85" Column="61" TopLine="62"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="114" Column="7" TopLine="84"/>
       </Position15>
       <Position16>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="261" TopLine="233"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="115" Column="7" TopLine="85"/>
       </Position16>
       <Position17>
-        <Filename Value="loggrid.pas"/>
-        <Caret Line="83" Column="51" TopLine="62"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="101" Column="62" TopLine="82"/>
       </Position17>
       <Position18>
-        <Filename Value="simulabetaservices.pas"/>
-        <Caret Line="47" Column="135" TopLine="33"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="100" Column="62" TopLine="81"/>
       </Position18>
       <Position19>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="111" Column="3" TopLine="93"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="101" Column="62" TopLine="82"/>
       </Position19>
       <Position20>
-        <Filename Value="SimulaBeta.lpr"/>
-        <Caret Line="36" Column="67" TopLine="18"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="102" Column="62" TopLine="83"/>
       </Position20>
       <Position21>
         <Filename Value="plot.pas"/>
-        <Caret Line="2" Column="8"/>
+        <Caret Line="103" Column="62" TopLine="84"/>
       </Position21>
       <Position22>
         <Filename Value="plot.pas"/>
-        <Caret Line="105" Column="20" TopLine="78"/>
+        <Caret Line="110" Column="62" TopLine="91"/>
       </Position22>
       <Position23>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="96" Column="5" TopLine="66"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="92" Column="72" TopLine="67"/>
       </Position23>
       <Position24>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="95" Column="24" TopLine="82"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="84" Column="24" TopLine="65"/>
       </Position24>
       <Position25>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="118" Column="13" TopLine="107"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="92" Column="55" TopLine="67"/>
       </Position25>
       <Position26>
         <Filename Value="plot.pas"/>
-        <Caret Line="98" Column="32" TopLine="79"/>
+        <Caret Line="86" Column="69" TopLine="67"/>
       </Position26>
       <Position27>
         <Filename Value="plot.pas"/>
-        <Caret Line="99" Column="12" TopLine="79"/>
+        <Caret Line="94" TopLine="68"/>
       </Position27>
       <Position28>
         <Filename Value="plot.pas"/>
-        <Caret Line="116" Column="26" TopLine="92"/>
+        <Caret Line="93" TopLine="67"/>
       </Position28>
       <Position29>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="2"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="57" Column="43" TopLine="31"/>
       </Position29>
       <Position30>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="111" Column="46" TopLine="101"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="59" Column="50" TopLine="31"/>
       </Position30>
     </JumpHistory>
     <RunParams>
