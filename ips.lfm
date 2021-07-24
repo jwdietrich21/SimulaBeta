@@ -7,7 +7,6 @@ object IPSForm: TIPSForm
   Caption = 'Information Processing Structure'
   ClientHeight = 400
   ClientWidth = 640
-  Color = clWhite
   Icon.Data = {
     BE1000000000010001002020000001002000A810000016000000280000002000
     0000400000000100200000000000001000006400000064000000000000000000
@@ -147,7 +146,7 @@ object IPSForm: TIPSForm
   }
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.0.12.0'
   Visible = True
   object IPSImage: TImage
     Left = 24
