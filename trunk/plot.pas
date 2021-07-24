@@ -56,6 +56,7 @@ type
     procedure DateTimeIntervalChartSource1DateTimeStepChange(Sender: TObject;
       ASteps: TDateTimeStep);
     procedure FormCreate(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
     procedure LogCheckboxChange(Sender: TObject);
   private
     { private declarations }
@@ -77,6 +78,12 @@ procedure TPlotForm.FormCreate(Sender: TObject);
 begin
   Left := Screen.Width - Width - 26;
   Top := Screen.Height - Height - 78;
+end;
+
+procedure TPlotForm.FormPaint(Sender: TObject);
+begin
+  left := 13;
+  top := screen.Height - height - 65;
 end;
 
 procedure TPlotForm.LogCheckboxChange(Sender: TObject);
