@@ -13,12 +13,15 @@ object ControlWindow: TControlWindow
   object StartButton: TButton
     Left = 648
     Height = 25
+    Hint = 'Start simulation...'
     Top = 315
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Run'
     Default = True
     OnClick = StartButtonClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
   object InitialConditionsGroups: TGroupBox
@@ -111,6 +114,18 @@ object ControlWindow: TControlWindow
       BorderSpacing.Left = 13
       Caption = 'mmol/l'
       ParentColor = False
+    end
+    object PUnitLabel: TLabel
+      AnchorSideLeft.Control = PSpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 167
+      Height = 16
+      Top = 16
+      Width = 45
+      BorderSpacing.Left = 13
+      Caption = 'µmol/s'
+      ParentColor = False
+      OnClick = PUnitLabelClick
     end
   end
   object StrucParsGroup: TGroupBox
@@ -262,14 +277,14 @@ object ControlWindow: TControlWindow
       Left = 16
       Height = 16
       Top = 16
-      Width = 60
-      Caption = 'Iterations'
+      Width = 98
+      Caption = 'Simulated time:'
       ParentColor = False
     end
     object IterationsSpinEdit: TSpinEdit
       AnchorSideLeft.Control = IterationsLabel
       AnchorSideLeft.Side = asrBottom
-      Left = 87
+      Left = 125
       Height = 16
       Top = 13
       Width = 98
@@ -279,10 +294,13 @@ object ControlWindow: TControlWindow
       Value = 180
     end
     object IterationsUnitLabel: TLabel
-      Left = 186
+      AnchorSideLeft.Control = IterationsSpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 236
       Height = 16
       Top = 16
       Width = 50
+      BorderSpacing.Left = 13
       Caption = 'Minutes'
       ParentColor = False
     end
@@ -290,10 +308,13 @@ object ControlWindow: TControlWindow
   object StandardButton: TButton
     Left = 24
     Height = 25
+    Hint = 'Reset to standard conditions'
     Top = 315
     Width = 75
     Caption = 'Reset'
     OnClick = StandardButtonClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
 end

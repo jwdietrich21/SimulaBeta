@@ -74,6 +74,7 @@ const
   P0 = 150 * PFactor;    // Glucose arrival (production + absorption)
                          // Estimated to deliver fasting R between 10 and
                          // 20 mcmol/s
+                         // R = P / (1 + N)  =>  P = R + RN
                          // [Sjoestrand and Hahn 2004, PMID 14977794]
                          // [Giebelstein et al. 2012, PMID 22282162]
   IFactor = PicoFactor;
@@ -230,8 +231,8 @@ begin
       //SetInitialConditions(prediction);  // for future extension
       N := GE * GR * Ins / (DR + Ins);
     end;
-    blocks.G1.x1 := Glc; // "prefill" memory elements
-    blocks.G3.x1 := Ins; // with provided values
+    blocks.G1.x1 := Glc; // "prefill" memory elements...
+    blocks.G3.x1 := Ins; // ...with provided values
     for i := 0 to nmax - 1 do
     begin
       blocks.NoCoDI.input1 := P;

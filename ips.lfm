@@ -1,7 +1,7 @@
 object IPSForm: TIPSForm
-  Left = 541
+  Left = 533
   Height = 400
-  Top = 436
+  Top = 295
   Width = 640
   BorderStyle = bsSingle
   Caption = 'Information Processing Structure'

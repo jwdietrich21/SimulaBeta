@@ -39,6 +39,7 @@ type
 
   TControlWindow = class(TForm)
     IterationsUnitLabel: TLabel;
+    PUnitLabel: TLabel;
     StandardButton: TButton;
     ControlGroup: TGroupBox;
     DBetaEdit: TFloatSpinEdit;
@@ -68,6 +69,7 @@ type
     StartButton: TButton;
     StrucParsGroup: TGroupBox;
     procedure FormCreate(Sender: TObject);
+    procedure PUnitLabelClick(Sender: TObject);
     procedure StandardButtonClick(Sender: TObject);
     procedure SetEditControls;
     procedure StartButtonClick(Sender: TObject);
@@ -139,6 +141,11 @@ procedure TControlWindow.FormCreate(Sender: TObject);
 begin
   InitSimulation;
   SetEditControls;
+end;
+
+procedure TControlWindow.PUnitLabelClick(Sender: TObject);
+begin
+
 end;
 
 procedure TControlWindow.StandardButtonClick(Sender: TObject);
