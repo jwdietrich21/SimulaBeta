@@ -20,11 +20,11 @@ object PredictionForm: TPredictionForm
     ColCount = 3
     Columns = <    
       item
-        Title.Caption = 'Equilibrium 1'
+        Title.Caption = 'Steady State 1'
         Width = 127
       end    
       item
-        Title.Caption = 'Equilibrium 2'
+        Title.Caption = 'Steady State 2'
         Width = 128
       end>
     MouseWheelOption = mwGrid
