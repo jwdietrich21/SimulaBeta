@@ -82,8 +82,7 @@ end;
 
 procedure TPlotForm.FormPaint(Sender: TObject);
 begin
-  left := 13;
-  top := screen.Height - height - 65;
+
 end;
 
 procedure TPlotForm.LogCheckboxChange(Sender: TObject);
