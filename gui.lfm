@@ -1,11 +1,11 @@
 object ToolbarWindow: TToolbarWindow
   Left = 538
-  Height = 64
+  Height = 28
   Top = 104
   Width = 807
   BorderStyle = bsToolWindow
   Caption = 'SimulaBeta'
-  ClientHeight = 44
+  ClientHeight = 28
   ClientWidth = 807
   Menu = MainMenu1
   OnCreate = FormCreate
@@ -55,8 +55,8 @@ object ToolbarWindow: TToolbarWindow
     end
   end
   object ImageList1: TImageList
-    Left = 632
-    Top = 8
+    left = 632
+    top = 8
     Bitmap = {
       4C690400000010000000100000009E9E9EA3818181FF818181FF818181FF8181
       81FF818181FF818181FF818181FF818181FF7C8C8CFF729F9FFF6AAEAFFF36E4
@@ -191,8 +191,8 @@ object ToolbarWindow: TToolbarWindow
   end
   object MainMenu1: TMainMenu
     Images = ImageList1
-    Left = 728
-    Top = 8
+    left = 728
+    top = 8
     object AppleMenu: TMenuItem
       Caption = ''
       object MacAboutItem: TMenuItem

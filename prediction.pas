@@ -39,6 +39,7 @@ type
 
   TPredictionForm = class(TForm)
     PredictionList: TStringGrid;
+    procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
   private
     { private declarations }
@@ -56,7 +57,6 @@ implementation
 
 procedure TPredictionForm.FormPaint(Sender: TObject);
 begin
-  Left := Screen.Width - Width - 26;
   PredictionList.Cells[0, 1] := 'P';
   PredictionList.Cells[0, 2] := 'R';
   PredictionList.Cells[0, 3] := 'G';
@@ -64,6 +64,11 @@ begin
   PredictionList.Cells[0, 5] := 'I';
   PredictionList.Cells[0, 6] := 'M';
   PredictionList.Cells[0, 7] := 'N';
+end;
+
+procedure TPredictionForm.FormCreate(Sender: TObject);
+begin
+  Left := Screen.Width - Width - 26;
 end;
 
 procedure TPredictionForm.DisplayPrediction(Parameters: TPrediction);

@@ -146,7 +146,7 @@ object IPSForm: TIPSForm
   }
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '2.0.10.0'
   Visible = True
   object IPSImage: TImage
     Left = 24

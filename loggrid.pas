@@ -39,6 +39,7 @@ type
 
   TLogWindow = class(TForm)
     ValuesGrid: TStringGrid;
+    procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
   private
 
@@ -57,6 +58,11 @@ implementation
 { TLogWindow }
 
 procedure TLogWindow.FormPaint(Sender: TObject);
+begin
+
+end;
+
+procedure TLogWindow.FormCreate(Sender: TObject);
 begin
   Left := 13;
 end;

@@ -1,4 +1,4 @@
-program Simulator;
+program SimulaBeta;
 
 { SimulaBeta }
 
@@ -32,7 +32,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, tachartlazaruspkg, GUI, SimulationEngine, IPS,
+  Controls, Forms, tachartlazaruspkg, GUI, SimulationEngine, IPS,
   Plot, prediction, LogGrid, SimulationControl, SimulaBetaServices;
 
 {$R *.res}
@@ -50,7 +50,7 @@ begin
   Application.BringToFront;
   ToolbarWindow.Show;
   ControlWindow.BringToFront;
-  ControlWindow.SetFocus;
+  ControlWindow.FormStyle := fsStayOnTop;
   Application.Run;
 end.
 
