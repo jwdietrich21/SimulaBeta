@@ -43,43 +43,53 @@ const
   NanoFactor = 1e-9;
   PicoFactor = 1e-12;
 
+  {Conversions:
+  alpha = 1 / VD
+  t1/2 = VD * ln2 / Clearance
+  beta = ln2 / t1/2 = Clearance / VD
+  }
+
   InitialStrucPars: tParameterSpace =
   (
-  alphaG: 0.14;          // 1 / VD for glucose (initial phase, 1/l)
-                         // [Hirota et al. 1999, PMID 10233198]
-                         // [Sjoestrand and Hahn 2004, PMID 14977794]
-                         // [van Tulder et al. 2005, PMID 16192526]
-  betaG: 5e-4;           // Clearance exponent (ln2 / half-life) for glucose
-                         // [Sjoestrand et al. 2001, PMID 11878683
-                         // [Sjoestrand and Hahn 2004, PMID 14977794]
-                         // [Strandberg and Hahn 2005, PMID 15486008]
+  alphaG: 0.11;          // 1 / VD for glucose (initial phase, 1/L)
+                         // [Hirota et al. 1999, PMID 10233198]: 7.24 and 7.27 L
+                         // [Sjoestrand et al. 2001, PMID 11878683: 12.3 L
+                         // [Sjoestrand and Hahn 2004, PMID 14977794]: 9.14 L
+                         // [van Tulder et al. 2005, PMID 16192526]: 90 mL/kg
+  betaG: 7.1e-4;         // Clearance exponent (ln2 / half-life) for glucose
+                         // [Sjoestrand et al. 2001, PMID 11878683]: t1/2 12.1 min
+                         // [Sjoestrand and Hahn 2004, PMID 14977794]: t1/2 11..16 min
+                         // [Strandberg and Hahn 2005, PMID 15486008]: t1/2 12..30 min
   alphaI: 0.2;           // 1 / VD for insulin (1/l)
                          // [Rang, H. P. (2003). Pharmacology. Edinburgh:
                          //    Churchill Livingstone. ISBN 0-443-07145-4]
-  betaI: 4.8e-3;         // Clearance exponent for insulin
-                         // [Turnheim and Waldhaeusl 1988, PMID 3281377]]
-  GBeta: 3.2e-12;        // to be validated from pilot study (mol/s)
-  DBeta: 6e-3;           // EC50 of glucose (mol/l)
+  betaI: 3.4e-3;         // Clearance exponent (Clearance / VD) for insulin
+                         // [Turnheim and Waldhaeusl 1988, PMID 3281377]]: 700..800 mL/min
+                         // [[Weiss et al. 2015, PMID 26608654]: CL 141..571 mL/min
+                         // [[Koschorreck and Gilles 2008, PMID 18477391]: 700..3350 mL/min
+  GBeta: 2.8e-12;        // Estimated from NHANES study (mol/s)
+  DBeta: 7e-3;           // EC50 of glucose (mol/l)
                          // [Byrne et al. 1994, PMID 8132752]
-                         // [Jones et al. 1997, PMID 9177392]
-                         // [Jones et al. 2000, PMID 10710505]
-                         // Toschi et al. 2002, PMID 11815471]
-  GR: 2;                 // to be validated from pilot study
-  DR: 1.5e-9;            // EC50 of insulin (mol/l)
-                         // [Natali et al. 2000, PMID 10780934]
-  GE: 100;               // Calibration factor
+                         // [Jones et al. 1997, PMID 9177392]: ca. 7 mmol/L
+                         // [Jones et al. 2000, PMID 10710505]: ca. 6 mmol/L
+                         // Toschi et al. 2002, PMID 11815471]: ca 8 mmol/L
+  GR: 2.3;               // Estimated from NHANES study
+  DR: 1.6e-9;            // EC50 of insulin (mol/l)
+                         // [Natali et al. 2000, PMID 10780934]: 240 mU/L
+  GE: 50;                // Calibration factor
   );
 
   PFactor = MicroFactor;
   P0 = 150 * PFactor;    // Glucose arrival (production + absorption)
                          // Estimated to deliver fasting R between 10 and
-                         // 20 mcmol/s
+                         // 100 mcmol/s
                          // R = P / (1 + N)  =>  P = R + RN
-                         // [Sjoestrand and Hahn 2004, PMID 14977794]
-                         // [Giebelstein et al. 2012, PMID 22282162]
+                         // [Sjoestrand and Hahn 2004, PMID 14977794]: 15..85 mcmol/s
+                         // [Giebelstein et al. 2012, PMID 22282162]: 129 mcmol/s
   IFactor = PicoFactor;
   I0 = 100 * IFactor;    // Fasting insulin concentration in mol/l
-                         // should be 35 to 210 pmol/l (5 to 30 mIU/l)
+                         // should be 20 to 210 pmol/l (3 to 30 mIU/l)
+                         // [Giebelstein et al. 2012, PMID 22282162]: 24 pmol/l
   GFactor = MilliFactor;
   G0 = 5 * GFactor;      // Fasting glucose concentration in mol/l
                          // should be 3.3 to 5.5 mmol/l (60 to 100 mg/dl)
