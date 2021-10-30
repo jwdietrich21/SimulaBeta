@@ -31,7 +31,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids,
-  SimulaBetaServices, SimulationEngine;
+  SimulaBetaServices, SimulationEngine, DIFSupport;
 
 type
 
@@ -46,6 +46,8 @@ type
   public
     procedure EmptyGrid;
     procedure FillGrid(maxRow: integer);
+    procedure SaveGrid(const theFileName: string; const theDelimiter: char);
+    procedure CopyCells;
   end;
 
 var
@@ -68,6 +70,7 @@ begin
 end;
 
 procedure TLogWindow.EmptyGrid;
+{ emties the grid and sets it to standard size }
 var
   i, j: integer;
 begin
@@ -78,6 +81,7 @@ begin
 end;
 
 procedure TLogWindow.FillGrid(maxRow: integer);
+{ fills the grid with the contents of the gValues recors }
 var
   i: integer;
 begin
@@ -97,6 +101,26 @@ begin
     ValuesGrid.Cells[8, i + 1] := FloatToStrF(gValues.N[i], ffFixed, 0, 4);
   end;
   ValuesGrid.EndUpdate(true);
+end;
+
+procedure TLogWindow.SaveGrid(const theFileName: string;
+  const theDelimiter: char);
+{saves the contents of the log window}
+{file type and, where applicable, delimiter are defined by variable theDelimiter}
+var
+  theCode: integer;
+begin
+  theCode := 0;
+  SaveGridToFile(LogWindow.ValuesGrid, theFileName, theDelimiter, true, true, theCode);
+  if theCode = 0 then
+    SetFileName(LogWindow, theFileName)
+  else
+    ShowSaveError;
+end;
+
+procedure TLogWindow.CopyCells;
+begin
+  CutorCopyfromGrid(valuesGrid, False);
 end;
 
 end.

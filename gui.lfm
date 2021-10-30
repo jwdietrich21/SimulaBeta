@@ -20,31 +20,43 @@ object ToolbarWindow: TToolbarWindow
     TabOrder = 0
     object ToolButton1: TToolButton
       Left = 1
+      Hint = 'New...'
       Top = 2
       Caption = 'ToolButton1'
       Enabled = False
       ImageIndex = 0
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton2: TToolButton
       Left = 32
+      Hint = 'Open...'
       Top = 2
       Caption = 'ToolButton2'
       Enabled = False
       ImageIndex = 1
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton3: TToolButton
       Left = 55
+      Hint = 'Save...'
       Top = 2
       Caption = 'ToolButton3'
-      Enabled = False
       ImageIndex = 2
+      OnClick = ToolButton3Click
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton4: TToolButton
       Left = 78
+      Hint = 'Save as...'
       Top = 2
       Caption = 'ToolButton4'
-      Enabled = False
       ImageIndex = 3
+      OnClick = ToolButton4Click
+      ParentShowHint = False
+      ShowHint = True
     end
     object ToolButton5: TToolButton
       Left = 24
@@ -219,9 +231,9 @@ object ToolbarWindow: TToolbarWindow
       end
       object SaveMenuItem: TMenuItem
         Caption = 'Save'
-        Enabled = False
         ImageIndex = 2
         ShortCut = 16467
+        OnClick = SaveMenuItemClick
       end
       object CloseMenuItem: TMenuItem
         Caption = 'Close'
@@ -259,8 +271,8 @@ object ToolbarWindow: TToolbarWindow
       end
       object CopyMenuItem: TMenuItem
         Caption = 'Copy'
-        Enabled = False
         ShortCut = 16451
+        OnClick = CopyMenuItemClick
       end
       object PasteMenuItem: TMenuItem
         Caption = 'Paste'
@@ -283,5 +295,13 @@ object ToolbarWindow: TToolbarWindow
         OnClick = WinAboutItemClick
       end
     end
+  end
+  object SaveDialog1: TSaveDialog
+    Title = 'Save results of current simulation as a scenario'
+    DefaultExt = '.tsv'
+    Filter = 'Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif|Scenario (XML)|*.xml'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
+    left = 560
+    top = 8
   end
 end
