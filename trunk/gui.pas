@@ -133,7 +133,7 @@ end;
 procedure TToolbarWindow.ShowAboutWindow(Sender: TObject);
 begin
   ShowMessage('SimulaBeta, a simulator of insulin-glucose homeostasis' +
-    LineEnding + LineEnding + 'Prerelease version 2.0.x');
+    LineEnding + LineEnding + 'Version 2.0.0');
 end;
 
 procedure TToolbarWindow.SetPosition;

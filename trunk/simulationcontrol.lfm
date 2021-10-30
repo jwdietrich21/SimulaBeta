@@ -37,12 +37,15 @@ object ControlWindow: TControlWindow
     object PSpinEdit: TFloatSpinEdit
       Left = 56
       Height = 16
+      Hint = 'Glucose arrival rate (absorption + endogenous production) '
       Top = 13
       Width = 98
       Color = clMoneyGreen
       Increment = 0.2
       MaxValue = 1000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
       Value = 0
     end
@@ -65,12 +68,15 @@ object ControlWindow: TControlWindow
     object ISpinEdit: TFloatSpinEdit
       Left = 262
       Height = 16
+      Hint = 'Initial insulin concentration'
       Top = 13
       Width = 98
       Color = 11448063
       Increment = 0.2
       MaxValue = 1000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 1
       Value = 0
     end
@@ -96,11 +102,14 @@ object ControlWindow: TControlWindow
     object GSpinEdit: TFloatSpinEdit
       Left = 486
       Height = 16
+      Hint = 'Initial glucose concentration'
       Top = 13
       Width = 98
       Color = 15257808
       Increment = 0.2
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 2
       Value = 0
     end
@@ -149,10 +158,13 @@ object ControlWindow: TControlWindow
     object GBetaEdit: TFloatSpinEdit
       Left = 262
       Height = 16
+      Hint = 'Secretory capacity of beta cells'
       Top = 13
       Width = 98
       Increment = 0.1
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 1
       Value = 0
     end
@@ -167,10 +179,13 @@ object ControlWindow: TControlWindow
     object GREdit: TFloatSpinEdit
       Left = 486
       Height = 16
+      Hint = 'Insulin receptor gain'
       Top = 13
       Width = 98
       Increment = 0.1
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 2
       Value = 0
     end
@@ -193,10 +208,13 @@ object ControlWindow: TControlWindow
     object DBetaEdit: TFloatSpinEdit
       Left = 262
       Height = 16
+      Hint = 'EC50 of glucose at beta cells '
       Top = 56
       Width = 98
       Increment = 0.1
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 3
       Value = 0
     end
@@ -211,21 +229,27 @@ object ControlWindow: TControlWindow
     object DREdit: TFloatSpinEdit
       Left = 486
       Height = 16
+      Hint = 'EC50 of insulin at its receptor'
       Top = 56
       Width = 98
       Increment = 0.1
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 4
       Value = 0
     end
     object GEEdit: TFloatSpinEdit
       Left = 56
       Height = 16
+      Hint = 'Effector gain'
       Top = 13
       Width = 98
       Increment = 0.1
       MaxValue = 1000
       MinValue = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
       Value = 0
     end
@@ -286,10 +310,13 @@ object ControlWindow: TControlWindow
       AnchorSideLeft.Side = asrBottom
       Left = 125
       Height = 16
+      Hint = 'Duration of the simulation'
       Top = 13
       Width = 98
       BorderSpacing.Left = 11
       MaxValue = 1000000
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
       Value = 180
     end
