@@ -31,8 +31,9 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, SimulationEngine,
-  Prediction, Plot, LogGrid, SimulationControl;
+  ComCtrls, StdCtrls, ExtCtrls, LCLType, LCLVersion, Spin, Menus,
+  SimulationEngine, Prediction, Plot, LogGrid, SimulationControl,
+  SimulaBetaServices;
 
 type
 
@@ -53,6 +54,7 @@ type
     MacAboutItem: TMenuItem;
     MainMenu1: TMainMenu;
     RunItem: TMenuItem;
+    SaveDialog1: TSaveDialog;
     SimulationMenu: TMenuItem;
     NewMenuItem: TMenuItem;
     OpenMenuItem: TMenuItem;
@@ -69,10 +71,14 @@ type
     WinAboutItem: TMenuItem;
     ToolBar1: TToolBar;
     procedure CloseMenuItemClick(Sender: TObject);
+    procedure CopyMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure RunItemClick(Sender: TObject);
+    procedure SaveMenuItemClick(Sender: TObject);
+    procedure ToolButton3Click(Sender: TObject);
+    procedure ToolButton4Click(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
   private
     { private declarations }
@@ -172,6 +178,46 @@ begin
   ControlWindow.Show;
 end;
 
+procedure TToolbarWindow.SaveMenuItemClick(Sender: TObject);
+var
+  theDelimiter: char;
+  theFileName:  string;
+  theFilterIndex: integer;
+begin
+  if SaveDialog1.Execute then
+  begin
+    theFileName    := SaveDialog1.FileName;
+    theFilterIndex := SaveDialog1.FilterIndex;
+    {$IFDEF LCLcarbon}{compensates for a bug in older versions of carbon widgetset}
+      if (lcl_major < 2) and (lcl_minor < 2) then
+        theFilterIndex := theFilterIndex + 1;
+    {$ENDIF}
+    case theFilterIndex of
+      1: theDelimiter := kTab; // Tab-delimited
+      2: if DefaultFormatSettings.DecimalSeparator = ',' then
+          theDelimiter := ';'  // CSV
+        else
+          theDelimiter := ','; // CSV
+      3: theDelimiter := 'd';  // DIF
+      // 4: theDelimiter := ' '; { for future extensions }
+    end;
+    case theFilterIndex of
+      1..3: LogWindow.SaveGrid(theFileName, theDelimiter);
+      // 4: SaveScenario(theFilename);
+    end;
+  end;
+end;
+
+procedure TToolbarWindow.ToolButton3Click(Sender: TObject);
+begin
+  SaveMenuItemClick(Sender)
+end;
+
+procedure TToolbarWindow.ToolButton4Click(Sender: TObject);
+begin
+  ToolButton3Click(Sender);
+end;
+
 procedure TToolbarWindow.FormCreate(Sender: TObject);
 begin
   SetPosition;
@@ -181,6 +227,11 @@ end;
 procedure TToolbarWindow.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure TToolbarWindow.CopyMenuItemClick(Sender: TObject);
+begin
+  LogWindow.CopyCells;
 end;
 
 end.
