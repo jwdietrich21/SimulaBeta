@@ -1,15 +1,15 @@
 object ToolbarWindow: TToolbarWindow
   Left = 538
-  Height = 28
+  Height = 85
   Top = 104
   Width = 807
   BorderStyle = bsToolWindow
   Caption = 'SimulaBeta'
-  ClientHeight = 28
+  ClientHeight = 65
   ClientWidth = 807
   Menu = MainMenu1
   OnCreate = FormCreate
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.0.12.0'
   object ToolBar1: TToolBar
     Left = 0
     Height = 26
@@ -67,8 +67,8 @@ object ToolbarWindow: TToolbarWindow
     end
   end
   object ImageList1: TImageList
-    left = 632
-    top = 8
+    Left = 632
+    Top = 8
     Bitmap = {
       4C690400000010000000100000009E9E9EA3818181FF818181FF818181FF8181
       81FF818181FF818181FF818181FF818181FF7C8C8CFF729F9FFF6AAEAFFF36E4
@@ -203,8 +203,8 @@ object ToolbarWindow: TToolbarWindow
   end
   object MainMenu1: TMainMenu
     Images = ImageList1
-    left = 728
-    top = 8
+    Left = 728
+    Top = 8
     object AppleMenu: TMenuItem
       Caption = ''
       object MacAboutItem: TMenuItem
@@ -301,7 +301,7 @@ object ToolbarWindow: TToolbarWindow
     DefaultExt = '.tsv'
     Filter = 'Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif|Scenario (XML)|*.xml'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
-    left = 560
-    top = 8
+    Left = 560
+    Top = 8
   end
 end
