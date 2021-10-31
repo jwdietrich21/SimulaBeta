@@ -150,6 +150,7 @@ begin
   WindowState := wsMaximized;
   left := 0;
   top := 20;
+  height := Toolbar1.Height;
   Width := Screen.Width;
   WindowState := wsNormal;
   {$ELSE}
@@ -157,6 +158,7 @@ begin
   AutoSize := True;
   left := 1;
   top := 0;
+  height := Toolbar1.Height + MainMenu1.Height;
   AutoSize := False;
   Width := Screen.Width - 7;
   {$ENDIF}

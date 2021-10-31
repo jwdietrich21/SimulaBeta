@@ -21,7 +21,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
-      <BuildNr Value="84"/>
+      <BuildNr Value="85"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Simulator for Insulin-Glucose homeostasis" CompanyName="Ruhr University of Bochum and Katholisches Klinikum Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 2.0 (Sleeping Briar Rose)" LegalCopyright="© 1994-2021 J. W. Dietrich and Ruhr University of Bochum" ProductName="SimulaBeta" ProductVersion="2.0.0"/>
     </VersionInfo>
