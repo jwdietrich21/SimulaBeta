@@ -1,0 +1,25 @@
+Copyright (c) 1994-2021, PD Dr. med. Johannes W. Dietrich, M.D., Klinikum der Universitaet Muenchen, Universitaetsklinikum Ulm, Universitaetsklinikum Bergmannsheil and Katholisches Klinikum Bochum, Ruhr-Universitaet Bochum.
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+------------------------------------------------------------
+
+We have invested a lot of time and effort in creating SimulaBeta, please cite it when using it for scientific projects and publications.
+
+In order to cite SimulaBeta in publications use:
+
+* J. W. Dietrich and B. O Boehm (1994-2021). SimulaBeta, a simulation program for insulin-glucose feedback control. doi: 10.5281/zenodo.4922800. URL http://simulabeta.sf.net.
+
+Additionally you might want to cite one of the following papers:
+
+1. Dietrich JW, Boehm BO. Die MiMe-NoCoDI-Plattform: Ein Ansatz für die Modellierung biologischer Regelkreise. German Medical Science (2015):DocAbstr. 284. doi: 10.3205/15gmds058
+
+2. Dietrich JW. A Methodology for Vertical Translation Between Molecular and Organismal Level in Biological Feedback Loops. (2021)  Contract No.: 2021.09.20.461028.
