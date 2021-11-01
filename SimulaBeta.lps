@@ -11,7 +11,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="23"/>
+        <CursorPos X="20" Y="2"/>
         <UsageCount Value="72"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -418,12 +418,12 @@
         <Caret Line="87" TopLine="83"/>
       </Position28>
       <Position29>
-        <Filename Value="gui.pas"/>
-        <Caret Line="9" Column="119" TopLine="157"/>
-      </Position29>
-      <Position30>
         <Filename Value="simulationcontrol.pas"/>
         <Caret Line="132" TopLine="92"/>
+      </Position29>
+      <Position30>
+        <Filename Value="SimulaBeta.lpr"/>
+        <Caret Column="24"/>
       </Position30>
     </JumpHistory>
     <RunParams>
