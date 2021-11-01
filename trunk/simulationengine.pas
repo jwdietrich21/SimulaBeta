@@ -130,7 +130,7 @@ var
 
 procedure InitSimulation;
 function PredictedEquilibrium(P: extended; StrucPars: tParameterSpace): TPrediction;
-procedure RunSimulation(P, Glc, Ins: extended; nmax: integer);
+procedure RunSimulation(P, Glc, Ins: extended; nmax: integer; prediction: TPrediction);
 
 implementation
 
@@ -206,17 +206,14 @@ begin
   end;
 end;
 
-procedure RunSimulation(P, Glc, Ins: extended; nmax: integer);
+procedure RunSimulation(P, Glc, Ins: extended; nmax: integer; prediction: TPrediction);
 var
   blocks: TBlocks;
   R, S, M, N: extended;
   i: integer;
-  prediction: TPrediction;
 begin
   if nmax > 0 then
   begin
-    gValues.size := 0; // delete content
-    gValues.size := nmax;
     blocks.G1 := TASIA.Create;
     blocks.G3 := TASIA.Create;
     blocks.GE := TP.Create;
@@ -237,13 +234,12 @@ begin
       blocks.MiMeR.G := GR;
       blocks.MiMeR.D := DR;
       blocks.GE.G := GE;
-      //Prediction := PredictedEquilibrium(P, gStrucPars);
-      //SetInitialConditions(prediction);  // for future extension
+      // SetInitialConditions(prediction);  // for future extension
       N := GE * GR * Ins / (DR + Ins);
     end;
     blocks.G1.x1 := Glc; // "prefill" memory elements...
     blocks.G3.x1 := Ins; // ...with provided values
-    for i := 0 to nmax - 1 do
+    for i := 1 to nmax do
     begin
       blocks.NoCoDI.input1 := P;
       blocks.NoCoDI.input2 := N;
