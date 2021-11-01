@@ -102,6 +102,7 @@ end;
 
 procedure TControlWindow.StartButtonClick(Sender: TObject);
 var
+  i: 0..1;
   P, Glc, Ins: extended;
   iterations: integer;
   Prediction: TPrediction;
@@ -111,8 +112,10 @@ begin
   Glc := GSpinEdit.Value * GFactor;
   Ins := ISpinEdit.Value * IFactor;
   iterations := IterationsSpinEdit.Value * 60;
-  gValues := TValues.Create;
   LogWindow.EmptyGrid;
+  gValues := TValues.Create;
+  gValues.size := 0; // delete content
+  gValues.size := iterations + 1;
   PlotForm.PSeries.Clear;
   PlotForm.RSeries.Clear;
   PlotForm.GSeries.Clear;
@@ -128,7 +131,19 @@ begin
   Prediction := PredictedEquilibrium(P, gStrucPars);
   PredictionForm.DisplayPrediction(Prediction);
   application.ProcessMessages;
-  RunSimulation(P, Glc, Ins, iterations);
+  if Prediction[0].G < 0 then  // use positive solution for initial values
+    i := 1
+  else
+    i := 0;
+  gValues.t[0] := 0;
+  gValues.P[0] := P;
+  gValues.R[0] := Prediction[i].R;
+  gValues.G[0] := Glc;
+  gValues.S[0] := Prediction[i].S;
+  gValues.I[0] := Ins;
+  gValues.M[0] := Prediction[i].M;
+  gValues.N[0] := Prediction[i].N;
+  RunSimulation(P, Glc, Ins, iterations, Prediction);
   LogWindow.FillGrid(iterations);
   application.ProcessMessages;
   PlotForm.ShowPlot;
