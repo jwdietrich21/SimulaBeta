@@ -4,11 +4,12 @@
 SimulaBeta Project
 A numerical simulator of insulin-glucose homeostasis
 
-Version 4.0.4
+Version 2.1.0
 
-(c) J. W. Dietrich, 1994 - 2021
+(c) J. W. Dietrich, 1994 - 2022
 (c) Ludwig Maximilian University of Munich 1995 - 2002
-(c) Ruhr University of Bochum 2005 - 2021
+(c) University of Ulm Hospitals 2002-2004
+(c) Ruhr University of Bochum 2005 - 2022
 
 Source code released under the BSD License
 See http://simulabeta.sourceforge.net for details
@@ -20,7 +21,7 @@ See http://simulabeta.sourceforge.net for details
 	<key>CFBundleExecutable</key>
 	<string>SimulaBeta</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.0</string>
+	<string>2.1.0</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleName</key>
@@ -32,11 +33,11 @@ See http://simulabeta.sourceforge.net for details
 	<key>CFBundleSignature</key>
 	<string>SimG</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.0</string>
+	<string>2.1.0</string>
 	<key>CFBundleGetInfoString</key>
-	<string>2.0.0, ©1994-2021 J. W. Dietrich</string>
+	<string>2.1.0, ©1994-2022 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>2.0.0, ©1994-2021 J. W. Dietrich</string>
+	<string>2.1.0, ©1994-2022 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sf.simulabeta</string>
 	<key>LSApplicationCategoryType</key>

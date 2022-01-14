@@ -8,7 +8,7 @@ object PredictionForm: TPredictionForm
   ClientWidth = 334
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.2.0.4'
   Visible = True
   object PredictionList: TStringGrid
     Left = 0
@@ -21,11 +21,11 @@ object PredictionForm: TPredictionForm
     Columns = <    
       item
         Title.Caption = 'Steady State 1'
-        Width = 127
+        Width = 126
       end    
       item
         Title.Caption = 'Steady State 2'
-        Width = 128
+        Width = 127
       end>
     MouseWheelOption = mwGrid
     RowCount = 8
@@ -33,8 +33,8 @@ object PredictionForm: TPredictionForm
     TabOrder = 0
     ColWidths = (
       64
+      126
       127
-      128
     )
   end
 end

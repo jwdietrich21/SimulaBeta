@@ -8,7 +8,7 @@ object ControlWindow: TControlWindow
   ClientWidth = 740
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '2.2.0.4'
   Visible = True
   object StartButton: TButton
     Left = 648
@@ -31,12 +31,12 @@ object ControlWindow: TControlWindow
     Width = 707
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Initial Conditions'
-    ClientHeight = 44
-    ClientWidth = 703
+    ClientHeight = 45
+    ClientWidth = 697
     TabOrder = 2
     object PSpinEdit: TFloatSpinEdit
       Left = 56
-      Height = 23
+      Height = 21
       Hint = 'Glucose arrival rate (absorption + endogenous production) '
       Top = 13
       Width = 98
@@ -49,23 +49,21 @@ object ControlWindow: TControlWindow
     end
     object PLabel: TLabel
       Left = 26
-      Height = 15
+      Height = 16
       Top = 13
-      Width = 13
+      Width = 16
       Caption = 'P0'
-      ParentColor = False
     end
     object ILabel: TLabel
       Left = 232
-      Height = 15
+      Height = 16
       Top = 13
-      Width = 9
+      Width = 12
       Caption = 'I0'
-      ParentColor = False
     end
     object ISpinEdit: TFloatSpinEdit
       Left = 262
-      Height = 23
+      Height = 21
       Hint = 'Initial insulin concentration'
       Top = 13
       Width = 98
@@ -80,24 +78,22 @@ object ControlWindow: TControlWindow
       AnchorSideLeft.Control = ISpinEdit
       AnchorSideLeft.Side = asrBottom
       Left = 373
-      Height = 15
+      Height = 16
       Top = 16
-      Width = 36
+      Width = 37
       BorderSpacing.Left = 13
       Caption = 'pmol/l'
-      ParentColor = False
     end
     object GLabel: TLabel
       Left = 456
-      Height = 15
+      Height = 16
       Top = 13
-      Width = 14
+      Width = 18
       Caption = 'G0'
-      ParentColor = False
     end
     object GSpinEdit: TFloatSpinEdit
       Left = 486
-      Height = 23
+      Height = 21
       Hint = 'Initial glucose concentration'
       Top = 13
       Width = 98
@@ -111,23 +107,21 @@ object ControlWindow: TControlWindow
       AnchorSideLeft.Control = GSpinEdit
       AnchorSideLeft.Side = asrBottom
       Left = 597
-      Height = 15
+      Height = 16
       Top = 16
-      Width = 40
+      Width = 41
       BorderSpacing.Left = 13
       Caption = 'mmol/l'
-      ParentColor = False
     end
     object PUnitLabel: TLabel
       AnchorSideLeft.Control = PSpinEdit
       AnchorSideLeft.Side = asrBottom
       Left = 167
-      Height = 15
+      Height = 16
       Top = 16
-      Width = 38
+      Width = 41
       BorderSpacing.Left = 13
       Caption = 'µmol/s'
-      ParentColor = False
       OnClick = PUnitLabelClick
     end
   end
@@ -138,20 +132,19 @@ object ControlWindow: TControlWindow
     Width = 707
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Structure Parameters'
-    ClientHeight = 92
-    ClientWidth = 703
+    ClientHeight = 93
+    ClientWidth = 697
     TabOrder = 3
     object GBetaLabel: TLabel
       Left = 216
-      Height = 15
+      Height = 16
       Top = 13
-      Width = 31
+      Width = 37
       Caption = 'GBeta'
-      ParentColor = False
     end
     object GBetaEdit: TFloatSpinEdit
       Left = 262
-      Height = 23
+      Height = 21
       Hint = 'Secretory capacity of beta cells'
       Top = 13
       Width = 98
@@ -162,15 +155,14 @@ object ControlWindow: TControlWindow
     end
     object GRLabel: TLabel
       Left = 456
-      Height = 15
+      Height = 16
       Top = 13
-      Width = 15
+      Width = 18
       Caption = 'GR'
-      ParentColor = False
     end
     object GREdit: TFloatSpinEdit
       Left = 486
-      Height = 23
+      Height = 21
       Hint = 'Insulin receptor gain'
       Top = 13
       Width = 98
@@ -181,23 +173,21 @@ object ControlWindow: TControlWindow
     end
     object GELabel: TLabel
       Left = 26
-      Height = 15
+      Height = 16
       Top = 13
-      Width = 14
+      Width = 17
       Caption = 'GE'
-      ParentColor = False
     end
     object DBetaLabel: TLabel
       Left = 216
-      Height = 15
+      Height = 16
       Top = 56
-      Width = 31
+      Width = 37
       Caption = 'DBeta'
-      ParentColor = False
     end
     object DBetaEdit: TFloatSpinEdit
       Left = 262
-      Height = 23
+      Height = 21
       Hint = 'EC50 of glucose at beta cells '
       Top = 56
       Width = 98
@@ -208,15 +198,14 @@ object ControlWindow: TControlWindow
     end
     object DRLabel: TLabel
       Left = 456
-      Height = 15
+      Height = 16
       Top = 56
-      Width = 15
+      Width = 18
       Caption = 'DR'
-      ParentColor = False
     end
     object DREdit: TFloatSpinEdit
       Left = 486
-      Height = 23
+      Height = 21
       Hint = 'EC50 of insulin at its receptor'
       Top = 56
       Width = 98
@@ -227,7 +216,7 @@ object ControlWindow: TControlWindow
     end
     object GEEdit: TFloatSpinEdit
       Left = 56
-      Height = 23
+      Height = 21
       Hint = 'Effector gain'
       Top = 13
       Width = 98
@@ -241,34 +230,31 @@ object ControlWindow: TControlWindow
       AnchorSideLeft.Control = ISpinEdit
       AnchorSideLeft.Side = asrBottom
       Left = 373
-      Height = 15
+      Height = 16
       Top = 16
-      Width = 38
+      Width = 41
       BorderSpacing.Left = 13
       Caption = 'pmol/s'
-      ParentColor = False
     end
     object DBetaUnitLabel: TLabel
       AnchorSideLeft.Control = ISpinEdit
       AnchorSideLeft.Side = asrBottom
       Left = 373
-      Height = 15
+      Height = 16
       Top = 59
-      Width = 40
+      Width = 41
       BorderSpacing.Left = 13
       Caption = 'mmol/l'
-      ParentColor = False
     end
     object DRUnitLabel: TLabel
       AnchorSideLeft.Control = ISpinEdit
       AnchorSideLeft.Side = asrBottom
       Left = 597
-      Height = 15
+      Height = 16
       Top = 59
-      Width = 36
+      Width = 37
       BorderSpacing.Left = 13
       Caption = 'nmol/l'
-      ParentColor = False
     end
   end
   object ControlGroup: TGroupBox
@@ -278,22 +264,21 @@ object ControlWindow: TControlWindow
     Width = 707
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Simulation Control'
-    ClientHeight = 45
-    ClientWidth = 703
+    ClientHeight = 46
+    ClientWidth = 697
     TabOrder = 1
     object IterationsLabel: TLabel
       Left = 16
-      Height = 15
+      Height = 16
       Top = 16
-      Width = 83
+      Width = 94
       Caption = 'Simulated time:'
-      ParentColor = False
     end
     object IterationsSpinEdit: TSpinEdit
       AnchorSideLeft.Control = IterationsLabel
       AnchorSideLeft.Side = asrBottom
-      Left = 110
-      Height = 23
+      Left = 121
+      Height = 21
       Hint = 'Duration of the simulation'
       Top = 13
       Width = 98
@@ -307,13 +292,12 @@ object ControlWindow: TControlWindow
     object IterationsUnitLabel: TLabel
       AnchorSideLeft.Control = IterationsSpinEdit
       AnchorSideLeft.Side = asrBottom
-      Left = 221
-      Height = 15
+      Left = 232
+      Height = 16
       Top = 16
-      Width = 43
+      Width = 48
       BorderSpacing.Left = 13
       Caption = 'Minutes'
-      ParentColor = False
     end
   end
   object StandardButton: TButton

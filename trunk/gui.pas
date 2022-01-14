@@ -5,12 +5,12 @@ unit GUI;
 { A simulator for insulin-glucose homeostasis }
 { GUI }
 
-{ Version 2.0.0 (Sleeping Briar Rose) }
+{ Version 2.1.0 (Turning the tides) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2021 }
+{ (c) Johannes W. Dietrich, 1994 - 2022 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
-{ (c) Ruhr University of Bochum 2005 - 2021 }
+{ (c) Ruhr University of Bochum 2005 - 2022 }
 
 { Standard blocks for systems modelling and simulation }
 
@@ -139,7 +139,7 @@ end;
 procedure TToolbarWindow.ShowAboutWindow(Sender: TObject);
 begin
   ShowMessage('SimulaBeta, a simulator of insulin-glucose homeostasis' +
-    LineEnding + LineEnding + 'Version 2.0.0');
+    LineEnding + LineEnding + 'Version 2.1.0');
 end;
 
 procedure TToolbarWindow.SetPosition;
