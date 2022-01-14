@@ -24,7 +24,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="88"/>
+      <BuildNr Value="89"/>
       <StringTable Comments="Simulator for Insulin-Glucose homeostasis" CompanyName="Ruhr University of Bochum and Katholisches Klinikum Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 2.1.0 (Turning the tides)" LegalCopyright="© 1994-2022 J. W. Dietrich and Ruhr University of Bochum" ProductName="SimulaBeta" ProductVersion="2.1.0"/>
     </VersionInfo>
     <BuildModes Count="1">

@@ -38,6 +38,8 @@ type
   { TControlWindow }
 
   TControlWindow = class(TForm)
+    GRUnitLabel: TLabel;
+    GEUnitLabel: TLabel;
     IterationsUnitLabel: TLabel;
     PUnitLabel: TLabel;
     StandardButton: TButton;

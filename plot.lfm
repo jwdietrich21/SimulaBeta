@@ -2,10 +2,10 @@ object PlotForm: TPlotForm
   Left = 634
   Height = 344
   Top = 333
-  Width = 556
+  Width = 634
   Caption = 'Plot'
   ClientHeight = 344
-  ClientWidth = 556
+  ClientWidth = 634
   OnCreate = FormCreate
   OnPaint = FormPaint
   LCLVersion = '2.2.0.4'
@@ -14,7 +14,7 @@ object PlotForm: TPlotForm
     Left = 24
     Height = 306
     Top = 16
-    Width = 450
+    Width = 464
     AntialiasingMode = amOn
     AxisList = <    
       item
@@ -48,32 +48,32 @@ object PlotForm: TPlotForm
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clNone
     object PSeries: TLineSeries
-      Title = 'P'
+      Title = 'P (µmol/s)'
       LinePen.Color = clGreen
       LinePen.Width = 2
     end
     object RSeries: TLineSeries
-      Title = 'R'
+      Title = 'R (µmol/s)'
       LinePen.Color = clNavy
       LinePen.Width = 2
     end
     object GSeries: TLineSeries
-      Title = 'G'
+      Title = 'G (mmol/L)'
       LinePen.Color = clBlue
       LinePen.Width = 2
     end
     object SSeries: TLineSeries
-      Title = 'S'
+      Title = 'S (pmol/s)'
       LinePen.Color = clPurple
       LinePen.Width = 2
     end
     object ISeries: TLineSeries
-      Title = 'I'
+      Title = 'I (pmol/L)'
       LinePen.Color = clRed
       LinePen.Width = 2
     end
     object MSeries: TLineSeries
-      Title = 'M'
+      Title = 'M (mol/s)'
       LinePen.Color = 33023
       LinePen.Width = 2
     end
@@ -84,10 +84,10 @@ object PlotForm: TPlotForm
     end
   end
   object ChartLegendPanel1: TChartLegendPanel
-    Left = 482
+    Left = 496
     Height = 256
     Top = 24
-    Width = 56
+    Width = 120
     Chart = Chart1
     Anchors = [akTop, akRight]
   end
