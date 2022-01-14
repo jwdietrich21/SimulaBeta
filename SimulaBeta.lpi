@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <PathDelim Value="\"/>
     <General>
+      <Flags>
+        <CompatibilityMode Value="True"/>
+      </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <MainUnit Value="0"/>
       <Title Value="SimulaBeta"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
@@ -21,8 +23,9 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
-      <BuildNr Value="87"/>
-      <StringTable Comments="Simulator for Insulin-Glucose homeostasis" CompanyName="Ruhr University of Bochum and Katholisches Klinikum Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 2.0 (Sleeping Briar Rose)" LegalCopyright="© 1994-2021 J. W. Dietrich and Ruhr University of Bochum" ProductName="SimulaBeta" ProductVersion="2.0.0"/>
+      <MinorVersionNr Value="1"/>
+      <BuildNr Value="88"/>
+      <StringTable Comments="Simulator for Insulin-Glucose homeostasis" CompanyName="Ruhr University of Bochum and Katholisches Klinikum Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 2.1.0 (Turning the tides)" LegalCopyright="© 1994-2022 J. W. Dietrich and Ruhr University of Bochum" ProductName="SimulaBeta" ProductVersion="2.1.0"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>

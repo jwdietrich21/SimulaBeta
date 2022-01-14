@@ -8,7 +8,7 @@ object PlotForm: TPlotForm
   ClientWidth = 556
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.2.0.4'
   Visible = True
   object Chart1: TChart
     Left = 24
@@ -95,7 +95,7 @@ object PlotForm: TPlotForm
     Left = 489
     Height = 18
     Top = 200
-    Width = 54
+    Width = 53
     Caption = 'Log y'
     OnChange = LogCheckboxChange
     TabOrder = 2
@@ -103,12 +103,12 @@ object PlotForm: TPlotForm
   end
   object DateTimeIntervalChartSource1: TDateTimeIntervalChartSource
     OnDateTimeStepChange = DateTimeIntervalChartSource1DateTimeStepChange
-    left = 504
-    top = 288
+    Left = 504
+    Top = 288
   end
   object ChartAxisTransformations1: TChartAxisTransformations
-    left = 504
-    top = 248
+    Left = 504
+    Top = 248
     object ChartAxisTransformations1LinearAxisTransform1: TLinearAxisTransform
     end
     object ChartAxisTransformations1LogarithmAxisTransform1: TLogarithmAxisTransform

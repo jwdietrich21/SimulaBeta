@@ -8,7 +8,7 @@ object LogWindow: TLogWindow
   ClientWidth = 874
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '2.2.0.4'
   Visible = True
   object ValuesGrid: TStringGrid
     Left = 0
@@ -22,41 +22,41 @@ object LogWindow: TLogWindow
     Columns = <    
       item
         Title.Caption = 't'
-        Width = 98
+        Width = 99
       end    
       item
         Title.Font.Color = clGreen
         Title.Caption = 'P(t)'
-        Width = 98
+        Width = 99
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'R(t) (µmol/s)'
-        Width = 98
+        Width = 99
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'G(t) (mmol/L)'
-        Width = 98
+        Width = 99
       end    
       item
         Title.Font.Color = clRed
         Title.Caption = 'S(t) (pmol/s)'
-        Width = 98
+        Width = 99
       end    
       item
         Title.Font.Color = clRed
         Title.Caption = 'I(t) (pmol/L)'
-        Width = 98
+        Width = 99
       end    
       item
         Title.Font.Color = clRed
         Title.Caption = 'M(t)'
-        Width = 98
+        Width = 99
       end    
       item
         Title.Caption = 'N(t)'
-        Width = 103
+        Width = 100
       end>
     Constraints.MinHeight = 300
     Constraints.MinWidth = 500
@@ -67,14 +67,14 @@ object LogWindow: TLogWindow
     TabOrder = 0
     ColWidths = (
       64
-      98
-      98
-      98
-      98
-      98
-      98
-      98
-      103
+      99
+      99
+      99
+      99
+      99
+      99
+      99
+      100
     )
   end
 end
