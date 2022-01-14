@@ -116,11 +116,11 @@ object ControlWindow: TControlWindow
     object PUnitLabel: TLabel
       AnchorSideLeft.Control = PSpinEdit
       AnchorSideLeft.Side = asrBottom
-      Left = 167
+      Left = 161
       Height = 16
       Top = 16
       Width = 41
-      BorderSpacing.Left = 13
+      BorderSpacing.Left = 7
       Caption = 'µmol/s'
       OnClick = PUnitLabelClick
     end
@@ -255,6 +255,26 @@ object ControlWindow: TControlWindow
       Width = 37
       BorderSpacing.Left = 13
       Caption = 'nmol/l'
+    end
+    object GRUnitLabel: TLabel
+      AnchorSideLeft.Control = ISpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 597
+      Height = 16
+      Top = 16
+      Width = 33
+      BorderSpacing.Left = 13
+      Caption = 'mol/s'
+    end
+    object GEUnitLabel: TLabel
+      AnchorSideLeft.Control = GEEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 161
+      Height = 16
+      Top = 16
+      Width = 33
+      BorderSpacing.Left = 7
+      Caption = 's/mol'
     end
   end
   object ControlGroup: TGroupBox

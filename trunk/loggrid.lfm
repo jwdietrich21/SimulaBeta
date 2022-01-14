@@ -26,7 +26,7 @@ object LogWindow: TLogWindow
       end    
       item
         Title.Font.Color = clGreen
-        Title.Caption = 'P(t)'
+        Title.Caption = 'P(t) (µmol/s)'
         Width = 99
       end    
       item
@@ -51,7 +51,7 @@ object LogWindow: TLogWindow
       end    
       item
         Title.Font.Color = clRed
-        Title.Caption = 'M(t)'
+        Title.Caption = 'M(t) (mol/s)'
         Width = 99
       end    
       item
