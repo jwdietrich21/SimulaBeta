@@ -5,15 +5,12 @@ unit DIFSupport;
 { A simulator for insulin-glucose homeostasis }
 { This unit provides support for DIF file handling }
 
-
 { Version 2.1.0 (Turning the tides) }
 
 { (c) Johannes W. Dietrich, 1994 - 2022 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002-2004 }
 { (c) Ruhr University of Bochum 2005 - 2022 }
-
-{ Standard blocks for systems modelling and simulation }
 
 { Source code released under the BSD License }
 

@@ -122,7 +122,6 @@ object ControlWindow: TControlWindow
       Width = 41
       BorderSpacing.Left = 7
       Caption = 'µmol/s'
-      OnClick = PUnitLabelClick
     end
   end
   object StrucParsGroup: TGroupBox

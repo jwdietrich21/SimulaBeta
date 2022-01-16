@@ -2,10 +2,10 @@ object PlotForm: TPlotForm
   Left = 634
   Height = 344
   Top = 333
-  Width = 634
+  Width = 625
   Caption = 'Plot'
   ClientHeight = 344
-  ClientWidth = 634
+  ClientWidth = 625
   OnCreate = FormCreate
   OnPaint = FormPaint
   LCLVersion = '2.2.0.4'
@@ -14,7 +14,7 @@ object PlotForm: TPlotForm
     Left = 24
     Height = 306
     Top = 16
-    Width = 464
+    Width = 455
     AntialiasingMode = amOn
     AxisList = <    
       item
@@ -84,7 +84,7 @@ object PlotForm: TPlotForm
     end
   end
   object ChartLegendPanel1: TChartLegendPanel
-    Left = 496
+    Left = 487
     Height = 256
     Top = 24
     Width = 120
@@ -92,10 +92,11 @@ object PlotForm: TPlotForm
     Anchors = [akTop, akRight]
   end
   object LogCheckbox: TCheckBox
-    Left = 489
+    Left = 503
     Height = 18
-    Top = 200
+    Top = 192
     Width = 53
+    Anchors = [akTop, akRight]
     Caption = 'Log y'
     OnChange = LogCheckboxChange
     TabOrder = 2
@@ -103,12 +104,12 @@ object PlotForm: TPlotForm
   end
   object DateTimeIntervalChartSource1: TDateTimeIntervalChartSource
     OnDateTimeStepChange = DateTimeIntervalChartSource1DateTimeStepChange
-    Left = 504
+    Left = 544
     Top = 288
   end
   object ChartAxisTransformations1: TChartAxisTransformations
-    Left = 504
-    Top = 248
+    Left = 544
+    Top = 232
     object ChartAxisTransformations1LinearAxisTransform1: TLinearAxisTransform
     end
     object ChartAxisTransformations1LogarithmAxisTransform1: TLogarithmAxisTransform
