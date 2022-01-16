@@ -73,20 +73,20 @@ end;
 
 procedure TPredictionForm.DisplayPrediction(Parameters: TPrediction);
 begin
-  PredictionList.Cells[1, 1] := FloatToStrF(Parameters[0].P / MicroFactor, ffFixed, 0, 4);
-  PredictionList.Cells[1, 2] := FloatToStrF(Parameters[0].R / MicroFactor, ffFixed, 0, 4);
-  PredictionList.Cells[1, 3] := FloatToStrF(Parameters[0].G / MilliFactor, ffFixed, 0, 4);
-  PredictionList.Cells[1, 4] := FloatToStrF(Parameters[0].S / PicoFactor, ffFixed, 0, 4);
-  PredictionList.Cells[1, 5] := FloatToStrF(Parameters[0].I / PicoFactor, ffFixed, 0, 4);
-  PredictionList.Cells[1, 6] := FloatToStrF(Parameters[0].M, ffFixed, 0, 4);
-  PredictionList.Cells[1, 7] := FloatToStrF(Parameters[0].N, ffFixed, 0, 4);
-  PredictionList.Cells[2, 1] := FloatToStrF(Parameters[1].P / MicroFactor, ffFixed, 0, 4);
-  PredictionList.Cells[2, 2] := FloatToStrF(Parameters[1].R / MicroFactor, ffFixed, 0, 4);
-  PredictionList.Cells[2, 3] := FloatToStrF(Parameters[1].G / MilliFactor, ffFixed, 0, 4);
-  PredictionList.Cells[2, 4] := FloatToStrF(Parameters[1].S / PicoFactor, ffFixed, 0, 4);
-  PredictionList.Cells[2, 5] := FloatToStrF(Parameters[1].I / PicoFactor, ffFixed, 0, 4);
-  PredictionList.Cells[2, 6] := FloatToStrF(Parameters[1].M, ffFixed, 0, 4);
-  PredictionList.Cells[2, 7] := FloatToStrF(Parameters[1].N, ffFixed, 0, 4);
+  PredictionList.Cells[1, 1] := FloatToStrF(Parameters[0].P / MicroFactor, ffFixed, 0, 4) + ' ' + gUnits.P;
+  PredictionList.Cells[1, 2] := FloatToStrF(Parameters[0].R / MicroFactor, ffFixed, 0, 4) + ' ' + gUnits.R;
+  PredictionList.Cells[1, 3] := FloatToStrF(Parameters[0].G / MilliFactor, ffFixed, 0, 4) + ' ' + gUnits.G;
+  PredictionList.Cells[1, 4] := FloatToStrF(Parameters[0].S / PicoFactor, ffFixed, 0, 4) + ' ' + gUnits.S;
+  PredictionList.Cells[1, 5] := FloatToStrF(Parameters[0].I / PicoFactor, ffFixed, 0, 4) + ' ' + gUnits.I;
+  PredictionList.Cells[1, 6] := FloatToStrF(Parameters[0].M, ffFixed, 0, 4) + ' ' + gUnits.M;
+  PredictionList.Cells[1, 7] := FloatToStrF(Parameters[0].N, ffFixed, 0, 4) + ' ' + gUnits.N;
+  PredictionList.Cells[2, 1] := FloatToStrF(Parameters[1].P / MicroFactor, ffFixed, 0, 4) + ' ' + gUnits.P;
+  PredictionList.Cells[2, 2] := FloatToStrF(Parameters[1].R / MicroFactor, ffFixed, 0, 4) + ' ' + gUnits.R;
+  PredictionList.Cells[2, 3] := FloatToStrF(Parameters[1].G / MilliFactor, ffFixed, 0, 4) + ' ' + gUnits.G;
+  PredictionList.Cells[2, 4] := FloatToStrF(Parameters[1].S / PicoFactor, ffFixed, 0, 4) + ' ' + gUnits.S;
+  PredictionList.Cells[2, 5] := FloatToStrF(Parameters[1].I / PicoFactor, ffFixed, 0, 4) + ' ' + gUnits.I;
+  PredictionList.Cells[2, 6] := FloatToStrF(Parameters[1].M, ffFixed, 0, 4) + ' ' + gUnits.M;
+  PredictionList.Cells[2, 7] := FloatToStrF(Parameters[1].N, ffFixed, 0, 4) + ' ' + gUnits.N;
 end;
 
 end.

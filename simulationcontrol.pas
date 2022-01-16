@@ -156,6 +156,7 @@ end;
 
 procedure TControlWindow.FormCreate(Sender: TObject);
 begin
+  InitUnits;
   InitSimulation;
   SetEditControls;
 end;
