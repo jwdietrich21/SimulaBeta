@@ -36,6 +36,9 @@ type
   tParameterSpace = record
     alphaG, betaG, alphaI, betaI, GBeta, DBeta, GR, DR, GE: extended;
   end;
+  tUnits = record
+    P, R, G, S, I, M, N: string;
+  end;
 
 const
   MilliFactor = 1e-3;
@@ -125,9 +128,11 @@ type
 var
   gStrucPars: tParameterSpace;
   gValues: TValues;
+  gUnits: TUnits;
   t: extended;
   delta: real;
 
+procedure InitUnits;
 procedure InitSimulation;
 function PredictedEquilibrium(P: extended; StrucPars: tParameterSpace): TPrediction;
 procedure RunSimulation(P, Glc, Ins: extended; nmax: integer; prediction: TPrediction);
@@ -139,6 +144,17 @@ function SolveQuadratic(a, b, c: extended): TQRoots;
 begin
   Result[0] := -(b + sqrt(sqr(b) - 4 * a * c)) / (2 * a);
   Result[1] := -(b - sqrt(sqr(b) - 4 * a * c)) / (2 * a);
+end;
+
+procedure InitUnits;
+begin
+  gUnits.G := 'mmol/L';
+  gUnits.I := 'pmol/L';
+  gUnits.P := 'µmol/L';
+  gUnits.R := 'µmol/s';
+  gUnits.S := 'pmol/s';
+  gUnits.M := 'nmol/s';
+  gUnits.N := '';
 end;
 
 procedure InitSimulation;
