@@ -12,8 +12,6 @@ unit SimulationControl;
 { (c) University of Ulm Hospitals 2002-2004 }
 { (c) Ruhr University of Bochum 2005 - 2022 }
 
-{ Standard blocks for systems modelling and simulation }
-
 { Source code released under the BSD License }
 
 { See the file "license.txt", included in this distribution, }
@@ -71,7 +69,6 @@ type
     StartButton: TButton;
     StrucParsGroup: TGroupBox;
     procedure FormCreate(Sender: TObject);
-    procedure PUnitLabelClick(Sender: TObject);
     procedure StandardButtonClick(Sender: TObject);
     procedure SetEditControls;
     procedure StartButtonClick(Sender: TObject);
@@ -159,11 +156,6 @@ begin
   InitUnits;
   InitSimulation;
   SetEditControls;
-end;
-
-procedure TControlWindow.PUnitLabelClick(Sender: TObject);
-begin
-
 end;
 
 procedure TControlWindow.StandardButtonClick(Sender: TObject);

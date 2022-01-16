@@ -1,10 +1,10 @@
 object PredictionForm: TPredictionForm
   Left = 931
-  Height = 171
+  Height = 193
   Top = 111
   Width = 334
   Caption = 'Prediction'
-  ClientHeight = 171
+  ClientHeight = 193
   ClientWidth = 334
   OnCreate = FormCreate
   OnPaint = FormPaint
@@ -12,7 +12,7 @@ object PredictionForm: TPredictionForm
   Visible = True
   object PredictionList: TStringGrid
     Left = 0
-    Height = 144
+    Height = 166
     Top = 0
     Width = 334
     Anchors = [akTop, akLeft, akRight, akBottom]
