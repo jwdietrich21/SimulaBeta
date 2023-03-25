@@ -1,0 +1,43 @@
+object PredictionForm: TPredictionForm
+  Left = 926
+  Height = 271
+  Top = 280
+  Width = 420
+  Caption = 'Prediction'
+  ClientHeight = 271
+  ClientWidth = 420
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  LCLVersion = '2.2.6.0'
+  Visible = True
+  object PredictionList: TStringGrid
+    Left = 0
+    Height = 244
+    Hint = 'Predicted steady-state values'
+    Top = 0
+    Width = 420
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
+    ColCount = 3
+    Columns = <    
+      item
+        Title.Caption = 'Steady State 1'
+        Width = 177
+      end    
+      item
+        Title.Caption = 'Steady State 2'
+        Width = 177
+      end>
+    MouseWheelOption = mwGrid
+    ParentShowHint = False
+    RowCount = 10
+    ScrollBars = ssAutoVertical
+    ShowHint = True
+    TabOrder = 0
+    ColWidths = (
+      64
+      177
+      177
+    )
+  end
+end

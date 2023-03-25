@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+SimulaBeta Project
+A numerical simulator of insulin-glucose homeostasis
+
+Version 2.1.1
+
+(c) J. W. Dietrich, 1994 - 2022
+(c) Ludwig Maximilian University of Munich 1995 - 2002
+(c) University of Ulm Hospitals 2002-2004
+(c) Ruhr University of Bochum 2005 - 2022
+
+Source code released under the BSD License
+See http://simulabeta.sourceforge.net for details
+-->
+<plist version="1.0">
+<dict>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleExecutable</key>
+	<string>SimulaBeta</string>
+	<key>CFBundleVersion</key>
+	<string>2.1.1</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleName</key>
+	<string>SimulaBeta</string>
+	<key>CFBundleDisplayName</key>
+	<string>SimulaBeta</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>SimG</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.1.1</string>
+	<key>CFBundleGetInfoString</key>
+	<string>2.1.1, ©1994-2022 J. W. Dietrich</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>2.1.1, ©1994-2022 J. W. Dietrich</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.sf.simulabeta</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.medical</string>
+	<key>CFBundleIconFile</key>
+	<string>SimulaBeta.icns</string>
+	<key>CSResourcesFileMapped</key>
+	<true/>
+	<key>LSRequiresCarbon</key>
+	<true/>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>*</string>
+				<string>xml</string>
+			</array>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>fold</string>
+				<string>disk</string>
+				<string>****</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.4.0</string>
+</dict>
+</plist>

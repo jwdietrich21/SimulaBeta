@@ -1,0 +1,477 @@
+object ControlWindow: TControlWindow
+  Left = 364
+  Height = 520
+  Top = 214
+  Width = 739
+  BorderStyle = bsDialog
+  Caption = 'Simulation Control'
+  ClientHeight = 520
+  ClientWidth = 739
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnPaint = FormPaint
+  OnShow = FormShow
+  Position = poScreenCenter
+  ShowHint = True
+  LCLVersion = '2.2.4.0'
+  Visible = True
+  object StartButton: TButton
+    Left = 647
+    Height = 25
+    Hint = 'Start simulation...'
+    Top = 470
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Run'
+    Default = True
+    OnClick = StartButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object InitialConditionsGroups: TGroupBox
+    Left = 16
+    Height = 96
+    Hint = 'Initial conditions'
+    Top = 104
+    Width = 706
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'Initial Conditions'
+    ClientHeight = 77
+    ClientWidth = 696
+    TabOrder = 2
+    object PSpinEdit: TFloatSpinEdit
+      Left = 54
+      Height = 21
+      Hint = 'Constitutive endogenous glucose production'
+      Top = 48
+      Width = 98
+      Color = clMoneyGreen
+      Increment = 0.2
+      MaxValue = 1000
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object PLabel: TLabel
+      Left = 24
+      Height = 16
+      Top = 48
+      Width = 16
+      Caption = 'P0'
+      ParentColor = False
+    end
+    object ILabel: TLabel
+      Left = 230
+      Height = 16
+      Top = 48
+      Width = 12
+      Caption = 'I0'
+      ParentColor = False
+    end
+    object ISpinEdit: TFloatSpinEdit
+      Left = 260
+      Height = 21
+      Hint = 'Initial insulin concentration'
+      Top = 48
+      Width = 98
+      Color = 11448063
+      Increment = 0.2
+      MaxValue = 1000
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+    end
+    object IUnitLabel: TLabel
+      AnchorSideLeft.Control = ISpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 371
+      Height = 16
+      Top = 51
+      Width = 37
+      BorderSpacing.Left = 13
+      Caption = 'pmol/l'
+      ParentColor = False
+    end
+    object GLabel: TLabel
+      Left = 454
+      Height = 16
+      Top = 48
+      Width = 18
+      Caption = 'G0'
+      ParentColor = False
+    end
+    object GSpinEdit: TFloatSpinEdit
+      Left = 484
+      Height = 21
+      Hint = 'Initial glucose concentration'
+      Top = 48
+      Width = 98
+      Color = 15257808
+      Increment = 0.2
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+    end
+    object GUnitLabel: TLabel
+      AnchorSideLeft.Control = GSpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 595
+      Height = 16
+      Top = 51
+      Width = 40
+      BorderSpacing.Left = 13
+      Caption = 'mmol/l'
+      ParentColor = False
+    end
+    object PUnitLabel: TLabel
+      AnchorSideLeft.Control = PSpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 159
+      Height = 16
+      Top = 51
+      Width = 41
+      BorderSpacing.Left = 7
+      Caption = 'µmol/s'
+      ParentColor = False
+    end
+    object ZUnitLabel: TLabel
+      AnchorSideLeft.Control = ZSpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 159
+      Height = 16
+      Top = 19
+      Width = 6
+      BorderSpacing.Left = 7
+      Caption = '1'
+      ParentColor = False
+    end
+    object ZLabel: TLabel
+      Left = 24
+      Height = 16
+      Top = 16
+      Width = 9
+      Caption = 'Z'
+      ParentColor = False
+    end
+    object ZSpinEdit: TFloatSpinEdit
+      Left = 54
+      Height = 21
+      Hint = 'Reference input for insulin secretion'
+      Top = 16
+      Width = 98
+      Color = clSkyBlue
+      Increment = 0.05
+      MaxValue = 1000
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+      Value = 1
+    end
+  end
+  object StrucParsGroup: TGroupBox
+    Left = 16
+    Height = 112
+    Hint = 'Constant structure parameters of the feedback loop'
+    Top = 224
+    Width = 706
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'Structure Parameters'
+    ClientHeight = 93
+    ClientWidth = 696
+    TabOrder = 3
+    object GBetaLabel: TLabel
+      Left = 216
+      Height = 16
+      Top = 13
+      Width = 37
+      Caption = 'GBeta'
+      ParentColor = False
+    end
+    object GBetaEdit: TFloatSpinEdit
+      Left = 262
+      Height = 21
+      Hint = 'Secretory capacity of beta cells'
+      Top = 13
+      Width = 98
+      Increment = 0.1
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+    end
+    object GRLabel: TLabel
+      Left = 456
+      Height = 16
+      Top = 13
+      Width = 18
+      Caption = 'GR'
+      ParentColor = False
+    end
+    object GREdit: TFloatSpinEdit
+      Left = 486
+      Height = 21
+      Hint = 'Insulin receptor gain'
+      Top = 13
+      Width = 98
+      Increment = 0.1
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+    end
+    object GELabel: TLabel
+      Left = 26
+      Height = 16
+      Top = 13
+      Width = 17
+      Caption = 'GE'
+      ParentColor = False
+    end
+    object DBetaLabel: TLabel
+      Left = 216
+      Height = 16
+      Top = 56
+      Width = 37
+      Caption = 'DBeta'
+      ParentColor = False
+    end
+    object DBetaEdit: TFloatSpinEdit
+      Left = 262
+      Height = 21
+      Hint = 'EC50 of glucose at beta cells '
+      Top = 56
+      Width = 98
+      Increment = 0.1
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+    end
+    object DRLabel: TLabel
+      Left = 456
+      Height = 16
+      Top = 56
+      Width = 18
+      Caption = 'DR'
+      ParentColor = False
+    end
+    object DREdit: TFloatSpinEdit
+      Left = 486
+      Height = 21
+      Hint = 'EC50 of insulin at its receptor'
+      Top = 56
+      Width = 98
+      Increment = 0.1
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+    end
+    object GEEdit: TFloatSpinEdit
+      Left = 56
+      Height = 21
+      Hint = 'Effector gain'
+      Top = 13
+      Width = 98
+      Increment = 0.1
+      MaxValue = 1000
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object GBetaUnitLabel: TLabel
+      AnchorSideLeft.Control = ISpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 373
+      Height = 16
+      Top = 16
+      Width = 41
+      BorderSpacing.Left = 13
+      Caption = 'pmol/s'
+      ParentColor = False
+    end
+    object DBetaUnitLabel: TLabel
+      AnchorSideLeft.Control = ISpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 373
+      Height = 16
+      Top = 59
+      Width = 40
+      BorderSpacing.Left = 13
+      Caption = 'mmol/l'
+      ParentColor = False
+    end
+    object DRUnitLabel: TLabel
+      AnchorSideLeft.Control = ISpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 597
+      Height = 16
+      Top = 59
+      Width = 37
+      BorderSpacing.Left = 13
+      Caption = 'nmol/l'
+      ParentColor = False
+    end
+    object GRUnitLabel: TLabel
+      AnchorSideLeft.Control = ISpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 597
+      Height = 16
+      Top = 16
+      Width = 33
+      BorderSpacing.Left = 13
+      Caption = 'mol/s'
+      ParentColor = False
+    end
+    object GEUnitLabel: TLabel
+      AnchorSideLeft.Control = GEEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 161
+      Height = 16
+      Top = 16
+      Width = 33
+      BorderSpacing.Left = 7
+      Caption = 's/mol'
+      ParentColor = False
+    end
+  end
+  object ControlGroup: TGroupBox
+    Left = 16
+    Height = 65
+    Hint = 'Time control'
+    Top = 24
+    Width = 706
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'Simulation Control'
+    ClientHeight = 46
+    ClientWidth = 696
+    TabOrder = 1
+    object IterationsLabel: TLabel
+      Left = 16
+      Height = 16
+      Top = 16
+      Width = 94
+      Caption = 'Simulated time:'
+      ParentColor = False
+    end
+    object IterationsSpinEdit: TSpinEdit
+      AnchorSideLeft.Control = IterationsLabel
+      AnchorSideLeft.Side = asrBottom
+      Left = 121
+      Height = 21
+      Hint = 'Duration of the simulation'
+      Top = 13
+      Width = 98
+      BorderSpacing.Left = 11
+      MaxValue = 1000000
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      Value = 180
+    end
+    object IterationsUnitLabel: TLabel
+      AnchorSideLeft.Control = IterationsSpinEdit
+      AnchorSideLeft.Side = asrBottom
+      Left = 232
+      Height = 16
+      Top = 16
+      Width = 48
+      BorderSpacing.Left = 13
+      Caption = 'Minutes'
+      ParentColor = False
+    end
+  end
+  object StandardButton: TButton
+    Left = 24
+    Height = 25
+    Hint = 'Reset to standard conditions'
+    Top = 470
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    Caption = 'Reset'
+    OnClick = StandardButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  object TestGroup: TGroupBox
+    Left = 16
+    Height = 105
+    Hint = 'Optional test signals'
+    Top = 352
+    Width = 706
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'Optional Test Signal'
+    ClientHeight = 86
+    ClientWidth = 696
+    TabOrder = 5
+    object OffButton: TRadioButton
+      Left = 26
+      Height = 18
+      Hint = 'No test signal or load is simulated'
+      Top = 16
+      Width = 44
+      Caption = 'Off'
+      Checked = True
+      OnChange = OffButtonChange
+      TabOrder = 1
+      TabStop = True
+    end
+    object fsIGTButton: TRadioButton
+      Left = 121
+      Height = 18
+      Hint = 'Simulate frequently sampled intravenous glucose tolerance test (0.3 g / kg BW, i.e. 21 g in a person with 70 kg BW)'
+      Top = 16
+      Width = 56
+      Caption = 'fsIGT'
+      OnChange = fsIGTButtonChange
+      TabOrder = 0
+    end
+    object TestStartLabel: TLabel
+      Left = 16
+      Height = 16
+      Top = 48
+      Width = 56
+      Caption = 'Starts at:'
+      Enabled = False
+      ParentColor = False
+    end
+    object TestStartSpin: TSpinEdit
+      Left = 121
+      Height = 21
+      Hint = 'Moment, when the test signal or load commences'
+      Top = 48
+      Width = 98
+      Enabled = False
+      TabOrder = 2
+      Value = 60
+    end
+    object TestStartUnitLabel: TLabel
+      Left = 232
+      Height = 16
+      Top = 48
+      Width = 48
+      Caption = 'Minutes'
+      ParentColor = False
+    end
+    object oGTTButton: TRadioButton
+      Left = 232
+      Height = 18
+      Hint = 'Simulate oral glucose tolerance test with 75 g glucose p. o.'
+      Top = 16
+      Width = 58
+      Caption = 'oGTT'
+      OnChange = oGTTButtonChange
+      TabOrder = 3
+    end
+    object MoreButton: TButton
+      Left = 352
+      Height = 25
+      Top = 13
+      Width = 75
+      Caption = 'More…'
+      OnClick = MoreButtonClick
+      TabOrder = 4
+      Visible = False
+    end
+  end
+end

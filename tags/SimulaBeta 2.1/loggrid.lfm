@@ -1,0 +1,80 @@
+object LogWindow: TLogWindow
+  Left = 263
+  Height = 388
+  Top = 143
+  Width = 874
+  Caption = 'Log'
+  ClientHeight = 388
+  ClientWidth = 874
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  LCLVersion = '2.2.0.4'
+  Visible = True
+  object ValuesGrid: TStringGrid
+    Left = 0
+    Height = 364
+    Hint = 'Time series of simulated concentrations'
+    Top = 0
+    Width = 874
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
+    ColCount = 9
+    Columns = <    
+      item
+        Title.Caption = 't'
+        Width = 99
+      end    
+      item
+        Title.Font.Color = clGreen
+        Title.Caption = 'P(t) (µmol/s)'
+        Width = 99
+      end    
+      item
+        Title.Font.Color = clBlue
+        Title.Caption = 'R(t) (µmol/s)'
+        Width = 99
+      end    
+      item
+        Title.Font.Color = clBlue
+        Title.Caption = 'G(t) (mmol/L)'
+        Width = 99
+      end    
+      item
+        Title.Font.Color = clRed
+        Title.Caption = 'S(t) (pmol/s)'
+        Width = 99
+      end    
+      item
+        Title.Font.Color = clRed
+        Title.Caption = 'I(t) (pmol/L)'
+        Width = 99
+      end    
+      item
+        Title.Font.Color = clRed
+        Title.Caption = 'M(t) (mol/s)'
+        Width = 99
+      end    
+      item
+        Title.Caption = 'N(t)'
+        Width = 100
+      end>
+    Constraints.MinHeight = 300
+    Constraints.MinWidth = 500
+    MouseWheelOption = mwGrid
+    ParentShowHint = False
+    RowCount = 26
+    ShowHint = True
+    TabOrder = 0
+    ColWidths = (
+      64
+      99
+      99
+      99
+      99
+      99
+      99
+      99
+      100
+    )
+  end
+end

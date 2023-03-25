@@ -1,0 +1,276 @@
+object PreferencesDialog: TPreferencesDialog
+  Left = 491
+  Height = 293
+  Top = 132
+  Width = 577
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'SimulaBeta Preferences'
+  ClientHeight = 293
+  ClientWidth = 577
+  Constraints.MinHeight = 200
+  FormStyle = fsStayOnTop
+  OnShow = FormShow
+  LCLVersion = '2.2.6.0'
+  object UOMGroupBox: TGroupBox
+    Left = 16
+    Height = 97
+    Top = 24
+    Width = 539
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'Units of Measurement:'
+    ClientHeight = 70
+    ClientWidth = 529
+    TabOrder = 0
+    object InsulinLabel: TLabel
+      Left = 8
+      Height = 16
+      Top = 8
+      Width = 72
+      AutoSize = False
+      Caption = 'Insulin'
+      ParentColor = False
+    end
+    object GlucoseLabel: TLabel
+      Left = 8
+      Height = 16
+      Top = 40
+      Width = 72
+      AutoSize = False
+      Caption = 'Glucose'
+      ParentColor = False
+    end
+    object InsulinMassPrefixCombo: TComboBox
+      Left = 96
+      Height = 20
+      Top = 8
+      Width = 48
+      AutoSize = False
+      ItemHeight = 19
+      ItemIndex = 2
+      Items.Strings = (
+        'm'
+        'µ'
+        'p'
+      )
+      OnChange = InsulinMassPrefixComboChange
+      TabOrder = 0
+      Text = 'p'
+    end
+    object InsulinMassUnitCombo: TComboBox
+      Left = 152
+      Height = 20
+      Top = 8
+      Width = 72
+      AutoSize = False
+      ItemHeight = 19
+      ItemIndex = 1
+      Items.Strings = (
+        'IU'
+        'mol'
+      )
+      OnChange = InsulinMassUnitComboChange
+      TabOrder = 1
+      Text = 'mol'
+    end
+    object DivLabel1: TLabel
+      Left = 232
+      Height = 16
+      Top = 8
+      Width = 72
+      AutoSize = False
+      Caption = '/'
+      ParentColor = False
+    end
+    object InsulinVolumePrefixCombo: TComboBox
+      Left = 243
+      Height = 20
+      Top = 8
+      Width = 48
+      AutoSize = False
+      ItemHeight = 19
+      ItemIndex = 0
+      Items.Strings = (
+        ''
+        'm'
+      )
+      OnChange = InsulinVolumePrefixComboChange
+      TabOrder = 2
+    end
+    object VolLabel1: TLabel
+      Left = 296
+      Height = 16
+      Top = 8
+      Width = 72
+      AutoSize = False
+      Caption = 'L'
+      ParentColor = False
+    end
+    object InsulinExampleLabel: TLabel
+      Left = 331
+      Height = 16
+      Top = 8
+      Width = 183
+      AutoSize = False
+      Caption = 'Example:'
+      ParentColor = False
+    end
+    object GlucoseMassPrefixCombo: TComboBox
+      Left = 96
+      Height = 20
+      Top = 40
+      Width = 48
+      AutoSize = False
+      ItemHeight = 19
+      ItemIndex = 0
+      Items.Strings = (
+        'm'
+        'µ'
+      )
+      OnChange = GlucoseMassPrefixComboChange
+      TabOrder = 3
+      Text = 'm'
+    end
+    object GlucoseMassUnitCombo: TComboBox
+      Left = 152
+      Height = 20
+      Top = 40
+      Width = 72
+      AutoSize = False
+      ItemHeight = 19
+      ItemIndex = 1
+      Items.Strings = (
+        'g'
+        'mol'
+      )
+      OnChange = GlucoseMassUnitComboChange
+      TabOrder = 4
+      Text = 'mol'
+    end
+    object DivLabel2: TLabel
+      Left = 232
+      Height = 16
+      Top = 40
+      Width = 72
+      AutoSize = False
+      Caption = '/'
+      ParentColor = False
+    end
+    object GlucoseVolumePrefixCombo: TComboBox
+      Left = 243
+      Height = 20
+      Top = 40
+      Width = 48
+      AutoSize = False
+      ItemHeight = 19
+      ItemIndex = 1
+      Items.Strings = (
+        'd'
+        ''
+      )
+      OnChange = GlucoseVolumePrefixComboChange
+      TabOrder = 5
+    end
+    object VolLabel2: TLabel
+      Left = 296
+      Height = 16
+      Top = 40
+      Width = 72
+      AutoSize = False
+      Caption = 'L'
+      ParentColor = False
+    end
+    object GlucoseExampleLabel: TLabel
+      Left = 331
+      Height = 16
+      Top = 40
+      Width = 183
+      AutoSize = False
+      Caption = 'Example:'
+      ParentColor = False
+    end
+  end
+  object FormatsGroupBox: TGroupBox
+    Left = 16
+    Height = 96
+    Top = 136
+    Width = 539
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'Formats:'
+    ClientHeight = 69
+    ClientWidth = 529
+    TabOrder = 1
+    object NumberFormatLabel: TLabel
+      Left = 8
+      Height = 16
+      Top = 8
+      Width = 72
+      AutoSize = False
+      Caption = 'Numbers'
+      Enabled = False
+      ParentColor = False
+    end
+    object DateTimeFormatFormatLabel: TLabel
+      Left = 8
+      Height = 16
+      Top = 40
+      Width = 72
+      AutoSize = False
+      Caption = 'Time'
+      Enabled = False
+      ParentColor = False
+    end
+    object NumberFormatEdit: TEdit
+      Left = 96
+      Height = 22
+      Top = 2
+      Width = 195
+      Enabled = False
+      OnChange = NumberFormatEditChange
+      OnEditingDone = NumberFormatEditEditingDone
+      TabOrder = 0
+      Text = '###,###.00##'
+    end
+    object DateTimeFormatEdit: TEdit
+      Left = 96
+      Height = 22
+      Top = 34
+      Width = 195
+      Enabled = False
+      TabOrder = 1
+      Text = '"d"D hh:nn:ss'
+    end
+    object NumbersExampleLabel: TLabel
+      Left = 331
+      Height = 16
+      Top = 8
+      Width = 183
+      AutoSize = False
+      Caption = 'Example:'
+      Enabled = False
+      ParentColor = False
+    end
+  end
+  object OKButton: TButton
+    Left = 471
+    Height = 25
+    Top = 252
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'OK'
+    Default = True
+    OnClick = OKButtonClick
+    TabOrder = 2
+  end
+  object Button1: TButton
+    Left = 377
+    Height = 25
+    Top = 252
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = 'Cancel'
+    OnClick = Button1Click
+    TabOrder = 3
+  end
+end

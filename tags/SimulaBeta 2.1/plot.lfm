@@ -1,0 +1,121 @@
+object PlotForm: TPlotForm
+  Left = 634
+  Height = 344
+  Top = 333
+  Width = 625
+  Caption = 'Plot'
+  ClientHeight = 344
+  ClientWidth = 625
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  LCLVersion = '2.2.0.4'
+  Visible = True
+  object Chart1: TChart
+    Left = 24
+    Height = 306
+    Top = 16
+    Width = 455
+    AntialiasingMode = amOn
+    AxisList = <    
+      item
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+        Transformations = ChartAxisTransformations1
+      end    
+      item
+        Alignment = calBottom
+        Marks.Format = '%2:s'
+        Marks.LabelBrush.Style = bsClear
+        Marks.OverlapPolicy = opHideNeighbour
+        Marks.Source = DateTimeIntervalChartSource1
+        Marks.Style = smsLabel
+        Minors = <>
+        Range.Max = 10
+        Range.UseMax = True
+        Range.UseMin = True
+        Title.Visible = True
+        Title.Caption = 'Time (seconds)'
+        Title.LabelBrush.Style = bsClear
+      end>
+    BackColor = clWhite
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clNone
+    object PSeries: TLineSeries
+      Title = 'P (µmol/s)'
+      LinePen.Color = clGreen
+      LinePen.Width = 2
+    end
+    object RSeries: TLineSeries
+      Title = 'R (µmol/s)'
+      LinePen.Color = clNavy
+      LinePen.Width = 2
+    end
+    object GSeries: TLineSeries
+      Title = 'G (mmol/L)'
+      LinePen.Color = clBlue
+      LinePen.Width = 2
+    end
+    object SSeries: TLineSeries
+      Title = 'S (pmol/s)'
+      LinePen.Color = clPurple
+      LinePen.Width = 2
+    end
+    object ISeries: TLineSeries
+      Title = 'I (pmol/L)'
+      LinePen.Color = clRed
+      LinePen.Width = 2
+    end
+    object MSeries: TLineSeries
+      Title = 'M (mol/s)'
+      LinePen.Color = 33023
+      LinePen.Width = 2
+    end
+    object NSeries: TLineSeries
+      Title = 'N'
+      LinePen.Color = clLime
+      LinePen.Width = 2
+    end
+  end
+  object ChartLegendPanel1: TChartLegendPanel
+    Left = 487
+    Height = 256
+    Top = 24
+    Width = 120
+    Chart = Chart1
+    Anchors = [akTop, akRight]
+  end
+  object LogCheckbox: TCheckBox
+    Left = 503
+    Height = 18
+    Top = 192
+    Width = 53
+    Anchors = [akTop, akRight]
+    Caption = 'Log y'
+    OnChange = LogCheckboxChange
+    TabOrder = 2
+    Visible = False
+  end
+  object DateTimeIntervalChartSource1: TDateTimeIntervalChartSource
+    OnDateTimeStepChange = DateTimeIntervalChartSource1DateTimeStepChange
+    Left = 544
+    Top = 288
+  end
+  object ChartAxisTransformations1: TChartAxisTransformations
+    Left = 544
+    Top = 232
+    object ChartAxisTransformations1LinearAxisTransform1: TLinearAxisTransform
+    end
+    object ChartAxisTransformations1LogarithmAxisTransform1: TLogarithmAxisTransform
+      Enabled = False
+      Base = 2.71828182845905
+    end
+  end
+end
