@@ -1,7 +1,7 @@
 object PredictionForm: TPredictionForm
-  Left = 926
+  Left = 1049
   Height = 271
-  Top = 280
+  Top = 142
   Width = 420
   Caption = 'Prediction'
   ClientHeight = 271

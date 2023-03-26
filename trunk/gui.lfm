@@ -23399,6 +23399,13 @@ object ToolbarWindow: TToolbarWindow
         Caption = 'Reset'
         OnClick = ResetItemClick
       end
+      object Divider31: TMenuItem
+        Caption = '-'
+      end
+      object StatsItem: TMenuItem
+        Caption = 'Statistics...'
+        OnClick = StatsItemClick
+      end
     end
     object HelpMenu: TMenuItem
       Caption = 'Help'

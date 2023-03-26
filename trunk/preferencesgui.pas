@@ -30,7 +30,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
   UnitConverter, SimulaBetaTypes, SimulaBetaResources, PreferencesServices,
-  SimulationEngine, Prediction, LogGrid, Plot;
+  SimulationEngine, Prediction, LogGrid, Plot, Stats;
 
 type
 
@@ -101,6 +101,7 @@ begin
   PredictionForm.DisplayPrediction(gActiveModel.Prediction);
   LogWindow.FillGrid(gActiveModel.iterations);
   PlotForm.ShowPlot;
+  if StatsForm.Visible then StatsForm.ShowContent(nil);
 end;
 
 {$R *.lfm}

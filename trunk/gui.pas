@@ -32,7 +32,7 @@ uses
   ComCtrls, StdCtrls, ExtCtrls, LCLType, LCLVersion, Spin, Menus,
   SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
   SimulationControl, SimulaBetaGUIServices, ScenarioHandler,
-  SimulaBetaAboutwindow, PreferencesGUI;
+  SimulaBetaAboutwindow, PreferencesGUI, Stats;
 
 type
 
@@ -55,6 +55,8 @@ type
     Divider01: TMenuItem;
     MacPreferencesItem: TMenuItem;
     Divider22: TMenuItem;
+    StatsItem: TMenuItem;
+    Divider31: TMenuItem;
     WinPreferencesItem: TMenuItem;
     ResetItem: TMenuItem;
     OpenDialog1: TOpenDialog;
@@ -85,6 +87,7 @@ type
     procedure ResetItemClick(Sender: TObject);
     procedure RunItemClick(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
+    procedure StatsItemClick(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure ToolButton3Click(Sender: TObject);
     procedure ToolButton4Click(Sender: TObject);
@@ -256,6 +259,11 @@ begin
       4: SaveScenario(theFilename);
     end;
   end;
+end;
+
+procedure TToolbarWindow.StatsItemClick(Sender: TObject);
+begin
+  StatsForm.Show;
 end;
 
 procedure TToolbarWindow.ToolButton2Click(Sender: TObject);

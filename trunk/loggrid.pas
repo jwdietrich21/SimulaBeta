@@ -32,10 +32,6 @@ uses
   SimulaBetaBaseServices, SimulaBetaGUIServices, SimulationEngine, DIFSupport,
   PreferencesServices;
 
-const
-  IHeader = 'I(t) ';
-  GHeader = 'G(t) ';
-
 type
 
   { TLogWindow }

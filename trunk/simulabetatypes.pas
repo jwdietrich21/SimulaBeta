@@ -82,6 +82,9 @@ const
   kOMIT = '•';
   kCRLF = #13#10;
 
+  IHeader = 'I(t) ';
+  GHeader = 'G(t) ';
+
   ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss'; {Date/time format in XML representation}
   STANDARD_NUM_FORMAT = '###,###.0000';
   SHORT_NUM_FORMAT = '###,###.00';

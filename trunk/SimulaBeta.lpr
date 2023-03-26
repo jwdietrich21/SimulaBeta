@@ -34,7 +34,7 @@ uses
   IPS, Plot, prediction, LogGrid, SimulationControl, SimulaBetaBaseServices,
   SimulaBetaGUIServices, EnvironmentInfo, ScenarioHandler, SimulaBetaResources,
   UnitConverter, SimulaBetaAboutwindow, Sequencer, SequencerEngine,
-  PreferencesGUI, PreferencesServices;
+  PreferencesGUI, PreferencesServices, Stats, StatsEngine;
 
 {$R *.res}
 
@@ -51,6 +51,7 @@ begin
   Application.CreateForm(TControlWindow, ControlWindow);
   Application.CreateForm(TSequencerWindow, SequencerWindow);
   Application.CreateForm(TPreferencesDialog, PreferencesDialog);
+  Application.CreateForm(TStatsForm, StatsForm);
   Application.BringToFront;
   ToolbarWindow.Show;
   ControlWindow.BringToFront;
