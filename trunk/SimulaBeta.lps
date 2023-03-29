@@ -147,8 +147,8 @@
         <UnitName Value="SimulationControl"/>
         <EditorIndex Value="25"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="217"/>
-        <CursorPos X="42" Y="239"/>
+        <TopLine Value="226"/>
+        <CursorPos X="35" Y="245"/>
         <UsageCount Value="153"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -219,7 +219,7 @@
         <UnitName Value="SimulaBetaResources"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="38" Y="68"/>
+        <CursorPos X="28" Y="2"/>
         <UsageCount Value="89"/>
         <Loaded Value="True"/>
       </Unit16>
@@ -313,9 +313,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Stats"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="141"/>
         <CursorPos Y="167"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
@@ -325,11 +325,9 @@
         <Filename Value="statsengine.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="StatsEngine"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="20"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="251"/>
-        <CursorPos X="27" Y="278"/>
+        <CursorPos X="21" Y="3"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit24>

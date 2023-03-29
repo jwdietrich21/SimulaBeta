@@ -30,7 +30,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
   ExtCtrls, SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
-  SimulaBetaGUIServices, SequencerEngine, Sequencer;
+  SimulaBetaGUIServices, SequencerEngine, Sequencer, Stats;
 
 type
 
@@ -242,6 +242,7 @@ begin
   LogWindow.FillGrid(gActiveModel.iterations);
   application.ProcessMessages;
   PlotForm.ShowPlot;
+  StatsForm.ShowContent(Sender);
   Screen.Cursor := crDefault;
 end;
 
