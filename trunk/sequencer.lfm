@@ -1,7 +1,7 @@
 object SequencerWindow: TSequencerWindow
-  Left = 395
+  Left = 340
   Height = 382
-  Top = 198
+  Top = 100
   Width = 1044
   Caption = 'LOREMOS: Load, Reference and Modulation Sequencer'
   ClientHeight = 382

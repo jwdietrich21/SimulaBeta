@@ -29,7 +29,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls,
-  ExtDlgs, Math, Types, SequencerEngine;
+  ExtDlgs, Math, Types, SimulaBetaTypes, SimulationEngine, SequencerEngine;
 
 type
 
@@ -120,7 +120,12 @@ begin
       EventMatrix[k].p1 := StrToFloatDef(InputFields[i].p1, NaN);
       EventMatrix[k].Variable := InputFields[i].Variable;
       EventMatrix[k].ModOp := InputFields[i].ModOp;
-      EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN);
+      if EventMatrix[k].Variable = vI then
+        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) * IFactor / gInsulinConversionFactor
+      else if (EventMatrix[k].Variable = vG) or (EventMatrix[k].Variable = vW) then
+        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) * GFactor / gGlucoseConversionFactor
+      else
+        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN);
       inc(k);
     end;
 end;
