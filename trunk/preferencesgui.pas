@@ -37,7 +37,7 @@ type
   { TPreferencesDialog }
 
   TPreferencesDialog = class(TForm)
-    Button1: TButton;
+    CancelButton: TButton;
     DivLabel1: TLabel;
     DivLabel2: TLabel;
     NumbersExampleLabel: TLabel;
@@ -60,7 +60,7 @@ type
     UOMGroupBox: TGroupBox;
     FormatsGroupBox: TGroupBox;
     VolLabel2: TLabel;
-    procedure Button1Click(Sender: TObject);
+    procedure CancelButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GlucoseMassPrefixComboChange(Sender: TObject);
     procedure GlucoseMassUnitComboChange(Sender: TObject);
@@ -114,6 +114,8 @@ begin
   gUnits.G := GlucoseUoM;
   gInsulinConversionFactor := ConvertedValue(1, kInsulinActivity, kInsulinUoM, gUnits.I);
   gGlucoseConversionFactor := ConvertedValue(1, kMolarMassGlucose, kGlucoseUoM, gUnits.G);
+  gNumberFormat := NumberFormatEdit.Text;
+  gDateTimeFormat := DateTimeFormatEdit.Text;
   UpdateReporting;
   Close;
 end;
@@ -127,13 +129,15 @@ begin
   NumbersExampleLabel.Caption := EXAMPLE_STRING + FormatFloat(NumberFormatEdit.Text, kExampleNumber);
 end;
 
-procedure TPreferencesDialog.Button1Click(Sender: TObject);
+procedure TPreferencesDialog.CancelButtonClick(Sender: TObject);
 begin
   Close;
 end;
 
 procedure TPreferencesDialog.FormShow(Sender: TObject);
 begin
+  NumberFormatEdit.Text := gNumberFormat;
+  DateTimeFormatEdit.Text := gDateTimeFormat;
   DisplayExamples;
 end;
 

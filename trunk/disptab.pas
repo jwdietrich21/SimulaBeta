@@ -176,18 +176,18 @@ begin
   for i := 1 to DispositionGrid.ColCount - 1 do
     // GR
     begin
-      DispositionGrid.Cells[i, 0] := FloatToStrF(xmin + resx * (i - 1), ffFixed, 0, 4);
+      DispositionGrid.Cells[i, 0] := FormatFloat(gNumberFormat, xmin + resx * (i - 1));
     end;
   for j := 1 to DispositionGrid.RowCount - 1 do
     // GBeta
     begin
-      DispositionGrid.Cells[0, j] := FloatToStrF(ymin + resy * (j - 1), ffFixed, 0, 4);
+      DispositionGrid.Cells[0, j] := FormatFloat(gNumberFormat, ymin + resy * (j - 1));
     end;
   SensitivityTable := TwoWayTable(xmin, xmax, ymin, ymax, resx, resy, gActiveModel.StrucPars, GR, GBeta);
   for i := 1 to DispositionGrid.ColCount - 1 do
     for j := 1 to DispositionGrid.RowCount - 1 do
       begin
-        DispositionGrid.Cells[i, j] := FloatToStrF(SensitivityTable[i, j].G / GFactor * gGlucoseConversionFactor, ffFixed, 0, 4);
+        DispositionGrid.Cells[i, j] := FormatFloat(gNumberFormat, SensitivityTable[i, j].G / GFactor * gGlucoseConversionFactor);
       end;
 end;
 

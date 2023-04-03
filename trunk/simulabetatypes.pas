@@ -88,7 +88,7 @@ const
   GHeader = 'G(t) ';
 
   ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss'; {Date/time format in XML representation}
-  STANDARD_NUM_FORMAT = '###,###.0000';
+  STANDARD_NUM_FORMAT = '###,##0.0000';
   SHORT_NUM_FORMAT = '###,###.00';
   STANDARD_TIME_FORMAT = '"d"D hh:nn:ss';
 
@@ -96,11 +96,15 @@ const
   kInsulinActivity  = 1e9/6;   // corresponds to 6 nmol/IU, Knopp et al. 2019, PMID 30318910
 
 var
-  gDateTimeFormat: String;
+  gNumberFormat, gDateTimeFormat: String;
   gActiveModel: TModel;
   gInsulinConversionFactor, gGlucoseConversionFactor: real;
 
 implementation
+
+initialization
+  gNumberFormat := STANDARD_NUM_FORMAT;
+  gDateTimeFormat := STANDARD_TIME_FORMAT;
 
 end.
 

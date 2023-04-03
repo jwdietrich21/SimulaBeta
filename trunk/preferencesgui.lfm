@@ -207,7 +207,6 @@ object PreferencesDialog: TPreferencesDialog
       Width = 72
       AutoSize = False
       Caption = 'Numbers'
-      Enabled = False
       ParentColor = False
     end
     object DateTimeFormatFormatLabel: TLabel
@@ -225,11 +224,9 @@ object PreferencesDialog: TPreferencesDialog
       Height = 22
       Top = 2
       Width = 195
-      Enabled = False
       OnChange = NumberFormatEditChange
       OnEditingDone = NumberFormatEditEditingDone
       TabOrder = 0
-      Text = '###,###.00##'
     end
     object DateTimeFormatEdit: TEdit
       Left = 96
@@ -238,7 +235,6 @@ object PreferencesDialog: TPreferencesDialog
       Width = 195
       Enabled = False
       TabOrder = 1
-      Text = '"d"D hh:nn:ss'
     end
     object NumbersExampleLabel: TLabel
       Left = 331
@@ -247,7 +243,6 @@ object PreferencesDialog: TPreferencesDialog
       Width = 183
       AutoSize = False
       Caption = 'Example:'
-      Enabled = False
       ParentColor = False
     end
   end
@@ -262,7 +257,7 @@ object PreferencesDialog: TPreferencesDialog
     OnClick = OKButtonClick
     TabOrder = 2
   end
-  object Button1: TButton
+  object CancelButton: TButton
     Left = 377
     Height = 25
     Top = 252
@@ -270,7 +265,7 @@ object PreferencesDialog: TPreferencesDialog
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
-    OnClick = Button1Click
+    OnClick = CancelButtonClick
     TabOrder = 3
   end
 end
