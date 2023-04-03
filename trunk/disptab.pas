@@ -29,15 +29,22 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, ExtCtrls,
-  SimulaBetaTypes, SimulationEngine, SensitivityAnalysis, SimulaBetaGUIServices;
+  StdCtrls, SimulaBetaTypes, SimulationEngine, SensitivityAnalysis,
+  SimulaBetaGUIServices;
 
 type
 
   { TDispTabWindow }
 
   TDispTabWindow = class(TForm)
+    ComboBox_y: TComboBox;
+    ComboBox_x: TComboBox;
     DispositionGrid: TStringGrid;
-    Panel1: TPanel;
+    Arrow1: TImage;
+    Arrow2: TImage;
+    Arrow3: TImage;
+    IconStorage: TImageList;
+    procedure ComboBox_yChange(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure SaveGrid(const theFileName: string; const theDelimiter: char);
@@ -92,6 +99,18 @@ const
   MinGBeta = 0.1;
   MaxGBeta = 5;
 begin
+  if DarkTheme then
+    begin
+      IconStorage.GetBitmap(1, Arrow1.Picture.Bitmap);
+      IconStorage.GetBitmap(3, Arrow2.Picture.Bitmap);
+      IconStorage.GetBitmap(1, Arrow3.Picture.Bitmap);
+    end
+  else
+    begin
+      IconStorage.GetBitmap(0, Arrow1.Picture.Bitmap);
+      IconStorage.GetBitmap(2, Arrow2.Picture.Bitmap);
+      IconStorage.GetBitmap(0, Arrow3.Picture.Bitmap);
+    end;
   resx := (MaxGR - MinGR) / (DispositionGrid.ColCount - 2);
   resy := (MaxGBeta - MinGBeta) / (DispositionGrid.RowCount - 2);
   for i := 1 to DispositionGrid.ColCount - 1 do
@@ -114,6 +133,11 @@ begin
       begin
         DispositionGrid.Cells[i, j] := FloatToStrF(SensitivityTable[i, j].G / GFactor * gGlucoseConversionFactor, ffFixed, 0, 4);
       end;
+end;
+
+procedure TDispTabWindow.ComboBox_yChange(Sender: TObject);
+begin
+
 end;
 
 end.
