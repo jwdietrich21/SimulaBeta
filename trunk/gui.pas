@@ -233,7 +233,7 @@ end;
 
 procedure TToolbarWindow.RunItemClick(Sender: TObject);
 begin
-  ControlWindow.Show;
+  ControlWindow.ShowModal;
 end;
 
 procedure TToolbarWindow.SaveMenuItemClick(Sender: TObject);

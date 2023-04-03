@@ -37,6 +37,7 @@ type
   { TControlWindow }
 
   TControlWindow = class(TForm)
+    CancelButton: TButton;
     oGTTButton: TRadioButton;
     MinutesButton: TRadioButton;
     HoursButton: TRadioButton;
@@ -81,6 +82,7 @@ type
     PSpinEdit: TFloatSpinEdit;
     StartButton: TButton;
     StrucParsGroup: TGroupBox;
+    procedure CancelButtonClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -191,7 +193,6 @@ var
   EventMatrix: TEventMatrix;
 begin
   Screen.Cursor := crHourGlass;
-  FormStyle := fsNormal;
   if TestTimeUnit = minutes then
     gTestTimeFactor := SecsPerMin
   else
@@ -237,7 +238,7 @@ begin
   gValues.M[0] := gActiveModel.Prediction[i].M;
   gValues.N[0] := gActiveModel.Prediction[i].N;
   SwitchTest(Sender);
-  Hide;
+  Close;
   RunSimulation(P, Glc, Ins, startpoint, gActiveModel.iterations, gActiveModel.Prediction, EventMatrix);
   LogWindow.FillGrid(gActiveModel.iterations);
   application.ProcessMessages;
@@ -259,6 +260,12 @@ procedure TControlWindow.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   SequencerWindow.FormStyle := fsNormal;
+end;
+
+procedure TControlWindow.CancelButtonClick(Sender: TObject);
+begin
+  SequencerWindow.FormStyle := fsNormal;
+  Close;
 end;
 
 procedure TControlWindow.FormDestroy(Sender: TObject);

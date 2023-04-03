@@ -157,13 +157,13 @@ begin
   StatsGrid.Cells[8, 8] := FloatToStrF(SEMV.M, ffFixed, 0, 4);
   StatsGrid.Cells[9, 8] := FloatToStrF(SEMV.N, ffFixed, 0, 4);
 
-  StatsGrid.Cells[1, 9] := FloatToStrF(CoVV.P / PFactor, ffFixed, 0, 4);
-  StatsGrid.Cells[2, 9] := FloatToStrF(CoVV.W / MicroFactor, ffFixed, 0, 4);
-  StatsGrid.Cells[3, 9] := FloatToStrF(CoVV.Q / MicroFactor, ffFixed, 0, 4);
-  StatsGrid.Cells[4, 9] := FloatToStrF(CoVV.R / MicroFactor, ffFixed, 0, 4);
-  StatsGrid.Cells[5, 9] := FloatToStrF(CoVV.G / GFactor, ffFixed, 0, 4);
-  StatsGrid.Cells[6, 9] := FloatToStrF(CoVV.S / PicoFactor, ffFixed, 0, 4);
-  StatsGrid.Cells[7, 9] := FloatToStrF(CoVV.I / IFactor, ffFixed, 0, 4);
+  StatsGrid.Cells[1, 9] := FloatToStrF(CoVV.P, ffFixed, 0, 4);
+  StatsGrid.Cells[2, 9] := FloatToStrF(CoVV.W, ffFixed, 0, 4);
+  StatsGrid.Cells[3, 9] := FloatToStrF(CoVV.Q, ffFixed, 0, 4);
+  StatsGrid.Cells[4, 9] := FloatToStrF(CoVV.R, ffFixed, 0, 4);
+  StatsGrid.Cells[5, 9] := FloatToStrF(CoVV.G, ffFixed, 0, 4);
+  StatsGrid.Cells[6, 9] := FloatToStrF(CoVV.S, ffFixed, 0, 4);
+  StatsGrid.Cells[7, 9] := FloatToStrF(CoVV.I, ffFixed, 0, 4);
   StatsGrid.Cells[8, 9] := FloatToStrF(CoVV.M, ffFixed, 0, 4);
   StatsGrid.Cells[9, 9] := FloatToStrF(CoVV.N, ffFixed, 0, 4);
 

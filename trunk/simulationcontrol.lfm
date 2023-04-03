@@ -485,4 +485,14 @@ object ControlWindow: TControlWindow
       ParentColor = False
     end
   end
+  object CancelButton: TButton
+    Left = 568
+    Height = 25
+    Top = 481
+    Width = 75
+    Cancel = True
+    Caption = 'Cancel'
+    OnClick = CancelButtonClick
+    TabOrder = 6
+  end
 end

@@ -84,7 +84,12 @@ object DispTabWindow: TDispTabWindow
     ItemIndex = 0
     Items.Strings = (
       'GR'
+      'DR'
+      'GBeta'
+      'DBeta'
+      'GE'
     )
+    OnChange = ComboBox_xChange
     TabOrder = 1
     Text = 'GR'
   end
@@ -94,9 +99,13 @@ object DispTabWindow: TDispTabWindow
     Top = 8
     Width = 100
     ItemHeight = 19
-    ItemIndex = 0
+    ItemIndex = 2
     Items.Strings = (
+      'GR'
+      'DR'
       'GBeta'
+      'DBeta'
+      'GE'
     )
     OnChange = ComboBox_yChange
     TabOrder = 2
@@ -139,6 +148,7 @@ object DispTabWindow: TDispTabWindow
     Height = 13
     Top = 17
     Width = 21
+    Anchors = [akTop, akRight]
     Picture.Data = {
       1754506F727461626C654E6574776F726B47726170686963DC02000089504E47
       0D0A1A0A0000000D494844520000004C000000480804000000F60FDBB6000002
@@ -173,6 +183,7 @@ object DispTabWindow: TDispTabWindow
     Top = 17
     Width = 21
     AntialiasingMode = amOn
+    Anchors = [akTop, akRight]
     Picture.Data = {
       1754506F727461626C654E6574776F726B477261706869639502000089504E47
       0D0A1A0A0000000D494844520000004C000000480804000000F60FDBB6000002

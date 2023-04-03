@@ -56,8 +56,8 @@ begin
   Application.CreateForm(TDispTabWindow, DispTabWindow);
   Application.BringToFront;
   ToolbarWindow.Show;
-  ControlWindow.BringToFront;
-  ControlWindow.FormStyle := fsStayOnTop;
+  ControlWindow.Visible := false;
+  ControlWindow.ShowModal;
   InitMetabolicConversionFactors;
   Application.Run;
   if assigned(gValues) then

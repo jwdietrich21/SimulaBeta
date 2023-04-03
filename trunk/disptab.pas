@@ -44,6 +44,7 @@ type
     Arrow2: TImage;
     Arrow3: TImage;
     IconStorage: TImageList;
+    procedure ComboBox_xChange(Sender: TObject);
     procedure ComboBox_yChange(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -89,15 +90,21 @@ begin
 end;
 
 procedure TDispTabWindow.FormPaint(Sender: TObject);
+const
+  MinGR = 0.5;    // mol/s
+  MaxGR = 15;
+  MinDR = 0.3;    // nmol/l
+  MaxDR = 8;
+  MinGBeta = 0.1; // pmol/s
+  MaxGBeta = 5;
+  MinDBeta = 1.5; // mmol/l
+  MaxDBeta = 35;
+  MinGE = 10;     // s/mol
+  MaxGE = 250;
 var
   i, j: integer;
-  x, y, xmin, xmax, ymin, ymax, resx, resy: real;
+  xmin, xmax, ymin, ymax, resx, resy: real;
   SensitivityTable: tTwoWaySensTable;
-const
-  MinGR = 0.5;
-  MaxGR = 15;
-  MinGBeta = 0.1;
-  MaxGBeta = 5;
 begin
   if DarkTheme then
     begin
@@ -111,22 +118,71 @@ begin
       IconStorage.GetBitmap(2, Arrow2.Picture.Bitmap);
       IconStorage.GetBitmap(0, Arrow3.Picture.Bitmap);
     end;
-  resx := (MaxGR - MinGR) / (DispositionGrid.ColCount - 2);
-  resy := (MaxGBeta - MinGBeta) / (DispositionGrid.RowCount - 2);
+  case ComboBox_x.ItemIndex of
+    0:
+    begin
+      xmin := MinGR;
+      xmax := MaxGR;
+    end;
+    1:
+    begin
+      xmin := MinDR;
+      xmax := MaxDR;
+    end;
+    2:
+    begin
+      xmin := MinGBeta;
+      xmax := MaxGBeta;
+    end;
+    3:
+    begin
+      xmin := MinDBeta;
+      xmax := MaxDBeta;
+    end;
+    4:
+    begin
+      xmin := MinGE;
+      xmax := MaxGE;
+    end;
+  end;
+  case ComboBox_y.ItemIndex of
+    0:
+    begin
+      ymin := MinGR;
+      ymax := MaxGR;
+    end;
+    1:
+    begin
+      ymin := MinDR;
+      ymax := MaxDR;
+    end;
+    2:
+    begin
+      ymin := MinGBeta;
+      ymax := MaxGBeta;
+    end;
+    3:
+    begin
+      ymin := MinDBeta;
+      ymax := MaxDBeta;
+    end;
+    4:
+    begin
+      ymin := MinGE;
+      ymax := MaxGE;
+    end;
+  end;   resx := (xmax - xmin) / (DispositionGrid.ColCount - 2);
+  resy := (ymax - ymin) / (DispositionGrid.RowCount - 2);
   for i := 1 to DispositionGrid.ColCount - 1 do
     // GR
     begin
-      DispositionGrid.Cells[i, 0] := FloatToStrF(MinGR + resx * (i - 1), ffFixed, 0, 4);
+      DispositionGrid.Cells[i, 0] := FloatToStrF(xmin + resx * (i - 1), ffFixed, 0, 4);
     end;
   for j := 1 to DispositionGrid.RowCount - 1 do
     // GBeta
     begin
-      DispositionGrid.Cells[0, j] := FloatToStrF(MinGBeta + resy * (j - 1), ffFixed, 0, 4);
+      DispositionGrid.Cells[0, j] := FloatToStrF(ymin + resy * (j - 1), ffFixed, 0, 4);
     end;
-  xmin := StrToFloatDef(DispositionGrid.Cells[1, 0], 0);
-  xmax := StrToFloatDef(DispositionGrid.Cells[DispositionGrid.ColCount - 1, 0], 0);
-  ymin := StrToFloatDef(DispositionGrid.Cells[0, 1], 0);
-  ymax := StrToFloatDef(DispositionGrid.Cells[0, DispositionGrid.RowCount - 1], 0);
   SensitivityTable := TwoWayTable(xmin, xmax, ymin, ymax, resx, resy, gActiveModel.StrucPars, GR, GBeta);
   for i := 1 to DispositionGrid.ColCount - 1 do
     for j := 1 to DispositionGrid.RowCount - 1 do
@@ -137,7 +193,12 @@ end;
 
 procedure TDispTabWindow.ComboBox_yChange(Sender: TObject);
 begin
+  FormPaint(Sender);
+end;
 
+procedure TDispTabWindow.ComboBox_xChange(Sender: TObject);
+begin
+  FormPaint(Sender);
 end;
 
 end.
