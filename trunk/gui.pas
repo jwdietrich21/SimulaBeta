@@ -32,7 +32,7 @@ uses
   ComCtrls, StdCtrls, ExtCtrls, LCLType, LCLVersion, Spin, Menus,
   SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
   SimulationControl, SimulaBetaGUIServices, ScenarioHandler,
-  SimulaBetaAboutwindow, PreferencesGUI, Stats;
+  SimulaBetaAboutwindow, PreferencesGUI, Stats, disptab;
 
 type
 
@@ -55,6 +55,8 @@ type
     Divider01: TMenuItem;
     MacPreferencesItem: TMenuItem;
     Divider22: TMenuItem;
+    DispTabItem: TMenuItem;
+    Divider32: TMenuItem;
     StatsItem: TMenuItem;
     Divider31: TMenuItem;
     WinPreferencesItem: TMenuItem;
@@ -79,6 +81,7 @@ type
     ToolBar1: TToolBar;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
+    procedure DispTabItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
@@ -88,6 +91,7 @@ type
     procedure RunItemClick(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
     procedure StatsItemClick(Sender: TObject);
+    procedure ToolBar1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure ToolButton3Click(Sender: TObject);
     procedure ToolButton4Click(Sender: TObject);
@@ -237,7 +241,9 @@ var
   theDelimiter: char;
   theFileName:  string;
   theFilterIndex: integer;
+  theForm: TForm;
 begin
+  theForm := Screen.ActiveForm;
   if SaveDialog1.Execute then
   begin
     theFileName    := SaveDialog1.FileName;
@@ -255,7 +261,12 @@ begin
       3: theDelimiter := 'd';  // DIF
     end;
     case theFilterIndex of
-      1..3: LogWindow.SaveGrid(theFileName, theDelimiter);
+      1..3: if theForm = LogWindow then
+              LogWindow.SaveGrid(theFileName, theDelimiter)
+            else if theForm = DispTabWindow then
+              DispTabWindow.SaveGrid(theFileName, theDelimiter)
+            else if theForm = StatsForm then
+              StatsForm.SaveGrid(theFileName, theDelimiter);
       4: SaveScenario(theFilename);
     end;
   end;
@@ -264,6 +275,11 @@ end;
 procedure TToolbarWindow.StatsItemClick(Sender: TObject);
 begin
   StatsForm.Show;
+end;
+
+procedure TToolbarWindow.ToolBar1Click(Sender: TObject);
+begin
+
 end;
 
 procedure TToolbarWindow.ToolButton2Click(Sender: TObject);
@@ -293,8 +309,21 @@ begin
 end;
 
 procedure TToolbarWindow.CopyMenuItemClick(Sender: TObject);
+var
+  theForm: TForm;
 begin
-  LogWindow.CopyCells;
+  theForm := Screen.ActiveForm;
+  if theForm = LogWindow then
+    LogWindow.CopyCells
+  else if theForm = DispTabWindow then
+    DispTabWindow.CopyCells
+  else if theForm = StatsForm then
+    StatsForm.CopyCells;
+end;
+
+procedure TToolbarWindow.DispTabItemClick(Sender: TObject);
+begin
+  DispTabWindow.Show;
 end;
 
 end.

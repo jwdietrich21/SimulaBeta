@@ -29,7 +29,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, SimulaBetaTypes,
-  StatsEngine, SimulationEngine;
+  StatsEngine, SimulationEngine, SimulaBetaGUIServices;
 
 type
 
@@ -47,6 +47,8 @@ type
     SEMV, CoVV: TState;
     procedure ShowContent(Sender: TObject);
     procedure UpdateHeaders;
+    procedure CopyCells;
+    procedure SaveGrid(const theFileName: string; const theDelimiter: char);
   end;
 
 var
@@ -171,6 +173,26 @@ procedure TStatsForm.UpdateHeaders;
 begin
   StatsGrid.Columns[4].Title.Caption := GHeader + '(' + gUnits.G + ')';
   StatsGrid.Columns[6].Title.Caption := IHeader + '(' + gUnits.I + ')';
+end;
+
+procedure TStatsForm.CopyCells;
+begin
+  CutorCopyfromGrid(StatsGrid, False);
+end;
+
+procedure TStatsForm.SaveGrid(const theFileName: string;
+  const theDelimiter: char);
+{saves the contents of the statistics window}
+{file type and, where applicable, delimiter are defined by variable theDelimiter}
+var
+  theCode: integer;
+begin
+  theCode := 0;
+  SaveGridToFile(StatsForm.StatsGrid, theFileName, theDelimiter, true, true, theCode);
+  if theCode = 0 then
+    SetFileName(StatsForm, theFileName)
+  else
+    ShowSaveError;
 end;
 
 procedure TStatsForm.FormShow(Sender: TObject);

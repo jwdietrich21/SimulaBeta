@@ -23177,6 +23177,7 @@ object ToolbarWindow: TToolbarWindow
     Caption = 'ToolBar1'
     Images = ImageList1
     TabOrder = 0
+    OnClick = ToolBar1Click
     object ToolButton1: TToolButton
       Left = 1
       Hint = 'New...'
@@ -23400,6 +23401,13 @@ object ToolbarWindow: TToolbarWindow
         OnClick = ResetItemClick
       end
       object Divider31: TMenuItem
+        Caption = '-'
+      end
+      object DispTabItem: TMenuItem
+        Caption = 'Disposition Table'
+        OnClick = DispTabItemClick
+      end
+      object Divider32: TMenuItem
         Caption = '-'
       end
       object StatsItem: TMenuItem

@@ -1,0 +1,92 @@
+object DispTabWindow: TDispTabWindow
+  Left = 240
+  Height = 277
+  Top = 140
+  Width = 725
+  Caption = 'Disposition Table'
+  ClientHeight = 277
+  ClientWidth = 725
+  OnPaint = FormPaint
+  OnShow = FormShow
+  LCLVersion = '2.2.6.0'
+  object DispositionGrid: TStringGrid
+    Left = 0
+    Height = 234
+    Top = 24
+    Width = 725
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
+    ColCount = 50
+    Font.Height = -9
+    ParentFont = False
+    RowCount = 50
+    TabOrder = 0
+    ColWidths = (
+      64
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      13
+      20
+    )
+    Cells = (
+      1
+      0
+      0
+      'GBeta'
+    )
+  end
+  object Panel1: TPanel
+    Left = 64
+    Height = 24
+    Top = 0
+    Width = 656
+    Anchors = [akTop, akLeft, akRight]
+    Caption = 'GR'
+    TabOrder = 1
+  end
+end

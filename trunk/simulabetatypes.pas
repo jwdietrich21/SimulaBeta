@@ -50,6 +50,8 @@ tParameterSpace = record
   alphaG, betaG, alphaI, betaI, GBeta, DBeta, GR, DR, GE: extended;
 end;
 
+tParameter = (alphaG, betaG, alphaI, betaI, GBeta, DBeta, GR, DR, GE);
+
 tModel = record
   Name: AnsiString; // MIRIAM 1
   Reference: AnsiString; // MIRIAM 2

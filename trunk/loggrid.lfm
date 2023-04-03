@@ -1,7 +1,7 @@
 object LogWindow: TLogWindow
-  Left = 65
+  Left = 198
   Height = 388
-  Top = 124
+  Top = 128
   Width = 939
   Caption = 'Log'
   ClientHeight = 388

@@ -177,7 +177,7 @@ begin
       begin
         doc.NewTuple;
         theString := '';
-        if assigned(theTable.Columns) then
+        if assigned(theTable.Columns) and (theTable.Columns.Count > 0) then
         begin
           if startC = 0 then
           begin
@@ -229,7 +229,7 @@ begin
     theString := '';
     if colNames then
     begin
-      if assigned(theTable.Columns) then
+      if assigned(theTable.Columns) and (theTable.Columns.Count > 0) then
       begin
         if startC = 0 then
           theString := 'n' + theDelimiter;

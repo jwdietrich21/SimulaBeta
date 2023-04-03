@@ -4,15 +4,15 @@
     <PathDelim Value="\"/>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="55">
+    <Units Count="57">
       <Unit0>
         <Filename Value="SimulaBeta.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="24"/>
+        <EditorIndex Value="26"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="33"/>
-        <CursorPos X="38" Y="56"/>
-        <UsageCount Value="187"/>
+        <TopLine Value="21"/>
+        <CursorPos X="3" Y="38"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -24,9 +24,9 @@
         <UnitName Value="GUI"/>
         <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="207"/>
-        <CursorPos X="28" Y="270"/>
-        <UsageCount Value="187"/>
+        <TopLine Value="256"/>
+        <CursorPos X="41" Y="272"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -36,15 +36,15 @@
         <UnitName Value="SimulationEngine"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="105"/>
-        <CursorPos X="3" Y="121"/>
+        <TopLine Value="198"/>
+        <CursorPos Y="212"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
           <TopLine Value="252"/>
           <CursorPos Y="269"/>
         </ExtraEditor1>
-        <UsageCount Value="187"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -64,7 +64,7 @@
           <TopLine Value="45"/>
           <CursorPos X="26" Y="66"/>
         </ExtraEditor1>
-        <UsageCount Value="187"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -79,7 +79,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="14"/>
         <CursorPos X="3" Y="35"/>
-        <UsageCount Value="186"/>
+        <UsageCount Value="193"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -94,7 +94,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="66"/>
         <CursorPos X="77" Y="80"/>
-        <UsageCount Value="185"/>
+        <UsageCount Value="192"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -112,7 +112,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="178"/>
+        <UsageCount Value="185"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -121,7 +121,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="178"/>
+        <UsageCount Value="185"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -133,8 +133,9 @@
         <UnitName Value="LogGrid"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="17" Y="89"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="83"/>
+        <CursorPos X="36" Y="88"/>
+        <UsageCount Value="161"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit8>
@@ -145,11 +146,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SimulationControl"/>
-        <EditorIndex Value="25"/>
+        <EditorIndex Value="27"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="226"/>
-        <CursorPos X="35" Y="245"/>
-        <UsageCount Value="153"/>
+        <TopLine Value="201"/>
+        <CursorPos X="46" Y="214"/>
+        <UsageCount Value="160"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit9>
@@ -159,8 +160,8 @@
         <UnitName Value="SimulaBetaGUIServices"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="33" Y="3"/>
-        <UsageCount Value="149"/>
+        <CursorPos X="76" Y="180"/>
+        <UsageCount Value="156"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -170,7 +171,7 @@
         <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
         <CursorPos X="22" Y="99"/>
-        <UsageCount Value="138"/>
+        <UsageCount Value="145"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -180,7 +181,7 @@
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <CursorPos X="66" Y="3"/>
-        <UsageCount Value="116"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -189,8 +190,9 @@
         <UnitName Value="SimulaBetaTypes"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
-        <UsageCount Value="116"/>
+        <TopLine Value="23"/>
+        <CursorPos X="23" Y="41"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -200,7 +202,7 @@
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <CursorPos X="54" Y="2"/>
-        <UsageCount Value="116"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
@@ -210,7 +212,7 @@
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="60" Y="2"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="96"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
@@ -220,17 +222,17 @@
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="2"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="96"/>
         <Loaded Value="True"/>
       </Unit16>
       <Unit17>
         <Filename Value="unitconverter.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UnitConverter"/>
-        <EditorIndex Value="23"/>
+        <EditorIndex Value="25"/>
         <WindowIndex Value="1"/>
         <CursorPos X="115" Y="11"/>
-        <UsageCount Value="88"/>
+        <UsageCount Value="95"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -244,7 +246,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="71"/>
         <CursorPos X="65" Y="97"/>
-        <UsageCount Value="84"/>
+        <UsageCount Value="91"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit18>
@@ -255,12 +257,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Sequencer"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
         <TopLine Value="110"/>
         <CursorPos X="74" Y="125"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="89"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -277,7 +278,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="75"/>
+        <UsageCount Value="82"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -287,11 +288,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="PreferencesGUI"/>
-        <EditorIndex Value="21"/>
+        <EditorIndex Value="23"/>
         <WindowIndex Value="1"/>
         <TopLine Value="105"/>
         <CursorPos X="37" Y="113"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="39"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit21>
@@ -299,11 +300,11 @@
         <Filename Value="preferencesservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PreferencesServices"/>
-        <EditorIndex Value="22"/>
+        <EditorIndex Value="24"/>
         <WindowIndex Value="1"/>
         <TopLine Value="14"/>
         <CursorPos X="8" Y="2"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
@@ -313,11 +314,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Stats"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="21"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="68"/>
-        <CursorPos X="51" Y="78"/>
-        <UsageCount Value="24"/>
+        <TopLine Value="178"/>
+        <CursorPos X="23" Y="195"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit23>
@@ -325,13 +326,39 @@
         <Filename Value="statsengine.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="StatsEngine"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="22"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="3"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="30"/>
         <Loaded Value="True"/>
       </Unit24>
       <Unit25>
+        <Filename Value="disptab.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DispTabWindow"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="19"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="82"/>
+        <CursorPos X="17" Y="105"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SensitivityAnalysis"/>
+        <EditorIndex Value="20"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="39"/>
+        <CursorPos X="60" Y="67"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+      </Unit26>
+      <Unit27>
         <Filename Value="aboutwindow.pas"/>
         <ComponentName Value="AboutWindow"/>
         <HasResources Value="True"/>
@@ -341,43 +368,43 @@
         <WindowIndex Value="1"/>
         <CursorPos X="27"/>
         <UsageCount Value="18"/>
-      </Unit25>
-      <Unit26>
+      </Unit27>
+      <Unit28>
         <Filename Value="Z:\bricks.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <UsageCount Value="25"/>
-      </Unit26>
-      <Unit27>
+      </Unit28>
+      <Unit29>
         <Filename Value="Z:\lifeblocks.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
         <UsageCount Value="20"/>
-      </Unit27>
-      <Unit28>
+      </Unit29>
+      <Unit30>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="9124"/>
         <CursorPos Y="9142"/>
         <UsageCount Value="6"/>
-      </Unit28>
-      <Unit29>
+      </Unit30>
+      <Unit31>
         <Filename Value="C:\Developer\lazarus 1.4\components\tachart\tacustomseries.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="792"/>
         <CursorPos Y="809"/>
         <UsageCount Value="6"/>
-      </Unit29>
-      <Unit30>
+      </Unit31>
+      <Unit32>
         <Filename Value="C:\Developer\lazarus 1.4\lcl\lcltype.pp"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="443"/>
         <CursorPos X="3" Y="460"/>
         <UsageCount Value="6"/>
-      </Unit30>
-      <Unit31>
+      </Unit32>
+      <Unit33>
         <Filename Value="Z:\systemsdiagram.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
@@ -390,16 +417,16 @@
           <CursorPos Y="2"/>
         </ExtraEditor1>
         <UsageCount Value="7"/>
-      </Unit31>
-      <Unit32>
+      </Unit33>
+      <Unit34>
         <Filename Value="systemsdiagram.pas"/>
         <UnitName Value="SystemsDiagram"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="74"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
-      </Unit32>
-      <Unit33>
+      </Unit34>
+      <Unit35>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
@@ -407,8 +434,8 @@
         <TopLine Value="1075"/>
         <CursorPos X="29" Y="1092"/>
         <UsageCount Value="7"/>
-      </Unit33>
-      <Unit34>
+      </Unit35>
+      <Unit36>
         <Filename Value="C:\lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
@@ -416,8 +443,8 @@
         <TopLine Value="152"/>
         <CursorPos X="3" Y="170"/>
         <UsageCount Value="6"/>
-      </Unit34>
-      <Unit35>
+      </Unit36>
+      <Unit37>
         <Filename Value="C:\lazarus\lcl\interfaces\win32\win32wscontrols.pp"/>
         <UnitName Value="Win32WSControls"/>
         <EditorIndex Value="-1"/>
@@ -425,8 +452,8 @@
         <TopLine Value="236"/>
         <CursorPos Y="253"/>
         <UsageCount Value="6"/>
-      </Unit35>
-      <Unit36>
+      </Unit37>
+      <Unit38>
         <Filename Value="Applications\Lazarus\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
@@ -434,8 +461,8 @@
         <TopLine Value="1170"/>
         <CursorPos X="3" Y="1032"/>
         <UsageCount Value="7"/>
-      </Unit36>
-      <Unit37>
+      </Unit38>
+      <Unit39>
         <Filename Value="Z:\Developer\lazarus\lcl\interfaces\carbon\carboncanvas.pp"/>
         <UnitName Value="CarbonCanvas"/>
         <EditorIndex Value="-1"/>
@@ -443,24 +470,24 @@
         <TopLine Value="1616"/>
         <CursorPos Y="1628"/>
         <UsageCount Value="7"/>
-      </Unit37>
-      <Unit38>
+      </Unit39>
+      <Unit40>
         <Filename Value="Z:\Developer\lazarus\lcl\include\application.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="2224"/>
         <CursorPos Y="2239"/>
         <UsageCount Value="7"/>
-      </Unit38>
-      <Unit39>
+      </Unit40>
+      <Unit41>
         <Filename Value="Z:\Developer\lazarus\lcl\include\customform.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="450"/>
         <CursorPos Y="460"/>
         <UsageCount Value="7"/>
-      </Unit39>
-      <Unit40>
+      </Unit41>
+      <Unit42>
         <Filename Value="Z:\Developer\lazarus\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
@@ -468,31 +495,31 @@
         <TopLine Value="866"/>
         <CursorPos X="43" Y="882"/>
         <UsageCount Value="7"/>
-      </Unit40>
-      <Unit41>
+      </Unit42>
+      <Unit43>
         <Filename Value="Z:\Developer\lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <UsageCount Value="7"/>
-      </Unit41>
-      <Unit42>
+      </Unit43>
+      <Unit44>
         <Filename Value="usr\local\share\fpcsrc\rtl\objpas\sysutils\sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="314"/>
         <CursorPos X="13" Y="330"/>
         <UsageCount Value="8"/>
-      </Unit42>
-      <Unit43>
+      </Unit44>
+      <Unit45>
         <Filename Value="Applications\Lazarus\lcl\interfaces\carbon\carbonbars.pp"/>
         <UnitName Value="CarbonBars"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="2" Y="16"/>
         <UsageCount Value="8"/>
-      </Unit43>
-      <Unit44>
+      </Unit45>
+      <Unit46>
         <Filename Value="Applications\Lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
@@ -500,16 +527,16 @@
         <TopLine Value="1584"/>
         <CursorPos X="14" Y="1598"/>
         <UsageCount Value="8"/>
-      </Unit44>
-      <Unit45>
+      </Unit46>
+      <Unit47>
         <Filename Value="Applications\Lazarus\lcl\include\customcheckgroup.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="145"/>
         <CursorPos Y="165"/>
         <UsageCount Value="8"/>
-      </Unit45>
-      <Unit46>
+      </Unit47>
+      <Unit48>
         <Filename Value="C:\lazarus\components\tachart\tacustomseries.pas"/>
         <UnitName Value="TACustomSeries"/>
         <EditorIndex Value="-1"/>
@@ -517,32 +544,32 @@
         <TopLine Value="172"/>
         <CursorPos X="15" Y="190"/>
         <UsageCount Value="8"/>
-      </Unit46>
-      <Unit47>
+      </Unit48>
+      <Unit49>
         <Filename Value="Z:\usr\local\share\fpcsrc\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="186"/>
         <CursorPos X="23" Y="206"/>
         <UsageCount Value="8"/>
-      </Unit47>
-      <Unit48>
+      </Unit49>
+      <Unit50>
         <Filename Value="Z:\Applications\Lazarus\lcl\include\menuitem.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="63"/>
         <CursorPos Y="85"/>
         <UsageCount Value="8"/>
-      </Unit48>
-      <Unit49>
+      </Unit50>
+      <Unit51>
         <Filename Value="..\..\..\..\..\..\..\..\..\Applications\Lazarus\lcl\interfaces\carbon\carboncanvas.pp"/>
         <UnitName Value="CarbonCanvas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="152" Y="7"/>
         <UsageCount Value="8"/>
-      </Unit49>
-      <Unit50>
+      </Unit51>
+      <Unit52>
         <Filename Value="plot.lfm"/>
         <ComponentName Value="PlotForm"/>
         <HasResources Value="True"/>
@@ -552,8 +579,8 @@
         <CursorPos X="86" Y="11"/>
         <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit50>
-      <Unit51>
+      </Unit52>
+      <Unit53>
         <Filename Value="..\..\..\..\..\..\..\..\..\Applications\Lazarus\lcl\stdctrls.pp"/>
         <UnitName Value="StdCtrls"/>
         <EditorIndex Value="-1"/>
@@ -561,150 +588,150 @@
         <TopLine Value="1302"/>
         <CursorPos X="3" Y="1322"/>
         <UsageCount Value="8"/>
-      </Unit51>
-      <Unit52>
+      </Unit53>
+      <Unit54>
         <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\rtl\objpas\sysutils\sysstrh.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="111"/>
         <CursorPos X="10" Y="131"/>
         <UsageCount Value="8"/>
-      </Unit52>
-      <Unit53>
+      </Unit54>
+      <Unit55>
         <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\rtl\objpas\sysutils\datih.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="26"/>
         <UsageCount Value="8"/>
-      </Unit53>
-      <Unit54>
+      </Unit55>
+      <Unit56>
         <Filename Value="..\..\..\..\..\..\..\..\..\usr\local\share\fpcsrc\rtl\objpas\types.pp"/>
         <UnitName Value="Types"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <UsageCount Value="10"/>
-      </Unit54>
+      </Unit56>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="40" Column="37" TopLine="34"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="65" TopLine="49"/>
       </Position1>
       <Position2>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="68" Column="27" TopLine="39"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="67" TopLine="49"/>
       </Position2>
       <Position3>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="55" Column="6" TopLine="39"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="69" TopLine="49"/>
       </Position3>
       <Position4>
-        <Filename Value="stats.pas"/>
-        <Caret Line="62" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="70" TopLine="49"/>
       </Position4>
       <Position5>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="55" TopLine="39"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="59" TopLine="49"/>
       </Position5>
       <Position6>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="54" Column="6" TopLine="39"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="61" TopLine="49"/>
       </Position6>
       <Position7>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="55" Column="26" TopLine="51"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="62" TopLine="49"/>
       </Position7>
       <Position8>
-        <Filename Value="stats.pas"/>
-        <Caret Line="62" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="65" TopLine="49"/>
       </Position8>
       <Position9>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="55" TopLine="49"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="67" TopLine="49"/>
       </Position9>
       <Position10>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="68" TopLine="49"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="69" TopLine="49"/>
       </Position10>
       <Position11>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="69" TopLine="49"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="70" TopLine="49"/>
       </Position11>
       <Position12>
-        <Filename Value="stats.pas"/>
-        <Caret Line="62" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="59" TopLine="49"/>
       </Position12>
       <Position13>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="86" Column="27" TopLine="60"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="61" TopLine="49"/>
       </Position13>
       <Position14>
-        <Filename Value="stats.pas"/>
-        <Caret Line="62" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="62" TopLine="49"/>
       </Position14>
       <Position15>
-        <Filename Value="stats.pas"/>
-        <Caret Line="63" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="65" TopLine="49"/>
       </Position15>
       <Position16>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="122" Column="27" TopLine="95"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="67" TopLine="49"/>
       </Position16>
       <Position17>
-        <Filename Value="stats.pas"/>
-        <Caret Line="62" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="69" TopLine="49"/>
       </Position17>
       <Position18>
-        <Filename Value="stats.pas"/>
-        <Caret Line="63" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="70" TopLine="49"/>
       </Position18>
       <Position19>
-        <Filename Value="stats.pas"/>
-        <Caret Line="64" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="59" TopLine="49"/>
       </Position19>
       <Position20>
-        <Filename Value="stats.pas"/>
-        <Caret Line="65" TopLine="45"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="61" TopLine="49"/>
       </Position20>
       <Position21>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="37" Column="20" TopLine="19"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="62" TopLine="49"/>
       </Position21>
       <Position22>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="38" Column="44" TopLine="14"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="65" TopLine="49"/>
       </Position22>
       <Position23>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="88" TopLine="12"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="67" TopLine="49"/>
       </Position23>
       <Position24>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="80" Column="29" TopLine="61"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="69" TopLine="49"/>
       </Position24>
       <Position25>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="41" Column="13" TopLine="25"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="70" TopLine="49"/>
       </Position25>
       <Position26>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="234" Column="3" TopLine="33"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="59" TopLine="49"/>
       </Position26>
       <Position27>
-        <Filename Value="statsengine.pas"/>
-        <Caret Line="38" Column="49" TopLine="32"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="61" TopLine="49"/>
       </Position27>
       <Position28>
-        <Filename Value="preferencesgui.pas"/>
-        <Caret Line="113" Column="37" TopLine="105"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="62" TopLine="49"/>
       </Position28>
       <Position29>
-        <Filename Value="sequencer.pas"/>
-        <Caret Line="133" Column="39" TopLine="113"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="65" TopLine="49"/>
       </Position29>
       <Position30>
-        <Filename Value="sequencer.pas"/>
-        <Caret Line="125" Column="40" TopLine="109"/>
+        <Filename Value="sensitivityanalysis.pas"/>
+        <Caret Line="67" TopLine="49"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -715,7 +742,10 @@
   <Debugging>
     <Watches>
       <Item>
-        <Expression Value="EventMatrix"/>
+        <Expression Value="params"/>
+      </Item>
+      <Item>
+        <Expression Value="prediction"/>
       </Item>
     </Watches>
   </Debugging>
