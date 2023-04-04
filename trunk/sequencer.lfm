@@ -1,7 +1,7 @@
 object SequencerWindow: TSequencerWindow
   Left = 340
   Height = 382
-  Top = 100
+  Top = 97
   Width = 1044
   Caption = 'LOREMOS: Load, Reference and Modulation Sequencer'
   ClientHeight = 382
@@ -154,12 +154,22 @@ object SequencerWindow: TSequencerWindow
   object ApplyButton: TButton
     Left = 953
     Height = 25
-    Top = 337
+    Top = 336
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Apply'
     Default = True
     OnClick = ApplyButtonClick
     TabOrder = 2
+  end
+  object CancelButton: TButton
+    Left = 864
+    Height = 25
+    Top = 336
+    Width = 75
+    Cancel = True
+    Caption = 'Cancel'
+    OnClick = CancelButtonClick
+    TabOrder = 3
   end
 end

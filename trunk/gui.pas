@@ -57,6 +57,9 @@ type
     Divider22: TMenuItem;
     DispTabItem: TMenuItem;
     Divider32: TMenuItem;
+    Divider2: TToolButton;
+    PrintButton: TToolButton;
+    RunButton: TToolButton;
     StatsItem: TMenuItem;
     Divider31: TMenuItem;
     WinPreferencesItem: TMenuItem;
@@ -71,30 +74,33 @@ type
     QuitMenuItem: TMenuItem;
     RedoMenuItem: TMenuItem;
     SaveMenuItem: TMenuItem;
-    ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
+    NewButton: TToolButton;
+    OpenButton: TToolButton;
+    SaveButton: TToolButton;
+    SaveAsButton: TToolButton;
+    Divider1: TToolButton;
     UndoMenuItem: TMenuItem;
     WinAboutItem: TMenuItem;
-    ToolBar1: TToolBar;
+    MainToolBar: TToolBar;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
     procedure DispTabItemClick(Sender: TObject);
+    procedure Divider1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
+    procedure PrintButtonClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure ResetItemClick(Sender: TObject);
+    procedure RunButtonClick(Sender: TObject);
     procedure RunItemClick(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
     procedure StatsItemClick(Sender: TObject);
-    procedure ToolBar1Click(Sender: TObject);
-    procedure ToolButton2Click(Sender: TObject);
-    procedure ToolButton3Click(Sender: TObject);
-    procedure ToolButton4Click(Sender: TObject);
+    procedure MainToolBarClick(Sender: TObject);
+    procedure OpenButtonClick(Sender: TObject);
+    procedure SaveButtonClick(Sender: TObject);
+    procedure SaveAsButtonClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
     procedure WinPreferencesItemClick(Sender: TObject);
   private
@@ -175,7 +181,7 @@ begin
   WindowState := wsMaximized;
   left := 0;
   top := 20;
-  height := Toolbar1.Height;
+  height := MainToolBar.Height;
   Width := Screen.Width;
   WindowState := wsNormal;
   {$ELSE}
@@ -183,7 +189,7 @@ begin
   AutoSize := True;
   left := 1;
   top := 0;
-  height := Toolbar1.Height + MainMenu1.Height;
+  height := MainToolBar.Height + MainMenu1.Height;
   AutoSize := False;
   Width := Screen.Width - 7;
   {$ENDIF}
@@ -220,6 +226,11 @@ begin
   end;
 end;
 
+procedure TToolbarWindow.PrintButtonClick(Sender: TObject);
+begin
+
+end;
+
 procedure TToolbarWindow.QuitMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
@@ -229,6 +240,11 @@ procedure TToolbarWindow.ResetItemClick(Sender: TObject);
 begin
   InitSimulation;
   ControlWindow.SetEditControls;
+end;
+
+procedure TToolbarWindow.RunButtonClick(Sender: TObject);
+begin
+  RunItemClick(Sender);
 end;
 
 procedure TToolbarWindow.RunItemClick(Sender: TObject);
@@ -277,24 +293,24 @@ begin
   StatsForm.Show;
 end;
 
-procedure TToolbarWindow.ToolBar1Click(Sender: TObject);
+procedure TToolbarWindow.MainToolBarClick(Sender: TObject);
 begin
 
 end;
 
-procedure TToolbarWindow.ToolButton2Click(Sender: TObject);
+procedure TToolbarWindow.OpenButtonClick(Sender: TObject);
 begin
   OpenMenuItemClick(Sender);
 end;
 
-procedure TToolbarWindow.ToolButton3Click(Sender: TObject);
+procedure TToolbarWindow.SaveButtonClick(Sender: TObject);
 begin
   SaveMenuItemClick(Sender);
 end;
 
-procedure TToolbarWindow.ToolButton4Click(Sender: TObject);
+procedure TToolbarWindow.SaveAsButtonClick(Sender: TObject);
 begin
-  ToolButton3Click(Sender);
+  SaveButtonClick(Sender);
 end;
 
 procedure TToolbarWindow.FormCreate(Sender: TObject);
@@ -324,6 +340,11 @@ end;
 procedure TToolbarWindow.DispTabItemClick(Sender: TObject);
 begin
   DispTabWindow.Show;
+end;
+
+procedure TToolbarWindow.Divider1Click(Sender: TObject);
+begin
+
 end;
 
 end.

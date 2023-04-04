@@ -52,9 +52,11 @@ type
 
   TSequencerWindow = class(TForm)
     ApplyButton: TButton;
+    CancelButton: TButton;
     SequencerGrid: TDrawGrid;
     ParameterGrid: TStringGrid;
     procedure ApplyButtonClick(Sender: TObject);
+    procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ParameterGridCheckboxToggled(Sender: TObject; aCol,
       aRow: Integer; aState: TCheckboxState);
@@ -128,6 +130,12 @@ begin
         EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN);
       inc(k);
     end;
+  Close;
+end;
+
+procedure TSequencerWindow.CancelButtonClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TSequencerWindow.ParameterGridCheckboxToggled(Sender: TObject; aCol,

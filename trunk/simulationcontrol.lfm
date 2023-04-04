@@ -172,6 +172,39 @@ object ControlWindow: TControlWindow
       TabOrder = 3
       Value = 1
     end
+    object EnterButton: TRadioButton
+      Left = 264
+      Height = 18
+      Hint = 'Enter initial values here...'
+      Top = 19
+      Width = 56
+      Caption = 'Enter'
+      Checked = True
+      OnChange = EnterButtonChange
+      TabOrder = 6
+      TabStop = True
+    end
+    object PredictionButton: TRadioButton
+      Left = 368
+      Height = 18
+      Hint = 'Start with predicted values from mathematical model...'
+      Top = 19
+      Width = 84
+      Caption = 'Prediction'
+      OnChange = PredictionButtonChange
+      TabOrder = 4
+    end
+    object ContinueButton: TRadioButton
+      Left = 496
+      Height = 18
+      Hint = 'Continue with values from last simulation run'
+      Top = 19
+      Width = 77
+      Caption = 'Continue'
+      Enabled = False
+      OnChange = ContinueButtonChange
+      TabOrder = 5
+    end
   end
   object StrucParsGroup: TGroupBox
     Left = 16

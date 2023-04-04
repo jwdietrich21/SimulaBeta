@@ -29,7 +29,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
-  ExtCtrls, SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
+  ExtCtrls, Math, SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
   SimulaBetaGUIServices, SequencerEngine, Sequencer, Stats;
 
 type
@@ -41,6 +41,9 @@ type
     oGTTButton: TRadioButton;
     MinutesButton: TRadioButton;
     HoursButton: TRadioButton;
+    EnterButton: TRadioButton;
+    PredictionButton: TRadioButton;
+    ContinueButton: TRadioButton;
     SequenceButton: TRadioButton;
     TestStartUnitLabel: TLabel;
     ZLabel: TLabel;
@@ -83,6 +86,8 @@ type
     StartButton: TButton;
     StrucParsGroup: TGroupBox;
     procedure CancelButtonClick(Sender: TObject);
+    procedure ContinueButtonChange(Sender: TObject);
+    procedure EnterButtonChange(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -96,15 +101,18 @@ type
     procedure MoreButtonClick(Sender: TObject);
     procedure OffButtonChange(Sender: TObject);
     procedure oGTTButtonChange(Sender: TObject);
+    procedure PredictionButtonChange(Sender: TObject);
     procedure SequenceButtonChange(Sender: TObject);
     procedure StandardButtonClick(Sender: TObject);
     procedure SwitchTest(Sender: TObject);
+    procedure SwitchInitialConditions(Sender: TObject);
     procedure SetEditControls;
     procedure StartButtonClick(Sender: TObject);
   private
 
   public
     SimTimeUnit, TestTimeUnit: TTimeUnit;
+    LOREMOSActive: boolean;
   end;
 
 var
@@ -128,6 +136,7 @@ begin
      TestStartSpin.Enabled := true;
      gTestInfo.kind := tkfsIGT;
      gTestInfo.startTime := TestStartSpin.Value * gTestTimeFactor;
+     SequencerWindow.Close;
     end
   else if oGTTButton.checked then
     begin
@@ -139,6 +148,7 @@ begin
       TestStartSpin.Enabled := true;
      gTestInfo.kind := tkoGTT;
       gTestInfo.startTime := TestStartSpin.Value * gTestTimeFactor;
+      SequencerWindow.Close;
     end
   else if SequenceButton.checked then
     begin
@@ -149,9 +159,11 @@ begin
       TestStartLabel.Enabled := false;
       TestStartSpin.Enabled := false;
       gTestInfo.kind := tkSequence;
-      SequencerWindow.Show;
-      SequencerWindow.BringToFront;
-      SequencerWindow.FormStyle := fsStayOnTop;
+      LOREMOSActive := true;
+      SequencerWindow.CancelButton.Enabled := true;
+      if SequencerWindow.Visible then
+        SequencerWindow.Close;
+      SequencerWindow.ShowModal;
     end
   else if OffButton.checked then
     begin
@@ -162,15 +174,73 @@ begin
       TestStartSpin.Enabled := false;
       gTestInfo.kind := tkNone;
       gTestInfo.startTime := 0;
+      SequencerWindow.Close;
     end
+end;
+
+procedure TControlWindow.SwitchInitialConditions(Sender: TObject);
+var
+  k: integer;
+  P, W, Z: extended;
+begin
+  If EnterButton.Checked then
+    begin
+      PredictionButton.Checked := false;
+      ContinueButton.Checked := false;
+      ZSpinEdit.Enabled := true;
+      PSpinEdit.Enabled := true;
+      ISpinEdit.Enabled := true;
+      GSpinEdit.Enabled := true;
+    end
+  else if PredictionButton.Checked then
+    begin
+      EnterButton.Checked := false;
+      ContinueButton.Checked := false;
+      ZSpinEdit.Enabled := false;
+      PSpinEdit.Enabled := false;
+      ISpinEdit.Enabled := false;
+      GSpinEdit.Enabled := false;
+      if gActiveModel.Iterations = 0 then
+      begin
+        W := 0;
+        Z := ZSpinEdit.Value;
+        P := PSpinEdit.Value * PFactor;
+        gActiveModel.Prediction := PredictedEquilibrium(P, W, Z, gActiveModel.StrucPars);
+        PredictionForm.DisplayPrediction(gActiveModel.Prediction);
+        application.ProcessMessages;
+      end;
+      if gActiveModel.prediction[0].G > 0 then
+        k := 0
+      else
+        K := 1;
+      GSpinEdit.Value := gActiveModel.Prediction[k].G / GFactor * gGlucoseConversionFactor;
+      ISpinEdit.Value := gActiveModel.Prediction[k].I / IFactor * gInsulinConversionFactor;
+      SetInitialConditions(gActiveModel.Prediction);
+    end
+  else if ContinueButton.Checked then
+    begin
+      EnterButton.Checked := false;
+      PredictionButton.Checked := false;
+      ZSpinEdit.Enabled := false;
+      PSpinEdit.Enabled := false;
+      ISpinEdit.Enabled := false;
+      GSpinEdit.Enabled := false;
+      if gActiveModel.Iterations > 0 then
+        begin
+          GSpinEdit.Value := gValues.G[gActiveModel.iterations] / GFactor * gGlucoseConversionFactor;
+          ISpinEdit.Value := gValues.I[gActiveModel.iterations] / IFactor * gInsulinConversionFactor;
+        end;
+    end;
 end;
 
 procedure TControlWindow.SetEditControls;
 begin
+  IUnitLabel.Caption := gUnits.I;
+  GUnitLabel.Caption := gUnits.G;
   PSpinEdit.Value := P0 / PFactor;
   ZSpinEdit.Value := Z0;
-  GSpinEdit.Value := G0 / GFactor;
-  ISpinEdit.Value := I0 / IFactor;
+  GSpinEdit.Value := G0 / GFactor * gGlucoseConversionFactor;
+  ISpinEdit.Value := I0 / IFactor * gInsulinConversionFactor;
   GEEdit.Value := gActiveModel.StrucPars.GE;
   GBetaEdit.Value := gActiveModel.StrucPars.GBeta / PicoFactor;
   DBetaEdit.Value := gActiveModel.StrucPars.DBeta / MilliFactor;
@@ -193,6 +263,11 @@ var
   EventMatrix: TEventMatrix;
 begin
   Screen.Cursor := crHourGlass;
+  if LOREMOSActive then
+    begin
+      SequencerWindow.CancelButton.Enabled := false;
+      SequencerWindow.Show;
+    end;
   if TestTimeUnit = minutes then
     gTestTimeFactor := SecsPerMin
   else
@@ -200,8 +275,8 @@ begin
   W := 0;
   Z := ZSpinEdit.Value;
   P := PSpinEdit.Value * PFactor;
-  Glc := GSpinEdit.Value * GFactor;
-  Ins := ISpinEdit.Value * IFactor;
+  Glc := GSpinEdit.Value * GFactor / gGlucoseConversionFactor;
+  Ins := ISpinEdit.Value * IFactor / gInsulinConversionFactor;
   EventMatrix := SequencerWindow.EventMatrix;
   startpoint := gValues.size;
   gActiveModel.iterations := startpoint + IterationsSpinEdit.Value * SecsPerMin;
@@ -237,7 +312,7 @@ begin
   gValues.I[0] := Ins;
   gValues.M[0] := gActiveModel.Prediction[i].M;
   gValues.N[0] := gActiveModel.Prediction[i].N;
-  SwitchTest(Sender);
+  //SwitchTest(Sender);
   Close;
   RunSimulation(P, Glc, Ins, startpoint, gActiveModel.iterations, gActiveModel.Prediction, EventMatrix);
   LogWindow.FillGrid(gActiveModel.iterations);
@@ -249,6 +324,7 @@ end;
 
 procedure TControlWindow.FormCreate(Sender: TObject);
 begin
+  LOREMOSActive := false;
   TestStartSpin.MaxValue := IterationsSpinEdit.MaxValue;
   SetEditControls;
   SimTimeUnit := minutes;
@@ -266,6 +342,16 @@ procedure TControlWindow.CancelButtonClick(Sender: TObject);
 begin
   SequencerWindow.FormStyle := fsNormal;
   Close;
+end;
+
+procedure TControlWindow.ContinueButtonChange(Sender: TObject);
+begin
+  SwitchInitialConditions(Sender);
+end;
+
+procedure TControlWindow.EnterButtonChange(Sender: TObject);
+begin
+  SwitchInitialConditions(Sender);
 end;
 
 procedure TControlWindow.FormDestroy(Sender: TObject);
@@ -298,6 +384,8 @@ end;
 procedure TControlWindow.FormShow(Sender: TObject);
 begin
   SetEditControls;
+  if gActiveModel.Iterations > 0 then
+    ContinueButton.Enabled := true;
 end;
 
 procedure TControlWindow.fsIGTButtonChange(Sender: TObject);
@@ -359,6 +447,11 @@ begin
   SwitchTest(Sender);
 end;
 
+procedure TControlWindow.PredictionButtonChange(Sender: TObject);
+begin
+  SwitchInitialConditions(Sender)
+end;
+
 procedure TControlWindow.SequenceButtonChange(Sender: TObject);
 begin
   SwitchTest(Sender);
@@ -369,7 +462,6 @@ begin
   InitSimulation;
   SetEditControls;
 end;
-
 
 end.
 

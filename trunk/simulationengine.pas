@@ -140,6 +140,7 @@ var
 
 procedure InitUnits;
 procedure InitSimulation;
+procedure SetInitialConditions(Prediction: TPrediction);
 function PredictedEquilibrium(P, W, Z: extended; StrucPars: tParameterSpace): TPrediction;
 procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer; prediction: TPrediction; Events: TEventMatrix);
 
@@ -277,7 +278,6 @@ begin
       blocks.MiMeR.G := GR;
       blocks.MiMeR.D := DR;
       blocks.GE.G := GE;
-      // SetInitialConditions(prediction);  // for future extension
       N := GE * GR * Ins / (DR + Ins);
     end;
 
