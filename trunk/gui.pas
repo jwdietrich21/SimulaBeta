@@ -58,8 +58,12 @@ type
     DispTabItem: TMenuItem;
     Divider32: TMenuItem;
     Divider2: TToolButton;
+    Divider13: TMenuItem;
+    PauseItem: TMenuItem;
+    PrintItem: TMenuItem;
     PrintButton: TToolButton;
     RunButton: TToolButton;
+    PauseButton: TToolButton;
     StatsItem: TMenuItem;
     Divider31: TMenuItem;
     WinPreferencesItem: TMenuItem;
@@ -90,6 +94,7 @@ type
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
+    procedure PauseButtonClick(Sender: TObject);
     procedure PrintButtonClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure ResetItemClick(Sender: TObject);
@@ -224,6 +229,11 @@ begin
         end;
     end;
   end;
+end;
+
+procedure TToolbarWindow.PauseButtonClick(Sender: TObject);
+begin
+
 end;
 
 procedure TToolbarWindow.PrintButtonClick(Sender: TObject);

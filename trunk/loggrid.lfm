@@ -1,10 +1,10 @@
 object LogWindow: TLogWindow
   Left = 198
-  Height = 388
+  Height = 350
   Top = 128
   Width = 939
   Caption = 'Log'
-  ClientHeight = 388
+  ClientHeight = 350
   ClientWidth = 939
   OnCreate = FormCreate
   OnPaint = FormPaint
@@ -12,7 +12,7 @@ object LogWindow: TLogWindow
   Visible = True
   object ValuesGrid: TStringGrid
     Left = 0
-    Height = 364
+    Height = 326
     Hint = 'Time series of simulated concentrations'
     Top = 0
     Width = 939

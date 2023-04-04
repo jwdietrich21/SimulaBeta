@@ -1,7 +1,7 @@
 object IPSForm: TIPSForm
-  Left = 533
+  Left = 5
   Height = 400
-  Top = 295
+  Top = 479
   Width = 692
   BorderStyle = bsSingle
   Caption = 'Information Processing Structure'
@@ -145,8 +145,7 @@ object IPSForm: TIPSForm
     0000
   }
   OnCreate = FormCreate
-  Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
+  LCLVersion = '2.2.6.0'
   Visible = True
   object IPSImage: TImage
     Left = 24

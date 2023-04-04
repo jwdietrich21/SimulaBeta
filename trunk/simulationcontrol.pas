@@ -275,6 +275,7 @@ begin
   W := 0;
   Z := ZSpinEdit.Value;
   P := PSpinEdit.Value * PFactor;
+  SwitchInitialConditions(Sender);
   Glc := GSpinEdit.Value * GFactor / gGlucoseConversionFactor;
   Ins := ISpinEdit.Value * IFactor / gInsulinConversionFactor;
   EventMatrix := SequencerWindow.EventMatrix;
@@ -303,15 +304,18 @@ begin
     i := 1
   else
     i := 0;
-  gValues.t[0] := 0;
-  gValues.P[0] := gActiveModel.Prediction[i].P;
-  gValues.Z[0] := gActiveModel.Prediction[i].Z;
-  gValues.R[0] := gActiveModel.Prediction[i].R;
-  gValues.G[0] := Glc;
-  gValues.S[0] := gActiveModel.Prediction[i].S;
-  gValues.I[0] := Ins;
-  gValues.M[0] := gActiveModel.Prediction[i].M;
-  gValues.N[0] := gActiveModel.Prediction[i].N;
+  if gActiveModel.Iterations = 0 then
+    begin
+      gValues.t[0] := 0;
+      gValues.P[0] := gActiveModel.Prediction[i].P;
+      gValues.Z[0] := gActiveModel.Prediction[i].Z;
+      gValues.R[0] := gActiveModel.Prediction[i].R;
+      gValues.G[0] := Glc;
+      gValues.S[0] := gActiveModel.Prediction[i].S;
+      gValues.I[0] := Ins;
+      gValues.M[0] := gActiveModel.Prediction[i].M;
+      gValues.N[0] := gActiveModel.Prediction[i].N;
+    end;
   //SwitchTest(Sender);
   Close;
   RunSimulation(P, Glc, Ins, startpoint, gActiveModel.iterations, gActiveModel.Prediction, EventMatrix);
