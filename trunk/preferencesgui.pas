@@ -40,9 +40,12 @@ type
     CancelButton: TButton;
     DivLabel1: TLabel;
     DivLabel2: TLabel;
+    InsLoadExampleLabel: TLabel;
     grammLabel: TLabel;
     GlucLoadExampleLabel: TLabel;
     GlucLoadLabel: TLabel;
+    InsLoadLabel: TLabel;
+    IULabel: TLabel;
     NumbersExampleLabel: TLabel;
     NumberFormatEdit: TEdit;
     DateTimeFormatEdit: TEdit;
@@ -78,7 +81,7 @@ type
   private
 
   public
-    InsulinUoM, GlucoseUoM, GlucLoadUoM: string;
+    InsulinUoM, GlucoseUoM, GlucLoadUoM, InsLoadUoM: string;
   end;
 
 const
@@ -86,6 +89,7 @@ const
   kInsulinExample = 60;     // pmol/L, corresponding to 10 mIU/L
   kGlucoseExample = 5.56;   // mmol/L, corresponding to 100 mg/dL
   kOralGlucoseExample = 75; // usual oGTT dosage in g
+  kExtInsulinExample = 10;   // International units
 
 var
   PreferencesDialog: TPreferencesDialog;
@@ -130,9 +134,11 @@ begin
   InsulinUoM := InsulinMassPrefixCombo.Text + InsulinMassUnitCombo.Text + '/' + InsulinVolumePrefixCombo.Text + 'l';
   GlucoseUoM := GlucoseMassPrefixCombo.Text + GlucoseMassUnitCombo.Text + '/' + GlucoseVolumePrefixCombo.Text + 'l';
   GlucLoadUoM := 'g';
+  InsLoadUoM := 'IU';
   InsulinExampleLabel.Caption := EXAMPLE_STRING + UnitFromValueF(kInsulinExample, kInsulinActivity, 'pmol/l', InsulinUoM, ffNumber, 2, 2);
   GlucoseExampleLabel.Caption := EXAMPLE_STRING + UnitFromValueF(kGlucoseExample, kMolarMassGlucose, 'mmol/l', GlucoseUoM, ffNumber, 2, 2);
   GlucLoadExampleLabel.Caption := EXAMPLE_STRING + IntToStr(kOralGlucoseExample) + ' ' + GlucLoadUoM;
+  InsLoadExampleLabel.Caption := EXAMPLE_STRING + IntToStr(kExtInsulinExample) + ' ' + InsLoadUoM;
   NumbersExampleLabel.Caption := EXAMPLE_STRING + FormatFloat(NumberFormatEdit.Text, kExampleNumber);
 end;
 

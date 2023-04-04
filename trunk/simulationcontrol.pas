@@ -320,6 +320,7 @@ begin
     end;
   //SwitchTest(Sender);
   Close;
+  application.ProcessMessages;
   RunSimulation(P, Glc, Ins, startpoint, gActiveModel.iterations, gActiveModel.Prediction, EventMatrix);
   LogWindow.FillGrid(gActiveModel.iterations);
   application.ProcessMessages;

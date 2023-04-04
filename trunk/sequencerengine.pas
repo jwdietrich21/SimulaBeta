@@ -40,6 +40,7 @@ type
     ModType: TEventType;
     Delay: integer;
     ka: real;
+    alpha: real;
     beta: real;
     c0: real;
     f0: real;
@@ -67,6 +68,8 @@ implementation
 
 function bateman(f, D, V, ka, ke, t: real): real;
 begin
+  if ka = ke then
+    ka := 0.99 * ka; // prevent the denominator from getting zero
   result := f * D / V * ka / (ka - ke) * (exp(-ke * t) - exp(-ka * t));
 end;
 

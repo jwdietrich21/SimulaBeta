@@ -98,7 +98,8 @@ const
 var
   gNumberFormat, gDateTimeFormat: String;
   gActiveModel: TModel;
-  gInsulinConversionFactor, gGlucoseConversionFactor, gGlucLoadConversionFactor: real;
+  gInsulinConversionFactor, gGlucoseConversionFactor: real;
+  gGlucLoadConversionFactor, gInsulinLoadConversionFactor: real;
 
 implementation
 

@@ -349,8 +349,9 @@ begin
           for j := 0 to length(GEvents) - 1 do
           if (t >= GEvents[j].Delay) and (GEvents[j].ModType = iv) then
           begin
-            SimIv(Glc, blocks.G1, gActiveModel.StrucPars.alphaG * GEvents[j].Amplitude, GEvents[j].ka, GEvents[j].ModOp,
-            (t - GEvents[j].Delay));
+            SimIv(Glc, blocks.G1,
+              gActiveModel.StrucPars.alphaG * GEvents[j].Amplitude,
+              GEvents[j].ka, GEvents[j].ModOp, (t - GEvents[j].Delay));
           end;
         end;
       blocks.MiMeBeta.input := Glc;
@@ -363,7 +364,8 @@ begin
           if (t >= IEvents[j].Delay) and (IEvents[j].ModType = sc) then
           begin
             SimSc(Ins, IEvents[j].Amplitude, IEvents[j].f0, IEvents[j].ka,
-            IEvents[j].beta, 5, IEvents[j].ModOp, (t - IEvents[j].Delay));
+            IEvents[j].beta, 1 / IEvents[j].alpha,
+            IEvents[j].ModOp, (t - IEvents[j].Delay));
           end;
         end;
       blocks.MiMeR.input := Ins;

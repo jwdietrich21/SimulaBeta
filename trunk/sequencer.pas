@@ -41,6 +41,7 @@ type
     ModType: TEventType;
     Delay: string;
     ka: string;
+    alpha: string;
     beta: string;
     c0: string;
     f0: string;
@@ -116,6 +117,7 @@ begin
       EventMatrix[k].ModType := InputFields[i].ModType;
       EventMatrix[k].Delay := StrToIntDef(InputFields[i].Delay, -1) * gTestTimeFactor;
       EventMatrix[k].ka := StrToFloatDef(InputFields[i].ka, NaN);
+      EventMatrix[k].alpha := StrToFloatDef(InputFields[i].alpha, NaN);
       EventMatrix[k].beta := StrToFloatDef(InputFields[i].beta, NaN);
       EventMatrix[k].c0 := StrToFloatDef(InputFields[i].c0, NaN);
       EventMatrix[k].f0 := StrToFloatDef(InputFields[i].f0, NaN);
@@ -123,7 +125,7 @@ begin
       EventMatrix[k].Variable := InputFields[i].Variable;
       EventMatrix[k].ModOp := InputFields[i].ModOp;
       if EventMatrix[k].Variable = vI then
-        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) * IFactor / gInsulinConversionFactor
+        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) * gInsulinLoadConversionFactor
       else if (EventMatrix[k].Variable = vG) or (EventMatrix[k].Variable = vW) then
         EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) / gGlucLoadConversionFactor
       else
@@ -247,7 +249,7 @@ begin
       inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       ParameterGrid.Cells[7, i] := 'NaN';
       inputFields[i - 1].c0 := ParameterGrid.Cells[7, i];
-      ParameterGrid.Cells[8, i] := '1';
+      ParameterGrid.Cells[8, i] := '0.7';
       inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
       ParameterGrid.Cells[9, i] := 'NaN';
       inputFields[i - 1].p1 := ParameterGrid.Cells[9, i];
@@ -256,70 +258,102 @@ begin
       ParameterGrid.Cells[11, i] := '+';
       inputFields[i - 1].ModOp := plus;
       inputFields[i - 1].ModType := sc;
+      // Methods for estimating ka:
+      // ka = 1 / (ln(c(t90%)) - ln(c(t10%))) / (t90% - t10%)
+      // ka = ln(2) / t50 (radioactivity after applying labelled insulin)
+      // (t50 is in most cases very similar to tmax)
       if pos('glulisin', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // https://go.drugbank.com/drugs/DB01309
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Becker and Frick 2008, PMID 18076215
+        // Arnolds et al. 2010, PMID 20429049
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (60 * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
+        inputFields[i - 1].alpha := FloatToStr(1/13);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (42 * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('lispro', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // https://go.drugbank.com/drugs/DB00046
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Roach and Woodworth 2002, PMID 12403642
+        // Becker and Frick 2008, PMID 18076215
+        // Leohr et al. 2020, PMID 32468448
+        // Lilly Factsheet PA 9351 FSAMP
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (60 * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
+        inputFields[i - 1].alpha := FloatToStr(1/21);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (60 * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('aspart', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // https://go.drugbank.com/drugs/DB01306
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Arnolds et al. 2010, PMID 20429049
+        // Liu et al. 2021, PMID 33947913
+        // Drai et al. 2022, PMID 35230749
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (90 * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (81 * SecsPerMin));
+        inputFields[i - 1].alpha := FloatToStr(1/22);
+        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (60 * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('human', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // https://go.drugbank.com/drugs/DB00030
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Becker and Frick 2008, PMID 18076215
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (100 * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
+        inputFields[i - 1].alpha := FloatToStr(1/22);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (120 * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('nph', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // Kølendorf and Bojsen 1982, PMID 7060331
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Lauritzen et al. 1982, PMID 6807390
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (13 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
+        inputFields[i - 1].alpha := FloatToStr(1/10);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (6.6 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('detemir', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // https://go.drugbank.com/drugs/DB01307
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Danne et al. 2003, PMID 14578244
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (8 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
+        inputFields[i - 1].alpha := FloatToStr(1/7);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (6 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('glargin', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
+        // Lindauer and Becker 2010, PMID 30369394
         // Heise et al. 2015, PMID 26086190
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Porcellati at al. 2015, PMID 25524950
+        // Lucidi et al. 2021, PMID 33444161
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (12.1 * MinsPerHour * SecsPerMin));
+        inputFields[i - 1].alpha := FloatToStr(1/10);
+        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('degludec', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
-        // Heise et al. 2015, PMID 26086190
         // https://go.drugbank.com/drugs/DB09564
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (1 * SecsPerMin)); ;
+        // Biester et al. 2014, PMID 24467565
+        // Heise et al. 2015, PMID 26086190
+        // Lucidi et al. 2021, PMID 33444161
+        // Therapeutic Goods Administration: AusPAR Attachment 2 PM-2016-02721-1-5
+        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (11  * MinsPerHour * SecsPerMin));
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (25.4 * MinsPerHour * SecsPerMin));
+        inputFields[i - 1].alpha := FloatToStr(1/17);
+        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (25 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
+        ParameterGrid.Cells[8, i] := '0.88';
+        inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
       end;
     end;
   end;
