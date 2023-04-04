@@ -161,6 +161,7 @@ begin
       gTestInfo.kind := tkSequence;
       LOREMOSActive := true;
       SequencerWindow.CancelButton.Enabled := true;
+      SequencerWindow.ApplyButton.Enabled := true;
       if SequencerWindow.Visible then
         SequencerWindow.Close;
       SequencerWindow.ShowModal;
@@ -266,6 +267,7 @@ begin
   if LOREMOSActive then
     begin
       SequencerWindow.CancelButton.Enabled := false;
+      SequencerWindow.ApplyButton.Enabled := false;
       SequencerWindow.Show;
     end;
   if TestTimeUnit = minutes then

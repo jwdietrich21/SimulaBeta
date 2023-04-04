@@ -349,7 +349,7 @@ begin
           for j := 0 to length(GEvents) - 1 do
           if (t >= GEvents[j].Delay) and (GEvents[j].ModType = iv) then
           begin
-            SimIv(Glc, GEvents[j].Amplitude, GEvents[j].ka, GEvents[j].ModOp,
+            SimIv(Glc, blocks.G1, gActiveModel.StrucPars.alphaG * GEvents[j].Amplitude, GEvents[j].ka, GEvents[j].ModOp,
             (t - GEvents[j].Delay));
           end;
         end;

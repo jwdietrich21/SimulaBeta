@@ -125,7 +125,7 @@ begin
       if EventMatrix[k].Variable = vI then
         EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) * IFactor / gInsulinConversionFactor
       else if (EventMatrix[k].Variable = vG) or (EventMatrix[k].Variable = vW) then
-        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) * GFactor / gGlucoseConversionFactor
+        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN) / gGlucLoadConversionFactor
       else
         EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN);
       inc(k);
@@ -190,8 +190,18 @@ begin
   begin
     if lowercase(ParameterGrid.Cells[3, i]) = 'oral' then
     begin
+      ParameterGrid.Cells[4, i] := FloatToStr(3600 / gTestTimeFactor);
+      inputFields[i - 1].Delay := ParameterGrid.Cells[4, i];
       ParameterGrid.Cells[5, i] := 'NaN';
       inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
+      ParameterGrid.Cells[6, i] := '0.0002';
+      inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
+      ParameterGrid.Cells[7, i] := '1360';
+      inputFields[i - 1].c0 := ParameterGrid.Cells[7, i];
+      ParameterGrid.Cells[8, i] := '0.85';
+      inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
+      ParameterGrid.Cells[9, i] := '5.7';
+      inputFields[i - 1].p1 := ParameterGrid.Cells[9, i];
       ParameterGrid.Cells[10, i] := 'W';
       inputFields[i - 1].Variable := vW;
       ParameterGrid.Cells[11, i] := ':=';
@@ -199,7 +209,9 @@ begin
     end
     else if lowercase(ParameterGrid.Cells[3, i]) = 'iv' then
     begin
-      ParameterGrid.Cells[5, i] := '';
+      ParameterGrid.Cells[4, i] := FloatToStr(3600 / gTestTimeFactor);
+      inputFields[i - 1].Delay := ParameterGrid.Cells[4, i];
+      //ParameterGrid.Cells[5, i] := '';
       inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
       ParameterGrid.Cells[6, i] := 'NaN';
       inputFields[i - 1].beta := ParameterGrid.Cells[6, i];

@@ -28,7 +28,7 @@ unit SequencerEngine;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, LifeBlocks;
 
 type
   TEventType = (iv, sc, oral);
@@ -57,7 +57,7 @@ var
 procedure SimOralLoad(var x: extended; const d, f, c, p, beta: extended;
   ModOp: TOperator; t: extended);
 
-procedure SimIv(var x: extended; const d, td: extended; ModOp: TOperator;
+procedure SimIv(var x: extended; var a: TASIA; const d, td: extended; ModOp: TOperator;
   t: extended);
 
 procedure SimSc(var x: extended; const d, f, ka, beta, v: extended;
@@ -86,19 +86,23 @@ begin
   end;
 end;
 
-procedure SimIv(var x: extended; const d, td: extended; ModOp: TOperator;
+procedure SimIv(var x: extended; var a: TASIA; const d, td: extended; ModOp: TOperator;
   t: extended);
 var
   y: extended;
 begin
-  if t <= td then y := d;
-  case ModOp of
-    plus:
-      x := x + y;
-    times:
-      x := x * y;
-    assignop:
-      x := y;
+  if t <= td then
+  begin
+    y := d;
+    case ModOp of
+      plus:
+        x := x + y;
+      times:
+        x := x * y;
+      assignop:
+        x := y;
+    end;
+    a.x1 := x;
   end;
 end;
 

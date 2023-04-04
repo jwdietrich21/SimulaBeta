@@ -39,6 +39,7 @@ implementation
 initialization
   gInsulinConversionFactor := 1;
   gGlucoseConversionFactor := 1;
+  gGlucLoadConversionFactor := kMolarMassGlucose;
   gUnits.I := kInsulinUoM;
   gUnits.G := kGlucoseUoM;
 end.

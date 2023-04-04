@@ -40,6 +40,9 @@ type
     CancelButton: TButton;
     DivLabel1: TLabel;
     DivLabel2: TLabel;
+    grammLabel: TLabel;
+    GlucLoadExampleLabel: TLabel;
+    GlucLoadLabel: TLabel;
     NumbersExampleLabel: TLabel;
     NumberFormatEdit: TEdit;
     DateTimeFormatEdit: TEdit;
@@ -75,13 +78,14 @@ type
   private
 
   public
-    InsulinUoM, GlucoseUoM: string;
+    InsulinUoM, GlucoseUoM, GlucLoadUoM: string;
   end;
 
 const
   kExampleNumber = 123456.789;
-  kInsulinExample = 60;  // pmol/L, corresponding to 10 mIU/L
-  kGlucoseExample = 5.56; // mmol/L, corresponding to 100 mg/dL
+  kInsulinExample = 60;     // pmol/L, corresponding to 10 mIU/L
+  kGlucoseExample = 5.56;   // mmol/L, corresponding to 100 mg/dL
+  kOralGlucoseExample = 75; // usual oGTT dosage in g
 
 var
   PreferencesDialog: TPreferencesDialog;
@@ -114,6 +118,7 @@ begin
   gUnits.G := GlucoseUoM;
   gInsulinConversionFactor := ConvertedValue(1, kInsulinActivity, kInsulinUoM, gUnits.I);
   gGlucoseConversionFactor := ConvertedValue(1, kMolarMassGlucose, kGlucoseUoM, gUnits.G);
+  gGlucLoadConversionFactor := kMolarMassGlucose;
   gNumberFormat := NumberFormatEdit.Text;
   gDateTimeFormat := DateTimeFormatEdit.Text;
   UpdateReporting;
@@ -124,8 +129,10 @@ procedure TPreferencesDialog.DisplayExamples;
 begin
   InsulinUoM := InsulinMassPrefixCombo.Text + InsulinMassUnitCombo.Text + '/' + InsulinVolumePrefixCombo.Text + 'l';
   GlucoseUoM := GlucoseMassPrefixCombo.Text + GlucoseMassUnitCombo.Text + '/' + GlucoseVolumePrefixCombo.Text + 'l';
+  GlucLoadUoM := 'g';
   InsulinExampleLabel.Caption := EXAMPLE_STRING + UnitFromValueF(kInsulinExample, kInsulinActivity, 'pmol/l', InsulinUoM, ffNumber, 2, 2);
   GlucoseExampleLabel.Caption := EXAMPLE_STRING + UnitFromValueF(kGlucoseExample, kMolarMassGlucose, 'mmol/l', GlucoseUoM, ffNumber, 2, 2);
+  GlucLoadExampleLabel.Caption := EXAMPLE_STRING + IntToStr(kOralGlucoseExample) + ' ' + GlucLoadUoM;
   NumbersExampleLabel.Caption := EXAMPLE_STRING + FormatFloat(NumberFormatEdit.Text, kExampleNumber);
 end;
 
