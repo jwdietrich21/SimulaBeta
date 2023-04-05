@@ -94,15 +94,9 @@ const
 var
   PreferencesDialog: TPreferencesDialog;
 
-procedure InitMetabolicConversionFactors;
 procedure UpdateReporting;
 
 implementation
-
-procedure InitMetabolicConversionFactors;
-begin
-  InitConversionFactors;
-end;
 
 procedure UpdateReporting;
 begin
@@ -120,12 +114,11 @@ procedure TPreferencesDialog.OKButtonClick(Sender: TObject);
 begin
   gUnits.I := InsulinUoM;
   gUnits.G := GlucoseUoM;
-  gInsulinConversionFactor := ConvertedValue(1, kInsulinActivity, kInsulinUoM, gUnits.I);
-  gGlucoseConversionFactor := ConvertedValue(1, kMolarMassGlucose, kGlucoseUoM, gUnits.G);
-  gGlucLoadConversionFactor := kMolarMassGlucose;
+  SetConversionFactors;
   gNumberFormat := NumberFormatEdit.Text;
   gDateTimeFormat := DateTimeFormatEdit.Text;
   UpdateReporting;
+  SavePreferences;
   Close;
 end;
 

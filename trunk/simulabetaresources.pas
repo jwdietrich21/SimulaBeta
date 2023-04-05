@@ -32,7 +32,7 @@ uses
 
 const
   BASE_URL = 'http://simulabeta.sf.net';
-  SIMTHYR_GLOBAL_ID = 'net.sf.simulabeta';
+  SIMULABETA_GLOBAL_ID = 'net.sf.simulabeta';
   HELP_URL = 'http://simulabeta.sf.net';
 
   SCICRUNCH_URL = 'http://scicrunch.org/browse/resources/SCR_021900';
