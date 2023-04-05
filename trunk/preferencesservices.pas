@@ -31,7 +31,7 @@ uses
   Classes, SysUtils, SimulaBetaTypes, SimulationEngine;
 
 const
-  kInsulinUoM = 'pmol/l';
+  kInsulinUoM = 'pmol/l'; // default values, can be overriden by preferences
   kGlucoseUoM = 'mmol/l';
 
 implementation

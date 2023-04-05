@@ -249,7 +249,7 @@ begin
       inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       ParameterGrid.Cells[7, i] := 'NaN';
       inputFields[i - 1].c0 := ParameterGrid.Cells[7, i];
-      ParameterGrid.Cells[8, i] := '0.7';
+      ParameterGrid.Cells[8, i] := '0.7'; // sc-bioavailability of most insulins
       inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
       ParameterGrid.Cells[9, i] := 'NaN';
       inputFields[i - 1].p1 := ParameterGrid.Cells[9, i];
@@ -297,6 +297,8 @@ begin
         inputFields[i - 1].alpha := FloatToStr(1/22);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (60 * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
+        ParameterGrid.Cells[8, i] := '0.8';
+        inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
       end
       else if pos('human', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
@@ -327,6 +329,8 @@ begin
         inputFields[i - 1].alpha := FloatToStr(1/7);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (6 * MinsPerHour * SecsPerMin));
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
+        ParameterGrid.Cells[8, i] := '0.6';
+        inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
       end
       else if pos('glargin', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin

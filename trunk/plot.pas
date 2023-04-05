@@ -222,6 +222,8 @@ var
   theTime: tDateTime;
   theYear, theMonth: word;
 begin
+  ISeries.Title := 'I (' + gUnits.I + ')';
+  GSeries.Title := 'G (' + gUnits.G + ')';
   if gValues.size > 0 then
   begin
     Chart1.AxisList.Axes[1].Range.min := AsTime(gValues.t[0]);
