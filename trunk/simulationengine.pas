@@ -132,17 +132,19 @@ type
   TQRoots = array[0..1] of extended;
 
 var
+  gBlocks: TBlocks;
   gValues: TValues;
   gUnits: TUnits;
-  t: extended;
+  W, Z, t: extended;
   delta: real;
   gTestInfo: tTestInfo;
 
 procedure InitUnits;
 procedure InitSimulation;
+procedure ClearSimulation;
 procedure SetInitialConditions(Prediction: TPrediction);
 function PredictedEquilibrium(P, W, Z: extended; StrucPars: tParameterSpace): TPrediction;
-procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer; prediction: TPrediction; Events: TEventMatrix);
+procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer; prediction: TPrediction; Events: TEventMatrix; continue: boolean);
 
 implementation
 
@@ -167,8 +169,36 @@ begin
   gUnits.Z := '';
 end;
 
+procedure InitBlocks(out N: extended; Ins, Z: extended);
+begin
+  gBlocks.G1 := TASIA.Create;
+  gBlocks.G3 := TASIA.Create;
+  gBlocks.GE := TP.Create;
+  gBlocks.MiMeBeta := TMiMe.Create;
+  gBlocks.MiMeR := TMiMe.Create;
+  gBlocks.NoCoDI := TNoCoDI.Create;
+
+  with gActiveModel.StrucPars do
+  begin
+    gBlocks.G1.alpha := alphaG;
+    gBlocks.G1.beta := betaG;
+    gBlocks.G1.delta := delta;
+    gBlocks.MiMeBeta.G := Z * GBeta;
+    gBlocks.MiMeBeta.D := DBeta;
+    gBlocks.G3.alpha := alphaI;
+    gBlocks.G3.beta := betaI;
+    gBlocks.G3.delta := delta;
+    gBlocks.MiMeR.G := GR;
+    gBlocks.MiMeR.D := DR;
+    gBlocks.GE.G := GE;
+    N := GE * GR * Ins / (DR + Ins);
+  end;
+end;
+
 procedure InitSimulation;
 begin
+  ClearSimulation;
+
   if assigned(gValues) then
     gValues.Size := 0       // delete content
   else
@@ -179,6 +209,23 @@ begin
   t := 0;                   // reset time
   gTestInfo.kind := tkNone; // no dynamic function test
   gTestInfo.startTime := 0; // reset time
+end;
+
+procedure ClearSimulation;
+begin
+  W := 0;                   // fasting conditions
+  if assigned(gBlocks.G1) then
+    gBlocks.G1.Destroy;
+  if assigned(gBlocks.G3) then
+    gBlocks.G3.Destroy;
+  if assigned(gBlocks.MiMeBeta) then
+    gBlocks.MiMeBeta.Destroy;
+  if assigned(gBlocks.MiMeR) then
+    gBlocks.MiMeR.Destroy;
+  if assigned(gBlocks.GE) then
+    gBlocks.GE.Destroy;
+  if assigned(gBlocks.NoCoDI) then
+    gBlocks.NoCoDI.Destroy;
 end;
 
 procedure SetInitialConditions(Prediction: TPrediction);
@@ -247,42 +294,36 @@ begin
   end;
 end;
 
-procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer; prediction: TPrediction; Events: TEventMatrix);
+procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer; prediction: TPrediction; Events: TEventMatrix; continue: boolean);
 var
-  blocks: TBlocks;
-  Q, R, S, M, N, W, Z: extended;
+  Q, R, S, M, N, Z: extended;
   i, j: integer;
   WEvents, GEvents, IEvents: array of TEventRecord;
 begin
-  W := 0;
   Z := prediction[0].Z;
   if nmax > 0 then
   begin
-    blocks.G1 := TASIA.Create;
-    blocks.G3 := TASIA.Create;
-    blocks.GE := TP.Create;
-    blocks.MiMeBeta := TMiMe.Create;
-    blocks.MiMeR := TMiMe.Create;
-    blocks.NoCoDI := TNoCoDI.Create;
-
-    with gActiveModel.StrucPars do
+    if continue then
     begin
-      blocks.G1.alpha := alphaG;
-      blocks.G1.beta := betaG;
-      blocks.G1.delta := delta;
-      blocks.MiMeBeta.G := Z * GBeta;
-      blocks.MiMeBeta.D := DBeta;
-      blocks.G3.alpha := alphaI;
-      blocks.G3.beta := betaI;
-      blocks.G3.delta := delta;
-      blocks.MiMeR.G := GR;
-      blocks.MiMeR.D := DR;
-      blocks.GE.G := GE;
-      N := GE * GR * Ins / (DR + Ins);
+      Q := gValues.Q[nmin - 1];
+      R := gValues.R[nmin - 1];
+      S := gValues.S[nmin - 1];
+      M := gValues.M[nmin - 1];
+      N := gValues.N[nmin - 1];
+      Ins := gValues.I[nmin - 1];
+      Glc := gValues.G[nmin - 1];
+      W := 0;
+      // { #todo -oJWD : Extend as follows to make continuation of OGTT smoother }
+      // W := D0o * f0 / c0 / (p1 + exp(betaGI * (t - gTestInfo.startTime)));
+    end
+    else
+    begin
+      ClearSimulation;
+      InitBlocks(N, Ins, Z);
+      gBlocks.G1.x1 := Glc; // "prefill" memory elements...
+      gBlocks.G3.x1 := Ins; // ...with provided values
     end;
 
-    blocks.G1.x1 := Glc; // "prefill" memory elements...
-    blocks.G3.x1 := Ins; // ...with provided values
     SetLength(WEvents, 0);
     SetLength(IEvents, 0);
     SetLength(GEvents, 0);
@@ -311,9 +352,9 @@ begin
     end;
     for i := nmin to nmax do
     begin
-      blocks.NoCoDI.input1 := P;
-      blocks.NoCoDI.input2 := N;
-      Q := blocks.NoCoDI.simOutput;
+      gBlocks.NoCoDI.input1 := P;
+      gBlocks.NoCoDI.input2 := N;
+      Q := gBlocks.NoCoDI.simOutput;
       if gTestInfo.kind = tkOGTT then
         begin
           if t >= gTestInfo.startTime then
@@ -333,14 +374,14 @@ begin
           end;
         end;
       R := Q + W;
-      blocks.G1.input := R;
-      Glc := blocks.G1.simOutput;
+      gBlocks.G1.input := R;
+      Glc := gBlocks.G1.simOutput;
       if gTestInfo.kind = tkfsIGT then
         begin
           if t >= gTestInfo.startTime then
           begin
             Glc := Glc + (gActiveModel.StrucPars.alphaG * D0i);
-            blocks.G1.x1 := Glc;
+            gBlocks.G1.x1 := Glc;
             gTestInfo.kind := tkNone; // switch off again
           end;
         end
@@ -349,15 +390,15 @@ begin
           for j := 0 to length(GEvents) - 1 do
           if (t >= GEvents[j].Delay) and (GEvents[j].ModType = iv) then
           begin
-            SimIv(Glc, blocks.G1,
+            SimIv(Glc, gBlocks.G1,
               gActiveModel.StrucPars.alphaG * GEvents[j].Amplitude,
               GEvents[j].ka, GEvents[j].ModOp, (t - GEvents[j].Delay));
           end;
         end;
-      blocks.MiMeBeta.input := Glc;
-      S := blocks.MiMeBeta.simOutput;
-      blocks.G3.input := S;
-      Ins := blocks.G3.simOutput;
+      gBlocks.MiMeBeta.input := Glc;
+      S := gBlocks.MiMeBeta.simOutput;
+      gBlocks.G3.input := S;
+      Ins := gBlocks.G3.simOutput;
       if (gTestInfo.kind = tkSequence) and (length(IEvents) > 0) then
         begin
           for j := 0 to length(IEvents) - 1 do
@@ -368,10 +409,10 @@ begin
             IEvents[j].ModOp, (t - IEvents[j].Delay));
           end;
         end;
-      blocks.MiMeR.input := Ins;
-      M := blocks.MiMeR.simOutput;
-      blocks.GE.input := M;
-      N := blocks.GE.simOutput;
+      gBlocks.MiMeR.input := Ins;
+      M := gBlocks.MiMeR.simOutput;
+      gBlocks.GE.input := M;
+      N := gBlocks.GE.simOutput;
       t := t + delta;
       gValues.P[i] := P;
       gValues.Q[i] := Q;
@@ -385,12 +426,6 @@ begin
       gValues.t[i] := t;
       application.ProcessMessages;
     end;
-    blocks.G1.Destroy;
-    blocks.G3.Destroy;
-    blocks.MiMeBeta.Destroy;
-    blocks.MiMeR.Destroy;
-    blocks.GE.Destroy;
-    blocks.NoCoDI.Destroy;
   end;
 end;
 
@@ -431,6 +466,9 @@ initialization
 
   InitUnits;
   InitSimulation;
+
+finalization
+  ClearSimulation;
 
 end.
 

@@ -34,6 +34,8 @@ uses
 
 type
 
+  TStartMode = (manual, predicted, continued);
+
   { TControlWindow }
 
   TControlWindow = class(TForm)
@@ -57,7 +59,7 @@ type
     GRUnitLabel: TLabel;
     GEUnitLabel: TLabel;
     PUnitLabel: TLabel;
-    StandardButton: TButton;
+    ResetButton: TButton;
     ControlGroup: TGroupBox;
     DBetaEdit: TFloatSpinEdit;
     DBetaLabel: TLabel;
@@ -103,13 +105,13 @@ type
     procedure oGTTButtonChange(Sender: TObject);
     procedure PredictionButtonChange(Sender: TObject);
     procedure SequenceButtonChange(Sender: TObject);
-    procedure StandardButtonClick(Sender: TObject);
+    procedure ResetButtonClick(Sender: TObject);
     procedure SwitchTest(Sender: TObject);
     procedure SwitchInitialConditions(Sender: TObject);
     procedure SetEditControls;
     procedure StartButtonClick(Sender: TObject);
   private
-
+    StartMode: TStartMode;
   public
     SimTimeUnit, TestTimeUnit: TTimeUnit;
     LOREMOSActive: boolean;
@@ -186,6 +188,7 @@ var
 begin
   If EnterButton.Checked then
     begin
+      StartMode := manual;
       PredictionButton.Checked := false;
       ContinueButton.Checked := false;
       ZSpinEdit.Enabled := true;
@@ -195,6 +198,7 @@ begin
     end
   else if PredictionButton.Checked then
     begin
+      StartMode := predicted;
       EnterButton.Checked := false;
       ContinueButton.Checked := false;
       ZSpinEdit.Enabled := false;
@@ -220,6 +224,7 @@ begin
     end
   else if ContinueButton.Checked then
     begin
+      StartMode := continued;
       EnterButton.Checked := false;
       PredictionButton.Checked := false;
       ZSpinEdit.Enabled := false;
@@ -262,6 +267,7 @@ var
   P, W, Z, Glc, Ins: extended;
   startpoint: integer;
   EventMatrix: TEventMatrix;
+  continue: boolean;
 begin
   Screen.Cursor := crHourGlass;
   if LOREMOSActive then
@@ -321,7 +327,11 @@ begin
   //SwitchTest(Sender);
   Close;
   application.ProcessMessages;
-  RunSimulation(P, Glc, Ins, startpoint, gActiveModel.iterations, gActiveModel.Prediction, EventMatrix);
+  if StartMode = continued then
+    continue := true
+  else
+    continue := false;
+  RunSimulation(P, Glc, Ins, startpoint, gActiveModel.iterations, gActiveModel.Prediction, EventMatrix, continue);
   LogWindow.FillGrid(gActiveModel.iterations);
   application.ProcessMessages;
   PlotForm.ShowPlot;
@@ -464,7 +474,7 @@ begin
   SwitchTest(Sender);
 end;
 
-procedure TControlWindow.StandardButtonClick(Sender: TObject);
+procedure TControlWindow.ResetButtonClick(Sender: TObject);
 begin
   InitSimulation;
   SetEditControls;

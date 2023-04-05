@@ -1,7 +1,7 @@
 object ControlWindow: TControlWindow
-  Left = 539
+  Left = 497
   Height = 531
-  Top = 220
+  Top = 142
   Width = 750
   BorderStyle = bsDialog
   Caption = 'Simulation Control'
@@ -175,7 +175,7 @@ object ControlWindow: TControlWindow
     object EnterButton: TRadioButton
       Left = 264
       Height = 18
-      Hint = 'Enter initial values here...'
+      Hint = 'Manually enter initial values here...'
       Top = 19
       Width = 56
       Caption = 'Enter'
@@ -197,7 +197,7 @@ object ControlWindow: TControlWindow
     object ContinueButton: TRadioButton
       Left = 496
       Height = 18
-      Hint = 'Continue with values from last simulation run'
+      Hint = 'Continue with values from the last simulation run'
       Top = 19
       Width = 77
       Caption = 'Continue'
@@ -406,6 +406,7 @@ object ControlWindow: TControlWindow
     object MinutesButton: TRadioButton
       Left = 230
       Height = 18
+      Hint = 'Minutes'
       Top = 16
       Width = 71
       Caption = 'Minutes'
@@ -417,6 +418,7 @@ object ControlWindow: TControlWindow
     object HoursButton: TRadioButton
       Left = 313
       Height = 18
+      Hint = 'Hours'
       Top = 16
       Width = 60
       Caption = 'Hours'
@@ -424,7 +426,7 @@ object ControlWindow: TControlWindow
       TabOrder = 2
     end
   end
-  object StandardButton: TButton
+  object ResetButton: TButton
     Left = 24
     Height = 25
     Hint = 'Reset to standard conditions'
@@ -432,7 +434,7 @@ object ControlWindow: TControlWindow
     Width = 75
     Anchors = [akLeft, akBottom]
     Caption = 'Reset'
-    OnClick = StandardButtonClick
+    OnClick = ResetButtonClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
@@ -440,7 +442,7 @@ object ControlWindow: TControlWindow
   object TestGroup: TGroupBox
     Left = 16
     Height = 105
-    Hint = 'Optional test signals'
+    Hint = 'Generate complex test signals via LOREMOS'
     Top = 352
     Width = 717
     Anchors = [akTop, akLeft, akRight]
@@ -501,7 +503,7 @@ object ControlWindow: TControlWindow
     object TestStartSpin: TSpinEdit
       Left = 113
       Height = 21
-      Hint = 'Moment, when the test signal or load commences'
+      Hint = 'Point in time when the test signal or load commences'
       Top = 48
       Width = 98
       Enabled = False
@@ -521,6 +523,7 @@ object ControlWindow: TControlWindow
   object CancelButton: TButton
     Left = 568
     Height = 25
+    Hint = 'Close this window without starting a simulation run.'
     Top = 481
     Width = 75
     Cancel = True
