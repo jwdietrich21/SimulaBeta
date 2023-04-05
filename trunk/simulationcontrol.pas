@@ -164,6 +164,7 @@ begin
       LOREMOSActive := true;
       SequencerWindow.CancelButton.Enabled := true;
       SequencerWindow.ApplyButton.Enabled := true;
+      gSectionIterations := IterationsSpinEdit.Value * gTestTimeFactor;
       if SequencerWindow.Visible then
         SequencerWindow.Close;
       SequencerWindow.ShowModal;
@@ -402,7 +403,13 @@ procedure TControlWindow.FormShow(Sender: TObject);
 begin
   SetEditControls;
   if gActiveModel.Iterations > 0 then
+  begin
     ContinueButton.Enabled := true;
+    ContinueButton.Checked := true;
+    EnterButton.Checked := false;
+    PredictionButton.Checked := false;
+  end;
+  SwitchInitialConditions(Sender);
 end;
 
 procedure TControlWindow.fsIGTButtonChange(Sender: TObject);

@@ -32,7 +32,7 @@ uses
 
 type
   TEventType = (iv, sc, oral);
-  TVariable = (vW, vG, vI);
+  TVariable = (vNone, vW, vG, vI);
   TOperator = (plus, times, assignop);
 
   TEventRecord = record
@@ -54,6 +54,7 @@ type
 
 var
   gTestTimeFactor: integer;
+  gSectionIterations: integer;
 
 procedure SimOralLoad(var x: extended; const d, f, c, p, beta: extended;
   ModOp: TOperator; t: extended);
