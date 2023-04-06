@@ -28,7 +28,7 @@ unit DIFSupport;
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, SimulaBetaTypes;
 
 const
   kCRLF = #13#10;
@@ -112,7 +112,7 @@ end;
 
 procedure TDIFDocument.AppendCell(Value: Real);
 begin
-  AppendCell(FloatToStr(Value));
+  AppendCell(FloatToStr(Value, gUSFormatSettings));
 end;
 
 procedure TDIFDocument.AppendCell(Value: Boolean);

@@ -100,6 +100,7 @@ var
   gActiveModel: TModel;
   gInsulinConversionFactor, gGlucoseConversionFactor: real;
   gGlucLoadConversionFactor, gInsulinLoadConversionFactor: real;
+  gFormatSettings, gUSFormatSettings: TFormatSettings;
 
 implementation
 

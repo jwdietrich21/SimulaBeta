@@ -104,5 +104,12 @@ const
 
 implementation
 
+initialization
+
+gFormatSettings := DefaultFormatSettings;
+gUSFormatSettings := gFormatSettings;
+gUSFormatSettings.DecimalSeparator := '.';
+gUSFormatSettings.ThousandSeparator := ',';
+
 end.
 

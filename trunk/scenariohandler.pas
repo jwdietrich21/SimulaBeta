@@ -211,15 +211,15 @@ begin
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('strucpars');
-    ElementNode.AppendChild(SimpleNode(Doc, 'alphaG', FloatToStr(gActiveModel.StrucPars.alphaG)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'betaG', FloatToStr(gActiveModel.StrucPars.betaG)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'alphaI', FloatToStr(gActiveModel.StrucPars.alphaI)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'betaI', FloatToStr(gActiveModel.StrucPars.betaI)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'GBeta', FloatToStr(gActiveModel.StrucPars.GBeta)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'DBeta', FloatToStr(gActiveModel.StrucPars.DBeta)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'GR', FloatToStr(gActiveModel.StrucPars.GR)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'DR', FloatToStr(gActiveModel.StrucPars.DR)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'GE', FloatToStr(gActiveModel.StrucPars.GE)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'alphaG', FloatToStr(gActiveModel.StrucPars.alphaG, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'betaG', FloatToStr(gActiveModel.StrucPars.betaG, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'alphaI', FloatToStr(gActiveModel.StrucPars.alphaI, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'betaI', FloatToStr(gActiveModel.StrucPars.betaI, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'GBeta', FloatToStr(gActiveModel.StrucPars.GBeta, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'DBeta', FloatToStr(gActiveModel.StrucPars.DBeta, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'GR', FloatToStr(gActiveModel.StrucPars.GR, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'DR', FloatToStr(gActiveModel.StrucPars.DR, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'GE', FloatToStr(gActiveModel.StrucPars.GE, gUSFormatSettings)));
     RootNode.AppendChild(ElementNode);
 
     WriteXMLFile(Doc, theFileName);
