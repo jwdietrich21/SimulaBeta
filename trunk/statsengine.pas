@@ -94,13 +94,19 @@ end;
 function sem(const data: array of extended): extended;
 { calculates the standard error of the mean of a vector of extended }
   begin
-    sem := math.stddev(data) / sqrt(length(data));
+    if length(data) > 0 then
+      sem := math.stddev(data) / sqrt(length(data))
+    else
+      sem := math.NaN;
   end;
 
 function cv(const data: TExtArray): extended;
 { calculates the coefficient of variation (CV or CoV) of a vector of extended }
 begin
-  result := math.stddev(data) / math.mean(data);
+  if (IsNaN(math.mean(data))) or (math.mean(data) = 0) then
+    result := math.NaN
+  else
+    result := math.stddev(data) / math.mean(data);
 end;
 
 function emptyResult: TState;

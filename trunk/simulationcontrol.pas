@@ -336,7 +336,7 @@ begin
   LogWindow.FillGrid(gActiveModel.iterations);
   application.ProcessMessages;
   PlotForm.ShowPlot;
-  StatsForm.ShowContent(Sender);
+  //StatsForm.ShowContent(Sender);
   Screen.Cursor := crDefault;
 end;
 

@@ -517,10 +517,7 @@ end;
 procedure TIPSForm.FormCreate(Sender: TObject);
 begin
   Left := 0;
-  Top := Screen.Height - Height - 13;
-  {$IFDEF DARWIN}
-  Top := Top - 65;
-  {$ENDIF}
+  Top := Screen.Height - Height - 13 - 65;
 
   {$IFDEF Darwin}
   OnPaint := @DrawIPS;
