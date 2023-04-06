@@ -215,17 +215,17 @@ procedure ClearSimulation;
 begin
   W := 0;                   // fasting conditions
   if assigned(gBlocks.G1) then
-    gBlocks.G1.Destroy;
+    FreeAndNil(gBlocks.G1);
   if assigned(gBlocks.G3) then
-    gBlocks.G3.Destroy;
+    FreeAndNil(gBlocks.G3);
   if assigned(gBlocks.MiMeBeta) then
-    gBlocks.MiMeBeta.Destroy;
+    FreeAndNil(gBlocks.MiMeBeta);
   if assigned(gBlocks.MiMeR) then
-    gBlocks.MiMeR.Destroy;
+    FreeAndNil(gBlocks.MiMeR);
   if assigned(gBlocks.GE) then
-    gBlocks.GE.Destroy;
+    FreeAndNil(gBlocks.GE);
   if assigned(gBlocks.NoCoDI) then
-    gBlocks.NoCoDI.Destroy;
+    FreeAndNil(gBlocks.NoCoDI);
 end;
 
 procedure SetInitialConditions(Prediction: TPrediction);

@@ -336,7 +336,7 @@ begin
   LogWindow.FillGrid(gActiveModel.iterations);
   application.ProcessMessages;
   PlotForm.ShowPlot;
-  //StatsForm.ShowContent(Sender);
+  StatsForm.ShowContent(Sender);
   Screen.Cursor := crDefault;
 end;
 
@@ -483,6 +483,10 @@ end;
 
 procedure TControlWindow.ResetButtonClick(Sender: TObject);
 begin
+  EnterButton.Checked := false;
+  PredictionButton.Checked := true;
+  ContinueButton.Checked := false;
+  SwitchInitialConditions(Sender);
   InitSimulation;
   SetEditControls;
 end;

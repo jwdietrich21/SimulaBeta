@@ -28,7 +28,7 @@ unit SimulaBetaBaseServices;
 interface
 
 uses
-  Classes, SysUtils, DateUtils, DOM, UnitConverter
+  Classes, SysUtils, DateUtils, Math, DOM, UnitConverter
   {$IFDEF WINDOWS}
   , Windows, Win32Proc, registry
   {$ENDIF}
@@ -45,6 +45,7 @@ uses
 
 function AsTime(x: real): TDateTime;
 function FormattedTime(x: real): String;
+function FormatFloatDefault(const Format: string; const Value: Extended; const Default: string): string;
 function XMLDateTime2DateTime(const XMLDateTime: string): TDateTime;
 function TryXMLDateTime2DateTime(const S: ShortString; out Value: TDateTime): boolean;
 function NodeContent(theRoot: TDOMNode; Name: string): string;
@@ -72,6 +73,15 @@ end;
 function FormattedTime(x: real): String;   {Converts second values to a formatted time}
 begin
   FormattedTime := FormatDateTime(gDateTimeFormat, AsTime(x));
+end;
+
+function FormatFloatDefault(const Format: string; const Value: Extended;
+  const Default: string): string;
+begin
+  if IsNan(Value) then
+    result := Default
+  else
+    result := FormatFloat(Format, Value);
 end;
 
 function XMLDateTime2DateTime(const XMLDateTime: string): TDateTime;

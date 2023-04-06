@@ -121,22 +121,22 @@ begin
       EventMatrix[k].Name := InputFields[i].Name;
       EventMatrix[k].ModType := InputFields[i].ModType;
       EventMatrix[k].Delay := StrToIntDef(InputFields[i].Delay, -1) * gTestTimeFactor;
-      EventMatrix[k].ka := StrToFloatDef(InputFields[i].ka, NaN, gFormatSettings);
-      EventMatrix[k].alpha := StrToFloatDef(InputFields[i].alpha, NaN, gFormatSettings);
-      EventMatrix[k].beta := StrToFloatDef(InputFields[i].beta, NaN, gFormatSettings);
-      EventMatrix[k].c0 := StrToFloatDef(InputFields[i].c0, NaN, gFormatSettings);
-      EventMatrix[k].f0 := StrToFloatDef(InputFields[i].f0, NaN, gFormatSettings);
-      EventMatrix[k].p1 := StrToFloatDef(InputFields[i].p1, NaN, gFormatSettings);
+      EventMatrix[k].ka := StrToFloatDef(InputFields[i].ka, NaN, gUSFormatSettings);
+      EventMatrix[k].alpha := StrToFloatDef(InputFields[i].alpha, NaN, gUSFormatSettings);
+      EventMatrix[k].beta := StrToFloatDef(InputFields[i].beta, NaN, gUSFormatSettings);
+      EventMatrix[k].c0 := StrToFloatDef(InputFields[i].c0, NaN, gUSFormatSettings);
+      EventMatrix[k].f0 := StrToFloatDef(InputFields[i].f0, NaN, gUSFormatSettings);
+      EventMatrix[k].p1 := StrToFloatDef(InputFields[i].p1, NaN, gUSFormatSettings);
       EventMatrix[k].Variable := InputFields[i].Variable;
       EventMatrix[k].ModOp := InputFields[i].ModOp;
       if EventMatrix[k].Variable = vI then
         EventMatrix[k].Amplitude :=
-          StrToFloatDef(InputFields[i].Amplitude, NaN, gFormatSettings) * gInsulinLoadConversionFactor
+          StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings) * gInsulinLoadConversionFactor
       else if (EventMatrix[k].Variable = vG) or (EventMatrix[k].Variable = vW) then
         EventMatrix[k].Amplitude :=
-          StrToFloatDef(InputFields[i].Amplitude, NaN, gFormatSettings) / gGlucLoadConversionFactor
+          StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings) / gGlucLoadConversionFactor
       else
-        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN, gFormatSettings);
+        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings);
       Inc(k);
     end;
   Close;
@@ -221,7 +221,7 @@ begin
     begin
       ParameterGrid.Cells[4, i] := FloatToStr(3600 / gTestTimeFactor, gUSFormatSettings);
       inputFields[i - 1].Delay := ParameterGrid.Cells[4, i];
-      //ParameterGrid.Cells[5, i] := '';
+      ParameterGrid.Cells[5, i] := '0';
       inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
       ParameterGrid.Cells[6, i] := 'NaN';
       inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
@@ -442,7 +442,7 @@ begin
   SetLength(StateTable, k, l);
   for i := 0 to l - 2 do
   begin
-    timeRatio := StrToFloatDef(InputFields[i].Delay, -1, gFormatSettings) * gTestTimeFactor /
+    timeRatio := StrToFloatDef(InputFields[i].Delay, -1, gUSFormatSettings) * gTestTimeFactor /
       (gSectionIterations);
     if (timeRatio >= 0) and (timeRatio <= 1) then
     begin

@@ -64,7 +64,7 @@ object SequencerWindow: TSequencerWindow
           'Insulin degludec sc'
         )
         Title.Caption = 'Type'
-        Width = 122
+        Width = 120
       end    
       item
         SizePriority = 0
@@ -140,7 +140,7 @@ object SequencerWindow: TSequencerWindow
       64
       35
       80
-      122
+      120
       50
       50
       50

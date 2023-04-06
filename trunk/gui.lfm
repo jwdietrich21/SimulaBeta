@@ -5,7 +5,7 @@ object ToolbarWindow: TToolbarWindow
   Width = 807
   BorderStyle = bsToolWindow
   Caption = 'SimulaBeta'
-  ClientHeight = 85
+  ClientHeight = 65
   ClientWidth = 807
   Icon.Data = {
     874E0B000000010001000000000001002000714E0B001600000089504E470D0A

@@ -29,7 +29,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, SimulaBetaTypes,
-  StatsEngine, SimulationEngine, SimulaBetaGUIServices;
+  StatsEngine, SimulationEngine, SimulaBetaBaseServices, SimulaBetaGUIServices;
 
 type
 
@@ -77,95 +77,95 @@ procedure TStatsForm.ShowContent(Sender: TObject);
 begin
   GetStats;
 
-  StatsGrid.Cells[1, 1] := FormatFloat(gNumberFormat, FirstV.P / PFactor);
-  StatsGrid.Cells[2, 1] := FormatFloat(gNumberFormat, FirstV.W / MicroFactor);
-  StatsGrid.Cells[3, 1] := FormatFloat(gNumberFormat, FirstV.Q / MicroFactor);
-  StatsGrid.Cells[4, 1] := FormatFloat(gNumberFormat, FirstV.R / MicroFactor);
-  StatsGrid.Cells[5, 1] := FormatFloat(gNumberFormat, FirstV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 1] := FormatFloat(gNumberFormat, FirstV.S / PicoFactor);
-  StatsGrid.Cells[7, 1] := FormatFloat(gNumberFormat, FirstV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 1] := FormatFloat(gNumberFormat, FirstV.M);
-  StatsGrid.Cells[9, 1] := FormatFloat(gNumberFormat, FirstV.N);
+  StatsGrid.Cells[1, 1] := FormatFloatDefault(gNumberFormat, FirstV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 1] := FormatFloatDefault(gNumberFormat, FirstV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 1] := FormatFloatDefault(gNumberFormat, FirstV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 1] := FormatFloatDefault(gNumberFormat, FirstV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 1] := FormatFloatDefault(gNumberFormat, FirstV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 1] := FormatFloatDefault(gNumberFormat, FirstV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 1] := FormatFloatDefault(gNumberFormat, FirstV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 1] := FormatFloatDefault(gNumberFormat, FirstV.M, 'NaN');
+  StatsGrid.Cells[9, 1] := FormatFloatDefault(gNumberFormat, FirstV.N, 'NaN');
 
-  StatsGrid.Cells[1, 2] := FormatFloat(gNumberFormat, LastV.P / PFactor);
-  StatsGrid.Cells[2, 2] := FormatFloat(gNumberFormat, LastV.W / MicroFactor);
-  StatsGrid.Cells[3, 2] := FormatFloat(gNumberFormat, LastV.Q / MicroFactor);
-  StatsGrid.Cells[4, 2] := FormatFloat(gNumberFormat, LastV.R / MicroFactor);
-  StatsGrid.Cells[5, 2] := FormatFloat(gNumberFormat, LastV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 2] := FormatFloat(gNumberFormat, LastV.S / PicoFactor);
-  StatsGrid.Cells[7, 2] := FormatFloat(gNumberFormat, LastV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 2] := FormatFloat(gNumberFormat, LastV.M);
-  StatsGrid.Cells[9, 2] := FormatFloat(gNumberFormat, LastV.N);
+  StatsGrid.Cells[1, 2] := FormatFloatDefault(gNumberFormat, LastV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 2] := FormatFloatDefault(gNumberFormat, LastV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 2] := FormatFloatDefault(gNumberFormat, LastV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 2] := FormatFloatDefault(gNumberFormat, LastV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 2] := FormatFloatDefault(gNumberFormat, LastV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 2] := FormatFloatDefault(gNumberFormat, LastV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 2] := FormatFloatDefault(gNumberFormat, LastV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 2] := FormatFloatDefault(gNumberFormat, LastV.M, 'NaN');
+  StatsGrid.Cells[9, 2] := FormatFloatDefault(gNumberFormat, LastV.N, 'NaN');
 
-  StatsGrid.Cells[1, 3] := FormatFloat(gNumberFormat, MinV.P / PFactor);
-  StatsGrid.Cells[2, 3] := FormatFloat(gNumberFormat, MinV.W / MicroFactor);
-  StatsGrid.Cells[3, 3] := FormatFloat(gNumberFormat, MinV.Q / MicroFactor);
-  StatsGrid.Cells[4, 3] := FormatFloat(gNumberFormat, MinV.R / MicroFactor);
-  StatsGrid.Cells[5, 3] := FormatFloat(gNumberFormat, MinV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 3] := FormatFloat(gNumberFormat, MinV.S / PicoFactor);
-  StatsGrid.Cells[7, 3] := FormatFloat(gNumberFormat, MinV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 3] := FormatFloat(gNumberFormat, MinV.M);
-  StatsGrid.Cells[9, 3] := FormatFloat(gNumberFormat, MinV.N);
+  StatsGrid.Cells[1, 3] := FormatFloatDefault(gNumberFormat, MinV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 3] := FormatFloatDefault(gNumberFormat, MinV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 3] := FormatFloatDefault(gNumberFormat, MinV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 3] := FormatFloatDefault(gNumberFormat, MinV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 3] := FormatFloatDefault(gNumberFormat, MinV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 3] := FormatFloatDefault(gNumberFormat, MinV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 3] := FormatFloatDefault(gNumberFormat, MinV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 3] := FormatFloatDefault(gNumberFormat, MinV.M, 'NaN');
+  StatsGrid.Cells[9, 3] := FormatFloatDefault(gNumberFormat, MinV.N, 'NaN');
 
-  StatsGrid.Cells[1, 4] := FormatFloat(gNumberFormat, MaxV.P / PFactor);
-  StatsGrid.Cells[2, 4] := FormatFloat(gNumberFormat, MaxV.W / MicroFactor);
-  StatsGrid.Cells[3, 4] := FormatFloat(gNumberFormat, MaxV.Q / MicroFactor);
-  StatsGrid.Cells[4, 4] := FormatFloat(gNumberFormat, MaxV.R / MicroFactor);
-  StatsGrid.Cells[5, 4] := FormatFloat(gNumberFormat, MaxV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 4] := FormatFloat(gNumberFormat, MaxV.S / PicoFactor);
-  StatsGrid.Cells[7, 4] := FormatFloat(gNumberFormat, MaxV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 4] := FormatFloat(gNumberFormat, MaxV.M);
-  StatsGrid.Cells[9, 4] := FormatFloat(gNumberFormat, MaxV.N);
+  StatsGrid.Cells[1, 4] := FormatFloatDefault(gNumberFormat, MaxV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 4] := FormatFloatDefault(gNumberFormat, MaxV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 4] := FormatFloatDefault(gNumberFormat, MaxV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 4] := FormatFloatDefault(gNumberFormat, MaxV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 4] := FormatFloatDefault(gNumberFormat, MaxV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 4] := FormatFloatDefault(gNumberFormat, MaxV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 4] := FormatFloatDefault(gNumberFormat, MaxV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 4] := FormatFloatDefault(gNumberFormat, MaxV.M, 'NaN');
+  StatsGrid.Cells[9, 4] := FormatFloatDefault(gNumberFormat, MaxV.N, 'NaN');
 
-  StatsGrid.Cells[1, 5] := FormatFloat(gNumberFormat, MeanV.P / PFactor);
-  StatsGrid.Cells[2, 5] := FormatFloat(gNumberFormat, MeanV.W / MicroFactor);
-  StatsGrid.Cells[3, 5] := FormatFloat(gNumberFormat, MeanV.Q / MicroFactor);
-  StatsGrid.Cells[4, 5] := FormatFloat(gNumberFormat, MeanV.R / MicroFactor);
-  StatsGrid.Cells[5, 5] := FormatFloat(gNumberFormat, MeanV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 5] := FormatFloat(gNumberFormat, MeanV.S / PicoFactor);
-  StatsGrid.Cells[7, 5] := FormatFloat(gNumberFormat, MeanV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 5] := FormatFloat(gNumberFormat, MeanV.M);
-  StatsGrid.Cells[9, 5] := FormatFloat(gNumberFormat, MeanV.N);
+  StatsGrid.Cells[1, 5] := FormatFloatDefault(gNumberFormat, MeanV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 5] := FormatFloatDefault(gNumberFormat, MeanV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 5] := FormatFloatDefault(gNumberFormat, MeanV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 5] := FormatFloatDefault(gNumberFormat, MeanV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 5] := FormatFloatDefault(gNumberFormat, MeanV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 5] := FormatFloatDefault(gNumberFormat, MeanV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 5] := FormatFloatDefault(gNumberFormat, MeanV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 5] := FormatFloatDefault(gNumberFormat, MeanV.M, 'NaN');
+  StatsGrid.Cells[9, 5] := FormatFloatDefault(gNumberFormat, MeanV.N, 'NaN');
 
-  StatsGrid.Cells[1, 6] := FormatFloat(gNumberFormat, MedianV.P / PFactor);
-  StatsGrid.Cells[2, 6] := FormatFloat(gNumberFormat, MedianV.W / MicroFactor);
-  StatsGrid.Cells[3, 6] := FormatFloat(gNumberFormat, MedianV.Q / MicroFactor);
-  StatsGrid.Cells[4, 6] := FormatFloat(gNumberFormat, MedianV.R / MicroFactor);
-  StatsGrid.Cells[5, 6] := FormatFloat(gNumberFormat, MedianV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 6] := FormatFloat(gNumberFormat, MedianV.S / PicoFactor);
-  StatsGrid.Cells[7, 6] := FormatFloat(gNumberFormat, MedianV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 6] := FormatFloat(gNumberFormat, MedianV.M);
-  StatsGrid.Cells[9, 6] := FormatFloat(gNumberFormat, MedianV.N);
+  StatsGrid.Cells[1, 6] := FormatFloatDefault(gNumberFormat, MedianV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 6] := FormatFloatDefault(gNumberFormat, MedianV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 6] := FormatFloatDefault(gNumberFormat, MedianV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 6] := FormatFloatDefault(gNumberFormat, MedianV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 6] := FormatFloatDefault(gNumberFormat, MedianV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 6] := FormatFloatDefault(gNumberFormat, MedianV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 6] := FormatFloatDefault(gNumberFormat, MedianV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 6] := FormatFloatDefault(gNumberFormat, MedianV.M, 'NaN');
+  StatsGrid.Cells[9, 6] := FormatFloatDefault(gNumberFormat, MedianV.N, 'NaN');
 
-  StatsGrid.Cells[1, 7] := FormatFloat(gNumberFormat, SDV.P / PFactor);
-  StatsGrid.Cells[2, 7] := FormatFloat(gNumberFormat, SDV.W / MicroFactor);
-  StatsGrid.Cells[3, 7] := FormatFloat(gNumberFormat, SDV.Q / MicroFactor);
-  StatsGrid.Cells[4, 7] := FormatFloat(gNumberFormat, SDV.R / MicroFactor);
-  StatsGrid.Cells[5, 7] := FormatFloat(gNumberFormat, SDV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 7] := FormatFloat(gNumberFormat, SDV.S / PicoFactor);
-  StatsGrid.Cells[7, 7] := FormatFloat(gNumberFormat, SDV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 7] := FormatFloat(gNumberFormat, SDV.M);
-  StatsGrid.Cells[9, 7] := FormatFloat(gNumberFormat, SDV.N);
+  StatsGrid.Cells[1, 7] := FormatFloatDefault(gNumberFormat, SDV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 7] := FormatFloatDefault(gNumberFormat, SDV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 7] := FormatFloatDefault(gNumberFormat, SDV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 7] := FormatFloatDefault(gNumberFormat, SDV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 7] := FormatFloatDefault(gNumberFormat, SDV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 7] := FormatFloatDefault(gNumberFormat, SDV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 7] := FormatFloatDefault(gNumberFormat, SDV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 7] := FormatFloatDefault(gNumberFormat, SDV.M, 'NaN');
+  StatsGrid.Cells[9, 7] := FormatFloatDefault(gNumberFormat, SDV.N, 'NaN');
 
-  StatsGrid.Cells[1, 8] := FormatFloat(gNumberFormat, SEMV.P / PFactor);
-  StatsGrid.Cells[2, 8] := FormatFloat(gNumberFormat, SEMV.W / MicroFactor);
-  StatsGrid.Cells[3, 8] := FormatFloat(gNumberFormat, SEMV.Q / MicroFactor);
-  StatsGrid.Cells[4, 8] := FormatFloat(gNumberFormat, SEMV.R / MicroFactor);
-  StatsGrid.Cells[5, 8] := FormatFloat(gNumberFormat, SEMV.G / GFactor * gGlucoseConversionFactor);
-  StatsGrid.Cells[6, 8] := FormatFloat(gNumberFormat, SEMV.S / PicoFactor);
-  StatsGrid.Cells[7, 8] := FormatFloat(gNumberFormat, SEMV.I / IFactor * gInsulinConversionFactor);
-  StatsGrid.Cells[8, 8] := FormatFloat(gNumberFormat, SEMV.M);
-  StatsGrid.Cells[9, 8] := FormatFloat(gNumberFormat, SEMV.N);
+  StatsGrid.Cells[1, 8] := FormatFloatDefault(gNumberFormat, SEMV.P / PFactor, 'NaN');
+  StatsGrid.Cells[2, 8] := FormatFloatDefault(gNumberFormat, SEMV.W / MicroFactor, 'NaN');
+  StatsGrid.Cells[3, 8] := FormatFloatDefault(gNumberFormat, SEMV.Q / MicroFactor, 'NaN');
+  StatsGrid.Cells[4, 8] := FormatFloatDefault(gNumberFormat, SEMV.R / MicroFactor, 'NaN');
+  StatsGrid.Cells[5, 8] := FormatFloatDefault(gNumberFormat, SEMV.G / GFactor * gGlucoseConversionFactor, 'NaN');
+  StatsGrid.Cells[6, 8] := FormatFloatDefault(gNumberFormat, SEMV.S / PicoFactor, 'NaN');
+  StatsGrid.Cells[7, 8] := FormatFloatDefault(gNumberFormat, SEMV.I / IFactor * gInsulinConversionFactor, 'NaN');
+  StatsGrid.Cells[8, 8] := FormatFloatDefault(gNumberFormat, SEMV.M, 'NaN');
+  StatsGrid.Cells[9, 8] := FormatFloatDefault(gNumberFormat, SEMV.N, 'NaN');
 
-  StatsGrid.Cells[1, 9] := FormatFloat(gNumberFormat, CoVV.P);
-  StatsGrid.Cells[2, 9] := FormatFloat(gNumberFormat, CoVV.W);
-  StatsGrid.Cells[3, 9] := FormatFloat(gNumberFormat, CoVV.Q);
-  StatsGrid.Cells[4, 9] := FormatFloat(gNumberFormat, CoVV.R);
-  StatsGrid.Cells[5, 9] := FormatFloat(gNumberFormat, CoVV.G);
-  StatsGrid.Cells[6, 9] := FormatFloat(gNumberFormat, CoVV.S);
-  StatsGrid.Cells[7, 9] := FormatFloat(gNumberFormat, CoVV.I);
-  StatsGrid.Cells[8, 9] := FormatFloat(gNumberFormat, CoVV.M);
-  StatsGrid.Cells[9, 9] := FormatFloat(gNumberFormat, CoVV.N);
+  StatsGrid.Cells[1, 9] := FormatFloatDefault(gNumberFormat, CoVV.P, 'NaN');
+  StatsGrid.Cells[2, 9] := FormatFloatDefault(gNumberFormat, CoVV.W, 'NaN');
+  StatsGrid.Cells[3, 9] := FormatFloatDefault(gNumberFormat, CoVV.Q, 'NaN');
+  StatsGrid.Cells[4, 9] := FormatFloatDefault(gNumberFormat, CoVV.R, 'NaN');
+  StatsGrid.Cells[5, 9] := FormatFloatDefault(gNumberFormat, CoVV.G, 'NaN');
+  StatsGrid.Cells[6, 9] := FormatFloatDefault(gNumberFormat, CoVV.S, 'NaN');
+  StatsGrid.Cells[7, 9] := FormatFloatDefault(gNumberFormat, CoVV.I, 'NaN');
+  StatsGrid.Cells[8, 9] := FormatFloatDefault(gNumberFormat, CoVV.M, 'NaN');
+  StatsGrid.Cells[9, 9] := FormatFloatDefault(gNumberFormat, CoVV.N, 'NaN');
 
 end;
 
