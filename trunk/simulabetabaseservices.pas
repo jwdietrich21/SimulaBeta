@@ -71,7 +71,6 @@ end;
 
 function FormattedTime(x: real): String;   {Converts second values to a formatted time}
 begin
-  gDateTimeFormat := STANDARD_TIME_FORMAT;
   FormattedTime := FormatDateTime(gDateTimeFormat, AsTime(x));
 end;
 

@@ -270,7 +270,6 @@ object PreferencesDialog: TPreferencesDialog
       Width = 72
       AutoSize = False
       Caption = 'Time'
-      Enabled = False
       ParentColor = False
     end
     object NumberFormatEdit: TEdit
@@ -287,7 +286,6 @@ object PreferencesDialog: TPreferencesDialog
       Height = 22
       Top = 34
       Width = 195
-      Enabled = False
       TabOrder = 1
     end
     object NumbersExampleLabel: TLabel

@@ -11,7 +11,7 @@ object AboutWindow: TAboutWindow
   OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
+  LCLVersion = '2.2.6.0'
   object CopyrightLabel8: TLabel
     Left = 17
     Height = 13
