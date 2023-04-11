@@ -5,7 +5,7 @@ unit SequencerEngine;
 { A simulator for insulin-glucose homeostasis }
 { LOREMOS: Load, Reference and Modulation Sequencer (Engine) }
 
-{ Version 3.1.0 (Challenger) }
+{ Version 3.1.1 (Challenger) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }

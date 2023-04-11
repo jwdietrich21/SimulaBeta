@@ -61,7 +61,7 @@ object StatsForm: TStatsForm
       end    
       item
         Title.Caption = 'N'
-        Width = 90
+        Width = 92
       end>
     RowCount = 10
     TabOrder = 0
@@ -75,7 +75,7 @@ object StatsForm: TStatsForm
       86
       86
       86
-      90
+      92
     )
     Cells = (
       10

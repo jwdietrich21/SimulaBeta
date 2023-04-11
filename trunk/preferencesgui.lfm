@@ -19,7 +19,7 @@ object PreferencesDialog: TPreferencesDialog
     Width = 579
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Units of Measurement:'
-    ClientHeight = 126
+    ClientHeight = 134
     ClientWidth = 569
     TabOrder = 0
     object InsulinLabel: TLabel
@@ -251,7 +251,7 @@ object PreferencesDialog: TPreferencesDialog
     Width = 579
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Formats:'
-    ClientHeight = 73
+    ClientHeight = 81
     ClientWidth = 569
     TabOrder = 1
     object NumberFormatLabel: TLabel

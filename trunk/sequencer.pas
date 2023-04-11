@@ -5,7 +5,7 @@ unit Sequencer;
 { A simulator for insulin-glucose homeostasis }
 { LOREMOS: Load, Reference and Modulation Sequencer (GUI) }
 
-{ Version 3.1.0 (Challenger) }
+{ Version 3.1.1 (Challenger) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -422,8 +422,8 @@ var
   theCanvas: TCanvas;
 begin
   theCanvas := TDrawGrid(Sender).Canvas;
-  if Assigned(StateTable) then
-    case StateTable[aCol, aRow] of
+  if assigned(StateTable) and (aRow > 0) then // omit title row
+    case StateTable[aCol, aRow - 1] of
       mOff: theCanvas.Brush.Color := SequencerGrid.Color;
       mI: theCanvas.Brush.Color := clRed;
       mG: theCanvas.Brush.Color := clBlue;
@@ -447,7 +447,7 @@ begin
     if (timeRatio >= 0) and (timeRatio <= 1) then
     begin
       for j := 0 to k - 2 do
-        StateTable[j, i] := mOff;  // delete if time has changed
+        StateTable[j, i] := mOff;  // delete for the case that time has changed
       m := trunc(timeRatio * (k - 1));
       case InputFields[i].Variable of
         vW: StateTable[m, i] := mW;

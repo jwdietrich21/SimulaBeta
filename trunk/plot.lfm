@@ -127,7 +127,7 @@ object PlotForm: TPlotForm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 214
+    ClientHeight = 222
     ClientWidth = 238
     Items.Strings = (
       'P'
