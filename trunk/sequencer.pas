@@ -171,7 +171,7 @@ begin
   case ACol of
     1: HintText := 'The event is only fired if "On" is checked';
     2: HintText := 'Name of the event';
-    3: HintText := 'Route of signal';
+    3: HintText := 'Macro or route of signal';
     4: HintText := 'Begin of the event';
     5: HintText := 'Absorption rate (Bateman function) or duration of signal (iv route)';
     6: HintText := 'beta (clearance exponent, ke or rate constant)';

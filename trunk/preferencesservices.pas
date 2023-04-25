@@ -70,7 +70,7 @@ begin
 end;
 
 function GetPreferencesFolder: String;
-{ platform-independend method to search for the location of preferences folder}
+{ platform-sensitive method to search for the location of preferences folder}
 const
 kMaxPath = 1024;
 {$IFDEF DARWIN}

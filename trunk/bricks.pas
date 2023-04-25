@@ -6,12 +6,12 @@ unit Bricks;
 
 { Bricks: Basic blocks for information processing structures }
 
-{ Version 1.0.1 (Corvus) }
+{ Version 1.1.1 (Dendron) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2023 }
+{ (c) Johannes W. Dietrich, 1994 - 2020 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2023 }
+{ (c) Ruhr University of Bochum 2005 - 2020 }
 
 { Standard blocks for systems modelling and simulation }
 
