@@ -42,7 +42,7 @@ For documentation purposes, a historic version of SimGluc, an early prototype of
 
 ## Version history
 
-A complete and regularly updated list of all SimulaBeta revisions is available from http://sourceforge.net/p/simulabeta/wiki/Version_History/.
+A complete and regularly updated list of all SimulaBeta revisions is available from https://sourceforge.net/p/simulabeta/wiki/Version%20History/.
 
 
 J. W. Dietrich
