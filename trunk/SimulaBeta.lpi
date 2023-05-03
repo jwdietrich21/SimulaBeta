@@ -28,7 +28,7 @@
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="291"/>
+      <BuildNr Value="294"/>
       <StringTable Comments="Simulator for insulin-glucose homeostasis" CompanyName="Ruhr University of Bochum and Katholisches Klinikum Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 3.1.1 (Challenger)" LegalCopyright="© 1994-2023 J. W. Dietrich and Ruhr University of Bochum" LegalTrademarks="SimulaBeta" ProductName="SimulaBeta" ProductVersion="3.1.1"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -253,8 +253,10 @@
     </CodeGeneration>
     <Linking>
       <Debugging>
+        <GenerateDebugInfo Value="False"/>
         <DebugInfoType Value="dsDwarf2Set"/>
         <UseLineInfoUnit Value="False"/>
+        <StripSymbols Value="True"/>
       </Debugging>
       <LinkSmart Value="True"/>
       <Options>

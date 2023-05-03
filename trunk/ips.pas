@@ -331,7 +331,7 @@ begin
     cD12.drainObject := MiMeCollector1;
     cD12.drainAnchor := bottommiddle;
     cD12.Draw;
-    cD11.Next := cD12;
+    cD1.Next := cD12;
 
     cG1 := TConnectionClass.Create;
     cG1.blockDiagram := BlockDiagram;
