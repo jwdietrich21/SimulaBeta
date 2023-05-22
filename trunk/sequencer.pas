@@ -322,12 +322,15 @@ begin
       begin
         // Kølendorf and Bojsen 1982, PMID 7060331
         // Lauritzen et al. 1982, PMID 6807390
+        // Søeborg et al. 2012, PMID 21703346
         ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (13 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
         inputFields[i - 1].alpha := FloatToStr(1 / 10, gUSFormatSettings);
         ParameterGrid.Cells[6, i] :=
           FloatToStr(ln(2) / (6.6 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
+        ParameterGrid.Cells[8, i] := '0.3';
+        inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
       end
       else if pos('detemir', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
@@ -347,12 +350,17 @@ begin
         // Heise et al. 2015, PMID 26086190
         // Porcellati at al. 2015, PMID 25524950
         // Lucidi et al. 2021, PMID 33444161
+        // No direct data available for bioavailability,
+        //   f0 therefore estimated from clinical observations of required
+        //   insulin dosage relative to NPH insulin
         ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
         inputFields[i - 1].alpha := FloatToStr(1 / 10, gUSFormatSettings);
         ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
-      end
+        ParameterGrid.Cells[8, i] := '0.36';
+        inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
+    end
       else if pos('degludec', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // https://go.drugbank.com/drugs/DB09564
