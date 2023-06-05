@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SimulaBeta"
-#define MyAppVersion "3.1.1"
+#define MyAppVersion "3.1.2"
 #define MyAppPublisher "FORMATIO RETICULARIS"
 #define MyAppURL "http://simulabeta.sf.net"
 #define MyAppExeName "SimulaBeta.exe"

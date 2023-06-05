@@ -39,7 +39,7 @@ object ControlWindow: TControlWindow
     Width = 717
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Initial Conditions'
-    ClientHeight = 77
+    ClientHeight = 69
     ClientWidth = 707
     TabOrder = 2
     object PSpinEdit: TFloatSpinEdit
@@ -214,7 +214,7 @@ object ControlWindow: TControlWindow
     Width = 717
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Structure Parameters'
-    ClientHeight = 93
+    ClientHeight = 85
     ClientWidth = 707
     TabOrder = 3
     object GBetaLabel: TLabel
@@ -377,7 +377,7 @@ object ControlWindow: TControlWindow
     Width = 717
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Simulation Control'
-    ClientHeight = 46
+    ClientHeight = 38
     ClientWidth = 707
     TabOrder = 1
     object IterationsLabel: TLabel
@@ -447,7 +447,7 @@ object ControlWindow: TControlWindow
     Width = 717
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Optional Test Signal'
-    ClientHeight = 86
+    ClientHeight = 78
     ClientWidth = 707
     TabOrder = 5
     object OffButton: TRadioButton
@@ -495,7 +495,7 @@ object ControlWindow: TControlWindow
       Left = 16
       Height = 16
       Top = 51
-      Width = 56
+      Width = 55
       Caption = 'Starts at:'
       Enabled = False
       ParentColor = False

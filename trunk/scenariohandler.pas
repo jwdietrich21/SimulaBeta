@@ -5,7 +5,7 @@ unit ScenarioHandler;
 { A simulator for insulin-glucose homeostasis }
 { This unit reads and writes scenarios as XML files }
 
-{ Version 3.1.1 (Challenger) }
+{ Version 3.1.2 (Challenger) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }

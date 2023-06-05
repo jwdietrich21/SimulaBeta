@@ -5,7 +5,7 @@ unit SimulaBetaResources;
 { A simulator for insulin-glucose homeostasis }
 { This unit provides URLs and global strings for other SimulaBeta units }
 
-{ Version 3.1.1 (Challenger) }
+{ Version 3.1.2 (Challenger) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -45,7 +45,7 @@ const
   kSTANDARD_MODEL_NAME = 'Model 3';
   kSTANDARD_MODEL_REFERENCE = 'Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.';
   kSTANDARD_MODEL_SPECIES = 'Homo sapiens (NCBI Taxonomy ID 9606)';
-  kSTANDARD_MODEL_CREATORS = 'Dietrich, Dasgupta, Anoop, Jebasingh, Kurian, Inbakumari, Boehma and Thomas';
+  kSTANDARD_MODEL_CREATORS = 'Dietrich, Dasgupta, Anoop, Jebasingh, Kurian, Inbakumari, Boehm and Thomas';
   kSTANDARD_MODEL_CREATED_Y = 2021;
   kSTANDARD_MODEL_CREATED_M = 11;
   kSTANDARD_MODEL_CREATED_D = 1;

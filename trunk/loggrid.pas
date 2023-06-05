@@ -5,7 +5,7 @@ unit LogGrid;
 { A simulator for insulin-glucose homeostasis }
 { Log Grid }
 
-{ Version 3.1.1 (Challenger) }
+{ Version 3.1.2 (Challenger) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
