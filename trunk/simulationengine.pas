@@ -5,7 +5,7 @@ unit SimulationEngine;
 { A simulator for insulin-glucose homeostasis }
 { Simulation Engine }
 
-{ Version 3.1.0 (Challenger) }
+{ Version 3.1.1 (Challenger) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -200,9 +200,8 @@ begin
   ClearSimulation;
 
   if assigned(gValues) then
-    gValues.Size := 0       // delete content
-  else
-    gValues := TValues.Create;
+    gValues.Destroy;
+  gValues := TValues.Create;
   gActiveModel := NewScenario;
   gActiveModel.StrucPars := InitialStrucPars;
   delta := 1;               // resolution: 1 second
@@ -433,7 +432,7 @@ end;
 
 function TValues.GetSize: integer;
 begin
-  result := Length(R);
+  result := Length(R); // all lengths are equal
 end;
 
 procedure TValues.SetSize(aValue: integer);
