@@ -6,12 +6,12 @@ unit Bricks;
 
 { Bricks: Basic blocks for information processing structures }
 
-{ Version 1.1.1 (Dendron) }
+{ Version 2.0.0 (Escorpión) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2020 }
+{ (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2020 }
+{ (c) Ruhr University of Bochum 2005 - 2023 }
 
 { Standard blocks for systems modelling and simulation }
 
@@ -36,15 +36,26 @@ uses
   Classes, SysUtils, Math, ucomplex;
 
 const
+  Bricks_major = 2;
+  Bricks_minor = 0;
+  Bricks_release = 0;
+  Bricks_patch = 0;
+  Bricks_fullversion = ((Bricks_major *  100 + Bricks_minor) * 100 + Bricks_release) * 100 + Bricks_patch;
+  Bricks_version = '2.0.0.0';
+  Bricks_internalversion = 'Escorpión';
+
   kError101 = 'Runtime error: Negative parameter(s)';
   kError102 = 'Runtime error: Parameter(s) out of range';
   kError103 = 'Runtime error: min > max';
   kError104 = 'Runtime error: max = 0';
   kError105 = 'Runtime error: Denominator is zero';
+  kError210 = 'Runtime error: Nil pointer';
 
 type
 
   TVector = array of extended;
+  TMatrix = array of array of extended;
+  TBlock = class;
 
   { TFR }
   { frequency response }
@@ -52,6 +63,17 @@ type
   TFR = record
     M, phi: extended; { magnitude and phase }
     F: complex;       { complex FR (F = M(omega) * exp(i * phi(omega)) }
+  end;
+
+  { TModel }
+  { Base class for simulation models }
+
+  TModel = class
+    delta, time: extended;
+    firstBlock: TBlock;
+    constructor Create;
+    destructor Destroy; override;
+    procedure Reset;
   end;
 
   { TBlock }
@@ -63,21 +85,69 @@ type
     FFr: TFR;
   public
     name: string;
+    model: TModel;
     destructor Destroy; override;
     procedure simulate; virtual; abstract;
     property output: extended read Foutput;
     property fr: TFR read FFR;
   end;
 
+  { TControlledBlock }
+  { Abstract base class for IPS blocks }
+
+  TControlledBlock = class(TBlock)
+  protected
+    function SimAndGetOutput: extended; virtual; abstract;
+    function GetFR: TFR; virtual; abstract;
+  public
+    input, G, amplitude, omega: extended;
+  end;
+
+  { TInvertableBlock }
+  { Abstract base class for IPS blocks }
+
+  TInvertableBlock = class(TBlock)
+  protected
+    function SimAndGetOutput: extended; virtual; abstract;
+    function GetFR: TFR; virtual; abstract;
+  public
+    input1, input2, G: extended;
+  end;
+
+  { TTestSignal }
+
+  TTestSignal = class(TBlock)
+  protected
+    function SimAndGetOutput: extended; virtual; abstract;
+  public
+    destructor Destroy; override;
+    property simOutput: extended read SimAndGetOutput;
+  end;
+
+  { TTHarmonic }
+  { Harmonic test signal }
+
+  TTHarmonic = class(TTestSignal)
+  protected
+    function SimAndGetOutput: extended; override;
+  public
+    G, omega, phi, delta: extended;
+    updateTime: boolean;
+    constructor Create;
+    destructor Destroy; override;
+    property output: extended read Foutput;
+    procedure simulate; override;
+    property simOutput: extended read SimAndGetOutput;
+  end;
+
   { TP }
   { Proportional block }
 
-  TP = class(TBlock)
+  TP = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, amplitude, omega: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -89,14 +159,14 @@ type
   { TPT0 }
   { Dead-time element, improved from Neuber 1989 }
 
-  TPT0 = class(TBlock)
+  TPT0 = class(TControlledBlock)
   protected
     function GetQueueLength: integer;
     procedure SetQueueLength(AValue: integer);
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, amplitude, omega, delta: extended;
+    delta: extended;
     xt: array of extended;
     constructor Create;
     destructor Destroy; override;
@@ -110,12 +180,12 @@ type
   { TPT1 }
   { First order delay element, changed from Neuber 1989 }
 
-  TPT1 = class(TBlock)
+  TPT1 = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, t1, x1, amplitude, omega, delta: extended;
+    t1, x1, delta: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -127,12 +197,12 @@ type
   { TPT2 }
   { Second order delay element, changed from Neuber 1989 }
 
-  TPT2 = class(TBlock)
+  TPT2 = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, t2, dmp, x1, x2, amplitude, omega, delta: extended;
+    t2, dmp, x1, x2, delta: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -144,12 +214,12 @@ type
   { TInt }
   { Integrator block, changed from Neuber 1989 }
 
-  TInt = class(TBlock)
+  TInt = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, amplitude, omega, delta: extended;
+    delta: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -161,12 +231,12 @@ type
   { TIT1 }
   { IT1 block, changed from Neuber 1989 }
 
-  TIT1 = class(TBlock)
+  TIT1 = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, t1, x1, amplitude, omega, delta: extended;
+    t1, x1, delta: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -178,12 +248,12 @@ type
   { TDT1 }
   { DT1 block, changed from Neuber 1989 }
 
-  TDT1 = class(TBlock)
+  TDT1 = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, t1, x1, amplitude, omega, delta: extended;
+    t1, x1, delta: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -195,12 +265,12 @@ type
   { TIT2 }
   { IT2 block, changed from Neuber 1989 }
 
-  TIT2 = class(TBlock)
+  TIT2 = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
-    function GetFR: TFR;
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
   public
-    input, G, t2, dmp, x1, x2, x3, amplitude, omega, delta: extended;
+    t2, dmp, x1, x2, x3, delta: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -209,15 +279,13 @@ type
     property simOutput: extended read SimAndGetOutput;
   end;
 
-
   { TPAdd }
   { Summation block }
 
-  TPAdd = class(TBlock)
+  TPAdd = class(TInvertableBlock)
   protected
-    function SimAndGetOutput: extended;
+    function SimAndGetOutput: extended; override;
   public
-    input1, input2, G: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -228,11 +296,10 @@ type
   { TPSub }
   { Substraction block, comparator }
 
-  TPSub = class(TBlock)
+  TPSub = class(TInvertableBlock)
   protected
-    function SimAndGetOutput: extended;
+    function SimAndGetOutput: extended; override;
   public
-    input1, input2, G: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -243,11 +310,10 @@ type
   { TPMul }
   { Multiplicator }
 
-  TPMul = class(TBlock)
+  TPMul = class(TInvertableBlock)
   protected
-    function SimAndGetOutput: extended;
+    function SimAndGetOutput: extended; override;
   public
-    input1, input2, G: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -258,11 +324,10 @@ type
   { TPDiv }
   { Divider}
 
-  TPDiv = class(TBlock)
+  TPDiv = class(TInvertableBlock)
   protected
-    function SimAndGetOutput: extended;
+    function SimAndGetOutput: extended; override;
   public
-    input1, input2, G: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -270,8 +335,61 @@ type
     property simOutput: extended read SimAndGetOutput;
   end;
 
-
 implementation
+
+{ TModel }
+
+constructor TModel.Create;
+begin
+  inherited create;
+  time := 0;
+  delta := 1;
+end;
+
+destructor TModel.Destroy;
+begin
+  // Child object are to be deleted by the main program
+  inherited destroy;
+end;
+
+procedure TModel.Reset;
+begin
+  time := 0;
+end;
+
+{ TTestSignal }
+
+destructor TTestSignal.Destroy;
+begin
+  inherited Destroy;
+end;
+
+{ TTHarmonic }
+
+function TTHarmonic.SimAndGetOutput: extended;
+begin
+  simulate;
+  result := fOutput;
+end;
+
+constructor TTHarmonic.Create;
+begin
+  inherited Create;
+  delta := 1;
+end;
+
+destructor TTHarmonic.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TTHarmonic.simulate;
+begin
+  assert(assigned(model), kError210);
+  fOutput := (G + G * sin(omega * model.time + phi)) / 2;
+  if updateTime then
+    model.time := model.time + delta;
+end;
 
 { TIT2 }
 
@@ -723,13 +841,14 @@ function TPT2.GetFR: TFR;
 begin
   assert(G >= 0, kError101);
   assert(t2 >= 0, kError101);
-  assert(dmp >= 0, kError101);
   assert(omega >= 0, kError101);
   FFr.M := amplitude * G / sqrt(sqr(1 - sqr(omega * t2)) + sqr(2 * dmp * omega * t2));
   if omega < 1 / t2 then
     FFr.phi := -arctan(2 * dmp * omega * t2 / (1 - sqr(omega * t2)))
+  else if omega > 1 / t2 then
+    FFr.phi := -pi - arctan(2 * dmp * omega * t2 / (1 - sqr(omega * t2)))
   else
-    FFr.phi := -pi - arctan(2 * dmp * omega * t2 / (1 - sqr(omega * t2)));
+    FFr.phi := NaN;
   FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
   result := FFR;
 end;
@@ -755,18 +874,17 @@ var
 begin
   assert(G >= 0, kError101);
   assert(t2 >= 0, kError101);
-  assert(dmp >= 0, kError101);
   if dmp < 1 then
     begin
       omg := 1 / t2;
-      a := exp(-delta * delta * omg);
+      a := exp(-dmp * delta * omg);
       b := sqrt(1 - dmp * dmp) * omg;
       c := arctan(dmp * omg / b);
       d := omg * omg;
       e := d * omg / b * a * cos(b * delta + c);
       f := d / b * a * sin(b * delta);
       k := f * 2 * dmp / omg;
-      xn1 := x1 * e / d - x2 * f + f * g * input;
+      xn1 := x1 * e / d - x2 * f + f * G * input;
       xn2 := x1 * f / d + x2 * e / d + x2 * k - (e / d - 1 + k) * G * input;
       x1 := xn1;
       x2 := xn2;
@@ -781,7 +899,7 @@ begin
       x2 := x2n;
       fOutput := x2;
     end
-  else
+  else // dmp > 1
     begin
       omg := 1 / t2;
       a := sqrt(dmp * dmp - 1);
@@ -803,39 +921,39 @@ begin
     end;
 end;
 
-  { TP }
+{ TP }
 
 function TP.SimAndGetOutput: extended;
 begin
-  simulate;
-  result := fOutput;
+simulate;
+result := fOutput;
 end;
 
 function TP.GetFR: TFR;
 begin
-  assert(G >= 0, kError101);
-  FFr.M := amplitude * G;
-  FFr.phi := 0;
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
-  result := FFR;
+assert(G >= 0, kError101);
+FFr.M := amplitude * G;
+FFr.phi := 0;
+FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
+result := FFR;
 end;
 
 procedure TP.simulate;
 begin
-  assert(G >= 0, kError101);
-  fOutput := input * G;
+assert(G >= 0, kError101);
+fOutput := input * G;
 end;
 
 constructor TP.Create;
 begin
-  inherited Create;
-  G := 1;
-  fOutput := 0;
+inherited Create;
+G := 1;
+fOutput := 0;
 end;
 
 destructor TP.Destroy;
 begin
-  inherited Destroy;
+inherited Destroy;
 end;
 
   { TBlock }

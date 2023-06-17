@@ -6,12 +6,12 @@ unit lifeblocks;
 
 { LifeBlocks: Metabricks for information processing structures in organisms }
 
-{ Version 1.1.1 (Dendron) }
+{ Version 2.0.0 (Escorpión) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2020 }
+{ (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2020 }
+{ (c) Ruhr University of Bochum 2005 - 2023 }
 
 { Standard blocks for systems modelling and simulation }
 
@@ -40,18 +40,17 @@ type
   { TASIA }
   { ASIA element (analog signal memory with intrincis adjustment) }
 
-  TASIA = class(TBlock)
+  TASIA = class(TControlledBlock)
   protected
     PT1Analog: TPT1;
     FAlpha, FBeta: extended;
-    function SimAndGetOutput: extended;
+    function SimAndGetOutput: extended; override;
     procedure SetAlpha(AValue: extended);
     procedure SetBeta(AValue: extended);
     procedure SetDelta(AValue: extended);
     procedure SetX1(AValue: extended);
     function GetX1: extended;
   public
-    input: extended;
     constructor Create;
     destructor Destroy; override;
     property alpha: extended read FAlpha write SetAlpha;
@@ -66,12 +65,11 @@ type
   { TMiMe }
   { Michaelis-Menten element }
 
-  TMiMe = class(TBlock)
+  TMiMe = class(TControlledBlock)
   protected
-    function SimAndGetOutput: extended;
+    function SimAndGetOutput: extended; override;
   public
-    input: extended;
-    G, D: extended;
+    D: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;
@@ -82,11 +80,10 @@ type
   { TNoCoDI }
   { Non-competitive divisive inhibition }
 
-  TNoCoDI = class(TBlock)
+  TNoCoDI = class(TInvertableBlock)
   protected
-    function SimAndGetOutput: extended;
+    function SimAndGetOutput: extended; override;
   public
-    input1, input2: extended;
     constructor Create;
     destructor Destroy; override;
     property output: extended read Foutput;

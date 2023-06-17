@@ -6,12 +6,12 @@ unit SystemsDiagram;
 
 { SystemsDiagram: Classes for drawing block diagrams }
 
-{ Version 1.1.1 (Dendron) }
+{ Version 2.0.0 (Escorpión) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2020 }
+{ (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2020 }
+{ (c) Ruhr University of Bochum 2005 - 2023 }
 
 { Source code released under the BSD License }
 
@@ -54,7 +54,7 @@ type
   public
     simulationBlock: TBlock; // Representation in Bricks
     blockDiagram: TBlockDiagram;
-    Next: TIPSClass;
+    next: TIPSClass;
     boundsRect, objectRect: TRect;
     anchorPoint: array[leftmiddle..bottommiddle] of tAnchorPoint;
     title: string;
@@ -223,6 +223,7 @@ type
 
   TBlockDiagram = class
   public
+    model: TModel;
     firstIPSObject: TIPSClass;
     canvas: TCanvas;
     constructor Create;
