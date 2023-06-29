@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SimulaBeta
+Version=3.1.2
+Comment=SimulaBeta
+Exec="/home/pi/SimulaBeta"
+Terminal=false
+Type=Application
+Icon=simulabeta.png
+Categories=Application;Education;Science
