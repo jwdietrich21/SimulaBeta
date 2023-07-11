@@ -8,7 +8,7 @@ object SequencerWindow: TSequencerWindow
   ClientWidth = 1044
   FormStyle = fsStayOnTop
   OnCreate = FormCreate
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   object SequencerGrid: TDrawGrid
     Left = 16
     Height = 306

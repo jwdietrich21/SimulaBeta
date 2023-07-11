@@ -5,7 +5,7 @@ unit SimulationControl;
 { A simulator for insulin-glucose homeostasis }
 { Control Window for overall simulation }
 
-{ Version 3.1.2 (Challenger) }
+{ Version 3.2.0 (Donostia) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -30,7 +30,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
   ExtCtrls, Math, SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
-  SimulaBetaGUIServices, SequencerEngine, Sequencer, Stats;
+  SimulaBetaGUIServices, SequencerEngine, Sequencer, Stats, EnvironmentInfo;
 
 type
 
@@ -48,6 +48,7 @@ type
     ContinueButton: TRadioButton;
     SequenceButton: TRadioButton;
     TestStartUnitLabel: TLabel;
+    VersionControl: TLabel;
     ZLabel: TLabel;
     ZSpinEdit: TFloatSpinEdit;
     ZUnitLabel: TLabel;
@@ -348,6 +349,7 @@ begin
   SimTimeUnit := minutes;
   TestTimeUnit := SimTimeUnit;
   gTestTimeFactor := SecsPerMin;
+  VersionControl.Caption := 'SimulaBeta ' + FileVersion;
 end;
 
 procedure TControlWindow.FormClose(Sender: TObject;

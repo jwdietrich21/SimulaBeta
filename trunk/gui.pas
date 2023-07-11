@@ -5,7 +5,7 @@ unit GUI;
 { A simulator for insulin-glucose homeostasis }
 { GUI }
 
-{ Version 3.1.2 (Challenger) }
+{ Version 3.2.0 (Donostia) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -32,7 +32,7 @@ uses
   ComCtrls, StdCtrls, ExtCtrls, LCLType, LCLVersion, Spin, Menus,
   SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
   SimulationControl, SimulaBetaGUIServices, ScenarioHandler,
-  SimulaBetaAboutwindow, PreferencesGUI, Stats, disptab;
+  SimulaBetaAboutwindow, PreferencesGUI, Stats, disptab, IPS;
 
 type
 
@@ -46,10 +46,12 @@ type
     Divider11: TMenuItem;
     Divider12: TMenuItem;
     Divider21: TMenuItem;
+    Divider43: TMenuItem;
     EditMenu: TMenuItem;
     FileMenu: TMenuItem;
     HelpMenu: TMenuItem;
     ImageList1: TImageList;
+    IPSItem: TMenuItem;
     MacAboutItem: TMenuItem;
     MainMenu1: TMainMenu;
     Divider01: TMenuItem;
@@ -59,6 +61,13 @@ type
     Divider32: TMenuItem;
     Divider2: TToolButton;
     Divider13: TMenuItem;
+    LogItem: TMenuItem;
+    Divider41: TMenuItem;
+    DispositionItem: TMenuItem;
+    Divider42: TMenuItem;
+    StatisticsItem: TMenuItem;
+    PredictionItem: TMenuItem;
+    PlotItem: TMenuItem;
     PauseItem: TMenuItem;
     PrintItem: TMenuItem;
     PrintButton: TToolButton;
@@ -66,6 +75,7 @@ type
     PauseButton: TToolButton;
     StatsItem: TMenuItem;
     Divider31: TMenuItem;
+    WindowMenu: TMenuItem;
     WinPreferencesItem: TMenuItem;
     ResetItem: TMenuItem;
     OpenDialog1: TOpenDialog;
@@ -88,19 +98,25 @@ type
     MainToolBar: TToolBar;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
+    procedure DispositionItemClick(Sender: TObject);
     procedure DispTabItemClick(Sender: TObject);
     procedure Divider1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure IPSItemClick(Sender: TObject);
+    procedure LogItemClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
     procedure PauseButtonClick(Sender: TObject);
+    procedure PlotItemClick(Sender: TObject);
+    procedure PredictionItemClick(Sender: TObject);
     procedure PrintButtonClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure ResetItemClick(Sender: TObject);
     procedure RunButtonClick(Sender: TObject);
     procedure RunItemClick(Sender: TObject);
     procedure SaveMenuItemClick(Sender: TObject);
+    procedure StatisticsItemClick(Sender: TObject);
     procedure StatsItemClick(Sender: TObject);
     procedure MainToolBarClick(Sender: TObject);
     procedure OpenButtonClick(Sender: TObject);
@@ -236,6 +252,16 @@ begin
 
 end;
 
+procedure TToolbarWindow.PlotItemClick(Sender: TObject);
+begin
+  PlotForm.Show;
+end;
+
+procedure TToolbarWindow.PredictionItemClick(Sender: TObject);
+begin
+  PredictionForm.Show;
+end;
+
 procedure TToolbarWindow.PrintButtonClick(Sender: TObject);
 begin
 
@@ -298,6 +324,11 @@ begin
   end;
 end;
 
+procedure TToolbarWindow.StatisticsItemClick(Sender: TObject);
+begin
+  StatsForm.Show;
+end;
+
 procedure TToolbarWindow.StatsItemClick(Sender: TObject);
 begin
   StatsForm.Show;
@@ -329,6 +360,16 @@ begin
   AdaptMenus;
 end;
 
+procedure TToolbarWindow.IPSItemClick(Sender: TObject);
+begin
+  IPSForm.Show;
+end;
+
+procedure TToolbarWindow.LogItemClick(Sender: TObject);
+begin
+  LogWindow.Show;
+end;
+
 procedure TToolbarWindow.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
@@ -345,6 +386,11 @@ begin
     DispTabWindow.CopyCells
   else if theForm = StatsForm then
     StatsForm.CopyCells;
+end;
+
+procedure TToolbarWindow.DispositionItemClick(Sender: TObject);
+begin
+  DispTabWindow.Show;
 end;
 
 procedure TToolbarWindow.DispTabItemClick(Sender: TObject);

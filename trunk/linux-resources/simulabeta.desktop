@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=SimulaBeta
-Version=3.1.2
+Version=3.2.0
 Comment=SimulaBeta
 Exec="/home/pi/SimulaBeta"
 Terminal=false

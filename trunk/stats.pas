@@ -5,7 +5,7 @@ unit Stats;
 { A simulator for insulin-glucose homeostasis }
 { Statistics window }
 
-{ Version 3.1.2 (Challenger) }
+{ Version 3.2.0 (Donostia) }
 
 { (c) Johannes W. Dietrich, 1994 - 2023 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }

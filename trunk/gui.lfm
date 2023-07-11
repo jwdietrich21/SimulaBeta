@@ -23168,7 +23168,7 @@ object ToolbarWindow: TToolbarWindow
   }
   Menu = MainMenu1
   OnCreate = FormCreate
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   object MainToolBar: TToolBar
     Left = 0
     Height = 26
@@ -23482,6 +23482,42 @@ object ToolbarWindow: TToolbarWindow
       object StatsItem: TMenuItem
         Caption = 'Statistics...'
         OnClick = StatsItemClick
+      end
+    end
+    object WindowMenu: TMenuItem
+      Caption = 'Window'
+      object LogItem: TMenuItem
+        Caption = 'Log Window'
+        OnClick = LogItemClick
+      end
+      object PlotItem: TMenuItem
+        Caption = 'Plot Window'
+        OnClick = PlotItemClick
+      end
+      object PredictionItem: TMenuItem
+        Caption = 'Prediction'
+        OnClick = PredictionItemClick
+      end
+      object Divider41: TMenuItem
+        Caption = '-'
+      end
+      object DispositionItem: TMenuItem
+        Caption = 'Disposition Table'
+        OnClick = DispositionItemClick
+      end
+      object Divider42: TMenuItem
+        Caption = '-'
+      end
+      object StatisticsItem: TMenuItem
+        Caption = 'Statistics'
+        OnClick = StatisticsItemClick
+      end
+      object Divider43: TMenuItem
+        Caption = '-'
+      end
+      object IPSItem: TMenuItem
+        Caption = 'Information Processing Structure (IPS)'
+        OnClick = IPSItemClick
       end
     end
     object HelpMenu: TMenuItem

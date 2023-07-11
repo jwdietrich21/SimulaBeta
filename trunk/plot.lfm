@@ -8,7 +8,7 @@ object PlotForm: TPlotForm
   ClientWidth = 750
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   Visible = True
   object Chart1: TChart
     Left = 24

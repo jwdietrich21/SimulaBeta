@@ -11,7 +11,7 @@ object PreferencesDialog: TPreferencesDialog
   Constraints.MinHeight = 200
   FormStyle = fsStayOnTop
   OnShow = FormShow
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   object UOMGroupBox: TGroupBox
     Left = 16
     Height = 153
@@ -89,7 +89,6 @@ object PreferencesDialog: TPreferencesDialog
       Width = 48
       AutoSize = False
       ItemHeight = 19
-      ItemIndex = 0
       Items.Strings = (
         ''
         'm'
@@ -163,7 +162,6 @@ object PreferencesDialog: TPreferencesDialog
       Width = 48
       AutoSize = False
       ItemHeight = 19
-      ItemIndex = 1
       Items.Strings = (
         'd'
         ''

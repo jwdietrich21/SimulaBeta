@@ -8,7 +8,7 @@ object DispTabWindow: TDispTabWindow
   ClientWidth = 725
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   object DispositionGrid: TStringGrid
     Left = 0
     Height = 226
@@ -23,6 +23,13 @@ object DispTabWindow: TDispTabWindow
     TabOrder = 0
     ColWidths = (
       64
+      14
+      14
+      14
+      14
+      14
+      14
+      14
       13
       13
       13
@@ -65,13 +72,6 @@ object DispTabWindow: TDispTabWindow
       13
       13
       13
-      13
-      13
-      13
-      13
-      13
-      13
-      20
     )
   end
   object ComboBox_x: TComboBox

@@ -9,7 +9,7 @@ object StatsForm: TStatsForm
   OnActivate = FormActivate
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   object StatsGrid: TStringGrid
     Left = 0
     Height = 228
@@ -22,32 +22,32 @@ object StatsForm: TStatsForm
       item
         Title.Font.Color = clGreen
         Title.Caption = 'P (µmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = 2405887
         Title.Caption = 'W (µmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'Q (µmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'R (µmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'G (mmol/L)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clRed
         Title.Caption = 'S (pmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clRed
@@ -61,21 +61,21 @@ object StatsForm: TStatsForm
       end    
       item
         Title.Caption = 'N'
-        Width = 92
+        Width = 86
       end>
     RowCount = 10
     TabOrder = 0
     ColWidths = (
       64
+      87
+      87
+      87
+      87
+      87
+      87
       86
       86
       86
-      86
-      86
-      86
-      86
-      86
-      92
     )
     Cells = (
       10

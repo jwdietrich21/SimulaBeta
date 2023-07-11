@@ -145,7 +145,7 @@ object IPSForm: TIPSForm
     0000
   }
   OnCreate = FormCreate
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   Visible = True
   object IPSImage: TImage
     Left = 24

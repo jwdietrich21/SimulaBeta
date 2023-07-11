@@ -15,7 +15,7 @@ object ControlWindow: TControlWindow
   OnShow = FormShow
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '3.0.0.1'
   Visible = True
   object StartButton: TButton
     Left = 658
@@ -530,5 +530,16 @@ object ControlWindow: TControlWindow
     Caption = 'Cancel'
     OnClick = CancelButtonClick
     TabOrder = 6
+  end
+  object VersionControl: TLabel
+    Left = 622
+    Height = 16
+    Top = 24
+    Width = 111
+    Alignment = taRightJustify
+    Anchors = [akTop, akRight]
+    Caption = 'SimulaBeta x.y.z.w'
+    Font.Color = 11106936
+    ParentFont = False
   end
 end
