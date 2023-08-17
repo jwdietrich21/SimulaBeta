@@ -11,6 +11,7 @@ object PlotForm: TPlotForm
   LCLVersion = '3.0.0.1'
   Visible = True
   object Chart1: TChart
+    Cursor = crCross
     Left = 24
     Height = 324
     Hint = 'Plot of simulated time series'

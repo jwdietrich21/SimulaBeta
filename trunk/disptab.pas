@@ -90,17 +90,6 @@ begin
 end;
 
 procedure TDispTabWindow.FormPaint(Sender: TObject);
-const
-  MinGR = 0.5;    // mol/s
-  MaxGR = 15;
-  MinDR = 0.3;    // nmol/l
-  MaxDR = 8;
-  MinGBeta = 0.1; // pmol/s
-  MaxGBeta = 5;
-  MinDBeta = 1.5; // mmol/l
-  MaxDBeta = 35;
-  MinGE = 10;     // s/mol
-  MaxGE = 250;
 var
   i, j: integer;
   xmin, xmax, ymin, ymax, resx, resy: real;
@@ -171,7 +160,8 @@ begin
       ymin := MinGE;
       ymax := MaxGE;
     end;
-  end;   resx := (xmax - xmin) / (DispositionGrid.ColCount - 2);
+  end;
+  resx := (xmax - xmin) / (DispositionGrid.ColCount - 2);
   resy := (ymax - ymin) / (DispositionGrid.RowCount - 2);
   for i := 1 to DispositionGrid.ColCount - 1 do
     // GR

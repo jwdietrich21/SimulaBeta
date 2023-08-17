@@ -44,11 +44,6 @@ type
 
 
 const
-  MilliFactor = 1e-3;
-  MicroFactor = 1e-6;
-  NanoFactor = 1e-9;
-  PicoFactor = 1e-12;
-
   {Conversions:
   alpha = 1 / VD
   t1/2 = VD * ln2 / Clearance

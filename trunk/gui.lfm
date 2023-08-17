@@ -23476,6 +23476,11 @@ object ToolbarWindow: TToolbarWindow
         Caption = 'Disposition Table'
         OnClick = DispTabItemClick
       end
+      object OWSensitivityAnalysisItem: TMenuItem
+        Caption = 'OneWay Sensitivity Analysis...'
+        ShortCut = 16433
+        OnClick = OWSensitivityAnalysisItemClick
+      end
       object Divider32: TMenuItem
         Caption = '-'
       end

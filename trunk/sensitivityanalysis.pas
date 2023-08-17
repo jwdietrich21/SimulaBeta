@@ -30,13 +30,57 @@ interface
 uses
   Classes, SysUtils, SimulaBetaTypes, SimulationEngine;
 
+const
+  MinGR = 0.5;    // mol/s
+  MaxGR = 15;
+  MinDR = 0.3;    // nmol/l
+  MaxDR = 8;
+  MinGBeta = 0.1; // pmol/s
+  MaxGBeta = 5;
+  MinDBeta = 1.5; // mmol/l
+  MaxDBeta = 35;
+  MinGE = 10;     // s/mol
+  MaxGE = 250;
+
 type
+  tOneWaySensVector = array of TState;
   tTwoWaySensTable = array of array of TState;
 
+function OneWayVector(const xmin, xmax, resolution: real;
+  const StrucPars: tParameterSpace; modx: TParameter): tOneWaySensVector;
+
 function TwoWayTable(const xmin, xmax, ymin, ymax, resolutionx, resolutiony: real;
-    const StrucPars: tParameterSpace; modX, modY: TParameter): tTwoWaySensTable;
+  const StrucPars: tParameterSpace; modX, modY: TParameter): tTwoWaySensTable;
 
 implementation
+
+function OneWayVector(const xmin, xmax, resolution: real;
+  const StrucPars: tParameterSpace; modx: TParameter): tOneWaySensVector;
+var
+  i, k: integer;
+  maxi: integer;
+  params: tParameterSpace;
+  prediction: TPrediction;
+begin
+  params := StrucPars;
+  prediction := PredictedEquilibrium(P0, 0, Z0, params);
+  if prediction[0].G > 0 then
+    k := 0
+  else
+    k := 1;
+  maxi := trunc((xmax - xmin) / resolution) + 3;
+  SetLength(result, maxi);
+  for i := 0 to maxi - 1 do
+    begin
+      case modX of
+        GR: params.GR := xmin + resolution * (i);
+        GBeta: params.GBeta := (xmin + resolution * (i)) * PicoFactor;
+      end;
+      prediction := PredictedEquilibrium(P0, 0, Z0, params);
+      result[i] := prediction[k];
+      result[i].multi1 := params.GBeta;
+    end;
+end;
 
 function TwoWayTable(const xmin, xmax, ymin, ymax, resolutionx, resolutiony: real;
   const StrucPars: tParameterSpace; modX, modY: TParameter): tTwoWaySensTable;
@@ -51,7 +95,7 @@ begin
   if prediction[0].G > 0 then
     k := 0
   else
-    K := 1;
+    k := 1;
   maxi := trunc((xmax - xmin) / resolutionx) + 3;
   maxj := trunc((ymax - ymin) / resolutiony) + 3;
   SetLength(result, maxi, maxj);

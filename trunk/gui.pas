@@ -32,7 +32,8 @@ uses
   ComCtrls, StdCtrls, ExtCtrls, LCLType, LCLVersion, Spin, Menus,
   SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
   SimulationControl, SimulaBetaGUIServices, ScenarioHandler,
-  SimulaBetaAboutwindow, PreferencesGUI, Stats, disptab, IPS;
+  SimulaBetaAboutwindow, PreferencesGUI, Stats, disptab, IPS,
+  OWSensitivityAnalysis;
 
 type
 
@@ -65,6 +66,7 @@ type
     Divider41: TMenuItem;
     DispositionItem: TMenuItem;
     Divider42: TMenuItem;
+    OWSensitivityAnalysisItem: TMenuItem;
     StatisticsItem: TMenuItem;
     PredictionItem: TMenuItem;
     PlotItem: TMenuItem;
@@ -107,6 +109,7 @@ type
     procedure MacAboutItemClick(Sender: TObject);
     procedure MacPreferencesItemClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
+    procedure OWSensitivityAnalysisItemClick(Sender: TObject);
     procedure PauseButtonClick(Sender: TObject);
     procedure PlotItemClick(Sender: TObject);
     procedure PredictionItemClick(Sender: TObject);
@@ -177,6 +180,7 @@ begin
   ToolbarWindow.CopyMenuItem.ShortCut := ShortCut(VK_C, modifierKey);
   ToolbarWindow.PasteMenuItem.ShortCut := ShortCut(VK_V, modifierKey);
   ToolbarWindow.RunItem.ShortCut  := ShortCut(VK_R, modifierKey);
+  ToolbarWindow.OWSensitivityAnalysisItem.ShortCut := ShortCut(VK_1, modifierKey);
 end;
 
 procedure TToolbarWindow.WinAboutItemClick(Sender: TObject);
@@ -245,6 +249,11 @@ begin
         end;
     end;
   end;
+end;
+
+procedure TToolbarWindow.OWSensitivityAnalysisItemClick(Sender: TObject);
+begin
+  OWSensitivityAnalysisForm.Show;
 end;
 
 procedure TToolbarWindow.PauseButtonClick(Sender: TObject);

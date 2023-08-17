@@ -36,6 +36,7 @@ Str13 = string[13];
 
 TState = record
   P, Q, R, G, S, I, M, N, W, Z: extended;
+  multi1, multi2: extended;
 end;
 TPrediction = array[0..1] of TState;
 
@@ -94,6 +95,11 @@ const
 
   kMolarMassGlucose = 180.156; // molar mass in g/mol
   kInsulinActivity  = 1e9/6;   // corresponds to 6 nmol/IU, Knopp et al. 2019, PMID 30318910
+
+  MilliFactor = 1e-3;
+  MicroFactor = 1e-6;
+  NanoFactor = 1e-9;
+  PicoFactor = 1e-12;
 
 var
   gNumberFormat, gDateTimeFormat: String;
