@@ -69,17 +69,50 @@ begin
   else
     k := 1;
   maxi := trunc((xmax - xmin) / resolution) + 3;
-  SetLength(result, maxi);
-  for i := 0 to maxi - 1 do
+  if maxi > 0 then
+  begin
+    SetLength(Result, maxi);
+    for i := 0 to maxi - 1 do
     begin
       case modX of
-        GR: params.GR := xmin + resolution * (i);
-        GBeta: params.GBeta := (xmin + resolution * (i)) * PicoFactor;
+        GR:
+        begin
+          params.GR := xmin + resolution * (i);
+          prediction := PredictedEquilibrium(P0, 0, Z0, params);
+          Result[i] := prediction[k];
+          Result[i].multi1 := params.GR;
+        end;
+        DR:
+        begin
+          params.DR := xmin + resolution * (i);
+          prediction := PredictedEquilibrium(P0, 0, Z0, params);
+          Result[i] := prediction[k];
+          Result[i].multi1 := params.DR;
+        end;
+        GBeta:
+        begin
+          params.GBeta := (xmin + resolution * (i)) * PicoFactor;
+          prediction := PredictedEquilibrium(P0, 0, Z0, params);
+          Result[i] := prediction[k];
+          Result[i].multi1 := params.GBeta;
+        end;
+        DBeta:
+        begin
+          params.DBeta := xmin + resolution * (i);
+          prediction := PredictedEquilibrium(P0, 0, Z0, params);
+          Result[i] := prediction[k];
+          Result[i].multi1 := params.DBeta;
+        end;
+        GE:
+        begin
+          params.GE := xmin + resolution * (i);
+          prediction := PredictedEquilibrium(P0, 0, Z0, params);
+          Result[i] := prediction[k];
+          Result[i].multi1 := params.GE;
+        end;
       end;
-      prediction := PredictedEquilibrium(P0, 0, Z0, params);
-      result[i] := prediction[k];
-      result[i].multi1 := params.GBeta;
     end;
+  end;
 end;
 
 function TwoWayTable(const xmin, xmax, ymin, ymax, resolutionx, resolutiony: real;
@@ -98,23 +131,22 @@ begin
     k := 1;
   maxi := trunc((xmax - xmin) / resolutionx) + 3;
   maxj := trunc((ymax - ymin) / resolutiony) + 3;
-  SetLength(result, maxi, maxj);
+  SetLength(Result, maxi, maxj);
   for i := 0 to maxi - 1 do
     for j := 0 to maxj - 1 do
-      begin
-        case modX of
-          GR: params.GR := xmin + resolutionx * (i);
-          GBeta: params.GBeta := (xmin + resolutionx * (i)) * PicoFactor;
-        end;
-        case modY of
-          GR: params.GR := ymin + resolutiony * (j);
-          GBeta: params.GBeta := (ymin + resolutiony * (j)) * PicoFactor;
-        end;
-        prediction := PredictedEquilibrium(P0, 0, Z0, params);
-        result[i, j] := prediction[k];
+    begin
+      case modX of
+        GR: params.GR := xmin + resolutionx * (i);
+        GBeta: params.GBeta := (xmin + resolutionx * (i)) * PicoFactor;
       end;
+      case modY of
+        GR: params.GR := ymin + resolutiony * (j);
+        GBeta: params.GBeta := (ymin + resolutiony * (j)) * PicoFactor;
+      end;
+      prediction := PredictedEquilibrium(P0, 0, Z0, params);
+      Result[i, j] := prediction[k];
+    end;
 end;
 
 
 end.
-

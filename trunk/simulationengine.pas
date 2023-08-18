@@ -28,11 +28,12 @@ unit SimulationEngine;
 interface
 
 uses
-  Classes, SysUtils, Forms, bricks, lifeblocks, SimulaBetaTypes,
+  Classes, SysUtils, Forms, Math, bricks, lifeblocks, SimulaBetaTypes,
   ScenarioHandler, SequencerEngine;
 
 type
   tTestKind = (tkNone, tkfsIGT, tkoGTT, tkSequence);
+
   tUnits = record
     P, Q, R, G, S, I, M, N, W, Z: string;
   end;
@@ -51,61 +52,61 @@ const
   }
 
   InitialStrucPars: tParameterSpace =
-  (
-  alphaG: 0.11;          // 1 / VD for glucose (initial phase, 1/L)
-                         // [Hirota et al. 1999, PMID 10233198]: 7.24 and 7.27 L
-                         // [Sjoestrand et al. 2001, PMID 11878683: 12.3 L
-                         // [Sjoestrand and Hahn 2004, PMID 14977794]: 9.14 L
-                         // [van Tulder et al. 2005, PMID 16192526]: 90 mL/kg
-  betaG: 7.1e-4;         // Clearance exponent (ln2 / half-life) for glucose
-                         // [Sjoestrand et al. 2001, PMID 11878683]: t1/2 12.1 min
-                         // [Sjoestrand and Hahn 2004, PMID 14977794]: t1/2 11..16 min
-                         // [Strandberg and Hahn 2005, PMID 15486008]: t1/2 12..30 min
-  alphaI: 0.2;           // 1 / VD for insulin (1/l)
-                         // [Rang, H. P. (2003). Pharmacology. Edinburgh:
-                         //    Churchill Livingstone. ISBN 0-443-07145-4]
-  betaI: 3.4e-3;         // Clearance exponent (Clearance / VD) for insulin
-                         // [Turnheim and Waldhaeusl 1988, PMID 3281377]]: 700..800 mL/min
-                         // [[Weiss et al. 2015, PMID 26608654]: CL 141..571 mL/min
-                         // [[Koschorreck and Gilles 2008, PMID 18477391]: 700..3350 mL/min
-  GBeta: 2.8e-12;        // Estimated from NHANES study (mol/s)
-  DBeta: 7e-3;           // EC50 of glucose (mol/l)
-                         // [Byrne et al. 1994, PMID 8132752]
-                         // [Jones et al. 1997, PMID 9177392]: ca. 7 mmol/L
-                         // [Jones et al. 2000, PMID 10710505]: ca. 6 mmol/L
-                         // Toschi et al. 2002, PMID 11815471]: ca 8 mmol/L
-  GR: 2.3;               // Estimated from NHANES study
-  DR: 1.6e-9;            // EC50 of insulin (mol/l)
-                         // [Natali et al. 2000, PMID 10780934]: 240 mU/L
-  GE: 50;                // Calibration factor
-  );
+    (
+    alphaG: 0.11;          // 1 / VD for glucose (initial phase, 1/L)
+    // [Hirota et al. 1999, PMID 10233198]: 7.24 and 7.27 L
+    // [Sjoestrand et al. 2001, PMID 11878683: 12.3 L
+    // [Sjoestrand and Hahn 2004, PMID 14977794]: 9.14 L
+    // [van Tulder et al. 2005, PMID 16192526]: 90 mL/kg
+    betaG: 7.1e-4;         // Clearance exponent (ln2 / half-life) for glucose
+    // [Sjoestrand et al. 2001, PMID 11878683]: t1/2 12.1 min
+    // [Sjoestrand and Hahn 2004, PMID 14977794]: t1/2 11..16 min
+    // [Strandberg and Hahn 2005, PMID 15486008]: t1/2 12..30 min
+    alphaI: 0.2;           // 1 / VD for insulin (1/l)
+    // [Rang, H. P. (2003). Pharmacology. Edinburgh:
+    //    Churchill Livingstone. ISBN 0-443-07145-4]
+    betaI: 3.4e-3;         // Clearance exponent (Clearance / VD) for insulin
+    // [Turnheim and Waldhaeusl 1988, PMID 3281377]]: 700..800 mL/min
+    // [[Weiss et al. 2015, PMID 26608654]: CL 141..571 mL/min
+    // [[Koschorreck and Gilles 2008, PMID 18477391]: 700..3350 mL/min
+    GBeta: 2.8e-12;        // Estimated from NHANES study (mol/s)
+    DBeta: 7e-3;           // EC50 of glucose (mol/l)
+    // [Byrne et al. 1994, PMID 8132752]
+    // [Jones et al. 1997, PMID 9177392]: ca. 7 mmol/L
+    // [Jones et al. 2000, PMID 10710505]: ca. 6 mmol/L
+    // Toschi et al. 2002, PMID 11815471]: ca 8 mmol/L
+    GR: 2.3;               // Estimated from NHANES study
+    DR: 1.6e-9;            // EC50 of insulin (mol/l)
+    // [Natali et al. 2000, PMID 10780934]: 240 mU/L
+    GE: 50;                // Calibration factor
+    );
 
   PFactor = MicroFactor;
   P0 = 150 * PFactor;    // Glucose arrival (production + absorption)
-                         // Estimated to deliver fasting R between 10 and
-                         // 100 mcmol/s
-                         // R = P / (1 + N)  =>  P = R + RN
-                         // [Sjoestrand and Hahn 2004, PMID 14977794]: 15..85 mcmol/s
-                         // [Giebelstein et al. 2012, PMID 22282162]: 129 mcmol/s
+  // Estimated to deliver fasting R between 10 and
+  // 100 mcmol/s
+  // R = P / (1 + N)  =>  P = R + RN
+  // [Sjoestrand and Hahn 2004, PMID 14977794]: 15..85 mcmol/s
+  // [Giebelstein et al. 2012, PMID 22282162]: 129 mcmol/s
   IFactor = PicoFactor;
   I0 = 100 * IFactor;    // Fasting insulin concentration in mol/l
-                         // should be 20 to 210 pmol/l (3 to 30 mIU/l)
-                         // [Giebelstein et al. 2012, PMID 22282162]: 24 pmol/l
+  // should be 20 to 210 pmol/l (3 to 30 mIU/l)
+  // [Giebelstein et al. 2012, PMID 22282162]: 24 pmol/l
   GFactor = MilliFactor;
   G0 = 5 * GFactor;      // Fasting glucose concentration in mol/l
-                         // should be 3.3 to 5.5 mmol/l (60 to 100 mg/dl)
+  // should be 3.3 to 5.5 mmol/l (60 to 100 mg/dl)
   WFactor = MicroFactor;
   Z0 = 1;                // Normalised "set point", i.e. autonomic, endocrine
-                         // and paracrine afferences modulating insulin release
-                         // from beta cells
+  // and paracrine afferences modulating insulin release
+  // from beta cells
   w0 = 0.15;              // Calibrated
   p1 = 1 / w0 - 1;       // derived from Subba Rao et al. 1990 and Lenbury et al. 2001
   betaGI = ln(2) / (50 * SecsPerMin); // based on half-life of intestinal glucose
-                         // [Dalla Man et al. 2004 and Anderwald et al. 2011]
+  // [Dalla Man et al. 2004 and Anderwald et al. 2011]
   f0 = 0.85;             // bio-availability of glucose
-                         // [Dalla Man et al. 2004 and Anderwald et al. 2010]
+  // [Dalla Man et al. 2004 and Anderwald et al. 2010]
   c0 = 68e-3 / (3e-3 / SecsPerMin);   // Calibration factor for gut glucose absorption
-                         // [Brubaker et al 2007]: ca. 3 mmol/min
+  // [Brubaker et al 2007]: ca. 3 mmol/min
   D0o = 75 / kMolarMassGlucose;   // Glucose dosage for standard oGTT (75 g)
   D0i = 21 / kMolarMassGlucose;   // Glucose dosage for standard ivGTT (21 g for 70 kg)
 
@@ -138,13 +139,16 @@ procedure InitUnits;
 procedure InitSimulation;
 procedure ClearSimulation;
 procedure SetInitialConditions(Prediction: TPrediction);
-function PredictedEquilibrium(P, W, Z: extended; StrucPars: tParameterSpace): TPrediction;
-procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer; prediction: TPrediction; Events: TEventMatrix; continue: boolean);
+function CheckStrucParsPositive(StrucPars: tParameterSpace): boolean;
+function PredictedEquilibrium(P, W, Z: extended;
+  StrucPars: tParameterSpace): TPrediction;
+procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer;
+  prediction: TPrediction; Events: TEventMatrix; continue: boolean);
 
 implementation
 
 function SolveQuadratic(a, b, c: extended): TQRoots;
-{ solves quadratic equation with parameters a, b and c }
+  { solves quadratic equation with parameters a, b and c }
 begin
   Result[0] := -(b + sqrt(sqr(b) - 4 * a * c)) / (2 * a);
   Result[1] := -(b - sqrt(sqr(b) - 4 * a * c)) / (2 * a);
@@ -246,11 +250,24 @@ begin
   end;
 end;
 
-function PredictedEquilibrium(P, W, Z: extended; StrucPars: tParameterSpace): TPrediction;
-var
-    a, b, c, K1, K2: extended;
-    G1, G3: extended;
+function CheckStrucParsPositive(StrucPars: tParameterSpace): boolean;
 begin
+  Result := False;
+  if (StrucPars.alphaG >= 0) and (StrucPars.betaG >= 0) and
+    (StrucPars.alphaI >= 0) and (StrucPars.betaI >= 0) and
+    (StrucPars.GBeta >= 0) and (StrucPars.DBeta >= 0) and
+    (StrucPars.GR >= 0) and (StrucPars.DR >= 0) and (StrucPars.GE >= 0) then
+    Result := True;
+end;
+
+function PredictedEquilibrium(P, W, Z: extended;
+  StrucPars: tParameterSpace): TPrediction;
+var
+  a, b, c, K1, K2: extended;
+  G1, G3: extended;
+begin
+  if CheckStrucParsPositive(StrucPars) then
+  begin
   G1 := StrucPars.alphaG / StrucPars.betaG; // Gain of ASIA element
   G3 := StrucPars.alphaI / StrucPars.betaI; // Gain of ASIA element
   Result[0].P := P;
@@ -286,9 +303,21 @@ begin
     Result[1].Q := Result[1].P / (1 + Result[1].N);
     Result[1].R := Result[1].Q;
   end;
+  end
+  else
+  begin
+    Result[1].G := NaN;
+    Result[1].S := NaN;
+    Result[1].I := NaN;
+    Result[1].M := NaN;
+    Result[1].N := NaN;
+    Result[1].Q := NaN;
+    Result[1].R := NaN;
+  end;
 end;
 
-procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer; prediction: TPrediction; Events: TEventMatrix; continue: boolean);
+procedure RunSimulation(P, Glc, Ins: extended; nmin, nmax: integer;
+  prediction: TPrediction; Events: TEventMatrix; continue: boolean);
 var
   Q, R, S, M, N, Z: extended;
   i, j: integer;
@@ -326,17 +355,17 @@ begin
       for i := 0 to length(Events) - 1 do
       begin
         case Events[i].Variable of
-        vW:
+          vW:
           begin
             SetLength(WEvents, length(WEvents) + 1);
             WEvents[length(WEvents) - 1] := Events[i];
           end;
-        vG:
+          vG:
           begin
             SetLength(GEvents, length(GEvents) + 1);
             GEvents[length(GEvents) - 1] := Events[i];
           end;
-        vI:
+          vI:
           begin
             SetLength(IEvents, length(IEvents) + 1);
             IEvents[length(IEvents) - 1] := Events[i];
@@ -350,59 +379,59 @@ begin
       gBlocks.NoCoDI.input2 := N;
       Q := gBlocks.NoCoDI.simOutput;
       if gTestInfo.kind = tkOGTT then
+      begin
+        if t >= gTestInfo.startTime then
         begin
-          if t >= gTestInfo.startTime then
-          begin
-            // [Subba Rao et al. 1990 and Lenbury et al. 2001]
-            W := D0o * f0 / c0 / (p1 + exp(betaGI * (t - gTestInfo.startTime)));
-          end
-        end
+          // [Subba Rao et al. 1990 and Lenbury et al. 2001]
+          W := D0o * f0 / c0 / (p1 + exp(betaGI * (t - gTestInfo.startTime)));
+        end;
+      end
       else if (gTestInfo.kind = tkSequence) and (length(WEvents) > 0) then
-        begin
-          for j := 0 to length(WEvents) - 1 do
+      begin
+        for j := 0 to length(WEvents) - 1 do
           if (t >= WEvents[j].Delay) and (WEvents[j].ModType = oral) then
           begin
             SimOralLoad(W, WEvents[j].Amplitude, WEvents[j].f0, WEvents[j].c0,
               WEvents[j].p1, WEvents[j].beta, WEvents[j].ModOp,
               (t - WEvents[j].Delay));
           end;
-        end;
+      end;
       R := Q + W;
       gBlocks.G1.input := R;
       Glc := gBlocks.G1.simOutput;
       if gTestInfo.kind = tkfsIGT then
+      begin
+        if t >= gTestInfo.startTime then
         begin
-          if t >= gTestInfo.startTime then
-          begin
-            Glc := Glc + (gActiveModel.StrucPars.alphaG * D0i);
-            gBlocks.G1.x1 := Glc;
-            gTestInfo.kind := tkNone; // switch off again
-          end;
-        end
+          Glc := Glc + (gActiveModel.StrucPars.alphaG * D0i);
+          gBlocks.G1.x1 := Glc;
+          gTestInfo.kind := tkNone; // switch off again
+        end;
+      end
       else if (gTestInfo.kind = tkSequence) and (length(GEvents) > 0) then
-        begin
-          for j := 0 to length(GEvents) - 1 do
+      begin
+        for j := 0 to length(GEvents) - 1 do
           if (t >= GEvents[j].Delay) and (GEvents[j].ModType = iv) then
           begin
             SimIv(Glc, gBlocks.G1,
               gActiveModel.StrucPars.alphaG * GEvents[j].Amplitude,
               GEvents[j].ka, GEvents[j].ModOp, (t - GEvents[j].Delay));
           end;
-        end;
+      end;
       gBlocks.MiMeBeta.input := Glc;
       S := gBlocks.MiMeBeta.simOutput;
       gBlocks.G3.input := S;
       Ins := gBlocks.G3.simOutput;
       if (gTestInfo.kind = tkSequence) and (length(IEvents) > 0) then
-        begin
-          for j := 0 to length(IEvents) - 1 do
+      begin
+        for j := 0 to length(IEvents) - 1 do
           if (t >= IEvents[j].Delay) and (IEvents[j].ModType = sc) then
           begin
             SimSc(Ins, IEvents[j].Amplitude, IEvents[j].f0, IEvents[j].ka,
-            IEvents[j].beta, 1 / IEvents[j].alpha,
-            IEvents[j].ModOp, (t - IEvents[j].Delay));
+              IEvents[j].beta, 1 / IEvents[j].alpha,
+              IEvents[j].ModOp, (t - IEvents[j].Delay));
           end;
-        end;
+      end;
       gBlocks.MiMeR.input := Ins;
       M := gBlocks.MiMeR.simOutput;
       gBlocks.GE.input := M;
@@ -427,7 +456,7 @@ end;
 
 function TValues.GetSize: integer;
 begin
-  result := Length(R); // all lengths are equal
+  Result := Length(R); // all lengths are equal
 end;
 
 procedure TValues.SetSize(aValue: integer);
@@ -465,7 +494,6 @@ finalization
   ClearSimulation;
 
 end.
-
 { References:
 
 Hirota K, Ishihara H, Tsubo T, Matsuki A. Estimation of the initial

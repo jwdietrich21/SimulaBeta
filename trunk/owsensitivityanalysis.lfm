@@ -1,7 +1,7 @@
 object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
-  Left = 246
+  Left = 260
   Height = 404
-  Top = 140
+  Top = 224
   Width = 746
   Caption = 'One-Way Sensitivity Analysis'
   ClientHeight = 404
@@ -38,8 +38,32 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
       'TAChart'
     )
     Anchors = [akTop, akLeft, akRight, akBottom]
+    object PSeries: TLineSeries
+      LinePen.Color = clGreen
+      LinePen.Width = 2
+    end
+    object RSeries: TLineSeries
+      LinePen.Color = clNavy
+      LinePen.Width = 2
+    end
     object GSeries: TLineSeries
       LinePen.Color = clBlue
+      LinePen.Width = 2
+    end
+    object SSeries: TLineSeries
+      LinePen.Color = clPurple
+      LinePen.Width = 2
+    end
+    object ISeries: TLineSeries
+      LinePen.Color = clRed
+      LinePen.Width = 2
+    end
+    object MSeries: TLineSeries
+      LinePen.Color = clYellow
+      LinePen.Width = 2
+    end
+    object NSeries: TLineSeries
+      LinePen.Color = clLime
       LinePen.Width = 2
     end
   end
@@ -74,6 +98,7 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
       'N'
     )
     OnClick = VariablesCheckGroupClick
+    OnItemClick = VariablesCheckGroupItemClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 1
@@ -136,28 +161,28 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
       ShowHint = True
       TabOrder = 10
     end
-    object IColorBox: TColorBox
+    object MColorBox: TColorBox
       Left = 112
       Height = 20
       Hint = 'Choose colour for time series here.'
       Top = 157
       Width = 100
-      DefaultColorColor = clRed
-      Selected = clRed
+      DefaultColorColor = clYellow
+      Selected = clYellow
       Anchors = [akTop, akRight]
       ItemHeight = 16
       ParentShowHint = False
       ShowHint = True
       TabOrder = 11
     end
-    object mColorBox: TColorBox
+    object IColorBox: TColorBox
       Left = 112
       Height = 20
       Hint = 'Choose colour for time series here.'
       Top = 127
       Width = 100
-      DefaultColorColor = clYellow
-      Selected = clYellow
+      DefaultColorColor = clRed
+      Selected = clRed
       Anchors = [akTop, akRight]
       ItemHeight = 16
       ParentShowHint = False
@@ -186,6 +211,8 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
     Width = 71
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
+    Increment = 0.1
+    OnChange = MinSpinEditChange
     TabOrder = 2
   end
   object StrucParCombo: TComboBox
@@ -215,6 +242,9 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
     Width = 71
     Anchors = [akRight, akBottom]
     DecimalPlaces = 4
+    Increment = 0.1
+    OnChange = MaxSpinEditChange
     TabOrder = 4
+    Value = 1
   end
 end
