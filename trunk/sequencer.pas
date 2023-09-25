@@ -140,6 +140,7 @@ begin
       Inc(k);
     end;
   Close;
+  gActiveModel.EventMatrix := EventMatrix;
 end;
 
 procedure TSequencerWindow.CancelButtonClick(Sender: TObject);

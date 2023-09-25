@@ -28,29 +28,7 @@ unit SequencerEngine;
 interface
 
 uses
-  Classes, SysUtils, LifeBlocks;
-
-type
-  TEventType = (iv, sc, oral);
-  TVariable = (vNone, vW, vG, vI);
-  TOperator = (plus, times, assignop);
-
-  TEventRecord = record
-    Name: String;
-    ModType: TEventType;
-    Delay: integer;
-    ka: real;
-    alpha: real;
-    beta: real;
-    c0: real;
-    f0: real;
-    p1: real;
-    Variable: TVariable;
-    ModOp: TOperator;
-    Amplitude: real;
-  end;
-
-  TEventMatrix = array of TEventRecord;
+  Classes, SysUtils, LifeBlocks, SimulaBetaTypes;
 
 var
   gTestTimeFactor: integer;

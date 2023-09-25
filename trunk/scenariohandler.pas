@@ -222,6 +222,13 @@ begin
     ElementNode.AppendChild(SimpleNode(Doc, 'GE', FloatToStr(gActiveModel.StrucPars.GE, gUSFormatSettings)));
     RootNode.AppendChild(ElementNode);
 
+    if length(gActiveModel.EventMatrix) > 0
+    then
+    begin
+      ElementNode := Doc.CreateElement('sequence');
+      RootNode.AppendChild(ElementNode);
+    end;
+
     WriteXMLFile(Doc, theFileName);
   finally
     Doc.Free;

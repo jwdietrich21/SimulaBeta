@@ -182,7 +182,7 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="189"/>
+        <UsageCount Value="190"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -191,8 +191,9 @@
         <UnitName Value="SimulaBetaTypes"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="10" Y="2"/>
-        <UsageCount Value="189"/>
+        <TopLine Value="72"/>
+        <CursorPos X="33" Y="91"/>
+        <UsageCount Value="190"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -202,17 +203,18 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="189"/>
+        <UsageCount Value="190"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="scenariohandler.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ScenarioHandler"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="22"/>
-        <UsageCount Value="162"/>
+        <CursorPos Y="225"/>
+        <UsageCount Value="163"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
@@ -222,7 +224,7 @@
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26"/>
-        <UsageCount Value="162"/>
+        <UsageCount Value="163"/>
         <Loaded Value="True"/>
       </Unit16>
       <Unit17>
@@ -231,7 +233,7 @@
         <UnitName Value="UnitConverter"/>
         <EditorIndex Value="26"/>
         <WindowIndex Value="1"/>
-        <UsageCount Value="161"/>
+        <UsageCount Value="162"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -245,7 +247,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="66"/>
         <CursorPos X="4" Y="81"/>
-        <UsageCount Value="157"/>
+        <UsageCount Value="158"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit18>
@@ -258,8 +260,9 @@
         <UnitName Value="Sequencer"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="16"/>
-        <UsageCount Value="155"/>
+        <TopLine Value="115"/>
+        <CursorPos X="43" Y="143"/>
+        <UsageCount Value="156"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -269,14 +272,15 @@
         <UnitName Value="SequencerEngine"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <TopLine Value="28"/>
+        <CursorPos X="50" Y="31"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="148"/>
+        <UsageCount Value="149"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -289,7 +293,7 @@
         <EditorIndex Value="24"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21"/>
-        <UsageCount Value="105"/>
+        <UsageCount Value="106"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit21>
@@ -300,7 +304,7 @@
         <EditorIndex Value="23"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26"/>
-        <UsageCount Value="100"/>
+        <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
@@ -314,7 +318,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="30"/>
         <CursorPos X="53" Y="46"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit23>
@@ -325,7 +329,7 @@
         <EditorIndex Value="22"/>
         <WindowIndex Value="1"/>
         <CursorPos X="62" Y="2"/>
-        <UsageCount Value="96"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
       </Unit24>
       <Unit25>
@@ -337,7 +341,7 @@
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit25>
@@ -348,7 +352,7 @@
         <EditorIndex Value="20"/>
         <WindowIndex Value="1"/>
         <CursorPos X="3" Y="3"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
       </Unit26>
       <Unit27>
@@ -358,11 +362,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="OWSensitivityAnalysis"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="2"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="30"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit27>
@@ -738,7 +741,7 @@
         <UsageCount Value="10"/>
       </Unit71>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="owsensitivityanalysis.pas"/>
         <Caret Line="173" Column="19" TopLine="164"/>
@@ -851,6 +854,10 @@
         <Filename Value="simulationengine.pas"/>
         <Caret Line="315" Column="24" TopLine="285"/>
       </Position28>
+      <Position29>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="225" TopLine="202"/>
+      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

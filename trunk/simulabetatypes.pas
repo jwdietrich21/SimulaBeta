@@ -53,6 +53,27 @@ end;
 
 tParameter = (alphaG, betaG, alphaI, betaI, GBeta, DBeta, GR, DR, GE);
 
+TEventType = (iv, sc, oral);
+TVariable = (vNone, vW, vG, vI);
+TOperator = (plus, times, assignop);
+
+TEventRecord = record
+  Name: String;
+  ModType: TEventType;
+  Delay: integer;
+  ka: real;
+  alpha: real;
+  beta: real;
+  c0: real;
+  f0: real;
+  p1: real;
+  Variable: TVariable;
+  ModOp: TOperator;
+  Amplitude: real;
+end;
+
+TEventMatrix = array of TEventRecord;
+
 tModel = record
   Name: AnsiString; // MIRIAM 1
   Reference: AnsiString; // MIRIAM 2
@@ -66,6 +87,7 @@ tModel = record
   StrucPars: tParameterSpace;
   Prediction: TPrediction;
   Iterations: integer;
+  EventMatrix: TEventMatrix;
 end;
 
 TTimeUnit = (minutes, hours);
