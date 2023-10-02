@@ -28,7 +28,7 @@ unit ScenarioHandler;
 interface
 
 uses
-  Classes, SysUtils, DateUtils, DOM, XMLRead, XMLWrite, 
+  Classes, SysUtils, DateUtils, DOM, XMLRead, XMLWrite,
   URIParser, Forms, SimulaBetaGUIServices, EnvironmentInfo, SimulaBetaResources,
   SimulaBetaBaseServices, SimulaBetaTypes;
 
@@ -79,29 +79,35 @@ end;
 
 function NewScenario: TModel;
 begin
-  result := emptyModel;
+  Result := emptyModel;
 end;
 
 function emptyModel: TModel;
 begin
-  result.Name := kSTANDARD_MODEL_NAME;
-  result.Reference := kSTANDARD_MODEL_REFERENCE;
-  result.Species := kSTANDARD_MODEL_SPECIES;
-  result.Creators := kSTANDARD_MODEL_CREATORS;
-  result.Created := EncodeDateTime(kSTANDARD_MODEL_CREATED_Y, kSTANDARD_MODEL_CREATED_M, kSTANDARD_MODEL_CREATED_D, kSTANDARD_MODEL_CREATED_H, kSTANDARD_MODEL_CREATED_N, kSTANDARD_MODEL_CREATED_S, 0);
-  result.LastModified := EncodeDateTime(kSTANDARD_MODEL_MODIFIED_Y, kSTANDARD_MODEL_MODIFIED_M, kSTANDARD_MODEL_MODIFIED_D, kSTANDARD_MODEL_MODIFIED_H, kSTANDARD_MODEL_MODIFIED_N, kSTANDARD_MODEL_MODIFIED_S, 0);
-  result.Terms := kSTANDARD_MODEL_TERMS;
-  result.Iterations := 0;
+  Result.Name := kSTANDARD_MODEL_NAME;
+  Result.Reference := kSTANDARD_MODEL_REFERENCE;
+  Result.Species := kSTANDARD_MODEL_SPECIES;
+  Result.Creators := kSTANDARD_MODEL_CREATORS;
+  Result.Created := EncodeDateTime(kSTANDARD_MODEL_CREATED_Y,
+    kSTANDARD_MODEL_CREATED_M, kSTANDARD_MODEL_CREATED_D,
+    kSTANDARD_MODEL_CREATED_H, kSTANDARD_MODEL_CREATED_N, kSTANDARD_MODEL_CREATED_S, 0);
+  Result.LastModified := EncodeDateTime(kSTANDARD_MODEL_MODIFIED_Y,
+    kSTANDARD_MODEL_MODIFIED_M, kSTANDARD_MODEL_MODIFIED_D,
+    kSTANDARD_MODEL_MODIFIED_H, kSTANDARD_MODEL_MODIFIED_N,
+    kSTANDARD_MODEL_MODIFIED_S, 0);
+  Result.Terms := kSTANDARD_MODEL_TERMS;
+  Result.Iterations := 0;
 end;
 
 procedure ReadScenario(theFileName: string; var modelVersion: Str13);
 {reads a simulation scenario}
 var
-  i: integer;
+  i, j, k: integer;
   Doc: TXMLDocument;
-  RootNode: TDOMNode;
+  RootNode, SeqNode, SeqChild: TDOMNode;
   oldSep: char;
   standardDate: TDateTime;
+  eventID: string;
 begin
   if FileExists(theFileName) then
     if ValidFormat(theFileName) then
@@ -113,7 +119,8 @@ begin
         ReadXMLFile(Doc, theFileName);
         if assigned(Doc) then
           RootNode := Doc.DocumentElement;
-        if assigned(RootNode) and RootNode.HasAttributes and (RootNode.Attributes.Length > 0) then
+        if assigned(RootNode) and RootNode.HasAttributes and
+          (RootNode.Attributes.Length > 0) then
           for i := 0 to RootNode.Attributes.Length - 1 do
             with RootNode.Attributes[i] do
             begin
@@ -160,6 +167,40 @@ begin
         end
         else
           ShowVersionError;
+        SeqNode := Doc.DocumentElement.FindNode('sequence');
+        if assigned(SeqNode) then
+        begin
+          k := 0;
+          SeqChild := SeqNode.FirstChild;
+          while assigned(SeqChild) do
+          begin
+            if (SeqChild.NodeName = 'event') then
+            begin
+              Inc(k);
+              SetLength(gActiveModel.EventMatrix, k);
+              if SeqChild.HasAttributes and (SeqChild.Attributes.Length > 0)
+              then for i := 0 to SeqChild.Attributes.Length - 1 do
+                  with SeqChild.Attributes[i] do
+                  begin
+                    if NodeName = 'number' then
+                      eventID := UTF8Encode(NodeValue);
+                  end;
+              gActiveModel.EventMatrix[k-1].Name := NodeContent(SeqChild, 'Name');
+              ReadStr(NodeContent(SeqChild, 'ModType'), gActiveModel.EventMatrix[k-1].ModType);
+              VarFromNode(SeqChild, 'Delay', gActiveModel.EventMatrix[k-1].Delay);
+              VarFromNode(SeqChild, 'ka', gActiveModel.EventMatrix[k-1].ka);
+              VarFromNode(SeqChild, 'alpha', gActiveModel.EventMatrix[k-1].alpha);
+              VarFromNode(SeqChild, 'beta', gActiveModel.EventMatrix[k-1].beta);
+              VarFromNode(SeqChild, 'c0', gActiveModel.EventMatrix[k-1].c0);
+              VarFromNode(SeqChild, 'f0', gActiveModel.EventMatrix[k-1].f0);
+              VarFromNode(SeqChild, 'p1', gActiveModel.EventMatrix[k-1].p1);
+              ReadStr(NodeContent(SeqChild, 'Variable'), gActiveModel.EventMatrix[k-1].Variable);
+              ReadStr(NodeContent(SeqChild, 'ModOp'), gActiveModel.EventMatrix[k-1].ModOp);
+              VarFromNode(SeqChild, 'Amplitude', gActiveModel.EventMatrix[k-1].Amplitude);
+            end;
+            SeqChild := SeqChild.NextSibling;
+          end;
+        end;
       finally
         if assigned(Doc) then
           Doc.Free;
@@ -212,15 +253,24 @@ begin
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('strucpars');
-    ElementNode.AppendChild(SimpleNode(Doc, 'alphaG', FloatToStr(gActiveModel.StrucPars.alphaG, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'betaG', FloatToStr(gActiveModel.StrucPars.betaG, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'alphaI', FloatToStr(gActiveModel.StrucPars.alphaI, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'betaI', FloatToStr(gActiveModel.StrucPars.betaI, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'GBeta', FloatToStr(gActiveModel.StrucPars.GBeta, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'DBeta', FloatToStr(gActiveModel.StrucPars.DBeta, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'GR', FloatToStr(gActiveModel.StrucPars.GR, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'DR', FloatToStr(gActiveModel.StrucPars.DR, gUSFormatSettings)));
-    ElementNode.AppendChild(SimpleNode(Doc, 'GE', FloatToStr(gActiveModel.StrucPars.GE, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'alphaG',
+      FloatToStr(gActiveModel.StrucPars.alphaG, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'betaG',
+      FloatToStr(gActiveModel.StrucPars.betaG, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'alphaI',
+      FloatToStr(gActiveModel.StrucPars.alphaI, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'betaI',
+      FloatToStr(gActiveModel.StrucPars.betaI, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'GBeta',
+      FloatToStr(gActiveModel.StrucPars.GBeta, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'DBeta',
+      FloatToStr(gActiveModel.StrucPars.DBeta, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'GR',
+      FloatToStr(gActiveModel.StrucPars.GR, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'DR',
+      FloatToStr(gActiveModel.StrucPars.DR, gUSFormatSettings)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'GE',
+      FloatToStr(gActiveModel.StrucPars.GE, gUSFormatSettings)));
     RootNode.AppendChild(ElementNode);
 
     k := length(gActiveModel.EventMatrix);
@@ -228,26 +278,34 @@ begin
     begin
       ElementNode := Doc.CreateElement('sequence');
       for i := 0 to k - 1 do
-        begin
-          SeqNode := Doc.CreateElement('event');
-          TDOMElement(SeqNode).SetAttribute('number', IntToStr(i));
-          SeqNode.AppendChild(SimpleNode(Doc, 'Name', gActiveModel.EventMatrix[i].Name));
-          WriteStr(StringToWrite, gActiveModel.EventMatrix[i].ModType);
-          SeqNode.AppendChild(SimpleNode(Doc, 'ModType', StringToWrite));
-          SeqNode.AppendChild(SimpleNode(Doc, 'Delay', IntToStr(gActiveModel.EventMatrix[i].Delay)));
-          SeqNode.AppendChild(SimpleNode(Doc, 'ka', FloatToStr(gActiveModel.EventMatrix[i].ka, gUSFormatSettings)));
-          SeqNode.AppendChild(SimpleNode(Doc, 'alpha', FloatToStr(gActiveModel.EventMatrix[i].alpha, gUSFormatSettings)));
-          SeqNode.AppendChild(SimpleNode(Doc, 'beta', FloatToStr(gActiveModel.EventMatrix[i].beta, gUSFormatSettings)));
-          SeqNode.AppendChild(SimpleNode(Doc, 'c0', FloatToStr(gActiveModel.EventMatrix[i].c0, gUSFormatSettings)));
-          SeqNode.AppendChild(SimpleNode(Doc, 'f0', FloatToStr(gActiveModel.EventMatrix[i].f0, gUSFormatSettings)));
-          SeqNode.AppendChild(SimpleNode(Doc, 'p1', FloatToStr(gActiveModel.EventMatrix[i].p1, gUSFormatSettings)));
-          WriteStr(StringToWrite, gActiveModel.EventMatrix[i].Variable);
-          SeqNode.AppendChild(SimpleNode(Doc, 'Variable', StringToWrite));
-          WriteStr(StringToWrite, gActiveModel.EventMatrix[i].ModOp);
-          SeqNode.AppendChild(SimpleNode(Doc, 'ModOp', StringToWrite));
-          SeqNode.AppendChild(SimpleNode(Doc, 'Amplitude', FloatToStr(gActiveModel.EventMatrix[i].Amplitude, gUSFormatSettings)));
-          ElementNode.AppendChild(SeqNode);
-        end;
+      begin
+        SeqNode := Doc.CreateElement('event');
+        TDOMElement(SeqNode).SetAttribute('number', IntToStr(i));
+        SeqNode.AppendChild(SimpleNode(Doc, 'Name', gActiveModel.EventMatrix[i].Name));
+        WriteStr(StringToWrite, gActiveModel.EventMatrix[i].ModType);
+        SeqNode.AppendChild(SimpleNode(Doc, 'ModType', StringToWrite));
+        SeqNode.AppendChild(SimpleNode(Doc, 'Delay',
+          IntToStr(gActiveModel.EventMatrix[i].Delay)));
+        SeqNode.AppendChild(SimpleNode(Doc, 'ka',
+          FloatToStr(gActiveModel.EventMatrix[i].ka, gUSFormatSettings)));
+        SeqNode.AppendChild(SimpleNode(Doc, 'alpha',
+          FloatToStr(gActiveModel.EventMatrix[i].alpha, gUSFormatSettings)));
+        SeqNode.AppendChild(SimpleNode(Doc, 'beta',
+          FloatToStr(gActiveModel.EventMatrix[i].beta, gUSFormatSettings)));
+        SeqNode.AppendChild(SimpleNode(Doc, 'c0',
+          FloatToStr(gActiveModel.EventMatrix[i].c0, gUSFormatSettings)));
+        SeqNode.AppendChild(SimpleNode(Doc, 'f0',
+          FloatToStr(gActiveModel.EventMatrix[i].f0, gUSFormatSettings)));
+        SeqNode.AppendChild(SimpleNode(Doc, 'p1',
+          FloatToStr(gActiveModel.EventMatrix[i].p1, gUSFormatSettings)));
+        WriteStr(StringToWrite, gActiveModel.EventMatrix[i].Variable);
+        SeqNode.AppendChild(SimpleNode(Doc, 'Variable', StringToWrite));
+        WriteStr(StringToWrite, gActiveModel.EventMatrix[i].ModOp);
+        SeqNode.AppendChild(SimpleNode(Doc, 'ModOp', StringToWrite));
+        SeqNode.AppendChild(SimpleNode(Doc, 'Amplitude',
+          FloatToStr(gActiveModel.EventMatrix[i].Amplitude, gUSFormatSettings)));
+        ElementNode.AppendChild(SeqNode);
+      end;
       RootNode.AppendChild(ElementNode);
     end;
 

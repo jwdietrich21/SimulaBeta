@@ -50,6 +50,8 @@ function XMLDateTime2DateTime(const XMLDateTime: string): TDateTime;
 function TryXMLDateTime2DateTime(const S: ShortString; out Value: TDateTime): boolean;
 function NodeContent(theRoot: TDOMNode; Name: string): string;
 procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: extended);
+procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: real);
+procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: longint);
 function SimpleNode(Doc: TXMLDocument; Name, Value: string): TDOMNode;
 procedure bell;
 
@@ -156,6 +158,30 @@ begin
   if theString <> 'NA' then
     theVar := StrToFloat(theString);
   DefaultFormatSettings.DecimalSeparator := oldSep;
+end;
+
+procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: real);
+{supports XML routines}
+var
+  oldSep: char;
+  theString: string;
+begin
+  oldSep := DefaultFormatSettings.DecimalSeparator;
+  DefaultFormatSettings.DecimalSeparator := kPERIOD;
+  theString := NodeContent(theRoot, Name);
+  if theString <> 'NA' then
+    theVar := StrToFloat(theString);
+  DefaultFormatSettings.DecimalSeparator := oldSep;
+end;
+
+procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: longint);
+{supports XML routines}
+var
+  theString: string;
+begin
+  theString := NodeContent(theRoot, Name);
+  if theString <> 'NA' then
+    theVar := StrToInt(theString);
 end;
 
 function SimpleNode(Doc: TXMLDocument; Name, Value: string): TDOMNode;
