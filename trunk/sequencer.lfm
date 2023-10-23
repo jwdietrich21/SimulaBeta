@@ -7,8 +7,9 @@ object SequencerWindow: TSequencerWindow
   ClientHeight = 382
   ClientWidth = 1044
   FormStyle = fsStayOnTop
+  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
-  LCLVersion = '3.0.0.1'
+  OnShow = FormShow
   object SequencerGrid: TDrawGrid
     Left = 16
     Height = 306
@@ -160,8 +161,8 @@ object SequencerWindow: TSequencerWindow
     Anchors = [akRight, akBottom]
     Caption = 'Apply'
     Default = True
-    OnClick = ApplyButtonClick
     TabOrder = 2
+    OnClick = ApplyButtonClick
   end
   object CancelButton: TButton
     Left = 864
@@ -171,7 +172,7 @@ object SequencerWindow: TSequencerWindow
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
-    OnClick = CancelButtonClick
     TabOrder = 3
+    OnClick = CancelButtonClick
   end
 end

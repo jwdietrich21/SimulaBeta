@@ -209,6 +209,7 @@ begin
       if AnnotationForm.Visible then
         AnnotationForm.ShowAnnotation(gActiveModel);
       {$ENDIF}
+      gActiveModel.Imported := true;
       DefaultFormatSettings.DecimalSeparator := oldSep;
     end
     else

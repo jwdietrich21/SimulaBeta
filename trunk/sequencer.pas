@@ -61,6 +61,7 @@ type
     procedure ApplyButtonClick(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure ParameterGridCheckboxToggled(Sender: TObject;
       aCol, aRow: integer; aState: TCheckboxState);
     procedure ParameterGridDrawCell(Sender: TObject; aCol, aRow: integer;
@@ -104,6 +105,11 @@ begin
     InputFields[i].p1 := '1';
     ParameterGrid.Cells[4, i + 1] := InputFields[i].Delay;
   end;
+end;
+
+procedure TSequencerWindow.FormShow(Sender: TObject);
+begin
+  gActiveModel.Imported := false;
 end;
 
 procedure TSequencerWindow.ApplyButtonClick(Sender: TObject);

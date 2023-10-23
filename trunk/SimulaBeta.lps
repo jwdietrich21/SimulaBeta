@@ -10,7 +10,8 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="27"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="43" Y="12"/>
+        <TopLine Value="37"/>
+        <CursorPos X="2" Y="68"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -192,7 +193,7 @@
         <UnitName Value="SimulaBetaTypes"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="11" Y="2"/>
+        <CursorPos X="33"/>
         <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit13>
@@ -210,11 +211,10 @@
         <Filename Value="scenariohandler.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ScenarioHandler"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="176"/>
-        <CursorPos Y="204"/>
+        <TopLine Value="193"/>
+        <CursorPos X="36" Y="212"/>
         <UsageCount Value="167"/>
         <Loaded Value="True"/>
       </Unit15>
@@ -259,10 +259,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Sequencer"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="107"/>
-        <CursorPos X="43" Y="143"/>
+        <TopLine Value="97"/>
+        <CursorPos X="34" Y="112"/>
         <UsageCount Value="160"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -741,7 +742,7 @@
         <UsageCount Value="10"/>
       </Unit71>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="scenariohandler.pas"/>
         <Caret Line="225" TopLine="202"/>
@@ -854,6 +855,10 @@
         <Filename Value="scenariohandler.pas"/>
         <Caret Line="204" TopLine="187"/>
       </Position28>
+      <Position29>
+        <Filename Value="sequencer.pas"/>
+        <Caret Line="149" Column="43" TopLine="118"/>
+      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

@@ -88,6 +88,7 @@ tModel = record
   Prediction: TPrediction;
   Iterations: integer;
   EventMatrix: TEventMatrix;
+  Imported: boolean;
 end;
 
 TTimeUnit = (minutes, hours);

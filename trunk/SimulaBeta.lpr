@@ -35,7 +35,7 @@ uses
   SimulaBetaGUIServices, EnvironmentInfo, ScenarioHandler, SimulaBetaResources,
   UnitConverter, SimulaBetaAboutwindow, Sequencer, SequencerEngine,
   PreferencesGUI, PreferencesServices, Stats, StatsEngine, disptab,
-  SensitivityAnalysis, owsensitivityanalysis;
+  SensitivityAnalysis, owsensitivityanalysis, SimulaBetaTypes;
 
 {$R *.res}
 
@@ -54,12 +54,13 @@ begin
   Application.CreateForm(TPreferencesDialog, PreferencesDialog);
   Application.CreateForm(TStatsForm, StatsForm);
   Application.CreateForm(TDispTabWindow, DispTabWindow);
+  Application.CreateForm(TOWSensitivityAnalysisForm, OWSensitivityAnalysisForm);
   Application.BringToFront;
   ToolbarWindow.Show;
   ControlWindow.Visible := false;
   ControlWindow.ShowModal;
   InitMetabolicConversionFactors;
-  Application.CreateForm(TOWSensitivityAnalysisForm, OWSensitivityAnalysisForm);
+  gActiveModel.Imported := false;
   Application.Run;
   if assigned(gValues) then
     FreeAndNil(gValues);
