@@ -33,7 +33,7 @@ uses
   SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
   SimulationControl, SimulaBetaGUIServices, ScenarioHandler,
   SimulaBetaAboutwindow, PreferencesGUI, Stats, disptab, IPS,
-  OWSensitivityAnalysis;
+  OWSensitivityAnalysis, Sequencer;
 
 type
 
@@ -246,6 +246,7 @@ begin
         begin
           theVersion := '';
           ReadScenario(theFileName, theVersion);  {XML file}
+          SequencerWindow.FillWithStoredSequence(Sender, gActiveModel);
         end;
     end;
   end;

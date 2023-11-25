@@ -34,7 +34,7 @@ object SequencerWindow: TSequencerWindow
     Width = 733
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoFillColumns = True
-    ColCount = 13
+    ColCount = 14
     Columns = <    
       item
         Alignment = taCenter
@@ -46,7 +46,7 @@ object SequencerWindow: TSequencerWindow
       item
         SizePriority = 0
         Title.Caption = 'Name'
-        Width = 80
+        Width = 70
       end    
       item
         ButtonStyle = cbsPickList
@@ -65,12 +65,12 @@ object SequencerWindow: TSequencerWindow
           'Insulin degludec sc'
         )
         Title.Caption = 'Type'
-        Width = 122
+        Width = 112
       end    
       item
         SizePriority = 0
         Title.Caption = 'Delay'
-        Width = 50
+        Width = 40
       end    
       item
         SizePriority = 0
@@ -122,7 +122,12 @@ object SequencerWindow: TSequencerWindow
       item
         SizePriority = 0
         Title.Caption = 'Amp'
-        Width = 50
+        Width = 40
+      end    
+      item
+        SizePriority = 0
+        Title.Caption = 'alpha'
+        Width = 40
       end>
     DefaultColWidth = 50
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goAlwaysShowEditor, goSmoothScroll, goCellHints]
@@ -140,9 +145,9 @@ object SequencerWindow: TSequencerWindow
     ColWidths = (
       64
       35
-      80
-      122
-      50
+      70
+      112
+      40
       50
       50
       50
@@ -150,7 +155,8 @@ object SequencerWindow: TSequencerWindow
       50
       40
       40
-      50
+      40
+      40
     )
   end
   object ApplyButton: TButton

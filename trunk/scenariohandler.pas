@@ -224,6 +224,7 @@ var
   RootNode, ElementNode, SeqNode: TDOMNode;
   theDate, StringToWrite: ansistring;
 begin
+  { #todo -oJWD -cDonostia : Support macros in XML files }
   oldSep := DefaultFormatSettings.DecimalSeparator;
   DefaultFormatSettings.DecimalSeparator := kPERIOD;
   try

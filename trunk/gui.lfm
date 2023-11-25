@@ -23167,8 +23167,8 @@ object ToolbarWindow: TToolbarWindow
     00000049454E44AE426082
   }
   Menu = MainMenu1
+  LCLVersion = '3.99.0.0'
   OnCreate = FormCreate
-  LCLVersion = '3.0.0.1'
   object MainToolBar: TToolBar
     Left = 0
     Height = 26
@@ -23194,9 +23194,9 @@ object ToolbarWindow: TToolbarWindow
       Top = 2
       Caption = 'OpenButton'
       ImageIndex = 1
-      OnClick = OpenButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = OpenButtonClick
     end
     object SaveButton: TToolButton
       Left = 55
@@ -23204,9 +23204,9 @@ object ToolbarWindow: TToolbarWindow
       Top = 2
       Caption = 'SaveButton'
       ImageIndex = 2
-      OnClick = SaveButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = SaveButtonClick
     end
     object SaveAsButton: TToolButton
       Left = 78
@@ -23214,27 +23214,27 @@ object ToolbarWindow: TToolbarWindow
       Top = 2
       Caption = 'SaveAsButton'
       ImageIndex = 3
-      OnClick = SaveAsButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = SaveAsButtonClick
     end
     object Divider1: TToolButton
       Left = 24
       Height = 22
       Top = 2
       Caption = 'Divider1'
-      OnClick = Divider1Click
       Style = tbsSeparator
+      OnClick = Divider1Click
     end
     object Divider2: TToolButton
       Left = 124
       Height = 22
       Top = 2
       Caption = 'Divider2'
-      OnClick = SaveAsButtonClick
       ParentShowHint = False
       ShowHint = True
       Style = tbsDivider
+      OnClick = SaveAsButtonClick
     end
     object PrintButton: TToolButton
       Left = 101
@@ -23243,9 +23243,9 @@ object ToolbarWindow: TToolbarWindow
       Caption = 'PrintButton'
       Enabled = False
       ImageIndex = 4
-      OnClick = PrintButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = PrintButtonClick
     end
     object RunButton: TToolButton
       Left = 129
@@ -23253,9 +23253,9 @@ object ToolbarWindow: TToolbarWindow
       Top = 2
       Caption = 'RunButton'
       ImageIndex = 7
-      OnClick = RunButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = RunButtonClick
     end
     object PauseButton: TToolButton
       Left = 152
@@ -23264,9 +23264,9 @@ object ToolbarWindow: TToolbarWindow
       Caption = 'PauseButton'
       Enabled = False
       ImageIndex = 8
-      OnClick = PauseButtonClick
       ParentShowHint = False
       ShowHint = True
+      OnClick = PauseButtonClick
     end
   end
   object ImageList1: TImageList

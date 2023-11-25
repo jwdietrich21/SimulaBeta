@@ -31,6 +31,21 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls,
   ExtDlgs, Math, Types, SimulaBetaTypes, SimulationEngine, SequencerEngine;
 
+const
+  OnPos = 1;
+  NamePos = 2;
+  TypePos = 3;
+  DelayPos = 4;
+  kaPos = 5;
+  kePos = 6;
+  c0Pos = 7;
+  f0Pos = 8;
+  p1Pos = 9;
+  VarPos = 10;
+  OperPos = 11;
+  AmpPos = 12;
+  alphaPos = 13;
+
 type
 
   tMarking = (mOff, mW, mG, mI);
@@ -76,6 +91,7 @@ type
     procedure SequencerGridDrawCell(Sender: TObject; aCol, aRow: integer;
       aRect: TRect; aState: TGridDrawState);
     procedure DrawSequencerGrid(Sender: TObject);
+    procedure FillWithStoredSequence(Sender: TObject; theModel: TModel);
   private
     StateTable: array of array of tMarking;
   public
@@ -109,7 +125,7 @@ end;
 
 procedure TSequencerWindow.FormShow(Sender: TObject);
 begin
-  gActiveModel.Imported := false;
+  gActiveModel.Imported := False;
 end;
 
 procedure TSequencerWindow.ApplyButtonClick(Sender: TObject);
@@ -128,7 +144,8 @@ begin
       EventMatrix[k].ModType := InputFields[i].ModType;
       EventMatrix[k].Delay := StrToIntDef(InputFields[i].Delay, -1) * gTestTimeFactor;
       EventMatrix[k].ka := StrToFloatDef(InputFields[i].ka, NaN, gUSFormatSettings);
-      EventMatrix[k].alpha := StrToFloatDef(InputFields[i].alpha, NaN, gUSFormatSettings);
+      EventMatrix[k].alpha := StrToFloatDef(InputFields[i].alpha, NaN,
+        gUSFormatSettings);
       EventMatrix[k].beta := StrToFloatDef(InputFields[i].beta, NaN, gUSFormatSettings);
       EventMatrix[k].c0 := StrToFloatDef(InputFields[i].c0, NaN, gUSFormatSettings);
       EventMatrix[k].f0 := StrToFloatDef(InputFields[i].f0, NaN, gUSFormatSettings);
@@ -137,12 +154,15 @@ begin
       EventMatrix[k].ModOp := InputFields[i].ModOp;
       if EventMatrix[k].Variable = vI then
         EventMatrix[k].Amplitude :=
-          StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings) * gInsulinLoadConversionFactor
+          StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings) *
+          gInsulinLoadConversionFactor
       else if (EventMatrix[k].Variable = vG) or (EventMatrix[k].Variable = vW) then
         EventMatrix[k].Amplitude :=
-          StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings) / gGlucLoadConversionFactor
+          StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings) /
+          gGlucLoadConversionFactor
       else
-        EventMatrix[k].Amplitude := StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings);
+        EventMatrix[k].Amplitude :=
+          StrToFloatDef(InputFields[i].Amplitude, NaN, gUSFormatSettings);
       Inc(k);
     end;
   Close;
@@ -188,6 +208,7 @@ begin
     10: HintText := 'Variable to be modified';
     11: HintText := 'Operand: kind of modification';
     12: HintText := 'Amplitude of modification';
+    13: HintText := 'alpha (1 / VD)';
   end;
 
 end;
@@ -282,10 +303,13 @@ begin
         // https://go.drugbank.com/drugs/DB01309
         // Becker and Frick 2008, PMID 18076215
         // Arnolds et al. 2010, PMID 20429049
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[5, i] :=
+          FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 13, gUSFormatSettings);
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (42 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 13, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
+        ParameterGrid.Cells[6, i] :=
+          FloatToStr(ln(2) / (42 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('lispro', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
@@ -295,10 +319,13 @@ begin
         // Becker and Frick 2008, PMID 18076215
         // Leohr et al. 2020, PMID 32468448
         // Lilly Factsheet PA 9351 FSAMP
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[5, i] :=
+          FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 21, gUSFormatSettings);
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 21, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
+        ParameterGrid.Cells[6, i] :=
+          FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('aspart', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
@@ -307,10 +334,13 @@ begin
         // Arnolds et al. 2010, PMID 20429049
         // Liu et al. 2021, PMID 33947913
         // Drai et al. 2022, PMID 35230749
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (90 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[5, i] :=
+          FloatToStr(ln(2) / (90 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 22, gUSFormatSettings);
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 22, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
+        ParameterGrid.Cells[6, i] :=
+          FloatToStr(ln(2) / (60 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
         ParameterGrid.Cells[8, i] := '0.8';
         inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
@@ -319,10 +349,13 @@ begin
       begin
         // https://go.drugbank.com/drugs/DB00030
         // Becker and Frick 2008, PMID 18076215
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (100 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[5, i] :=
+          FloatToStr(ln(2) / (100 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 22, gUSFormatSettings);
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (120 * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 22, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
+        ParameterGrid.Cells[6, i] :=
+          FloatToStr(ln(2) / (120 * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
       end
       else if pos('nph', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
@@ -330,9 +363,11 @@ begin
         // Kølendorf and Bojsen 1982, PMID 7060331
         // Lauritzen et al. 1982, PMID 6807390
         // Søeborg et al. 2012, PMID 21703346
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (13 * MinsPerHour * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[5, i] :=
+          FloatToStr(ln(2) / (13 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 10, gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 10, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
         ParameterGrid.Cells[6, i] :=
           FloatToStr(ln(2) / (6.6 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
@@ -343,10 +378,13 @@ begin
       begin
         // https://go.drugbank.com/drugs/DB01307
         // Danne et al. 2003, PMID 14578244
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (8 * MinsPerHour * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[5, i] :=
+          FloatToStr(ln(2) / (8 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 7, gUSFormatSettings);
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (6 * MinsPerHour * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 7, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
+        ParameterGrid.Cells[6, i] :=
+          FloatToStr(ln(2) / (6 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
         ParameterGrid.Cells[8, i] := '0.6';
         inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
@@ -360,14 +398,17 @@ begin
         // No direct data available for bioavailability,
         //   f0 therefore estimated from clinical observations of required
         //   insulin dosage relative to NPH insulin
-        ParameterGrid.Cells[5, i] := FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[5, i] :=
+          FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 10, gUSFormatSettings);
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 10, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
+        ParameterGrid.Cells[6, i] :=
+          FloatToStr(ln(2) / (12 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
         ParameterGrid.Cells[8, i] := '0.36';
         inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
-    end
+      end
       else if pos('degludec', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
         // https://go.drugbank.com/drugs/DB09564
@@ -378,8 +419,10 @@ begin
         ParameterGrid.Cells[5, i] :=
           FloatToStr(ln(2) / (11 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].ka := ParameterGrid.Cells[5, i];
-        inputFields[i - 1].alpha := FloatToStr(1 / 17, gUSFormatSettings);
-        ParameterGrid.Cells[6, i] := FloatToStr(ln(2) / (25 * MinsPerHour * SecsPerMin), gUSFormatSettings);
+        ParameterGrid.Cells[alphaPos, i] := FloatToStr(1 / 17, gUSFormatSettings);
+        inputFields[i - 1].alpha := ParameterGrid.Cells[alphaPos, i];
+        ParameterGrid.Cells[6, i] :=
+          FloatToStr(ln(2) / (25 * MinsPerHour * SecsPerMin), gUSFormatSettings);
         inputFields[i - 1].beta := ParameterGrid.Cells[6, i];
         ParameterGrid.Cells[8, i] := '0.88';
         inputFields[i - 1].f0 := ParameterGrid.Cells[8, i];
@@ -444,7 +487,7 @@ begin
       mG: theCanvas.Brush.Color := clBlue;
       mW: theCanvas.Brush.Color := clTangerine;
     end;
-    theCanvas.FillRect(aRect);
+  theCanvas.FillRect(aRect);
 end;
 
 procedure TSequencerWindow.DrawSequencerGrid(Sender: TObject);
@@ -457,8 +500,8 @@ begin
   SetLength(StateTable, k, l);
   for i := 0 to l - 2 do
   begin
-    timeRatio := StrToFloatDef(InputFields[i].Delay, -1, gUSFormatSettings) * gTestTimeFactor /
-      (gSectionIterations);
+    timeRatio := StrToFloatDef(InputFields[i].Delay, -1, gUSFormatSettings) *
+      gTestTimeFactor / (gSectionIterations);
     if (timeRatio >= 0) and (timeRatio <= 1) then
     begin
       for j := 0 to k - 2 do
@@ -473,6 +516,50 @@ begin
     end;
   end;
   SequencerGrid.Invalidate;
+end;
+
+procedure TSequencerWindow.FillWithStoredSequence(Sender: TObject; theModel: TModel);
+var
+  i, j, k: integer;
+  tempString: string;
+begin
+  k := length(theModel.EventMatrix);
+  if k > 0 then
+    if ParameterGrid.RowCount < k then
+      ParameterGrid.RowCount := k;
+  for i := 1 to k do
+  begin
+    ParameterGrid.Cells[NamePos, i] := theModel.EventMatrix[i - 1].Name;
+    WriteStr(tempString, theModel.EventMatrix[i - 1].ModType);
+    ParameterGrid.Cells[TypePos, i] := tempString;
+    ParameterGrid.Cells[DelayPos, i] := IntToStr(theModel.EventMatrix[i - 1].Delay);
+    ParameterGrid.Cells[kaPos, i] := FloatToStr(theModel.EventMatrix[i - 1].ka);
+    ParameterGrid.Cells[alphaPos, i] := FloatToStr(theModel.EventMatrix[i - 1].alpha);
+    ParameterGrid.Cells[kePos, i] := FloatToStr(theModel.EventMatrix[i - 1].beta);
+    ParameterGrid.Cells[c0Pos, i] := FloatToStr(theModel.EventMatrix[i - 1].c0);
+    ParameterGrid.Cells[f0Pos, i] := FloatToStr(theModel.EventMatrix[i - 1].f0);
+    ParameterGrid.Cells[p1Pos, i] := FloatToStr(theModel.EventMatrix[i - 1].p1);
+    WriteStr(tempString, theModel.EventMatrix[i - 1].Variable);
+    if tempString = 'vI' then
+      ParameterGrid.Cells[VarPos, i] := 'I'
+    else if tempString = 'vG' then
+      ParameterGrid.Cells[VarPos, i] := 'G'
+    else if tempString = 'vW' then
+      ParameterGrid.Cells[VarPos, i] := 'W';
+    WriteStr(tempString, theModel.EventMatrix[i - 1].ModOp);
+    if tempString = 'plus' then
+      ParameterGrid.Cells[OperPos, i] := '+'
+    else if tempString = 'times' then
+      ParameterGrid.Cells[OperPos, i] := '*'
+    else if tempString = 'assignop' then
+      ParameterGrid.Cells[OperPos, i] := ':=';
+    ParameterGrid.Cells[AmpPos, i] := FloatToStr(theModel.EventMatrix[i - 1].Amplitude);
+  end;
+  for i := 1 to k do
+    for j := 1 to ParameterGrid.RowCount do
+      ParameterGridSetEditText(Sender, j, i, '');
+  { #todo 1 -oJWD -cDonostia : Handle units of time properly }
+  { #todo 1 -oJWD -cDonostia : Implement proper support for macros }
 end;
 
 end.
