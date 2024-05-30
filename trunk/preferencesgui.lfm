@@ -11,7 +11,7 @@ object PreferencesDialog: TPreferencesDialog
   Constraints.MinHeight = 200
   FormStyle = fsStayOnTop
   OnShow = FormShow
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   object UOMGroupBox: TGroupBox
     Left = 16
     Height = 153
@@ -53,9 +53,9 @@ object PreferencesDialog: TPreferencesDialog
         'µ'
         'p'
       )
-      OnChange = InsulinMassPrefixComboChange
       TabOrder = 0
       Text = 'p'
+      OnChange = InsulinMassPrefixComboChange
     end
     object InsulinMassUnitCombo: TComboBox
       Left = 232
@@ -69,9 +69,9 @@ object PreferencesDialog: TPreferencesDialog
         'IU'
         'mol'
       )
-      OnChange = InsulinMassUnitComboChange
       TabOrder = 1
       Text = 'mol'
+      OnChange = InsulinMassUnitComboChange
     end
     object DivLabel1: TLabel
       Left = 312
@@ -93,8 +93,8 @@ object PreferencesDialog: TPreferencesDialog
         ''
         'm'
       )
-      OnChange = InsulinVolumePrefixComboChange
       TabOrder = 2
+      OnChange = InsulinVolumePrefixComboChange
     end
     object VolLabel1: TLabel
       Left = 376
@@ -126,9 +126,9 @@ object PreferencesDialog: TPreferencesDialog
         'm'
         'µ'
       )
-      OnChange = GlucoseMassPrefixComboChange
       TabOrder = 3
       Text = 'm'
+      OnChange = GlucoseMassPrefixComboChange
     end
     object GlucoseMassUnitCombo: TComboBox
       Left = 232
@@ -142,9 +142,9 @@ object PreferencesDialog: TPreferencesDialog
         'g'
         'mol'
       )
-      OnChange = GlucoseMassUnitComboChange
       TabOrder = 4
       Text = 'mol'
+      OnChange = GlucoseMassUnitComboChange
     end
     object DivLabel2: TLabel
       Left = 312
@@ -166,8 +166,8 @@ object PreferencesDialog: TPreferencesDialog
         'd'
         ''
       )
-      OnChange = GlucoseVolumePrefixComboChange
       TabOrder = 5
+      OnChange = GlucoseVolumePrefixComboChange
     end
     object VolLabel2: TLabel
       Left = 376
@@ -275,9 +275,9 @@ object PreferencesDialog: TPreferencesDialog
       Height = 22
       Top = 2
       Width = 195
+      TabOrder = 0
       OnChange = NumberFormatEditChange
       OnEditingDone = NumberFormatEditEditingDone
-      TabOrder = 0
     end
     object DateTimeFormatEdit: TEdit
       Left = 176
@@ -304,8 +304,8 @@ object PreferencesDialog: TPreferencesDialog
     Anchors = [akRight, akBottom]
     Caption = 'OK'
     Default = True
-    OnClick = OKButtonClick
     TabOrder = 2
+    OnClick = OKButtonClick
   end
   object CancelButton: TButton
     Left = 417
@@ -315,7 +315,7 @@ object PreferencesDialog: TPreferencesDialog
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
-    OnClick = CancelButtonClick
     TabOrder = 3
+    OnClick = CancelButtonClick
   end
 end

@@ -27,8 +27,8 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <MinorVersionNr Value="2"/>
-      <BuildNr Value="339"/>
-      <StringTable Comments="Simulator for insulin-glucose homeostasis" CompanyName="Ruhr University of Bochum and Katholisches Klinikum Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 3.2.0 (Donostia)" LegalCopyright="© 1994-2023 J. W. Dietrich and Ruhr University of Bochum" LegalTrademarks="SimulaBeta" ProductName="SimulaBeta" ProductVersion="3.2.0"/>
+      <BuildNr Value="340"/>
+      <StringTable Comments="Simulator for insulin-glucose homeostasis" CompanyName="Ruhr University of Bochum and Katholisches Klinikum Bochum" FileDescription="Simulator for insulin-glucose homeostasis" InternalName="SimulaBeta 3.2.0 (Donostia)" LegalCopyright="© 1994-2024 J. W. Dietrich and Ruhr University of Bochum" LegalTrademarks="SimulaBeta" ProductName="SimulaBeta" ProductVersion="3.2.0"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -270,11 +270,6 @@
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <ConfigFile>
-        <WriteConfigFilePath Value="$(ProjOutDir)\fpclaz.cfg"/>
-      </ConfigFile>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

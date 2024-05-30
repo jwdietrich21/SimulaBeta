@@ -8,7 +8,7 @@ object PlotForm: TPlotForm
   ClientWidth = 750
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   Visible = True
   object Chart1: TChart
     Cursor = crCross
@@ -105,9 +105,9 @@ object PlotForm: TPlotForm
     Width = 57
     Anchors = [akRight, akBottom]
     Caption = 'Log y'
-    OnChange = LogCheckboxChange
     TabOrder = 2
     Visible = False
+    OnChange = LogCheckboxChange
   end
   object VariablesCheckGroup: TCheckGroup
     AnchorSideTop.Side = asrBottom

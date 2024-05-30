@@ -8,7 +8,7 @@ object LogWindow: TLogWindow
   ClientWidth = 939
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   Visible = True
   object ValuesGrid: TStringGrid
     Left = 0
@@ -57,7 +57,7 @@ object LogWindow: TLogWindow
       item
         Title.Font.Color = clRed
         Title.Caption = 'I(t) (pmol/L)'
-        Width = 86
+        Width = 85
       end    
       item
         Title.Font.Color = clRed
@@ -84,7 +84,7 @@ object LogWindow: TLogWindow
       86
       86
       86
-      86
+      85
       85
       85
     )

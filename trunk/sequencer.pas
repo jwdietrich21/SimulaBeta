@@ -7,10 +7,10 @@ unit Sequencer;
 
 { Version 3.2.0 (Donostia) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2023 }
+{ (c) Johannes W. Dietrich, 1994 - 2024 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2023 }
+{ (c) Ruhr University of Bochum 2005 - 2024 }
 
 { Source code released under the BSD License }
 
@@ -391,7 +391,7 @@ begin
       end
       else if pos('glargin', LowerCase(ParameterGrid.Cells[3, i])) > 0 then
       begin
-        // Lindauer and Becker 2010, PMID 30369394
+        // Lindauer and Becker 2019, PMID 30369394
         // Heise et al. 2015, PMID 26086190
         // Porcellati at al. 2015, PMID 25524950
         // Lucidi et al. 2021, PMID 33444161

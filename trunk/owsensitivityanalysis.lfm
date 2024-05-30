@@ -9,7 +9,7 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   object Chart1: TChart
     Cursor = crCross
     Left = 24
@@ -231,9 +231,9 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
       'DR (nmol/l)'
       'GE (s/mol)'
     )
-    OnChange = StrucParComboChange
     TabOrder = 3
     Text = 'Select independent parameter...'
+    OnChange = StrucParComboChange
   end
   object MaxSpinEdit: TFloatSpinEdit
     Left = 403

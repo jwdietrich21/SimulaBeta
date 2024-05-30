@@ -15,7 +15,7 @@ object ControlWindow: TControlWindow
   OnShow = FormShow
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   Visible = True
   object StartButton: TButton
     Left = 658
@@ -26,10 +26,10 @@ object ControlWindow: TControlWindow
     Anchors = [akRight, akBottom]
     Caption = 'Run'
     Default = True
-    OnClick = StartButtonClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
+    OnClick = StartButtonClick
   end
   object InitialConditionsGroup: TGroupBox
     Left = 16
@@ -180,9 +180,9 @@ object ControlWindow: TControlWindow
       Width = 56
       Caption = 'Enter'
       Checked = True
-      OnChange = EnterButtonChange
       TabOrder = 6
       TabStop = True
+      OnChange = EnterButtonChange
     end
     object PredictionButton: TRadioButton
       Left = 368
@@ -191,8 +191,8 @@ object ControlWindow: TControlWindow
       Top = 19
       Width = 84
       Caption = 'Prediction'
-      OnChange = PredictionButtonChange
       TabOrder = 4
+      OnChange = PredictionButtonChange
     end
     object ContinueButton: TRadioButton
       Left = 496
@@ -202,8 +202,8 @@ object ControlWindow: TControlWindow
       Width = 77
       Caption = 'Continue'
       Enabled = False
-      OnChange = ContinueButtonChange
       TabOrder = 5
+      OnChange = ContinueButtonChange
     end
   end
   object StrucParsGroup: TGroupBox
@@ -411,9 +411,9 @@ object ControlWindow: TControlWindow
       Width = 71
       Caption = 'Minutes'
       Checked = True
-      OnChange = MinutesButtonChange
       TabOrder = 1
       TabStop = True
+      OnChange = MinutesButtonChange
     end
     object HoursButton: TRadioButton
       Left = 313
@@ -422,8 +422,8 @@ object ControlWindow: TControlWindow
       Top = 16
       Width = 60
       Caption = 'Hours'
-      OnChange = HoursButtonChange
       TabOrder = 2
+      OnChange = HoursButtonChange
     end
   end
   object ResetButton: TButton
@@ -434,10 +434,10 @@ object ControlWindow: TControlWindow
     Width = 75
     Anchors = [akLeft, akBottom]
     Caption = 'Reset'
-    OnClick = ResetButtonClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
+    OnClick = ResetButtonClick
   end
   object TestGroup: TGroupBox
     Left = 16
@@ -458,9 +458,9 @@ object ControlWindow: TControlWindow
       Width = 44
       Caption = 'Off'
       Checked = True
-      OnChange = OffButtonChange
       TabOrder = 1
       TabStop = True
+      OnChange = OffButtonChange
     end
     object fsIGTButton: TRadioButton
       Left = 121
@@ -469,8 +469,8 @@ object ControlWindow: TControlWindow
       Top = 16
       Width = 56
       Caption = 'fsIGT'
-      OnChange = fsIGTButtonChange
       TabOrder = 0
+      OnChange = fsIGTButtonChange
     end
     object oGTTButton: TRadioButton
       Left = 232
@@ -479,8 +479,8 @@ object ControlWindow: TControlWindow
       Top = 16
       Width = 58
       Caption = 'oGTT'
-      OnChange = oGTTButtonChange
       TabOrder = 2
+      OnChange = oGTTButtonChange
     end
     object SequenceButton: TRadioButton
       Left = 344
@@ -488,8 +488,8 @@ object ControlWindow: TControlWindow
       Top = 16
       Width = 92
       Caption = 'Sequence…'
-      OnChange = SequenceButtonChange
       TabOrder = 3
+      OnChange = SequenceButtonChange
     end
     object TestStartLabel: TLabel
       Left = 16
@@ -528,8 +528,8 @@ object ControlWindow: TControlWindow
     Width = 75
     Cancel = True
     Caption = 'Cancel'
-    OnClick = CancelButtonClick
     TabOrder = 6
+    OnClick = CancelButtonClick
   end
   object VersionControl: TLabel
     Left = 622

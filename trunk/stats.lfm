@@ -9,7 +9,7 @@ object StatsForm: TStatsForm
   OnActivate = FormActivate
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   object StatsGrid: TStringGrid
     Left = 0
     Height = 228

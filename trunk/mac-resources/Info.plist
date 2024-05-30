@@ -6,10 +6,10 @@ A numerical simulator of insulin-glucose homeostasis
 
 Version 3.2.0
 
-(c) J. W. Dietrich, 1994 - 2023
+(c) J. W. Dietrich, 1994 - 2024
 (c) Ludwig Maximilian University of Munich 1995 - 2002
 (c) University of Ulm Hospitals 2002-2004
-(c) Ruhr University of Bochum 2005 - 2023
+(c) Ruhr University of Bochum 2005 - 2024
 
 Source code released under the BSD License
 See http://simulabeta.sourceforge.net for details
@@ -35,9 +35,9 @@ See http://simulabeta.sourceforge.net for details
 	<key>CFBundleShortVersionString</key>
 	<string>3.2.0</string>
 	<key>CFBundleGetInfoString</key>
-	<string>3.2.0, ©1994-2023 J. W. Dietrich</string>
+	<string>3.2.0, ©1994-2024 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>3.2.0, ©1994-2023 J. W. Dietrich</string>
+	<string>3.2.0, ©1994-2024 J. W. Dietrich</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.sf.simulabeta</string>
 	<key>LSApplicationCategoryType</key>

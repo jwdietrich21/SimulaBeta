@@ -11,7 +11,7 @@ object AboutWindow: TAboutWindow
   OnPaint = FormPaint
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '3.0.0.1'
+  LCLVersion = '3.2.0.0'
   object CopyrightLabel8: TLabel
     Left = 17
     Height = 13
@@ -26259,7 +26259,7 @@ object AboutWindow: TAboutWindow
     Height = 13
     Top = 106
     Width = 80
-    Caption = '© 1994 – 2023'
+    Caption = '© 1994 – 2024'
     Font.Height = -11
     Font.Pitch = fpVariable
     ParentColor = False
