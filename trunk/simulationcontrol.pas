@@ -188,6 +188,8 @@ var
   k: integer;
   P, W, Z: extended;
 begin
+  if gActiveModel.Imported then
+     IterationsSpinEdit.Value := gActiveModel.iterations div SecsPerMin;
   If EnterButton.Checked then
     begin
       StartMode := manual;
@@ -235,8 +237,10 @@ begin
       GSpinEdit.Enabled := false;
       if gActiveModel.Iterations > 0 then
         begin
-          GSpinEdit.Value := gValues.G[gActiveModel.iterations] / GFactor * gGlucoseConversionFactor;
-          ISpinEdit.Value := gValues.I[gActiveModel.iterations] / IFactor * gInsulinConversionFactor;
+          if gActiveModel.iterations <= length(gValues.G) then
+            GSpinEdit.Value := gValues.G[gActiveModel.iterations] / GFactor * gGlucoseConversionFactor;
+          if gActiveModel.iterations <= length(gValues.I) then
+            ISpinEdit.Value := gValues.I[gActiveModel.iterations] / IFactor * gInsulinConversionFactor;
         end;
     end;
 end;
@@ -404,7 +408,7 @@ end;
 procedure TControlWindow.FormShow(Sender: TObject);
 begin
   SetEditControls;
-  if gActiveModel.Iterations > 0 then
+  if (gActiveModel.Iterations > 0) and (gValues.Size > 0) then
   begin
     ContinueButton.Enabled := true;
     ContinueButton.Checked := true;

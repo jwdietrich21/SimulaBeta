@@ -97,6 +97,7 @@ begin
     kSTANDARD_MODEL_MODIFIED_S, 0);
   Result.Terms := kSTANDARD_MODEL_TERMS;
   Result.Iterations := 0;
+  Result.Imported := false;
 end;
 
 procedure ReadScenario(theFileName: string; var modelVersion: Str13);
@@ -104,7 +105,7 @@ procedure ReadScenario(theFileName: string; var modelVersion: Str13);
 var
   i, j, k: integer;
   Doc: TXMLDocument;
-  RootNode, SeqNode, SeqChild: TDOMNode;
+  RootNode, basicNode, SeqNode, SeqChild: TDOMNode;
   oldSep: char;
   standardDate: TDateTime;
   eventID: string;
@@ -167,6 +168,11 @@ begin
         end
         else
           ShowVersionError;
+        basicNode := Doc.DocumentElement.FindNode('basic');
+        if assigned(basicNode) then
+        begin
+          VarFromNode(basicNode, 'iterations', gActiveModel.Iterations);
+        end;
         SeqNode := Doc.DocumentElement.FindNode('sequence');
         if assigned(SeqNode) then
         begin
@@ -252,6 +258,10 @@ begin
       gActiveModel.Code := MIASE_SIMTHYR_STANDARD_CODE;
     ElementNode.AppendChild(SimpleNode(Doc, 'Code', gActiveModel.Code));
     ElementNode.AppendChild(SimpleNode(Doc, 'Comments', gActiveModel.Comments));
+    RootNode.AppendChild(ElementNode);
+
+    ElementNode := Doc.CreateElement('basic');
+    ElementNode.AppendChild(SimpleNode(Doc, 'iterations', IntToStr(gActiveModel.Iterations)));
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('strucpars');

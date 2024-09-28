@@ -326,7 +326,7 @@ begin
   Z := prediction[0].Z;
   if nmax > 0 then
   begin
-    if continue then
+    if continue and (nmin > 0) then
     begin
       Q := gValues.Q[nmin - 1];
       R := gValues.R[nmin - 1];

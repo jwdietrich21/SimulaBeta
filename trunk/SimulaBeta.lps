@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <BuildModes Active="Default"/>
+    <BuildModes Active="macOS"/>
     <Units Count="72">
       <Unit0>
         <Filename Value="SimulaBeta.lpr"/>
@@ -11,7 +11,7 @@
         <EditorIndex Value="27"/>
         <WindowIndex Value="1"/>
         <TopLine Value="37"/>
-        <CursorPos X="46" Y="13"/>
+        <CursorPos X="5" Y="67"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -36,8 +36,8 @@
         <UnitName Value="SimulationEngine"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="40"/>
-        <CursorPos X="46" Y="13"/>
+        <TopLine Value="188"/>
+        <CursorPos X="30" Y="204"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -101,10 +101,9 @@
         <Filename Value="bricks.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Bricks"/>
-        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="61"/>
-        <CursorPos X="33" Y="76"/>
+        <TopLine Value="50"/>
+        <CursorPos Y="81"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -133,7 +132,7 @@
         <UnitName Value="LogGrid"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="46" Y="13"/>
+        <CursorPos Y="9"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -145,9 +144,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SimulationControl"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="28"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="46" Y="13"/>
+        <TopLine Value="159"/>
+        <CursorPos X="6" Y="190"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -184,8 +185,8 @@
         <UnitName Value="SimulaBetaBaseServices"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="146"/>
-        <CursorPos X="46" Y="13"/>
+        <TopLine Value="166"/>
+        <CursorPos Y="185"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -195,7 +196,7 @@
         <UnitName Value="SimulaBetaTypes"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="50"/>
+        <TopLine Value="71"/>
         <CursorPos X="46" Y="13"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
@@ -216,9 +217,9 @@
         <UnitName Value="ScenarioHandler"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="80"/>
-        <CursorPos X="46" Y="13"/>
-        <UsageCount Value="174"/>
+        <TopLine Value="251"/>
+        <CursorPos X="95" Y="264"/>
+        <UsageCount Value="177"/>
         <Loaded Value="True"/>
       </Unit15>
       <Unit16>
@@ -228,7 +229,7 @@
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="174"/>
+        <UsageCount Value="177"/>
         <Loaded Value="True"/>
       </Unit16>
       <Unit17>
@@ -238,7 +239,7 @@
         <EditorIndex Value="26"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="14"/>
-        <UsageCount Value="173"/>
+        <UsageCount Value="176"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -252,7 +253,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="66"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="169"/>
+        <UsageCount Value="172"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit18>
@@ -265,8 +266,9 @@
         <UnitName Value="Sequencer"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="46" Y="13"/>
-        <UsageCount Value="167"/>
+        <TopLine Value="112"/>
+        <CursorPos X="10" Y="128"/>
+        <UsageCount Value="170"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit19>
@@ -283,7 +285,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="160"/>
+        <UsageCount Value="163"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -296,7 +298,7 @@
         <EditorIndex Value="24"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="117"/>
+        <UsageCount Value="120"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit21>
@@ -307,7 +309,7 @@
         <EditorIndex Value="23"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="112"/>
+        <UsageCount Value="115"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
@@ -321,7 +323,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="30"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="109"/>
+        <UsageCount Value="112"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit23>
@@ -332,7 +334,7 @@
         <EditorIndex Value="22"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="108"/>
+        <UsageCount Value="111"/>
         <Loaded Value="True"/>
       </Unit24>
       <Unit25>
@@ -344,7 +346,7 @@
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="107"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit25>
@@ -355,7 +357,7 @@
         <EditorIndex Value="20"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="107"/>
         <Loaded Value="True"/>
       </Unit26>
       <Unit27>
@@ -369,7 +371,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="246"/>
         <CursorPos X="46" Y="13"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit27>
@@ -748,123 +750,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="sequencer.pas"/>
-        <Caret Line="213" Column="33" TopLine="187"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="307" TopLine="282"/>
       </Position1>
       <Position2>
-        <Filename Value="sequencer.pas"/>
-        <Caret Line="216" Column="10" TopLine="190"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="308" TopLine="283"/>
       </Position2>
       <Position3>
-        <Filename Value="owsensitivityanalysis.pas"/>
-        <Caret Line="2"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="309" TopLine="284"/>
       </Position3>
       <Position4>
-        <Filename Value="plot.pas"/>
-        <Caret Line="259" TopLine="233"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="310" TopLine="285"/>
       </Position4>
       <Position5>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="13" Column="19"/>
+        <Caret Line="311" TopLine="286"/>
       </Position5>
       <Position6>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="117" Column="37" TopLine="92"/>
+        <Caret Line="312" TopLine="287"/>
       </Position6>
       <Position7>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="128" Column="14" TopLine="102"/>
+        <Caret Line="313" TopLine="288"/>
       </Position7>
       <Position8>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="129" Column="14" TopLine="103"/>
+        <Caret Line="314" TopLine="289"/>
       </Position8>
       <Position9>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="131" Column="14" TopLine="105"/>
+        <Caret Line="315" TopLine="290"/>
       </Position9>
       <Position10>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="141" Column="60" TopLine="115"/>
+        <Caret Line="316" TopLine="291"/>
       </Position10>
       <Position11>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="153" Column="61" TopLine="128"/>
+        <Caret Line="317" TopLine="292"/>
       </Position11>
       <Position12>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="168" Column="65" TopLine="143"/>
+        <Caret Line="320" TopLine="295"/>
       </Position12>
       <Position13>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="181" Column="26" TopLine="156"/>
+        <Caret Line="333" TopLine="318"/>
       </Position13>
       <Position14>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="281" Column="14" TopLine="255"/>
+        <Caret Line="334" TopLine="318"/>
       </Position14>
       <Position15>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="282" Column="14" TopLine="256"/>
+        <Caret Line="335" TopLine="318"/>
       </Position15>
       <Position16>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="284" Column="14" TopLine="258"/>
+        <Caret Line="336" TopLine="318"/>
       </Position16>
       <Position17>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="294" Column="13" TopLine="269"/>
+        <Caret Line="339" TopLine="318"/>
       </Position17>
       <Position18>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="349" Column="10" TopLine="323"/>
+        <Filename Value="simulationengine.pas"/>
+        <Caret Line="326" TopLine="310"/>
       </Position18>
       <Position19>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="350" Column="26" TopLine="324"/>
+        <Filename Value="simulationengine.pas"/>
+        <Caret Line="327" TopLine="310"/>
       </Position19>
       <Position20>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="351" Column="12" TopLine="325"/>
+        <Filename Value="simulationengine.pas"/>
+        <Caret Line="329" Column="31" TopLine="322"/>
       </Position20>
       <Position21>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="432" Column="14" TopLine="406"/>
+        <Filename Value="simulabetatypes.pas"/>
+        <Caret Line="13" Column="46" TopLine="71"/>
       </Position21>
       <Position22>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="437" Column="14" TopLine="411"/>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="217" Column="14" TopLine="188"/>
       </Position22>
       <Position23>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="440" Column="26" TopLine="414"/>
+        <Filename Value="sequencer.pas"/>
+        <Caret Line="128" Column="10" TopLine="112"/>
       </Position23>
       <Position24>
         <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="448" Column="14" TopLine="422"/>
+        <Caret Line="191" TopLine="183"/>
       </Position24>
       <Position25>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="453" Column="14" TopLine="427"/>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="217" Column="14" TopLine="192"/>
       </Position25>
       <Position26>
-        <Filename Value="simulationcontrol.pas"/>
-        <Caret Line="456" Column="26" TopLine="430"/>
+        <Filename Value="sequencer.pas"/>
+        <Caret Line="128" Column="10" TopLine="112"/>
       </Position26>
       <Position27>
-        <Filename Value="sequencer.pas"/>
-        <Caret Line="561" Column="63" TopLine="533"/>
+        <Filename Value="SimulaBeta.lpr"/>
+        <Caret Line="63" Column="10" TopLine="37"/>
       </Position27>
       <Position28>
-        <Filename Value="sequencer.pas"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="188" Column="105" TopLine="183"/>
       </Position28>
       <Position29>
-        <Filename Value="bricks.pas"/>
-        <Caret Line="2"/>
+        <Filename Value="simulationcontrol.pas"/>
+        <Caret Line="191" Column="13" TopLine="183"/>
       </Position29>
       <Position30>
-        <Filename Value="bricks.pas"/>
-        <Caret Column="25"/>
+        <Filename Value="simulationengine.pas"/>
+        <Caret Line="204" Column="30" TopLine="188"/>
       </Position30>
     </JumpHistory>
     <RunParams>

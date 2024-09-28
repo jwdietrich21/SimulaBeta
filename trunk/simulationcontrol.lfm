@@ -15,7 +15,7 @@ object ControlWindow: TControlWindow
   OnShow = FormShow
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.4.0.0'
   Visible = True
   object StartButton: TButton
     Left = 658
