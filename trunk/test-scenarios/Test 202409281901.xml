@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario modelversion="3.0">
+  <MIRIAM>
+    <Name>Model 3</Name>
+    <Reference>Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: 36271244; PMCID: PMC9587026.</Reference>
+    <Species>Homo sapiens (NCBI Taxonomy ID 9606)</Species>
+    <Creators>Dietrich, Dasgupta, Anoop, Jebasingh, Kurian, Inbakumari, Boehm and Thomas</Creators>
+    <Created>2021-11-01T12:27:00</Created>
+    <LastModified>2022-05-07T10:45:00</LastModified>
+    <Terms>Creative Commons Attributions License 4.0 (CC BY 4.0)</Terms>
+  </MIRIAM>
+  <MIASE>
+    <Code>Model of insulin-glucose homeostasis for use with SimulaBeta, as available from http://simulabeta.sf.net</Code>
+    <Comments></Comments>
+  </MIASE>
+  <basic>
+    <iterations>86400</iterations>
+  </basic>
+  <strucpars>
+    <alphaG>0.11</alphaG>
+    <betaG>0.00071</betaG>
+    <alphaI>0.2</alphaI>
+    <betaI>0.0034</betaI>
+    <GBeta>2.8E-12</GBeta>
+    <DBeta>0.007</DBeta>
+    <GR>2.3</GR>
+    <DR>1.6E-9</DR>
+    <GE>50</GE>
+  </strucpars>
+</scenario>

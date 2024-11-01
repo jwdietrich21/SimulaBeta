@@ -23168,7 +23168,7 @@ object ToolbarWindow: TToolbarWindow
   }
   Menu = MainMenu1
   OnCreate = FormCreate
-  LCLVersion = '3.2.0.0'
+  LCLVersion = '3.7.0.0'
   object MainToolBar: TToolBar
     Left = 0
     Height = 26

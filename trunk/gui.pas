@@ -29,7 +29,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ComCtrls, StdCtrls, ExtCtrls, LCLType, LCLVersion, Spin, Menus,
+  ComCtrls, ExtCtrls, LCLType, LCLVersion, Menus,
   SimulaBetaTypes, SimulationEngine, Prediction, Plot, LogGrid,
   SimulationControl, SimulaBetaGUIServices, ScenarioHandler,
   SimulaBetaAboutwindow, PreferencesGUI, Stats, disptab, IPS,
