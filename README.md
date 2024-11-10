@@ -45,4 +45,11 @@ For documentation purposes, a historic version of SimGluc, an early prototype of
 A complete and regularly updated list of all SimulaBeta revisions is available from https://sourceforge.net/p/simulabeta/wiki/Version%20History/.
 
 
+## Puclications
+
+1. Dietrich JW, Dasgupta R, Anoop S, Jebasingh F, Kurian ME, Inbakumari M, Boehm BO, Thomas N. SPINA Carb: a simple mathematical model supporting fast in-vivo estimation of insulin sensitivity and beta cell function. Sci Rep. 2022 Oct 21;12(1):17659. doi: 10.1038/s41598-022-22531-3. PMID: [36271244](https://pubmed.ncbi.nlm.nih.gov/36271244/); PMCID: PMC9587026.
+
+2. Dietrich JW, Abood A, Dasgupta R, Anoop S, Jebasingh FK, Spurgeon R, Thomas N, Boehm BO. A novel simple disposition index (SPINA-DI) from fasting insulin and glucose concentration as a robust measure of carbohydrate homeostasis. J Diabetes. 2024 Sep;16(9):e13525. doi: 10.1111/1753-0407.13525. Epub 2024 Jan 2. PMID: [38169110](https://pubmed.ncbi.nlm.nih.gov/38169110/); PMCID: PMC11418405.
+
+
 J. W. Dietrich
