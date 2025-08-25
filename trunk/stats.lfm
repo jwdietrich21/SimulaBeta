@@ -6,10 +6,10 @@ object StatsForm: TStatsForm
   Caption = 'Statistics'
   ClientHeight = 252
   ClientWidth = 846
+  LCLVersion = '4.2.0.0'
   OnActivate = FormActivate
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '3.2.0.0'
   object StatsGrid: TStringGrid
     Left = 0
     Height = 228

@@ -8,10 +8,10 @@ unit lifeblocks;
 
 { Version 2.0.0 (Escorpión) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2024 }
+{ (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2024 }
+{ (c) Ruhr University of Bochum 2005 - 2025 }
 
 { Standard blocks for systems modelling and simulation }
 

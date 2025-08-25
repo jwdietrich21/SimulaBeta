@@ -1,17 +1,19 @@
 object AboutWindow: TAboutWindow
   Left = 681
   Height = 313
+  Hint = 'This window displays predicted values for hormone concentrations from a closed-loop model. '#10'Negative values are virtual solutions that result from the system''s equations.  '#10'Only the positive solution is possible in a biological sense.'
   Top = 167
   Width = 473
   Caption = 'About SimulaBeta'
   ClientHeight = 313
   ClientWidth = 473
   FormStyle = fsStayOnTop
+  Position = poScreenCenter
+  ShowHint = True
+  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
-  Position = poScreenCenter
-  LCLVersion = '3.2.0.0'
   object CopyrightLabel8: TLabel
     Left = 17
     Height = 13
@@ -26259,7 +26261,7 @@ object AboutWindow: TAboutWindow
     Height = 13
     Top = 106
     Width = 80
-    Caption = '© 1994 – 2024'
+    Caption = '© 1994 – 2025'
     Font.Height = -11
     Font.Pitch = fpVariable
     ParentColor = False

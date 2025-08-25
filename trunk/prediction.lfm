@@ -1,19 +1,20 @@
 object PredictionForm: TPredictionForm
   Left = 1049
   Height = 271
+  Hint = 'This window displays predicted values for hormone and metabolite concentrations from the closed-loop model. '#10'Negative values are virtual solutions that result from the system''s equations.  '#10'Only the positive solution is possible in a biological sense.'
   Top = 142
   Width = 420
   Caption = 'Prediction'
   ClientHeight = 271
   ClientWidth = 420
+  ShowHint = True
+  LCLVersion = '4.2.0.0'
+  Visible = True
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '3.2.0.0'
-  Visible = True
   object PredictionList: TStringGrid
     Left = 0
     Height = 244
-    Hint = 'Predicted steady-state values'
     Top = 0
     Width = 420
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -29,10 +30,8 @@ object PredictionForm: TPredictionForm
         Width = 177
       end>
     MouseWheelOption = mwGrid
-    ParentShowHint = False
     RowCount = 10
     ScrollBars = ssAutoVertical
-    ShowHint = True
     TabOrder = 0
     ColWidths = (
       64

@@ -6,10 +6,10 @@ object PlotForm: TPlotForm
   Caption = 'Plot'
   ClientHeight = 370
   ClientWidth = 750
+  LCLVersion = '4.2.0.0'
+  Visible = True
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '3.2.0.0'
-  Visible = True
   object Chart1: TChart
     Cursor = crCross
     Left = 24
@@ -139,11 +139,11 @@ object PlotForm: TPlotForm
       'M'
       'N'
     )
-    OnClick = VariablesCheckGroupClick
-    OnItemClick = VariablesCheckGroupItemClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 5
+    OnClick = VariablesCheckGroupClick
+    OnItemClick = VariablesCheckGroupItemClick
     Data = {
       0700000002020202020202
     }
@@ -158,10 +158,10 @@ object PlotForm: TPlotForm
     Selected = clBlue
     Anchors = [akTop, akRight]
     ItemHeight = 16
-    OnChange = GColorBoxChange
     ParentShowHint = False
     ShowHint = True
     TabOrder = 6
+    OnChange = GColorBoxChange
   end
   object PColorBox: TColorBox
     Left = 602
@@ -173,10 +173,10 @@ object PlotForm: TPlotForm
     Selected = clGreen
     Anchors = [akTop, akRight]
     ItemHeight = 16
-    OnChange = PColorBoxChange
     ParentShowHint = False
     ShowHint = True
     TabOrder = 7
+    OnChange = PColorBoxChange
   end
   object IColorBox: TColorBox
     Left = 602
@@ -188,10 +188,10 @@ object PlotForm: TPlotForm
     Selected = clRed
     Anchors = [akTop, akRight]
     ItemHeight = 16
-    OnChange = IColorBoxChange
     ParentShowHint = False
     ShowHint = True
     TabOrder = 8
+    OnChange = IColorBoxChange
   end
   object mColorBox: TColorBox
     Left = 602
@@ -203,10 +203,10 @@ object PlotForm: TPlotForm
     Selected = clYellow
     Anchors = [akTop, akRight]
     ItemHeight = 16
-    OnChange = mColorBoxChange
     ParentShowHint = False
     ShowHint = True
     TabOrder = 9
+    OnChange = mColorBoxChange
   end
   object SColorBox: TColorBox
     Left = 602
@@ -218,10 +218,10 @@ object PlotForm: TPlotForm
     Selected = clPurple
     Anchors = [akTop, akRight]
     ItemHeight = 16
-    OnChange = SColorBoxChange
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
+    OnChange = SColorBoxChange
   end
   object RColorBox: TColorBox
     Left = 602
@@ -233,10 +233,10 @@ object PlotForm: TPlotForm
     Selected = clNavy
     Anchors = [akTop, akRight]
     ItemHeight = 16
-    OnChange = RColorBoxChange
     ParentShowHint = False
     ShowHint = True
     TabOrder = 3
+    OnChange = RColorBoxChange
   end
   object nColorBox: TColorBox
     Left = 602
@@ -248,10 +248,10 @@ object PlotForm: TPlotForm
     Selected = clLime
     Anchors = [akTop, akRight]
     ItemHeight = 16
-    OnChange = nColorBoxChange
     ParentShowHint = False
     ShowHint = True
     TabOrder = 10
+    OnChange = nColorBoxChange
   end
   object StatusBar1: TStatusBar
     Left = 0

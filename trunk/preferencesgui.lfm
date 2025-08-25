@@ -10,8 +10,8 @@ object PreferencesDialog: TPreferencesDialog
   ClientWidth = 617
   Constraints.MinHeight = 200
   FormStyle = fsStayOnTop
+  LCLVersion = '4.2.0.0'
   OnShow = FormShow
-  LCLVersion = '3.2.0.0'
   object UOMGroupBox: TGroupBox
     Left = 16
     Height = 153
@@ -46,7 +46,7 @@ object PreferencesDialog: TPreferencesDialog
       Top = 8
       Width = 48
       AutoSize = False
-      ItemHeight = 19
+      ItemHeight = 18
       ItemIndex = 2
       Items.Strings = (
         'm'
@@ -63,7 +63,7 @@ object PreferencesDialog: TPreferencesDialog
       Top = 8
       Width = 72
       AutoSize = False
-      ItemHeight = 19
+      ItemHeight = 18
       ItemIndex = 1
       Items.Strings = (
         'IU'
@@ -88,7 +88,7 @@ object PreferencesDialog: TPreferencesDialog
       Top = 8
       Width = 48
       AutoSize = False
-      ItemHeight = 19
+      ItemHeight = 18
       Items.Strings = (
         ''
         'm'
@@ -120,7 +120,7 @@ object PreferencesDialog: TPreferencesDialog
       Top = 38
       Width = 48
       AutoSize = False
-      ItemHeight = 19
+      ItemHeight = 18
       ItemIndex = 0
       Items.Strings = (
         'm'
@@ -136,7 +136,7 @@ object PreferencesDialog: TPreferencesDialog
       Top = 38
       Width = 72
       AutoSize = False
-      ItemHeight = 19
+      ItemHeight = 18
       ItemIndex = 1
       Items.Strings = (
         'g'
@@ -161,7 +161,7 @@ object PreferencesDialog: TPreferencesDialog
       Top = 38
       Width = 48
       AutoSize = False
-      ItemHeight = 19
+      ItemHeight = 18
       Items.Strings = (
         'd'
         ''
@@ -272,7 +272,7 @@ object PreferencesDialog: TPreferencesDialog
     end
     object NumberFormatEdit: TEdit
       Left = 176
-      Height = 22
+      Height = 21
       Top = 2
       Width = 195
       TabOrder = 0
@@ -281,7 +281,7 @@ object PreferencesDialog: TPreferencesDialog
     end
     object DateTimeFormatEdit: TEdit
       Left = 176
-      Height = 22
+      Height = 21
       Top = 34
       Width = 195
       TabOrder = 1

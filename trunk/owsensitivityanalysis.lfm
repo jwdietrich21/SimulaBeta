@@ -6,10 +6,10 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
   Caption = 'One-Way Sensitivity Analysis'
   ClientHeight = 404
   ClientWidth = 746
+  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
-  LCLVersion = '3.2.0.0'
   object Chart1: TChart
     Cursor = crCross
     Left = 24
@@ -97,11 +97,11 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
       'M'
       'N'
     )
-    OnClick = VariablesCheckGroupClick
-    OnItemClick = VariablesCheckGroupItemClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 1
+    OnClick = VariablesCheckGroupClick
+    OnItemClick = VariablesCheckGroupItemClick
     Data = {
       0700000002020202020202
     }
@@ -206,14 +206,14 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
   end
   object MinSpinEdit: TFloatSpinEdit
     Left = 57
-    Height = 21
-    Top = 359
+    Height = 20
+    Top = 360
     Width = 71
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
     Increment = 0.1
-    OnChange = MinSpinEditChange
     TabOrder = 2
+    OnChange = MinSpinEditChange
   end
   object StrucParCombo: TComboBox
     Left = 144
@@ -221,7 +221,7 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
     Top = 359
     Width = 235
     Anchors = [akLeft, akRight, akBottom]
-    ItemHeight = 19
+    ItemHeight = 18
     ItemIndex = 0
     Items.Strings = (
       'Select independent parameter...'
@@ -237,14 +237,14 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
   end
   object MaxSpinEdit: TFloatSpinEdit
     Left = 403
-    Height = 21
-    Top = 359
+    Height = 20
+    Top = 360
     Width = 71
     Anchors = [akRight, akBottom]
     DecimalPlaces = 4
     Increment = 0.1
-    OnChange = MaxSpinEditChange
     TabOrder = 4
     Value = 1
+    OnChange = MaxSpinEditChange
   end
 end

@@ -6,10 +6,10 @@ object LogWindow: TLogWindow
   Caption = 'Log'
   ClientHeight = 350
   ClientWidth = 939
+  LCLVersion = '4.2.0.0'
+  Visible = True
   OnCreate = FormCreate
   OnPaint = FormPaint
-  LCLVersion = '3.2.0.0'
-  Visible = True
   object ValuesGrid: TStringGrid
     Left = 0
     Height = 326
@@ -22,51 +22,51 @@ object LogWindow: TLogWindow
     Columns = <    
       item
         Title.Caption = 't'
-        Width = 86
+        Width = 88
       end    
       item
         Title.Font.Color = clGreen
         Title.Caption = 'P(t) (µmol/s)'
-        Width = 86
+        Width = 88
       end    
       item
         Title.Font.Color = 2405887
         Title.Caption = 'W(t) (µmol/s)'
-        Width = 86
+        Width = 88
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'Q(t) (µmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'R(t) (µmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clBlue
         Title.Caption = 'G(t) (mmol/L)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clRed
         Title.Caption = 'S(t) (pmol/s)'
-        Width = 86
+        Width = 87
       end    
       item
         Title.Font.Color = clRed
         Title.Caption = 'I(t) (pmol/L)'
-        Width = 85
+        Width = 87
       end    
       item
         Title.Font.Color = clRed
         Title.Caption = 'M(t) (mol/s)'
-        Width = 85
+        Width = 87
       end    
       item
         Title.Caption = 'N(t)'
-        Width = 85
+        Width = 87
       end>
     Constraints.MinHeight = 300
     Constraints.MinWidth = 500
@@ -77,16 +77,16 @@ object LogWindow: TLogWindow
     TabOrder = 0
     ColWidths = (
       64
-      86
-      86
-      86
-      86
-      86
-      86
-      86
-      85
-      85
-      85
+      88
+      88
+      88
+      87
+      87
+      87
+      87
+      87
+      87
+      87
     )
   end
 end
