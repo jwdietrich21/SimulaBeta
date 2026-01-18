@@ -7,10 +7,10 @@ unit ScenarioHandler;
 
 { Version 3.2.0 (Donostia) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2025 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Source code released under the BSD License }
 
@@ -150,7 +150,7 @@ begin
           gActiveModel.Comments := NodeContent(RootNode, 'Comments');
         end;
         if gActiveModel.Code = '' then
-          gActiveModel.Code := MIASE_SIMTHYR_STANDARD_CODE;
+          gActiveModel.Code := MIASE_SIMULABETA_STANDARD_CODE;
         if (modelVersion = '') or (LeftStr(modelVersion, 2) = '3.') then
         begin
           RootNode := Doc.DocumentElement.FindNode('strucpars');
@@ -255,7 +255,7 @@ begin
 
     ElementNode := Doc.CreateElement('MIASE');
     if gActiveModel.Code = '' then
-      gActiveModel.Code := MIASE_SIMTHYR_STANDARD_CODE;
+      gActiveModel.Code := MIASE_SIMULABETA_STANDARD_CODE;
     ElementNode.AppendChild(SimpleNode(Doc, 'Code', gActiveModel.Code));
     ElementNode.AppendChild(SimpleNode(Doc, 'Comments', gActiveModel.Comments));
     RootNode.AppendChild(ElementNode);

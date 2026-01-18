@@ -6,7 +6,7 @@ object StatsForm: TStatsForm
   Caption = 'Statistics'
   ClientHeight = 252
   ClientWidth = 846
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnActivate = FormActivate
   OnPaint = FormPaint
   OnShow = FormShow

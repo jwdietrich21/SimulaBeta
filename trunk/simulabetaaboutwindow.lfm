@@ -10,7 +10,7 @@ object AboutWindow: TAboutWindow
   FormStyle = fsStayOnTop
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow
@@ -26261,7 +26261,7 @@ object AboutWindow: TAboutWindow
     Height = 13
     Top = 106
     Width = 80
-    Caption = '© 1994 – 2025'
+    Caption = '© 1994 – 2026'
     Font.Height = -11
     Font.Pitch = fpVariable
     ParentColor = False

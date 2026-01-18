@@ -6,7 +6,7 @@ object LogWindow: TLogWindow
   Caption = 'Log'
   ClientHeight = 350
   ClientWidth = 939
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   Visible = True
   OnCreate = FormCreate
   OnPaint = FormPaint

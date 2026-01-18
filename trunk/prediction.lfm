@@ -8,7 +8,7 @@ object PredictionForm: TPredictionForm
   ClientHeight = 271
   ClientWidth = 420
   ShowHint = True
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   Visible = True
   OnCreate = FormCreate
   OnPaint = FormPaint

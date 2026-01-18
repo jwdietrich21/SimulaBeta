@@ -7,10 +7,10 @@ unit SimulaBetaResources;
 
 { Version 3.2.0 (Donostia) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2025 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Source code released under the BSD License }
 
@@ -38,7 +38,7 @@ const
   SCICRUNCH_URL = 'http://scicrunch.org/browse/resources/SCR_021900';
 
   MIASE_URL = 'http://co.mbine.org/standards/miase';
-  MIASE_SIMTHYR_STANDARD_CODE = 'Model of insulin-glucose homeostasis for use with SimulaBeta, as available from ' +  BASE_URL;
+  MIASE_SIMULABETA_STANDARD_CODE = 'Model of insulin-glucose homeostasis for use with SimulaBeta, as available from ' +  BASE_URL;
   MIRIAM_URL = 'http://www.ebi.ac.uk/miriam/main/';
   MIBBI_URL = 'http://biosharing.org/collection/MIBBI';
 

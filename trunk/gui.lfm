@@ -23167,7 +23167,7 @@ object ToolbarWindow: TToolbarWindow
     00000049454E44AE426082
   }
   Menu = MainMenu1
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   object MainToolBar: TToolBar
     Left = 0

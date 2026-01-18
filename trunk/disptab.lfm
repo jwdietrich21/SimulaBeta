@@ -6,7 +6,7 @@ object DispTabWindow: TDispTabWindow
   Caption = 'Disposition Table'
   ClientHeight = 277
   ClientWidth = 725
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnPaint = FormPaint
   OnShow = FormShow
   object DispositionGrid: TStringGrid

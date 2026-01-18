@@ -10,7 +10,7 @@ object PreferencesDialog: TPreferencesDialog
   ClientWidth = 617
   Constraints.MinHeight = 200
   FormStyle = fsStayOnTop
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnShow = FormShow
   object UOMGroupBox: TGroupBox
     Left = 16

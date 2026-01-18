@@ -6,7 +6,7 @@ object OWSensitivityAnalysisForm: TOWSensitivityAnalysisForm
   Caption = 'One-Way Sensitivity Analysis'
   ClientHeight = 404
   ClientWidth = 746
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   OnPaint = FormPaint
   OnShow = FormShow

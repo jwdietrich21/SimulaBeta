@@ -9,7 +9,7 @@ object ControlWindow: TControlWindow
   ClientWidth = 750
   Position = poScreenCenter
   ShowHint = True
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
