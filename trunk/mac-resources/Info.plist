@@ -66,5 +66,7 @@ See http://simulabeta.sourceforge.net for details
 	</array>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.4.0</string>
+	<key>NSHighResolutionCapable</key>
+    <true/>
 </dict>
 </plist>

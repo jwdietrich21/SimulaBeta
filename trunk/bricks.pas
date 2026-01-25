@@ -1,4 +1,4 @@
-unit Bricks;
+﻿unit Bricks;
 
 { CyberUnits }
 
@@ -6,12 +6,12 @@ unit Bricks;
 
 { Bricks: Basic blocks for information processing structures }
 
-{ Version 2.0.0 (Escorpión) }
+{ Version 2.1.0 (Foudre) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2024 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2024 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Standard blocks for systems modelling and simulation }
 
@@ -26,23 +26,34 @@ unit Bricks;
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
 { MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
 
+{$IFDEF FPC}   {Lazarus and Free Pascal}
 {$mode objfpc}
+{$ENDIF}
 {$H+}
 {$ASSERTIONS ON}
+
+{$IFDEF DCC}   {Delphi XE and newer versions}
+{$DEFINE DELPHI}
+{$ENDIF}
 
 interface
 
 uses
-  Classes, SysUtils, Math, ucomplex;
+  Classes, SysUtils, Math
+  {$IF DEFINED(DELPHI)}
+  , ComplexNumbers
+  {$ELSEIF DEFINED(FPC)}
+  , ucomplex
+  {$ENDIF};
 
 const
   Bricks_major = 2;
-  Bricks_minor = 0;
+  Bricks_minor = 1;
   Bricks_release = 0;
-  Bricks_patch = 0;
+  Bricks_patch = 108;
   Bricks_fullversion = ((Bricks_major *  100 + Bricks_minor) * 100 + Bricks_release) * 100 + Bricks_patch;
-  Bricks_version = '2.0.0.0';
-  Bricks_internalversion = 'Escorpión';
+  Bricks_version = '2.1.0.100';
+  Bricks_internalversion = 'Foudre';
 
   kError101 = 'Runtime error: Negative parameter(s)';
   kError102 = 'Runtime error: Parameter(s) out of range';
@@ -279,6 +290,22 @@ type
     property simOutput: extended read SimAndGetOutput;
   end;
 
+  { TPI }
+  { Proportional-integral block, changed from Neuber 1989 }
+
+  TPI = class(TControlledBlock)
+  protected
+    function SimAndGetOutput: extended; override;
+    function GetFR: TFR; override;
+  public
+    tPI, x1, x1n, delta: extended;
+    constructor Create;
+    destructor Destroy; override;
+    property fr: TFR read GetFR;
+    procedure simulate; override;
+    property simOutput: extended read SimAndGetOutput;
+  end;
+
   { TPAdd }
   { Summation block }
 
@@ -334,6 +361,8 @@ type
     procedure simulate; override;
     property simOutput: extended read SimAndGetOutput;
   end;
+
+  function ComplexFR(PolarFR: TFR): TFR;
 
 implementation
 
@@ -424,7 +453,7 @@ begin
     FFr.phi := -90 * pi / 180 - arctan(2 * dmp * omega * t2 / (1 - sqr(omega * t2)))
   else
     FFr.phi := -90 * pi / 180 - pi - arctan(2 * dmp * omega * t2 / (1 - sqr(omega * t2)));
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
+  FFr.F := ComplexFR(FFR).F;
   result := FFR;
 end;
 
@@ -504,6 +533,55 @@ begin
   end;
 end;
 
+{ TPI }
+
+function TPI.SimAndGetOutput: extended;
+begin
+  simulate;
+  result := fOutput;
+end;
+
+function TPI.GetFR: TFR;
+begin
+  assert(G >= 0, kError101);
+  assert(omega >= 0, kError101);
+  assert(self.tpi >= 0, kError101);
+  if (omega = 0) or (self.tpi = 0) then
+    begin
+      FFr.M := infinity;
+      FFr.phi := infinity;
+    end
+  else
+    begin
+      FFr.M := amplitude * G * (1 + 1 / (omega * self.tpi));
+      FFr.phi := -arctan(1 / (omega * self.tpi));
+    end;
+    FFr.F := ComplexFR(FFR).F;
+    result := FFr;
+end;
+
+constructor TPI.Create;
+begin
+  inherited Create;
+  G := 1;
+  tpi := 0;
+  x1 := 0;
+  x1n := 0;
+  fOutput := 0;
+end;
+
+destructor TPI.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TPI.simulate;
+begin
+  x1n := x1n + (delta / self.tpi) * x1;
+  fOutput := G * (x1n + input);
+  x1 := input;
+end;
+
 { TDT1 }
 
 function TDT1.SimAndGetOutput: extended;
@@ -518,7 +596,7 @@ begin
   assert(omega >= 0, kError101);
   FFr.M := amplitude * G * omega / sqrt(1 + sqr(omega) * sqr(t1));
   FFr.phi := arctan(1 / (omega * t1));
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
+  FFr.F := ComplexFR(FFR).F;
   result := FFR;
 end;
 
@@ -559,7 +637,7 @@ begin
   assert(omega >= 0, kError101);
   FFr.M := amplitude * G / (omega * sqrt(1 + sqr(omega) * sqr(t1)));
   FFr.phi := -90 * pi / 180 - arctan(omega * t1);
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
+  FFr.F := ComplexFR(FFR).F;
   result := FFR;
 end;
 
@@ -604,8 +682,8 @@ begin
   else
     FFr.M := amplitude * G / omega;
   FFr.phi := -90 * pi / 180;
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
-  result := FFR;
+  FFr.F := ComplexFR(FFR).F;
+  result := FFr;
 end;
 
 constructor TInt.Create;
@@ -771,7 +849,7 @@ begin
   assert(omega >= 0, kError101);
   FFr.M := amplitude * G;
   FFr.phi := -omega * nt * delta;
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
+  FFr.F := ComplexFR(FFR).F;
   result := FFR;
 end;
 
@@ -802,7 +880,7 @@ begin
   assert(omega >= 0, kError101);
   FFr.M := amplitude * G / sqrt(1 + sqr(omega) * sqr(t1));
   FFr.phi := -arctan(omega * t1);
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
+  FFr.F := ComplexFR(FFR).F;
   result := FFR;
 end;
 
@@ -849,7 +927,7 @@ begin
     FFr.phi := -pi - arctan(2 * dmp * omega * t2 / (1 - sqr(omega * t2)))
   else
     FFr.phi := NaN;
-  FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
+  FFr.F := ComplexFR(FFR).F;
   result := FFR;
 end;
 
@@ -931,11 +1009,11 @@ end;
 
 function TP.GetFR: TFR;
 begin
-assert(G >= 0, kError101);
-FFr.M := amplitude * G;
-FFr.phi := 0;
-FFr.F := FFr.M * cexp(i * FFr.phi); { M and phi encoded in polar coordinates }
-result := FFR;
+  assert(G >= 0, kError101);
+  FFr.M := amplitude * G;
+  FFr.phi := 0;
+  FFr.F := ComplexFR(FFR).F;
+  result := FFR;
 end;
 
 procedure TP.simulate;
@@ -963,6 +1041,18 @@ begin
   inherited Destroy;
 end;
 
+{ ComplexFR }
+
+function ComplexFR(PolarFR: TFR): TFR;
+begin
+  {$IF DEFINED(FPC)}
+  result.F := PolarFR.M * cexp(i * PolarFR.phi); { M and phi encoded in polar coordinates }
+  {$ELSEIF DEFINED(Delphi)}
+  result.F := ctimes(PolarFR.M, cexp(ctimes(i, PolarFR.phi))); { M and phi encoded in polar coordinates }
+  {$ENDIF}
+end;
+
+
 end.
 
 {References:  }
@@ -974,4 +1064,10 @@ end.
 
 {3. Lutz H. and Wendt, W., "Taschenbuch der Regelungstechnik" }
 {   Verlag Harri Deutsch, Frankfurt am Main 2005 }
+
+{4. Dietrich, J. W., Siegmar, N., Hojjati, J. R., Gardt, O., & Boehm, B. O. }
+{   (2024). CyberUnits Bricks: An Implementation Study of a Class Library for }
+{   Simulating Nonlinear Biological Feedback Loops. ADCAIJ: Advances in }
+{   Distributed Computing and Artificial Intelligence Journal, 13(1), e31762.}
+{   https://doi.org/10.14201/adcaij.31762 }
 

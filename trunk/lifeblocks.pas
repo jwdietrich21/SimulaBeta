@@ -6,7 +6,7 @@ unit lifeblocks;
 
 { LifeBlocks: Metabricks for information processing structures in organisms }
 
-{ Version 2.0.0 (Escorpión) }
+{ Version 2.1.0 (Foudre) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -183,6 +183,7 @@ begin
   inherited create;
   PT1Analog := TPT1.Create;
   FAlpha := 1;
+  G := -1;
   SetBeta(1);
 end;
 
@@ -196,7 +197,10 @@ procedure TASIA.simulate;
 begin
   assert(FBeta <> 0, kError102);
   PT1Analog.input := input;
-  fOutput := PT1Analog.simOutput;
+  if G < 0 then   // undefined
+    fOutput := PT1Analog.simOutput
+  else
+    fOutput := G * PT1Analog.simOutput
 end;
 
 end.
@@ -214,3 +218,9 @@ end.
 {   feedback-coupled physiological saturation kinetics. In: Cybernetics and }
 {   Systems 2006. R. Trappl (Hrsg). Vienna, Austrian Society for Cybernetic }
 {   Studies. 1: 269-74. }
+
+{4. Dietrich, J. W., Siegmar, N., Hojjati, J. R., Gardt, O., & Boehm, B. O. }
+{   (2024). CyberUnits Bricks: An Implementation Study of a Class Library for }
+{   Simulating Nonlinear Biological Feedback Loops. ADCAIJ: Advances in }
+{   Distributed Computing and Artificial Intelligence Journal, 13(1), e31762.}
+{   https://doi.org/10.14201/adcaij.31762 }
