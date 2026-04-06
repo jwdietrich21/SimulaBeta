@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <BuildModes Active="macOS"/>
+    <BuildModes Active="Deep Debugging"/>
     <Units Count="73">
       <Unit0>
         <Filename Value="SimulaBeta.lpr"/>
